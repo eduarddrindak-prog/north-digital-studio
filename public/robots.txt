@@ -2,4 +2,4 @@ User-agent: *
 
 Allow: /
 
-Sitemap: https://northstudio.fr/sitemap.xml
+Sitemap: https://north-digital-studio.pages.dev/sitemap.xml
