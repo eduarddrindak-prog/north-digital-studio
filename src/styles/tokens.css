@@ -1,0 +1,27 @@
+:root {
+  /* Colors */
+  --color-background: #0b0f14;
+  --color-surface: rgba(255, 255, 255, 0.05);
+  --color-primary-text: #ffffff;
+  --color-secondary-text: rgba(255, 255, 255, 0.6);
+  --color-muted-text: rgba(255, 255, 255, 0.5);
+  --color-accent: #ffffff;
+  --color-border: rgba(255, 255, 255, 0.1);
+
+  /* Spacing */
+  --spacing-section: 8rem;
+  --spacing-container: 1.5rem;
+  --spacing-component: 1.5rem;
+
+  /* Radius */
+  --radius-sm: 0.75rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+
+  /* Transitions */
+  --transition-duration: 300ms;
+  --transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Layout */
+  --container-max-width: 80rem;
+}
