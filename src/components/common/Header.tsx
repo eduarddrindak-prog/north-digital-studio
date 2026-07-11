@@ -127,7 +127,7 @@ export default function Header() {
                 text-[11px]
                 uppercase
                 tracking-[0.18em]
-                text-secondary-text
+                text-white/70
                 mt-1
               "
             >
@@ -198,9 +198,10 @@ export default function Header() {
         {/* Mobile */}
 
         <button
-          onClick={() => setOpen(!open)}
-          className="md:hidden text-primary-text"
-        >
+  onClick={() => setOpen(!open)}
+  aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+  className="md:hidden text-primary-text"
+>
           {open ? <X /> : <Menu />}
         </button>
       </div>

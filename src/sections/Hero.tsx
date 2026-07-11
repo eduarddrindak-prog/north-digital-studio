@@ -186,9 +186,9 @@ shadow-[0_30px_80px_rgba(0,0,0,.35)]
     NORTH STUDIO
   </p>
 
-  <h3 className="mt-3 text-xl font-medium text-white">
+  <p className="mt-3 text-xl font-medium text-white">
     Business Website
-  </h3>
+    </p>
 
   <p className="mx-auto mt-4 max-w-[210px] text-sm leading-7 text-secondary-text">
     Built to explain your services,
