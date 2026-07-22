@@ -21,97 +21,99 @@ const steps = [
 
 export default function SolutionVisualization() {
   return (
-    <div
-      className="
-        relative
-        rounded-lg
-        border
-        border-border
-        bg-surface
-        overflow-hidden
-        px-8
-        py-12
-      "
-    >
+    <div className="relative h-[340px] overflow-hidden rounded-lg border border-border bg-surface">
+
       <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
 
-      <div className="relative flex flex-col lg:flex-row items-center justify-between gap-8">
+      <div className="relative flex h-full items-center justify-center">
 
-        {steps.map((step, index) => (
-          <div
-            key={step.title}
-            className="flex items-center w-full lg:w-auto"
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.15,
-              }}
-              className="
-                relative
-                border
-                border-border
-                rounded-xl
-                bg-white/[0.02]
-                px-6
-                py-5
-                min-w-[180px]
-              "
+        <div className="flex flex-col items-center">
+
+          {steps.map((step, index) => (
+            <div
+              key={step.title}
+              className="flex flex-col items-center"
             >
-              <div
-                className="
-                  absolute
-                  -top-3
-                  left-6
-                  w-6
-                  h-6
-                  rounded-full
-                  bg-[#4F8EF7]/10
-                  border
-                  border-[#4F8EF7]/25
-                  flex
-                  items-center
-                  justify-center
-                  text-[10px]
-                  text-[#4F8EF7]
-                "
-              >
-                {index + 1}
-              </div>
-
-              <h3 className="text-base font-medium text-primary-text">
-                {step.title}
-              </h3>
-
-              <p className="mt-2 text-sm text-secondary-text">
-                {step.description}
-              </p>
-            </motion.div>
-
-            {index !== steps.length - 1 && (
               <motion.div
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
+                initial={{
+                  opacity: 0,
+                  y: 18,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
                 viewport={{ once: true }}
                 transition={{
-                  delay: 0.2 + index * 0.15,
+                  duration: 0.45,
+                  delay: index * 0.12,
                 }}
                 className="
-                  hidden
-                  lg:block
-                  origin-left
-                  w-20
-                  h-px
-                  bg-white/10
+                  relative
+                  w-[280px]
+                  rounded-xl
+                  border
+                  border-border
+                  bg-background/70
+                  backdrop-blur-sm
+                  px-7
+                  py-5
+                  text-center
                 "
-              />
-            )}
-          </div>
-        ))}
+              >
+                <div
+                  className="
+                    absolute
+                    left-5
+                    top-5
+                    flex
+                    h-7
+                    w-7
+                    items-center
+                    justify-center
+                    rounded-full
+                    border
+                    border-[#4F8EF7]/30
+                    bg-[#4F8EF7]/10
+                    text-[11px]
+                    text-[#4F8EF7]
+                  "
+                >
+                  {index + 1}
+                </div>
+
+                <h3 className="text-lg font-semibold text-primary-text">
+                  {step.title}
+                </h3>
+
+                <p className="mt-2 text-sm text-secondary-text">
+                  {step.description}
+                </p>
+              </motion.div>
+
+              {index !== steps.length - 1 && (
+                <motion.div
+                  initial={{ scaleY: 0 }}
+                  whileInView={{ scaleY: 1 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    delay: 0.15 + index * 0.12,
+                  }}
+                  className="
+                    origin-top
+                    h-10
+                    w-px
+                    bg-white/10
+                  "
+                />
+              )}
+            </div>
+          ))}
+
+        </div>
+
       </div>
+
     </div>
   );
 }

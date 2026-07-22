@@ -20,26 +20,26 @@ export default function ServicesVisualization() {
     <div
       className="
         relative
-        h-[320px]
+        h-[340px]
+        overflow-hidden
         rounded-lg
         border
         border-border
         bg-surface
-        overflow-hidden
       "
     >
       <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
 
       <div className="relative flex h-full items-center justify-center">
 
-        <div className="relative w-[340px] h-[210px]">
+        <div className="relative w-[420px] h-[250px]">
 
           {layers.map((layer, index) => (
             <motion.div
               key={layer.title}
               initial={{
                 opacity: 0,
-                y: 30,
+                y: 24,
               }}
               whileInView={{
                 opacity: 1,
@@ -54,22 +54,22 @@ export default function ServicesVisualization() {
                 absolute
                 left-1/2
                 -translate-x-1/2
+                w-[300px]
                 rounded-xl
                 border
                 border-border
                 bg-background/70
                 backdrop-blur-sm
                 px-8
-                py-5
-                w-[260px]
+                py-6
                 text-center
               "
               style={{
-                top: `${index * 52}px`,
+                top: `${index * 60}px`,
                 zIndex: 10 - index,
               }}
             >
-              <h3 className="font-medium text-primary-text">
+              <h3 className="text-lg font-semibold text-primary-text">
                 {layer.title}
               </h3>
 
@@ -88,9 +88,9 @@ export default function ServicesVisualization() {
               absolute
               left-1/2
               -translate-x-1/2
-              top-[165px]
+              top-[192px]
+              h-12
               w-px
-              h-10
               bg-white/10
             "
           />
@@ -104,9 +104,9 @@ export default function ServicesVisualization() {
               absolute
               left-1/2
               -translate-x-1/2
-              top-[205px]
-              w-3
+              top-[238px]
               h-3
+              w-3
               rounded-full
               bg-[#4F8EF7]
             "
