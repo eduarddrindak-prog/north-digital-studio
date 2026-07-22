@@ -10,28 +10,38 @@ export default function Footer() {
       ">
   
         <div className="
-          max-w-7xl
-          mx-auto
-          px-6
-          py-12
-          flex
-          flex-col
-          md:flex-row
-          justify-between
-          gap-8
-        ">
+  max-w-7xl
+  mx-auto
+  px-6
+  py-16
+  flex
+  flex-col
+  lg:flex-row
+  justify-between
+  items-start
+  gap-16
+">
   
   
           {/* Brand */}
   
           <div>
   
-            <h3 className="
-              font-semibold
-              text-lg
-            ">
-              Digital Studio
-            </h3>
+            <div className="flex flex-col gap-3">
+
+  <p className="text-[11px] uppercase tracking-[0.28em] text-[#4F8EF7]">
+    NORTH DIGITAL STUDIO
+  </p>
+
+  <h3 className="
+    text-2xl
+    font-semibold
+    tracking-tight
+  ">
+    Professional Websites
+  </h3>
+
+</div>
   
   
             <p className="
@@ -39,7 +49,8 @@ export default function Footer() {
               text-secondary-text
               max-w-sm
             ">
-              Professional websites designed to help small businesses grow.
+              Professional websites that communicate your value,
+build trust and help more customers contact your business.
             </p>
   
           </div>

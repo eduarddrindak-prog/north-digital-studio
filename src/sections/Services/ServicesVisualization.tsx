@@ -1,83 +1,120 @@
 import { motion } from "framer-motion";
 
-
 const layers = [
-  "Business goals",
-  "Customer experience",
-  "Website system",
+  {
+    title: "Business",
+    subtitle: "Goals & services",
+  },
+  {
+    title: "Customer",
+    subtitle: "Experience & trust",
+  },
+  {
+    title: "Website",
+    subtitle: "Digital product",
+  },
 ];
 
-
-export default function ServicesVisualization(){
-
+export default function ServicesVisualization() {
   return (
-
     <div
       className="
-        h-[300px]
+        relative
+        h-[320px]
         rounded-lg
         border
         border-border
         bg-surface
-        flex
-        items-center
-        justify-center
         overflow-hidden
       "
     >
+      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
 
-      <div className="
-        flex
-        flex-col
-        gap-4
-        w-64
-      ">
+      <div className="relative flex h-full items-center justify-center">
 
-        {layers.map((layer,index)=>(
+        <div className="relative w-[340px] h-[210px]">
+
+          {layers.map((layer, index) => (
+            <motion.div
+              key={layer.title}
+              initial={{
+                opacity: 0,
+                y: 30,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.45,
+                delay: index * 0.15,
+              }}
+              className="
+                absolute
+                left-1/2
+                -translate-x-1/2
+                rounded-xl
+                border
+                border-border
+                bg-background/70
+                backdrop-blur-sm
+                px-8
+                py-5
+                w-[260px]
+                text-center
+              "
+              style={{
+                top: `${index * 52}px`,
+                zIndex: 10 - index,
+              }}
+            >
+              <h3 className="font-medium text-primary-text">
+                {layer.title}
+              </h3>
+
+              <p className="mt-2 text-sm text-secondary-text">
+                {layer.subtitle}
+              </p>
+            </motion.div>
+          ))}
 
           <motion.div
-
-            key={layer}
-
-            initial={{
-              opacity:0,
-              x:-20,
-            }}
-
-            whileInView={{
-              opacity:1,
-              x:0,
-            }}
-
-            viewport={{
-              once:true,
-            }}
-
-            transition={{
-              delay:index * 0.15,
-            }}
-
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.6 }}
             className="
-              border
-              border-border
-              rounded-lg
-              px-5
-              py-4
-              text-sm
-              text-secondary-text
+              absolute
+              left-1/2
+              -translate-x-1/2
+              top-[165px]
+              w-px
+              h-10
+              bg-white/10
             "
+          />
 
-          >
-            {layer}
-          </motion.div>
+          <motion.div
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.8 }}
+            className="
+              absolute
+              left-1/2
+              -translate-x-1/2
+              top-[205px]
+              w-3
+              h-3
+              rounded-full
+              bg-[#4F8EF7]
+            "
+          />
 
-        ))}
-
+        </div>
 
       </div>
-
-
     </div>
-
   );
 }

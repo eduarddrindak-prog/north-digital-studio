@@ -67,8 +67,8 @@ export default function Hero() {
             className="
               relative
               w-full
-              max-w-[520px]
-              aspect-square
+              max-w-[560px]
+              aspect-[1.05/1]
               rounded-3xl
               border border-white/8
 shadow-[0_30px_80px_rgba(0,0,0,.35)]
@@ -186,15 +186,21 @@ shadow-[0_30px_80px_rgba(0,0,0,.35)]
     NORTH STUDIO
   </p>
 
-  <p className="mt-3 text-xl font-medium text-white">
-    Business Website
-    </p>
+  <p className="text-[11px] uppercase tracking-[0.28em] text-[#4F8EF7]">
+  NORTH DIGITAL STUDIO
+</p>
 
-  <p className="mx-auto mt-4 max-w-[210px] text-sm leading-7 text-secondary-text">
-    Built to explain your services,
-    build customer trust
-    and encourage enquiries.
-  </p>
+<h3 className="mt-4 text-2xl font-semibold tracking-tight text-white">
+  Professional Website
+</h3>
+
+<div className="mx-auto mt-5 h-px w-20 bg-white/10" />
+
+<p className="mx-auto mt-5 max-w-[240px] text-sm leading-7 text-secondary-text">
+  Designed to communicate your value,
+  build confidence
+  and generate customer enquiries.
+</p>
 
 </div>
             </div>
