@@ -1,120 +1,190 @@
 import { motion } from "framer-motion";
 
-const layers = [
-  {
-    title: "Business",
-    subtitle: "Goals & services",
-  },
-  {
-    title: "Customer",
-    subtitle: "Experience & trust",
-  },
-  {
-    title: "Website",
-    subtitle: "Digital product",
-  },
+const features = [
+  "Clear message",
+  "Professional image",
+  "More enquiries",
 ];
 
-export default function ServicesVisualization() {
+export default function SolutionVisualization() {
   return (
     <div
-      className="
-        relative
-        h-[340px]
-        overflow-hidden
-        rounded-lg
-        border
-        border-border
-        bg-surface
-      "
-    >
-      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
+      className="relative">
 
-      <div className="relative flex h-full items-center justify-center">
+      <div className="flex justify-center">
 
-        <div className="relative w-[420px] h-[250px]">
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 18,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{ once: true }}
+          transition={{
+            duration: .45,
+          }}
+          className="
+            w-full
+            max-w-[1280px]
+            overflow-hidden
+            rounded-xl
+            border
+            border-border
+            bg-background/70
+            backdrop-blur-sm
+          "
+        >
 
-          {layers.map((layer, index) => (
-            <motion.div
-              key={layer.title}
-              initial={{
-                opacity: 0,
-                y: 24,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.45,
-                delay: index * 0.15,
-              }}
-              className="
-                absolute
-                left-1/2
-                -translate-x-1/2
-                w-[300px]
-                rounded-xl
-                border
-                border-border
-                bg-background/70
-                backdrop-blur-sm
-                px-8
-                py-6
-                text-center
-              "
-              style={{
-                top: `${index * 60}px`,
-                zIndex: 10 - index,
-              }}
-            >
-              <h3 className="text-lg font-semibold text-primary-text">
-                {layer.title}
+          {/* Browser */}
+
+          <div className="flex items-center justify-between border-b border-border px-5 py-3">
+
+            <div className="flex gap-2">
+
+              <div className="h-2.5 w-2.5 rounded-full bg-white/15" />
+              <div className="h-2.5 w-2.5 rounded-full bg-white/15" />
+              <div className="h-2.5 w-2.5 rounded-full bg-white/15" />
+
+            </div>
+
+            <div className="text-xs tracking-wide text-secondary-text">
+              northstudio.fr
+            </div>
+
+          </div>
+
+          <div className="grid min-h-[420px] grid-cols-2 gap-12 p-16">
+
+            <div>
+
+              <h3 className="text-3xl font-semibold leading-tight text-primary-text">
+                Websites designed around your business.
               </h3>
 
-              <p className="mt-2 text-sm text-secondary-text">
-                {layer.subtitle}
-              </p>
-            </motion.div>
-          ))}
+              
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.6 }}
-            className="
-              absolute
-              left-1/2
-              -translate-x-1/2
-              top-[192px]
-              h-12
-              w-px
-              bg-white/10
-            "
-          />
+              <div className="mt-6 space-y-3">
 
-          <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.8 }}
-            className="
-              absolute
-              left-1/2
-              -translate-x-1/2
-              top-[238px]
-              h-3
-              w-3
-              rounded-full
-              bg-[#4F8EF7]
-            "
-          />
+                <div className="h-2 rounded bg-white/8 w-full" />
+                <div className="h-2 rounded bg-white/8 w-5/6" />
+                <div className="h-2 rounded bg-white/8 w-4/6" />
 
-        </div>
+              </div>
+
+              <div className="mt-4">
+
+</div>
+
+<div className="mt-16 grid grid-cols-3 gap-4">
+
+  <div className="rounded-lg border border-border p-5">
+    <div className="mb-2 h-2 w-8 rounded bg-[#4F8EF7]/70" />
+    <div className="h-3 w-full rounded bg-white/8" />
+  </div>
+
+  <div className="rounded-lg border border-border p-4">
+    <div className="mb-2 h-2 w-8 rounded bg-[#4F8EF7]/70" />
+    <div className="h-2 w-full rounded bg-white/8" />
+  </div>
+
+  <div className="rounded-lg border border-border p-4">
+    <div className="mb-2 h-2 w-8 rounded bg-[#4F8EF7]/70" />
+    <div className="h-2 w-full rounded bg-white/8" />
+  </div>
+
+</div>
+
+            </div>
+
+            <div className="flex flex-col justify-center gap-4">
+                            {features.map((feature, index) => (
+                <motion.div
+                  key={feature}
+                  initial={{
+                    opacity: 0,
+                    x: 16,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    x: 0,
+                  }}
+                  viewport={{ once: true }}
+                  transition={{
+                    delay: 0.15 + index * 0.1,
+                  }}
+                  className="
+                    flex
+                    items-center
+                    gap-3
+                    rounded-lg
+                    border
+                    border-border
+                    bg-background/40
+                    px-4
+                    py-3
+                  "
+                >
+                  <div
+                    className="
+                      flex
+                      h-6
+                      w-6
+                      items-center
+                      justify-center
+                      rounded-full
+                      bg-[#4F8EF7]/10
+                      text-[#4F8EF7]
+                      text-xs
+                      font-semibold
+                    "
+                  >
+                    ✓
+                  </div>
+
+                  <span className="text-sm font-medium text-primary-text">
+                    {feature}
+                  </span>
+                </motion.div>
+              ))}
+
+              <motion.div
+                initial={{
+                  opacity: 0,
+                }}
+                whileInView={{
+                  opacity: 1,
+                }}
+                viewport={{ once: true }}
+                transition={{
+                  delay: 0.55,
+                }}
+                className="
+                  mt-2
+                  rounded-lg
+                  border
+                  border-[#4F8EF7]/20
+                  bg-[#4F8EF7]/5
+                  px-4
+                  py-3
+                "
+              >
+                <p className="text-sm text-secondary-text">
+                  A professional website that clearly explains your business
+                  and encourages visitors to get in touch.
+                </p>
+              </motion.div>
+
+            </div>
+
+          </div>
+
+        </motion.div>
 
       </div>
+
     </div>
   );
 }
