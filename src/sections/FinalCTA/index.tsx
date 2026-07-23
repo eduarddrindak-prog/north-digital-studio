@@ -3,9 +3,7 @@ import { motion } from "framer-motion";
 import SectionContainer from "@/components/ui/SectionContainer";
 
 import { finalCTA } from "./content";
-
-import ContactForm from "@/components/common/ContactForm";
-
+import Button from "@/components/ui/Button";
 
 export default function FinalCTA() {
 
@@ -110,21 +108,18 @@ export default function FinalCTA() {
 
 
 
-            <div className="
-              mt-10
-              flex
-              flex-col
-              sm:flex-row
-              justify-center
-              gap-4
-            ">
-
-            <ContactForm />
-
-
-
-
-            </div>
+<div className="mt-10 flex justify-center">
+  <Button
+    withArrow
+    onClick={() =>
+      document.querySelector("#contact")?.scrollIntoView({
+        behavior: "smooth",
+      })
+    }
+  >
+    {finalCTA.button}
+  </Button>
+</div>
 
 
           </div>

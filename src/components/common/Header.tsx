@@ -2,60 +2,47 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X, } from "lucide-react";
 
+
 import Button from "@/components/ui/Button";
 
 const navigation = [
-
   {
-    label: "Process",
-    href: "#process",
-  },
-  {
-    label: "Selected Work",
-    href: "#portfolio",
+    label: "Home",
+    href: "/",
   },
   {
     label: "Services",
-    href: "#services",
+    href: "/services",
+  },
+  {
+    label: "Portfolio",
+    href: "/portfolio",
+  },
+  {
+    label: "FAQ",
+    href: "/faq",
   },
   {
     label: "Contact",
-    href: "#contact",
+    href: "/contact",
   },
 ];
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 24);
-    
-      const sections = navigation
-        .map((item) => document.querySelector(item.href))
-        .filter(Boolean) as HTMLElement[];
-    
-      const scrollPosition = window.scrollY + 140;
-    
-      for (const section of sections) {
-        if (
-          scrollPosition >= section.offsetTop &&
-          scrollPosition < section.offsetTop + section.offsetHeight
-        ) {
-          setActiveSection(`#${section.id}`);
-          break;
-        }
-      }
-    };
+  const handleScroll = () => {
+    setScrolled(window.scrollY > 24);
+  };
 
-    window.addEventListener("scroll", handleScroll);
+  window.addEventListener("scroll", handleScroll);
 
-    handleScroll();
+  handleScroll();
 
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
 
   return (
     <header
@@ -91,7 +78,15 @@ export default function Header() {
         {/* LOGO */}
 
         <a
-          href="#top"
+  href="#top"
+  onClick={(e) => {
+    e.preventDefault();
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }}
           className="
             flex
             items-center
@@ -148,35 +143,28 @@ export default function Header() {
         >
           {navigation.map((item) => (
             <a
-              key={item.href}
-              href={item.href}
-              className={`
-                relative
-                text-sm
-                transition-all
-                duration-300
-                ${
-                  activeSection === item.href
-                    ? "text-[#4F8EF7]"
-                    : "text-secondary-text hover:text-primary-text"
-                }
-              
-                after:absolute
-                after:left-0
-                after:-bottom-1
-                after:h-px
-                after:bg-[#4F8EF7]
-                after:transition-all
-              
-                ${
-                  activeSection === item.href
-                    ? "after:w-full"
-                    : "after:w-0 hover:after:w-full"
-                }
-              `}
-            >
-              {item.label}
-            </a>
+  key={item.href}
+  href={item.href}
+  className="
+    relative
+    text-sm
+    text-secondary-text
+    transition-all
+    duration-300
+    hover:text-primary-text
+
+    after:absolute
+    after:left-0
+    after:-bottom-1
+    after:h-px
+    after:w-0
+    after:bg-[#4F8EF7]
+    after:transition-all
+    hover:after:w-full
+  "
+>
+  {item.label}
+</a>
           ))}
         </nav>
 
@@ -240,7 +228,18 @@ export default function Header() {
               </a>
             ))}
 
-            <Button>Start Project</Button>
+            <Button
+  withArrow
+  onClick={() => {
+    setOpen(false);
+
+    document.querySelector("#contact")?.scrollIntoView({
+      behavior: "smooth",
+    });
+  }}
+>
+  Start Project
+</Button>
           </nav>
         </motion.div>
       )}
