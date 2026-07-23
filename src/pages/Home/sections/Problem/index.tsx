@@ -1,8 +1,8 @@
 import { motion, useReducedMotion } from "framer-motion";
 import SectionContainer from "@/components/ui/SectionContainer";
-import { problemIntro, problemItems } from "@/sections/Problem/content";
-import ProblemItem from "@/sections/Problem/ProblemItem";
-import ProblemVisualization from "@/sections/Problem/ProblemVisualization";
+import { problemIntro, problemItems } from "./content";
+import ProblemItem from "./ProblemItem";
+import ProblemVisualization from "./ProblemVisualization";
 
 export default function Problem() {
   const prefersReducedMotion = useReducedMotion();

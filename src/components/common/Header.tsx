@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Menu, X, } from "lucide-react";
+import { NavLink, useNavigate } from "react-router-dom";
 
 
 import Button from "@/components/ui/Button";
@@ -31,6 +32,7 @@ const navigation = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
   const handleScroll = () => {
@@ -77,23 +79,16 @@ export default function Header() {
       >
         {/* LOGO */}
 
-        <a
-  href="#top"
-  onClick={(e) => {
-    e.preventDefault();
-
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }}
-          className="
-            flex
-            items-center
-            gap-3
-            group
-          "
-        >
+        <div
+  onClick={() => navigate("/")}
+  className="
+    flex
+    items-center
+    gap-3
+    group
+    cursor-pointer
+  "
+>
           <div
             className="
               w-2.5
@@ -129,7 +124,7 @@ export default function Header() {
               Digital Studio
             </p>
           </div>
-        </a>
+        </div>
 
         {/* Desktop */}
 
@@ -142,29 +137,39 @@ export default function Header() {
           "
         >
           {navigation.map((item) => (
-            <a
+            <NavLink
   key={item.href}
-  href={item.href}
-  className="
+  to={item.href}
+  className={({ isActive }) =>
+    `
     relative
     text-sm
-    text-secondary-text
     transition-all
     duration-300
-    hover:text-primary-text
+
+    ${
+      isActive
+        ? "text-primary-text"
+        : "text-secondary-text hover:text-primary-text"
+    }
 
     after:absolute
     after:left-0
     after:-bottom-1
     after:h-px
-    after:w-0
     after:bg-[#4F8EF7]
     after:transition-all
-    hover:after:w-full
-  "
+
+    ${
+      isActive
+        ? "after:w-full"
+        : "after:w-0 hover:after:w-full"
+    }
+  `
+  }
 >
   {item.label}
-</a>
+</NavLink>
           ))}
         </nav>
 
@@ -215,17 +220,18 @@ export default function Header() {
         >
           <nav className="flex flex-col gap-5">
             {navigation.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="
-                  text-secondary-text
-                  hover:text-primary-text
-                "
-              >
+              <NavLink
+  key={item.href}
+  to={item.href}
+  onClick={() => setOpen(false)}
+  className={({ isActive }) =>
+    isActive
+      ? "text-primary-text"
+      : "text-secondary-text hover:text-primary-text"
+  }
+>
                 {item.label}
-              </a>
+              </NavLink>
             ))}
 
             <Button
@@ -233,9 +239,7 @@ export default function Header() {
   onClick={() => {
     setOpen(false);
 
-    document.querySelector("#contact")?.scrollIntoView({
-      behavior: "smooth",
-    });
+    navigate("/contact");
   }}
 >
   Start Project

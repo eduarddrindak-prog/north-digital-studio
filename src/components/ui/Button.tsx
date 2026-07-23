@@ -16,8 +16,8 @@ export default function Button({
   children,
   ...props
 }: ButtonProps) {
-  const baseStyles =
-    "inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-medium transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
+const baseStyles =
+  "group inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-medium transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
 
   const variants = {
     primary: `

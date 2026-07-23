@@ -1,8 +1,13 @@
 import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
 import SectionContainer from "@/components/ui/SectionContainer";
+import { fadeUp } from "@/lib/animations";
+
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
+
+    const navigate = useNavigate();
   return (
     <section className="min-h-screen bg-background text-primary-text flex items-center py-12 lg:py-0">
 
@@ -20,9 +25,7 @@ export default function Hero() {
 
         <div className="w-full lg:w-[45%]">
           <motion.h1
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+          {...fadeUp}
             className="
               text-5xl
               lg:text-7xl
@@ -49,9 +52,12 @@ export default function Hero() {
           </p>
 
           <div className="mt-10 flex flex-wrap gap-6">
-          <Button variant="primary" withArrow>
-  Start Project
-</Button>
+          <Button
+            variant="primary"
+            withArrow
+            onClick={() => navigate("/contact")}
+          >Start Your Project
+          </Button>
 
 <Button variant="secondary" withArrow>
   Selected Work
