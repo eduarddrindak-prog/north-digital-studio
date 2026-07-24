@@ -73,13 +73,7 @@ const processSteps = [
   },
 ];
 
-const steps = [
-  "Discovery",
-  "Strategy",
-  "Design",
-  "Development",
-  "Launch",
-];
+
 
 export default function DevelopmentProcess() {
     const [activeIndex, setActiveIndex] = useState(0);
