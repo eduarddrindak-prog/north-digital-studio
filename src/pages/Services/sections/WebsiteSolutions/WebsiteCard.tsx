@@ -30,7 +30,7 @@ export default function WebsiteCard({ website }: Props) {
         border-border
 
         bg-surface
-backdrop-blur-[2px]
+        backdrop-blur-[2px]
 
         p-8
 
@@ -49,7 +49,7 @@ backdrop-blur-[2px]
           inset-0
           opacity-0
           transition-opacity
-          duration-500
+          duration-300
           group-hover:opacity-100
         "
       >

@@ -97,6 +97,7 @@ export default function PortfolioCard({
             text-sm
             text-secondary-text
             transition-colors
+            duration-300
             group-hover:text-white
           "
         >

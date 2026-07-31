@@ -88,7 +88,7 @@ export default function Hero() {
               group
 hover:-translate-y-1
 transition-all
-duration-500
+duration-300
             "
           >
             {/* Browser */}
@@ -149,15 +149,15 @@ duration-500
     </div>
 
     <div className="flex gap-6 text-sm text-secondary-text">
-      <span className="cursor-pointer transition-colors hover:text-primary-text">
+      <span className="cursor-pointer transition-colors duration-300 hover:text-primary-text">
   Home
 </span>
 
-<span className="cursor-pointer transition-colors hover:text-primary-text">
+<span className="cursor-pointer transition-colors duration-300 hover:text-primary-text">
   Services
 </span>
 
-<span className="cursor-pointer transition-colors hover:text-primary-text">
+<span className="cursor-pointer transition-colors duration-300 hover:text-primary-text">
   Contact
 </span>
     </div>

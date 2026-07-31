@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Plus } from "lucide-react";
+import Button from "@/components/ui/Button";
 
 const fadeUp = {
   initial: { opacity: 0, y: 40 },
@@ -94,6 +95,7 @@ export default function FAQ() {
           py-7
           text-left
           transition-colors
+          duration-300
           hover:bg-white/[0.03]
         "
       >
@@ -153,24 +155,14 @@ export default function FAQ() {
             development, timelines, support and much more.
           </p>
 
-          <button
-            className="
-              mt-10
-              rounded-full
-              border
-              border-[#4F8EF7]
-              px-8
-              py-4
-              font-medium
-              text-white
-              transition-all
-              duration-300
-              hover:bg-[#4F8EF7]
-              hover:scale-105
-            "
+          <Button
+            variant="secondary"
+            size="lg"
+            rounded="full"
+            className="mt-10 border-[#4F8EF7] hover:bg-[#4F8EF7]"
           >
             View All FAQs
-          </button>
+          </Button>
         </motion.div>
 
       </div>

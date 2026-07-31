@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import Button from "@/components/ui/Button";
 
 const fadeUp = {
     initial: { opacity: 0, y: 40 },
@@ -34,17 +34,15 @@ export default function CTA() {
                         your vision to life.
                     </p>
 
-                    <a
+                    <Button
                         href="/contact"
-                        className="group mt-12 inline-flex items-center gap-3 rounded-full bg-[#4F8EF7] px-8 py-4 text-base font-medium text-white transition-all duration-300 hover:scale-105 hover:bg-[#3D7EF2]"
+                        size="lg"
+                        rounded="full"
+                        withArrow
+                        className="mt-12"
                     >
                         Start Your Project
-
-                        <ArrowRight
-                            size={18}
-                            className="transition-transform duration-300 group-hover:translate-x-1"
-                        />
-                    </a>
+                    </Button>
                 </motion.div>
 
             </div>

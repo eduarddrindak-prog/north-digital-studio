@@ -159,6 +159,7 @@ export default function Header() {
     after:h-px
     after:bg-[#4F8EF7]
     after:transition-all
+    after:duration-300
 
     ${
       isActive

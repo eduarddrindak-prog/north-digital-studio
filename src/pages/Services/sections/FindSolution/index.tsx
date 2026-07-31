@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 
 import SectionContainer from "@/components/ui/SectionContainer";
+import Button from "@/components/ui/Button";
 
 import { fadeLeft } from "@/lib/animations";
 
@@ -90,24 +91,10 @@ export default function FindSolution() {
       professional online presence quickly.
     </p>
 
-    <button
-  className="
-    mt-8
-    inline-flex
-    items-center
-    gap-2
-    text-sm
-    font-medium
-    text-white
-    transition-all
-    duration-300
-    hover:gap-3
-    hover:text-[#4F8EF7]
-  "
->
+    <Button variant="secondary" size="sm" className="mt-8">
   Learn more
   <span>→</span>
-</button>
+</Button>
   </div>
 
   <div
@@ -140,24 +127,10 @@ export default function FindSolution() {
       Need more leads, stronger branding and better conversion?
       This option is built for scaling companies.
     </p>
-    <button
-  className="
-    mt-8
-    inline-flex
-    items-center
-    gap-2
-    text-sm
-    font-medium
-    text-white
-    transition-all
-    duration-300
-    hover:gap-3
-    hover:text-[#4F8EF7]
-  "
->
+    <Button variant="secondary" size="sm" className="mt-8">
   Learn more
   <span>→</span>
-</button>
+</Button>
   </div>
 
   <div
@@ -192,24 +165,10 @@ export default function FindSolution() {
       Enterprise-grade websites designed for larger businesses,
       advanced features and long-term growth.
     </p>
-    <button
-  className="
-    mt-8
-    inline-flex
-    items-center
-    gap-2
-    text-sm
-    font-medium
-    text-white
-    transition-all
-    duration-300
-    hover:gap-3
-    hover:text-[#4F8EF7]
-  "
->
+    <Button variant="secondary" size="sm" className="mt-8">
   Learn more
   <span>→</span>
-</button>
+</Button>
   </div>
 
   
@@ -248,21 +207,9 @@ export default function FindSolution() {
       </p>
     </div>
 
-    <button
-      className="
-        h-14
-        rounded-full
-        bg-white
-        px-8
-        text-black
-        font-semibold
-        transition-all
-        duration-300
-        hover:scale-105
-      "
-    >
+    <Button size="lg" rounded="full">
       Book Free Consultation →
-    </button>
+    </Button>
   </div>
 </div>
       </SectionContainer>

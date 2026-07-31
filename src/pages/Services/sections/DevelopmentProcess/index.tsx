@@ -199,6 +199,7 @@ ${
 text-5xl
 font-semibold
 transition-colors
+duration-300
 ${
   activeIndex === index
     ? "text-[#4F8EF7]"
@@ -214,6 +215,7 @@ ${
 text-2xl
 font-medium
 transition-colors
+duration-300
 ${
   activeIndex === index
     ? "text-[#4F8EF7]"
