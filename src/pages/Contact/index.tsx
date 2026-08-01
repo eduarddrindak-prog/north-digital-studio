@@ -1,3 +1,11 @@
-export default function Portfolio() {
-  return <h1>Portfolio</h1>;
+import Hero from "./Hero";
+import ContactForm from "./ContactForm";
+
+export default function Contact() {
+  return (
+    <>
+      <Hero />
+      <ContactForm />
+    </>
+  );
 }

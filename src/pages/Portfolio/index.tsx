@@ -1,3 +1,13 @@
+import Hero from "./Hero";
+import Principles from "./Principles";
+import FinalCTA from "./FinalCTA";
+
 export default function Portfolio() {
-  return <h1>Portfolio</h1>;
+  return (
+    <>
+      <Hero />
+      <Principles />
+      <FinalCTA />
+    </>
+  );
 }
