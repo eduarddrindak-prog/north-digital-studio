@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 
+import Button from "@/components/ui/Button";
+
 const features = [
   "Clear message",
   "Professional image",
@@ -8,11 +10,8 @@ const features = [
 
 export default function SolutionVisualization() {
   return (
-    <div
-      className="relative">
-
+    <div className="relative">
       <div className="flex justify-center">
-
         <motion.div
           initial={{
             opacity: 0,
@@ -24,9 +23,10 @@ export default function SolutionVisualization() {
           }}
           viewport={{ once: true }}
           transition={{
-            duration: .45,
+            duration: 0.45,
           }}
           className="
+            group
             w-full
             max-w-[1280px]
             overflow-hidden
@@ -35,72 +35,95 @@ export default function SolutionVisualization() {
             border-border
             bg-background/70
             backdrop-blur-sm
+            transition-all
+            duration-300
+            hover:-translate-y-1
+            hover:border-[#4F8EF7]/30
+            hover:bg-background/85
+            hover:shadow-[0_0_40px_rgba(79,142,247,0.06)]
           "
         >
-
           {/* Browser */}
-
           <div className="flex items-center justify-between border-b border-border px-5 py-3">
-
             <div className="flex gap-2">
-
               <div className="h-2.5 w-2.5 rounded-full bg-white/15" />
               <div className="h-2.5 w-2.5 rounded-full bg-white/15" />
               <div className="h-2.5 w-2.5 rounded-full bg-white/15" />
-
             </div>
 
             <div className="text-xs tracking-wide text-secondary-text">
               northstudio.fr
             </div>
-
           </div>
 
-          <div className="grid min-h-[420px] grid-cols-2 gap-12 p-16">
-
+          <div className="grid h-[420px] grid-cols-2 gap-12 p-16">
             <div>
-
               <h3 className="text-3xl font-semibold leading-tight text-primary-text">
                 Websites designed around your business.
               </h3>
 
-              
+              <Button
+  href="/services"
+  withArrow
+  size="sm"
+  className="mt-8"
+>
+  Explore Services
+</Button>
 
-              <div className="mt-6 space-y-3">
+              <div className="mt-16 grid grid-cols-3 gap-4">
+                <div
+                  className="
+                    rounded-lg
+                    border
+                    border-border
+                    p-5
+                    transition-all
+                    duration-300
+                    group-hover:border-[#4F8EF7]/30
+                    group-hover:bg-[#4F8EF7]/5
+                  "
+                >
+                  <div className="mb-2 h-2 w-8 rounded bg-[#4F8EF7]/70" />
+                  <div className="h-3 w-full rounded bg-white/8" />
+                </div>
 
-                <div className="h-2 rounded bg-white/8 w-full" />
-                <div className="h-2 rounded bg-white/8 w-5/6" />
-                <div className="h-2 rounded bg-white/8 w-4/6" />
+                <div
+                  className="
+                    rounded-lg
+                    border
+                    border-border
+                    p-4
+                    transition-all
+                    duration-300
+                    group-hover:border-[#4F8EF7]/30
+                    group-hover:bg-[#4F8EF7]/5
+                  "
+                >
+                  <div className="mb-2 h-2 w-8 rounded bg-[#4F8EF7]/70" />
+                  <div className="h-2 w-full rounded bg-white/8" />
+                </div>
 
+                <div
+                  className="
+                    rounded-lg
+                    border
+                    border-border
+                    p-4
+                    transition-all
+                    duration-300
+                    group-hover:border-[#4F8EF7]/30
+                    group-hover:bg-[#4F8EF7]/5
+                  "
+                >
+                  <div className="mb-2 h-2 w-8 rounded bg-[#4F8EF7]/70" />
+                  <div className="h-2 w-full rounded bg-white/8" />
+                </div>
               </div>
-
-              <div className="mt-4">
-
-</div>
-
-<div className="mt-16 grid grid-cols-3 gap-4">
-
-  <div className="rounded-lg border border-border p-5">
-    <div className="mb-2 h-2 w-8 rounded bg-[#4F8EF7]/70" />
-    <div className="h-3 w-full rounded bg-white/8" />
-  </div>
-
-  <div className="rounded-lg border border-border p-4">
-    <div className="mb-2 h-2 w-8 rounded bg-[#4F8EF7]/70" />
-    <div className="h-2 w-full rounded bg-white/8" />
-  </div>
-
-  <div className="rounded-lg border border-border p-4">
-    <div className="mb-2 h-2 w-8 rounded bg-[#4F8EF7]/70" />
-    <div className="h-2 w-full rounded bg-white/8" />
-  </div>
-
-</div>
-
             </div>
 
             <div className="flex flex-col justify-center gap-4">
-                            {features.map((feature, index) => (
+              {features.map((feature, index) => (
                 <motion.div
                   key={feature}
                   initial={{
@@ -125,6 +148,11 @@ export default function SolutionVisualization() {
                     bg-background/40
                     px-4
                     py-3
+                    transition-all
+                    duration-300
+                    hover:-translate-y-1
+                    hover:border-[#4F8EF7]/40
+                    hover:bg-[#4F8EF7]/5
                   "
                 >
                   <div
@@ -136,9 +164,12 @@ export default function SolutionVisualization() {
                       justify-center
                       rounded-full
                       bg-[#4F8EF7]/10
-                      text-[#4F8EF7]
                       text-xs
                       font-semibold
+                      text-[#4F8EF7]
+                      transition-colors
+                      duration-300
+                      group-hover:bg-[#4F8EF7]/15
                     "
                   >
                     ✓
@@ -169,6 +200,10 @@ export default function SolutionVisualization() {
                   bg-[#4F8EF7]/5
                   px-4
                   py-3
+                  transition-all
+                  duration-300
+                  group-hover:border-[#4F8EF7]/30
+                  group-hover:bg-[#4F8EF7]/10
                 "
               >
                 <p className="text-sm text-secondary-text">
@@ -176,15 +211,10 @@ export default function SolutionVisualization() {
                   and encourages visitors to get in touch.
                 </p>
               </motion.div>
-
             </div>
-
           </div>
-
         </motion.div>
-
       </div>
-
     </div>
   );
 }

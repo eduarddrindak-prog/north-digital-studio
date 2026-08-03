@@ -25,29 +25,60 @@ export default function ProblemItem({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.5, delay: index * 0.12 }}
-      className="relative border-t border-border pt-6 md:pt-8"
+      className="
+group
+relative
+border-t
+border-border
+pt-6
+md:pt-8
+transition-all
+duration-300
+"
     >
-      {!isLast && (
-        <span
-          className="hidden md:block absolute top-[2.75rem] -right-[calc(var(--spacing-component)/2)] w-[var(--spacing-component)] h-px bg-border"
-          aria-hidden="true"
-        />
-      )}
+
 
       <span className="text-xs text-muted-text tracking-widest mb-5 block">
         {step}
       </span>
 
       <div className="flex items-start gap-3 mb-3">
-        <Icon
-          className="w-5 h-5 text-secondary-text mt-0.5 shrink-0"
-          strokeWidth={1.5}
-          aria-hidden="true"
-        />
-        <h3 className="text-lg font-medium">{title}</h3>
+       <Icon
+  className="
+    mt-0.5
+    h-5
+    w-5
+    shrink-0
+    text-secondary-text
+    transition-colors
+    duration-300
+    group-hover:text-[#4F8EF7]
+  "
+  strokeWidth={1.5}
+  aria-hidden="true"
+/>
+        <h3
+  className="
+    text-lg
+    font-medium
+    transition-colors
+    duration-300
+    group-hover:text-[#4F8EF7]
+  "
+>{title}</h3>
       </div>
 
-      <p className="text-muted-text text-sm leading-relaxed pl-8">
+      <p
+  className="
+    pl-8
+    text-sm
+    leading-relaxed
+    text-muted-text
+    transition-colors
+    duration-300
+    group-hover:text-secondary-text
+  "
+>
         {description}
       </p>
     </motion.li>

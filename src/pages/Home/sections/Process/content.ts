@@ -1,4 +1,5 @@
 export const processIntro = {
+  label: "Process",
     heading: "A clear process from idea to a professional website.",
     description:
       "We handle the complexity behind the scenes while keeping the process simple and transparent for your business.",
@@ -31,3 +32,5 @@ export const processIntro = {
         "We help your website evolve as your business grows and new opportunities appear.",
     },
   ];
+
+  

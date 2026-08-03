@@ -30,6 +30,10 @@ export default function Process() {
           className="max-w-2xl"
         >
 
+          <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#4F8EF7]">
+  {processIntro.label}
+</p>
+
           <h2 className="
             text-4xl
             font-semibold

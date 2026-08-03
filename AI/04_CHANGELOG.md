@@ -88,7 +88,19 @@ Each entry should follow this format:
 
 ## Notes
 
-Optional observations if they help explain the changes.
+Focus of this session:
+- Visual polish of the Home page.
+
+Completed:
+- Problem section.
+- Solution section.
+- Process section.
+
+Current direction:
+- Continue polishing the remaining Home page sections before moving to the next milestone.
+
+Next priority:
+- Finish Home page visual polish.
 ```
 
 Sections that have no changes may be omitted.
@@ -169,3 +181,98 @@ The project now has:
 Next logical milestone:
 
 Complete the Portfolio page.
+
+# 2026-08-01
+
+## Added
+
+- Added the Portfolio page.
+- Added a dedicated Portfolio hero section.
+- Added a principles section describing the studio's design approach.
+- Added a minimal portfolio CTA section.
+
+## Changed
+
+- Established the overall Portfolio page architecture.
+- Introduced a dedicated content structure for the Portfolio page.
+- Matched the Portfolio page to the shared design system and animation system.
+
+## Improved
+
+- Refined spacing, typography and page composition.
+- Created a layout ready for future real portfolio projects without placeholder project cards.
+
+## Notes
+
+Portfolio page completed (V1). Future work will focus on replacing placeholders with real projects and visual polish.
+
+# 2026-08-02
+
+## Added
+
+- Added the Contact page.
+- Added a dedicated Contact hero section.
+- Added a reusable contact form page section.
+
+## Changed
+
+- Built the contact page around a minimal two-section layout.
+- Integrated the existing shared UI components (Input, Textarea, Label and Button).
+- Organized the contact page using the project's reusable content architecture.
+
+## Improved
+
+- Improved form layout using a two-column structure.
+- Refined spacing and overall visual hierarchy.
+- Unified the page with the existing design system.
+
+## Notes
+
+Contact page completed (V1). Future work will focus on connecting the form to a real backend or email service.
+
+# 2026-08-02
+
+## Added
+
+- Added an interactive browser-style showcase to the Home page Solution section.
+- Added a project status visualization to the Home page Process section.
+
+## Changed
+
+- Redesigned the Solution section around a browser-inspired interface.
+- Reworked the Problem section with a cleaner and more intuitive workflow visualization.
+- Updated the Process section with a more engaging project presentation.
+- Continued visual refinement across multiple Home page sections.
+
+## Improved
+
+- Improved hover states and micro-interactions throughout the Home page.
+- Refined spacing, alignment and visual hierarchy.
+- Strengthened the use of the shared accent color across interactive elements.
+- Increased consistency between Home page sections and the shared design system.
+
+## Fixed
+
+- Fixed alignment and connection issues in the Problem section visualization.
+- Fixed inconsistencies in spacing and component alignment across multiple Home page sections.
+
+## Removed
+
+- Removed previous Home page visualizations that were replaced by more polished interactive designs.
+
+## Notes
+
+Focus of this session:
+- Visual polish of the Home page.
+
+Completed:
+- Reworked the Problem section.
+- Rebuilt the Solution section around an interactive browser layout.
+- Redesigned the Process section with a project status interface.
+- Improved interactions and hover states across multiple Home page sections.
+
+Current direction:
+- Continue polishing the remaining Home page sections while preserving the established design language and component architecture.
+
+Next priority:
+- Complete the remaining Home page polish before moving on to the next unfinished page.

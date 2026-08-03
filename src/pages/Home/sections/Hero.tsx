@@ -24,6 +24,10 @@ export default function Hero() {
         {/* LEFT */}
 
         <div className="w-full lg:w-[45%]">
+          <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#4F8EF7]">
+  Home
+</p>
+          
           <motion.h1
           {...fadeUp}
             className="

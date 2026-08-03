@@ -12,7 +12,7 @@ export default function ContactForm() {
     <section className="bg-background pb-32">
       <SectionContainer>
         <Reveal>
-          <div className="mx-auto max-w-3xl rounded-[32px] border border-border bg-card px-10 py-10 md:px-12 md:py-12">
+          <div className="mx-auto max-w-4xl rounded-3xl border border-border bg-card px-10 py-10 md:px-14 md:py-12">
             <p className="text-[11px] uppercase tracking-[0.28em] text-[#4F8EF7]">
               {contactFormContent.badge}
             </p>
@@ -25,7 +25,9 @@ export default function ContactForm() {
               {contactFormContent.description}
             </p>
 
-            <div className="mt-12 space-y-8">
+            <div className="mt-12">
+  <div className="grid gap-6 md:grid-cols-2">
+
   <div>
     <Label>{contactFormContent.fields.name}</Label>
 
@@ -59,17 +61,15 @@ export default function ContactForm() {
     />
   </div>
 
-  <div>
+</div>
+
+  <div className="mt-8">
     <Label>{contactFormContent.fields.details}</Label>
 
     <Textarea
       placeholder={contactFormContent.placeholders.details}
     />
   </div>
-
-  <Button withArrow>
-    {contactFormContent.button}
-  </Button>
 </div>
           </div>
         </Reveal>

@@ -1,15 +1,15 @@
 import Reveal from "@/components/common/Reveal";
 import SectionContainer from "@/components/ui/SectionContainer";
 
-import { heroContent } from "./content";
+import heroContent from "./content";
 
 export default function Hero() {
   return (
-    <section className="bg-background pt-16 pb-8">
+    <section className="bg-background pt-20 pb-10">
       <SectionContainer>
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-[11px] uppercase tracking-[0.28em] text-[#4F8EF7]">
+            <p className="text-xs uppercase tracking-[0.35em] text-[#4F8EF7]">
               {heroContent.badge}
             </p>
 
@@ -17,7 +17,7 @@ export default function Hero() {
               {heroContent.title}
             </h1>
 
-            <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-secondary-text">
+            <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-secondary-text">
               {heroContent.description}
             </p>
           </div>

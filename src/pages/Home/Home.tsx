@@ -1,6 +1,5 @@
 import Hero from "@/pages/Home/sections/Hero";
 import Problem from "@/pages/Home/sections/Problem";
-import Solution from "@/pages/Home/sections/Solution";
 import Process from "@/pages/Home/sections/Process";
 import Portfolio from "@/pages/Home/sections/Portfolio";
 import Services from "@/pages/Home/sections/Services";
@@ -14,7 +13,6 @@ export default function Home() {
     <>
       <Hero />
       <Problem />
-      <Solution />
       <Process />
       <Services />
       <Portfolio />

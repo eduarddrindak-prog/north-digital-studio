@@ -17,6 +17,10 @@ export default function Problem() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5 }}
         >
+
+          <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#4F8EF7]">
+  Problem
+</p>
           <h2 className="text-3xl font-semibold">{problemIntro.heading}</h2>
 
           <p className="text-secondary-text mt-4 text-lg leading-relaxed">

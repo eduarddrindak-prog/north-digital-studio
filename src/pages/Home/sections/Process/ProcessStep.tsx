@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 
 type Props = {
   number: string;
@@ -14,6 +15,8 @@ export default function ProcessStep({
   index,
 }: Props) {
   return (
+
+    
     <motion.article
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -21,26 +24,27 @@ export default function ProcessStep({
       transition={{
         delay: index * 0.1,
       }}
-      className="relative"
-    >
-      {/* Line */}
+      className="
+group
+relative
+rounded-3xl
+border
+border-border
+bg-card
+p-7
 
-      {index !== 3 && (
-        <div
-          className="
-            hidden
-            lg:block
-            absolute
-            top-5
-            left-[62px]
-            w-[calc(100%-40px)]
-            h-px
-            bg-border
-          "
-        />
-      )}
+transition-all
+duration-300
+
+hover:-translate-y-2
+hover:border-[#4F8EF7]/50
+hover:bg-[#4F8EF7]/5
+"
+    >
 
       {/* Number */}
+
+      <div className="flex items-center justify-between">
 
       <div
         className="
@@ -61,7 +65,30 @@ export default function ProcessStep({
         {number}
       </div>
 
-      <h3 className="mt-6 text-xl font-semibold">
+      <ArrowUpRight
+    size={18}
+    className="
+      text-secondary-text
+      transition-all
+      duration-300
+
+      group-hover:translate-x-1
+      group-hover:-translate-y-1
+      group-hover:text-[#4F8EF7]
+    "
+  />
+</div>
+
+      <h3 className="
+mt-8
+text-xl
+font-semibold
+
+transition-colors
+duration-300
+
+group-hover:text-[#4F8EF7]
+">
         {title}
       </h3>
 
