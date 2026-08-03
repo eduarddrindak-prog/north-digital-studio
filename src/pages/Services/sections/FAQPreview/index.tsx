@@ -142,28 +142,16 @@ export default function FAQ() {
 
         {/* Bottom CTA */}
 
-        <motion.div
-          {...fadeUp}
-          className="mx-auto mt-24 max-w-3xl rounded-3xl border border-white/10 bg-white/[0.02] p-12 text-center backdrop-blur-sm"
-        >
-          <p className="text-3xl font-semibold text-white">
-            Didn't find your question?
-          </p>
-
-          <p className="mx-auto mt-5 max-w-xl text-lg leading-8 text-white/60">
-            Explore our complete FAQ where we answer everything about pricing,
-            development, timelines, support and much more.
-          </p>
-
-          <Button
-            variant="secondary"
-            size="lg"
-            rounded="full"
-            className="mt-10 border-[#4F8EF7] hover:bg-[#4F8EF7]"
-          >
-            View All FAQs
-          </Button>
-        </motion.div>
+        <div className="mt-14 flex justify-center">
+                      <Button
+                        href="/faq"
+                        variant="secondary"
+                        size="lg"
+                        withArrow
+                      >
+                        View All FAQs
+                      </Button>
+                    </div>
 
       </div>
     </section>

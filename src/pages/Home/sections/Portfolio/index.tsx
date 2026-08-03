@@ -47,6 +47,19 @@ export default function Portfolio() {
 
         >
 
+          <p
+  className="
+    mb-5
+    text-sm
+    font-medium
+    uppercase
+    tracking-[0.28em]
+    text-[#4F8EF7]
+  "
+>
+  Portfolio
+</p>
+
           <h2 className="
             text-4xl
             font-semibold

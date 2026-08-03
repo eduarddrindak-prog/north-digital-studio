@@ -23,6 +23,8 @@ export default function FinalCTA() {
 
         <motion.div
 
+        
+
           initial={{
             opacity:0,
             y:20,
@@ -57,19 +59,89 @@ export default function FinalCTA() {
             lg:py-20
             text-center
             md:px-16
+            transition-all
+duration-500
+
+hover:-translate-y-1
+hover:border-[#4F8EF7]/30
+hover:shadow-[0_0_60px_rgba(79,142,247,.08)]
+
+group
           "
 
         >
+          
+          <div
+  className="
+    pointer-events-none
+    absolute
+    left-1/2
+    top-0
+    h-48
+    w-[500px]
+    -translate-x-1/2
 
+    rounded-full
+
+    bg-[#4F8EF7]/10
+    blur-[120px]
+
+    opacity-0
+    transition-opacity
+    duration-500
+
+    group-hover:opacity-100
+  "
+/>
 
           {/* subtle background element */}
+
+          <div
+  className="
+    absolute
+    left-14
+    top-14
+    h-2
+    w-2
+    rounded-full
+    bg-[#4F8EF7]/50
+
+    transition-all
+    duration-500
+
+    group-hover:scale-150
+    group-hover:bg-[#4F8EF7]
+  "
+/>
+
+<div
+  className="
+    absolute
+    right-14
+    bottom-14
+    h-2
+    w-2
+    rounded-full
+    bg-[#4F8EF7]/35
+
+    transition-all
+    duration-500
+
+    group-hover:scale-150
+  "
+/>
 
           <div className="
             absolute
             inset-0
             bg-gradient-to-br
-            from-white/5
-            to-transparent
+            bg-[radial-gradient(circle_at_top,rgba(79,142,247,.10),transparent_65%)]
+
+opacity-0
+transition-opacity
+duration-500
+
+group-hover:opacity-100
             pointer-events-none
           " />
 
@@ -80,13 +152,36 @@ export default function FinalCTA() {
             mx-auto
           ">
 
+            <p
+  className="
+    mb-5
+    text-sm
+    uppercase
+    tracking-[0.35em]
+    text-[#4F8EF7]
 
-            <h2 className="
-              text-3xl
-              lg:text-5xl
-              font-semibold
-              leading-tight
-            ">
+    transition-all
+    duration-300
+
+    group-hover:tracking-[0.45em]
+  "
+>
+  START YOUR PROJECT
+</p>
+
+            <h2
+  className="
+    text-3xl
+    lg:text-5xl
+    font-semibold
+    leading-tight
+
+    transition-all
+    duration-300
+
+    group-hover:-translate-y-1
+  "
+>
 
               {finalCTA.heading}
 
@@ -100,6 +195,9 @@ export default function FinalCTA() {
               lg:text-lg
               text-secondary-text
               leading-relaxed
+              transition-colors
+duration-300
+group-hover:text-primary-text
             ">
 
               {finalCTA.description}
@@ -108,7 +206,18 @@ export default function FinalCTA() {
 
 
 
-<div className="mt-10 flex justify-center">
+<div
+  className="
+    mt-10
+    flex
+    justify-center
+
+    transition-transform
+    duration-300
+
+    group-hover:scale-[1.04]
+  "
+>
   <Button
     withArrow
     onClick={() =>

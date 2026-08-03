@@ -34,6 +34,19 @@ export default function Services() {
           }}
           className="max-w-2xl"
         >
+
+          <p
+  className="
+    mb-5
+    text-sm
+    font-medium
+    uppercase
+    tracking-[0.28em]
+    text-[#4F8EF7]
+  "
+>
+  Services
+</p>
           <h2 className="text-4xl font-semibold leading-tight">
             {servicesIntro.heading}
           </h2>

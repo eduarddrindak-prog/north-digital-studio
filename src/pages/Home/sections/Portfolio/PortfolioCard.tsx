@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 type Props = {
   category: string;
@@ -31,8 +32,10 @@ export default function PortfolioCard({
         overflow-hidden
         transition-all
         duration-300
-        hover:border-white/20
-        hover:-translate-y-1
+        hover:-translate-y-2
+hover:border-[#4F8EF7]/35
+hover:bg-[#4F8EF7]/5
+hover:shadow-[0_0_32px_rgba(79,142,247,0.08)]
       "
     >
       {/* Mockup */}
@@ -61,7 +64,17 @@ export default function PortfolioCard({
               {category}
             </p>
 
-            <h3 className="mt-3 text-xl font-medium text-white">
+            <h3
+  className="
+    mt-3
+    text-xl
+    font-medium
+    text-white
+    transition-colors
+    duration-300
+    group-hover:text-[#4F8EF7]
+  "
+>
               {title}
             </h3>
           </div>
@@ -71,7 +84,15 @@ export default function PortfolioCard({
       {/* Content */}
 
       <div className="p-7">
-        <p className="leading-7 text-secondary-text">
+        <p
+  className="
+    leading-7
+    text-secondary-text
+    transition-colors
+    duration-300
+    group-hover:text-primary-text
+  "
+>
           {description}
         </p>
 
@@ -81,33 +102,45 @@ export default function PortfolioCard({
               key={item}
               className="flex items-center gap-3 text-sm text-primary-text"
             >
-              <div className="h-1.5 w-1.5 rounded-full bg-[#4F8EF7]" />
+              <div
+  className="
+    h-1.5
+    w-1.5
+    rounded-full
+    bg-[#4F8EF7]
+    transition-all
+    duration-300
+    group-hover:scale-125
+    group-hover:shadow-[0_0_10px_rgba(79,142,247,.5)]
+  "
+/>
 
               {item}
             </div>
           ))}
         </div>
 
-        <button
-          className="
-            mt-8
-            flex
-            items-center
-            gap-2
-            text-sm
-            text-secondary-text
-            transition-colors
-            duration-300
-            group-hover:text-white
-          "
-        >
+        <Link
+  to="/portfolio"
+  className="
+    mt-8
+    flex
+    items-center
+    gap-2
+    text-sm
+    text-secondary-text
+    transition-colors
+    duration-300
+    group-hover:text-[#4F8EF7]
+  "
+>
           View project
 
           <ArrowUpRight
             size={16}
             className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
           />
-        </button>
+        </Link>
       </div>
     </motion.article>
   );

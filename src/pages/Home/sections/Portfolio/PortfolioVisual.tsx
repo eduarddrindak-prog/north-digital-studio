@@ -8,18 +8,26 @@ export default function PortfolioVisual() {
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
       className="
-        rounded-3xl
-        border
-        border-border
-        overflow-hidden
-        bg-white/[0.02]
-      "
+group
+rounded-3xl
+border
+border-border
+overflow-hidden
+bg-white/[0.02]
+
+transition-all
+duration-500
+
+hover:-translate-y-1
+hover:border-[#4F8EF7]/30
+hover:shadow-[0_0_40px_rgba(79,142,247,0.06)]
+"
     >
       <div className="grid lg:grid-cols-3">
 
         {/* LEFT */}
 
-        <div className="relative h-[420px] border-b lg:border-b-0 lg:border-r border-border">
+        <div className="relative h-[420px] border-b lg:border-b-0 lg:border-r border-border group-hover:border-[#4F8EF7]/20">
 
           <div className="absolute inset-6 rounded-2xl bg-[#111827] border border-white/10 overflow-hidden">
 
@@ -46,7 +54,10 @@ export default function PortfolioVisual() {
 
         {/* CENTER */}
 
-        <div className="relative h-[420px] border-b lg:border-b-0 lg:border-r border-border bg-[#0F131A] flex items-center justify-center">
+        <div className="relative h-[420px] border-b lg:border-b-0 lg:border-r border-border bg-[#0F131A] flex items-center justify-center transition-all
+duration-500
+
+group-hover:bg-[#111827]">
 
           <div className="text-center">
 
@@ -54,7 +65,8 @@ export default function PortfolioVisual() {
               Selected Work
             </p>
 
-            <h3 className="mt-4 text-3xl font-semibold text-white">
+            <h3 className="mt-4 text-3xl font-semibold text-white group-hover:text-[#4F8EF7] transition-all
+duration-500">
               Modern websites
             </h3>
 
@@ -69,7 +81,7 @@ export default function PortfolioVisual() {
 
         {/* RIGHT */}
 
-        <div className="relative h-[420px]">
+        <div className="relative h-[420px] group-hover:border-[#4F8EF7]/20">
 
           <div className="absolute inset-6 rounded-2xl bg-[#111827] border border-white/10 overflow-hidden">
 
