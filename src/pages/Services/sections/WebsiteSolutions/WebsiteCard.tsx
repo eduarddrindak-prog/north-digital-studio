@@ -23,6 +23,7 @@ export default function WebsiteCard({ website }: Props) {
 
         flex
         min-h-[760px]
+        max-[1020px]:min-h-0
         flex-col
 
         rounded-3xl
@@ -151,10 +152,11 @@ bg-surface
     transition-transform
     duration-300
     group-hover:scale-x-100
+
   "
 />
 
-<div>
+<div className="max-[1020px]:hidden">
   <p
     className="
       text-xs
@@ -186,12 +188,18 @@ bg-surface
     bg-border
     transition-transform
     duration-300
-    delay-75
     group-hover:scale-x-100
+
+    max-[1020px]:hidden
   "
 />
 
-<div>
+<div
+  className="
+    max-[1020px]:flex
+    max-[1020px]:flex-col
+  "
+>
   <p
     className="
       text-xs
@@ -203,7 +211,19 @@ bg-surface
     Ideal for
   </p>
 
-  <ul className="mt-4 space-y-3">
+  <ul
+  className="
+    mt-4
+    space-y-3
+
+    max-[1020px]:mt-5
+    max-[1020px]:flex
+    max-[1020px]:flex-wrap
+    max-[1020px]:gap-x-10
+    max-[1020px]:gap-y-3
+    max-[1020px]:space-y-0
+  "
+>
     {website.idealFor.map((item) => (
       <li
         key={item}
@@ -227,35 +247,74 @@ bg-surface
 
 <div
   className="
-    my-6
-    h-px
+    hidden
+
+    max-[1020px]:block
+    max-[1020px]:my-6
+    max-[1020px]:h-px
+
+    bg-border
+
     origin-left
     scale-x-0
-    bg-border
     transition-transform
     duration-300
     delay-100
+
     group-hover:scale-x-100
   "
 />
 
-<div>
-  <p
-    className="
-      text-xs
-      uppercase
-      tracking-[0.18em]
-      text-secondary-text
-    "
-  >
-    Delivery
-  </p>
+<div
+  className="
+    mt-8
+    grid
+    grid-cols-2
+    gap-8
+  "
+>
+  <div>
+    <p
+      className="
+        text-xs
+        uppercase
+        tracking-[0.18em]
+        text-secondary-text
+      "
+    >
+      Delivery
+    </p>
 
-  <p className="mt-2 text-lg font-medium">
-    {website.duration}
-  </p>
+    <p className="mt-2 text-lg font-medium">
+      {website.duration}
+    </p>
+  </div>
 
-  
+  <div>
+    <p
+      className="
+        text-xs
+        uppercase
+        tracking-[0.18em]
+        text-secondary-text
+      "
+    >
+      Complexity
+    </p>
+
+    <div className="mt-4 flex gap-2">
+      {[1,2,3].map((dot)=>(
+        <div
+          key={dot}
+          className={`h-3 w-3 rounded-full ${
+            dot <= website.complexity
+              ? "bg-[#4F8EF7]"
+              : "bg-border"
+          }`}
+        />
+      ))}
+    </div>
+  </div>
 </div>
 
 <div
@@ -272,50 +331,21 @@ bg-surface
   "
 />
 
-<div>
-  <p
-    className="
-      text-xs
-      uppercase
-      tracking-[0.18em]
-      text-secondary-text
-    "
-  >
-    Complexity
-  </p>
-
-  <div className="mt-4 flex gap-2">
-    {[1, 2, 3].map((dot) => (
-      <div
-        key={dot}
-        className={`
-          h-3
-          w-3
-          rounded-full
-          transition-colors
-          duration-300
-          ${
-            dot <= website.complexity
-              ? "bg-[#4F8EF7]"
-              : ":bg-border"
-          }
-        `}
-      />
-    ))}
-  </div>
-</div>
 
 
       {/* Placeholder */}
       <div className="mt-auto">
         <div
-          className="
-            flex
-            items-center
-            justify-between
-            my-6
-          "
-        >
+  className="
+    my-6
+
+    flex
+    items-center
+    justify-between
+
+    max-[1020px]:mt-10
+  "
+>
           <div>
             <p className="text-sm text-secondary-text">
               Starting from

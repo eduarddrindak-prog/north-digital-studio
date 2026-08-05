@@ -14,20 +14,31 @@ export default function Hero() {
   return (
     <section className="min-h-screen flex items-center bg-background text-primary-text py-12 lg:py-0">
       <SectionContainer
-        className="
-          max-w-[1500px]
-          flex
-          flex-col
-          lg:flex-row
-          items-center
-          gap-24
-        "
-      >
+  className="
+    max-w-[1500px]
+    flex
+    flex-col
+    lg:flex-row
+    items-center
+
+    gap-24
+
+    max-[1020px]:text-center
+    max-[1020px]:gap-16
+  "
+>
         {/* LEFT */}
 
         <motion.div
           {...fadeLeft}
-          className="w-full lg:w-[48%]"
+          className="
+  w-full
+  lg:w-[48%]
+
+  max-[1020px]:flex
+  max-[1020px]:flex-col
+  max-[1020px]:items-center
+"
         >
           <p className="text-sm uppercase tracking-[0.3em] text-[#4F8EF7]">
             {heroContent.badge}
@@ -37,6 +48,7 @@ export default function Hero() {
             className="
               mt-5
               text-5xl
+              max-[1020px]:text-center
               lg:text-[5.2rem]
               font-semibold
               leading-[0.95]
@@ -51,6 +63,7 @@ export default function Hero() {
             className="
               mt-10
               max-w-2xl
+              max-[1020px]:mx-auto
               text-xl
               leading-relaxed
               text-secondary-text
@@ -59,7 +72,13 @@ export default function Hero() {
             {heroContent.description}
           </p>
 
-          <div className="mt-10">
+          <div
+  className="
+    mt-10
+    max-[1020px]:flex
+    max-[1020px]:justify-center
+  "
+>
             <Button
   variant="primary"
   withArrow
@@ -74,7 +93,14 @@ export default function Hero() {
 
         <motion.div
           {...fadeRight}
-          className="w-full lg:w-[55%] lg:pt-8"
+          className="
+  w-full
+  lg:w-[55%]
+  lg:pt-8
+
+  max-[1020px]:w-full
+  max-[1020px]:max-w-[760px]
+"
         >
           <div
             className="

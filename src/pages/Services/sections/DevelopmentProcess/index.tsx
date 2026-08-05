@@ -5,6 +5,8 @@ import SectionContainer from "@/components/ui/SectionContainer";
 
 import { fadeLeft, fadeRight } from "@/lib/animations";
 
+const isMobile = "max-[1020px]";
+
 const processSteps = [
   {
     number: "01",
@@ -121,6 +123,43 @@ export default function DevelopmentProcess() {
     group-hover:opacity-100
   "
 />
+
+<div
+  className="
+    hidden
+
+    max-[1020px]:flex
+    max-[1020px]:justify-center
+    max-[1020px]:gap-3
+    max-[1020px]:mb-8
+  "
+>
+  {processSteps.map((step, index) => (
+    <button
+      key={step.number}
+      onClick={() => setActiveIndex(index)}
+      className={`
+w-11
+h-11
+rounded-full
+border
+text-sm
+font-semibold
+transition-all
+duration-300
+
+${
+  activeIndex === index
+    ? "bg-[#4F8EF7] border-[#4F8EF7] text-white"
+    : "border-white/10 bg-surface text-secondary-text hover:border-[#4F8EF7] hover:text-white"
+}
+`}
+    >
+      {step.number}
+    </button>
+  ))}
+</div>
+
         <div className="grid gap-12 lg:grid-cols-[1fr_0.75fr] lg:items-start">
           <motion.div {...fadeLeft}>
             
@@ -248,15 +287,18 @@ group-hover:drop-shadow-[0_0_18px_rgba(79,142,247,.55)]
           </motion.div>
 
           <motion.div
-          
-            {...fadeRight}
-            className="flex flex-col"
-          >
-            {processSteps.map((step, index) => (
-              <button
-                key={step.title}
-                onMouseEnter={() => setActiveIndex(index)}
-                className={`
+  {...fadeRight}
+  className="
+    flex flex-col
+
+    max-[1020px]:hidden
+  "
+>
+  {processSteps.map((step, index) => (
+    <button
+      key={step.title}
+      onMouseEnter={() => setActiveIndex(index)}
+      className={`
 group
 flex
 items-center
@@ -276,9 +318,9 @@ ${
     : "hover:bg-[#4F8EF7]/5"
 }
 `}
-              >
-                <span
-  className={`
+    >
+      <span
+        className={`
 text-5xl
 font-semibold
 transition-colors
@@ -289,12 +331,12 @@ ${
     : "text-white/20 group-hover:text-[#4F8EF7]"
 }
 `}
->
-                  {String(index + 1).padStart(2, "0")}
-                </span>
+      >
+        {String(index + 1).padStart(2, "0")}
+      </span>
 
-                <span
-  className={`
+      <span
+        className={`
 text-2xl
 font-medium
 transition-colors
@@ -305,12 +347,12 @@ ${
     : "text-white group-hover:text-[#4F8EF7]"
 }
 `}
->
-  {step.title}
-</span>
-              </button>
-            ))}
-          </motion.div>
+      >
+        {step.title}
+      </span>
+    </button>
+  ))}
+</motion.div>
         </div>
       </SectionContainer>
     </section>
