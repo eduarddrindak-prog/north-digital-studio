@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
 
-import Button from "@/components/ui/Button";
-
 type Props = {
   title: string;
   description: string;
