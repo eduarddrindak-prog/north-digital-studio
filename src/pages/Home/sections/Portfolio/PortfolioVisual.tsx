@@ -8,6 +8,8 @@ export default function PortfolioVisual() {
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
       className="
+      hidden
+min-[1020px]:block
 group
 rounded-3xl
 border

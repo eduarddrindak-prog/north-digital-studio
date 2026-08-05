@@ -88,8 +88,14 @@ hover:shadow-[0_0_32px_rgba(79,142,247,0.08)]
   className="
     leading-7
     text-secondary-text
+
+    min-[1020px]:min-h-0
+    max-[1019px]:min-h-[200px]
+    max-[779px]:min-h-[0px]
+
     transition-colors
     duration-300
+
     group-hover:text-primary-text
   "
 >

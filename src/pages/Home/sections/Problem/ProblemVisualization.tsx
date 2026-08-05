@@ -17,10 +17,18 @@ const steps = [
 
 export default function ProblemVisualization() {
   return (
-    <div className="overflow-hidden rounded-3xl border border-border bg-card px-16 py-16">
+    <div className="hidden min-[780px]:block rounded-3xl border border-white/10 p-10">
       <div className="mx-auto max-w-5xl">
 
-        <div className="relative grid grid-cols-3 gap-16">
+        <div
+  className="
+    hidden
+    min-[780px]:grid
+    relative
+    grid-cols-3
+    gap-16
+  "
+>
 
   {/* Общая линия */}
   <div

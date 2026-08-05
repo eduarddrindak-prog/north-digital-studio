@@ -14,7 +14,6 @@ export default function ProblemItem({
   title,
   description,
   index,
-  isLast,
 }: ProblemItemProps) {
   const prefersReducedMotion = useReducedMotion();
   const step = String(index + 1).padStart(2, "0");

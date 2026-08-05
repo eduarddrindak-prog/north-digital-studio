@@ -56,8 +56,27 @@ export default function SolutionVisualization() {
             </div>
           </div>
 
-          <div className="grid h-[420px] grid-cols-2 gap-12 p-16">
-            <div>
+          <div
+  className="
+    grid
+    grid-cols-2
+    gap-12
+    p-16
+    min-[780px]:min-h-[420px]
+    max-[779px]:grid-cols-1
+    max-[779px]:gap-8
+    max-[779px]:p-8
+  "
+>
+            <div
+  className="
+    flex
+    flex-col
+    justify-center
+    max-[779px]:items-center
+    max-[779px]:text-center
+  "
+>
               <h3 className="text-3xl font-semibold leading-tight text-primary-text">
                 Websites designed around your business.
               </h3>
@@ -71,7 +90,7 @@ export default function SolutionVisualization() {
   Explore Services
 </Button>
 
-              <div className="mt-16 grid grid-cols-3 gap-4">
+              <div className="mt-16 hidden min-[780px]:grid grid-cols-3 gap-4">
                 <div
                   className="
                     rounded-lg
@@ -193,18 +212,20 @@ export default function SolutionVisualization() {
                   delay: 0.55,
                 }}
                 className="
-                  mt-2
-                  rounded-lg
-                  border
-                  border-[#4F8EF7]/20
-                  bg-[#4F8EF7]/5
-                  px-4
-                  py-3
-                  transition-all
-                  duration-300
-                  group-hover:border-[#4F8EF7]/30
-                  group-hover:bg-[#4F8EF7]/10
-                "
+  mt-2
+  hidden
+  min-[780px]:block
+  rounded-lg
+  border
+  border-[#4F8EF7]/20
+  bg-[#4F8EF7]/5
+  px-4
+  py-3
+  transition-all
+  duration-300
+  group-hover:border-[#4F8EF7]/30
+  group-hover:bg-[#4F8EF7]/10
+"
               >
                 <p className="text-sm text-secondary-text">
                   A professional website that clearly explains your business

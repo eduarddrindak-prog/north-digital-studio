@@ -9,21 +9,32 @@ export default function Hero() {
 
     const navigate = useNavigate();
   return (
-    <section className="min-h-screen bg-background text-primary-text flex items-center py-12 lg:py-0">
+    <section className="min-h-screen bg-background text-primary-text flex items-center py-20 lg:py-0">
 
       <SectionContainer
         className="
-          max-w-[1500px]
-          flex
-          flex-col
-          lg:flex-row
-          items-center
-          gap-24
-        "
+  flex
+flex-col
+xl:flex-row
+items-center
+gap-20
+xl:gap-24
+"
       >
         {/* LEFT */}
 
-        <div className="w-full lg:w-[45%]">
+        <div
+  className="
+    w-full
+    xl:w-[45%]
+    flex
+    flex-col
+    items-center
+    xl:items-start
+    text-center
+    xl:text-left
+  "
+>
           <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#4F8EF7]">
   Home
 </p>
@@ -32,7 +43,8 @@ export default function Hero() {
           {...fadeUp}
             className="
               text-5xl
-              lg:text-7xl
+md:text-6xl
+xl:text-7xl
               font-semibold
               leading-[0.95]
               tracking-tight
@@ -45,6 +57,8 @@ export default function Hero() {
             className="
               mt-8
               max-w-xl
+mx-auto
+xl:mx-0
               text-xl
               leading-relaxed
               text-secondary-text
@@ -55,7 +69,16 @@ export default function Hero() {
             touch.
           </p>
 
-          <div className="mt-10 flex flex-wrap gap-6">
+          <div
+  className="
+    mt-10
+    flex
+    flex-wrap
+    justify-center
+    xl:justify-start
+    gap-6
+  "
+>
           <Button
             variant="primary"
             withArrow
@@ -72,12 +95,22 @@ export default function Hero() {
 
         {/* RIGHT */}
 
-        <div className="w-full lg:w-[55%] flex justify-center">
+        <div
+  className="
+    w-full
+    xl:w-[55%]
+    flex
+    justify-center
+    mt-10
+    xl:mt-0
+  "
+>
           <div
             className="
               relative
               w-full
-              max-w-[560px]
+              max-w-[420px]
+xl:max-w-[560px]
               aspect-[1.05/1]
               rounded-3xl
               border border-white/8
