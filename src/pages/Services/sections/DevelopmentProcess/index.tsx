@@ -5,8 +5,6 @@ import SectionContainer from "@/components/ui/SectionContainer";
 
 import { fadeLeft, fadeRight } from "@/lib/animations";
 
-const isMobile = "max-[1020px]";
-
 const processSteps = [
   {
     number: "01",
