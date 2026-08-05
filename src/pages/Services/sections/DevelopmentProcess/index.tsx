@@ -100,8 +100,30 @@ export default function DevelopmentProcess() {
     first conversation to the final launch.
   </p>
 </motion.div>
+<div
+  className="
+    pointer-events-none
+    absolute
+    left-1/2
+    top-0
+    h-60
+    w-[500px]
+    -translate-x-1/2
+    rounded-full
+
+    bg-[#4F8EF7]/10
+    blur-[140px]
+
+    opacity-0
+    transition-opacity
+    duration-500
+
+    group-hover:opacity-100
+  "
+/>
         <div className="grid gap-12 lg:grid-cols-[1fr_0.75fr] lg:items-start">
           <motion.div {...fadeLeft}>
+            
             <AnimatePresence mode="wait">
             
             <motion.div
@@ -111,23 +133,56 @@ export default function DevelopmentProcess() {
   exit={{ opacity: 0, y: -15 }}
   transition={{ duration: 0.25 }}
   className="
+    group
+    relative
     mt-0
     flex
     h-[560px]
     flex-col
+    overflow-hidden
     rounded-[36px]
     border border-white/10
     bg-white/[0.02]
     backdrop-blur-sm
     p-10
+
     shadow-[0_30px_80px_rgba(0,0,0,.35)]
+
+    transition-all
+    duration-500
+
+    hover:-translate-y-1
+    hover:border-[#4F8EF7]/30
+    hover:shadow-[0_0_70px_rgba(79,142,247,.08)]
+"
+>
+  <span
+  className="
+    text-7xl
+    font-semibold
+    text-[#4F8EF7]
+
+    transition-all
+    duration-300
+    transition-all
+duration-300
+group-hover:drop-shadow-[0_0_18px_rgba(79,142,247,.55)]
   "
 >
-  <span className="text-7xl font-semibold text-[#4F8EF7]">
     {activeStep.number}
   </span>
 
-  <h3 className="mt-4 text-4xl font-semibold">
+  <h3
+  className="
+    mt-4
+    text-4xl
+    font-semibold
+
+    transition-all
+    duration-300
+
+  "
+>
     {activeStep.title}
   </h3>
 
@@ -138,12 +193,40 @@ export default function DevelopmentProcess() {
   <div className="mt-10 space-y-5">
     {activeStep.items.map((item) => (
       <div
-        key={item}
-        className="flex items-center gap-4"
-      >
-        <div className="h-2 w-2 rounded-full bg-[#4F8EF7]" />
+  key={item}
+  className="
+    flex
+    items-center
+    gap-4
 
-        <span className="text-lg">
+    transition-all
+    duration-300
+
+  "
+>
+        <div
+  className="
+    h-2
+    w-2
+    rounded-full
+    bg-[#4F8EF7]
+
+    transition-all
+    duration-300
+
+  "
+/>
+
+        <span
+  className="
+    text-xl
+    font-semibold
+
+    transition-colors
+    duration-300
+
+  "
+>
           {item}
         </span>
       </div>

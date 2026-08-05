@@ -177,7 +177,10 @@ export default function FindSolution() {
 
 <div
   className="
+    group
+    relative
     mt-24
+    overflow-hidden
     rounded-[36px]
     border border-white/8
     bg-gradient-to-r
@@ -185,31 +188,111 @@ export default function FindSolution() {
     to-[#0E162A]
     p-10
     lg:p-14
+
     shadow-[0_30px_80px_rgba(0,0,0,.35)]
-    overflow-hidden
+
+    transition-all
+    duration-500
+
+    hover:-translate-y-1
+    hover:border-[#4F8EF7]/35
+    hover:shadow-[0_0_70px_rgba(79,142,247,.08)]
   "
 >
+  <div
+  className="
+    pointer-events-none
+    absolute
+    left-1/2
+    top-0
+    h-56
+    w-[600px]
+    -translate-x-1/2
+
+    rounded-full
+
+    bg-[#4F8EF7]/10
+    blur-[140px]
+
+    opacity-0
+    transition-opacity
+    duration-500
+
+    group-hover:opacity-100
+  "
+/>
   <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
     <div className="max-w-2xl">
-      <p className="text-sm uppercase tracking-[0.3em] text-[#4F8EF7]">
+      <p
+  className="
+    text-sm
+    uppercase
+    tracking-[0.3em]
+    text-[#4F8EF7]
+
+    transition-all
+    duration-300
+
+    group-hover:tracking-[0.4em]
+  "
+>
         Free Consultation
       </p>
 
-      <h3 className="mt-4 text-4xl lg:text-5xl font-semibold leading-tight">
+      <h3
+  className="
+    mt-4
+    text-4xl
+    lg:text-5xl
+    font-semibold
+    leading-tight
+
+    transition-all
+    duration-300
+
+    group-hover:-translate-y-1
+  "
+>
         Still not sure?
         <br />
         Let's find the perfect solution together.
       </h3>
 
-      <p className="mt-6 text-lg leading-8 text-secondary-text">
+      <p
+  className="
+    mt-6
+    text-lg
+    leading-8
+    text-secondary-text
+
+    transition-colors
+    duration-300
+
+    group-hover:text-primary-text
+  "
+>
         In a free 30-minute consultation we'll understand your goals,
         recommend the best type of website and answer all your questions.
       </p>
     </div>
 
-    <Button size="lg" rounded="full">
-      Book Free Consultation →
-    </Button>
+    <div
+  className="
+    transition-transform
+    duration-300
+
+    group-hover:scale-[1.04]
+  "
+>
+  <Button
+  href="/contact"
+  size="lg"
+  rounded="full"
+  withArrow
+>
+  Book Free Consultation
+</Button>
+</div>
   </div>
 </div>
       </SectionContainer>
