@@ -226,11 +226,12 @@ duration-300
 
     <div className="mt-8">
       <Button
-        variant="primary"
-        withArrow
-      >
-        Get Started
-      </Button>
+  variant="primary"
+  withArrow
+  onClick={() => navigate("/contact")}
+>
+  Get Started
+</Button>
     </div>
 
   </div>

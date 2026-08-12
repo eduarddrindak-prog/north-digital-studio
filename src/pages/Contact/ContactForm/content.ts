@@ -10,6 +10,9 @@ export const contactFormContent = {
     name: "Your Name",
     email: "Email Address",
     company: "Company (Optional)",
+    website: "Website (Optional)",
+    projectType: "Project Type",
+    timeline: "Timeline",
     budget: "Budget (Optional)",
     details: "Project Details",
   },
@@ -18,9 +21,38 @@ export const contactFormContent = {
     name: "John Smith",
     email: "john@example.com",
     company: "Your company",
-    budget: "$3,000 - $5,000",
+    website: "https://yourwebsite.com",
+
     details:
-      "Tell us about your project, goals and anything important we should know...",
+      "Tell us about your business, goals, what you need from the website, preferred style, references, content you already have, and anything else we should know...",
+  },
+
+  options: {
+    projectType: [
+      "Landing Page",
+      "Business Website",
+      "Custom Website",
+      "E-commerce",
+      "Website Redesign",
+      "Other",
+    ],
+
+    timeline: [
+      "As soon as possible",
+      "1–2 weeks",
+      "2–4 weeks",
+      "1–2 months",
+      "Flexible",
+    ],
+
+    budget: [
+      "Under €500",
+      "€30 – €50",
+      "€50 – €100",
+      "€100 – €200",
+      "€200 - €500",
+      "€500+",
+    ],
   },
 
   button: "Start Project",

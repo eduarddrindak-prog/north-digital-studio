@@ -4,8 +4,11 @@ import SectionContainer from "@/components/ui/SectionContainer";
 
 import { finalCTA } from "./content";
 import Button from "@/components/ui/Button";
+import { useNavigate } from "react-router-dom";
 
 export default function FinalCTA() {
+
+  const navigate = useNavigate();
 
   return (
 
@@ -219,15 +222,11 @@ group-hover:text-primary-text
   "
 >
   <Button
-    withArrow
-    onClick={() =>
-      document.querySelector("#contact")?.scrollIntoView({
-        behavior: "smooth",
-      })
-    }
-  >
-    {finalCTA.button}
-  </Button>
+  withArrow
+  onClick={() => navigate("/contact")}
+>
+  {finalCTA.button}
+</Button>
 </div>
 
 

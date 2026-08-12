@@ -86,7 +86,11 @@ xl:mx-0
           >Start Your Project
           </Button>
 
-<Button variant="secondary" withArrow>
+<Button
+  variant="secondary"
+  withArrow
+  onClick={() => navigate("/portfolio")}
+>
   Selected Work
 </Button>
           </div>
