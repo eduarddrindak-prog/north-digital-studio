@@ -1,0 +1,523 @@
+.nord-projects {
+  min-height: 100vh;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.nord-projects__intro {
+  padding-bottom: clamp(5rem, 10vw, 9rem);
+}
+
+.nord-projects__intro .eyebrow {
+  margin-bottom: var(--space-5);
+}
+
+.nord-projects__intro .display {
+  max-width: 13ch;
+}
+
+.nord-projects__intro .subheading {
+  max-width: 38rem;
+  margin-top: var(--space-6);
+}
+
+
+/* =========================================================
+   FILTERS
+========================================================= */
+
+.nord-projects__filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+
+  padding-bottom: var(--space-5);
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nord-projects__filter {
+  appearance: none;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 2.35rem;
+
+  border: 1px solid transparent;
+  border-radius: var(--radius-full);
+
+  padding: 0.55rem 0.9rem;
+
+  background: transparent;
+  color: var(--color-text-soft);
+
+  font: inherit;
+  font-size: var(--text-sm);
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    color var(--duration-fast) var(--ease-standard),
+    background var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
+}
+
+.nord-projects__filter:hover {
+  color: var(--color-text);
+  background: var(--color-surface-raised);
+}
+
+.nord-projects__filter--active {
+  border-color: var(--color-border-strong);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+.nord-projects__filter:active {
+  transform: translateY(1px);
+}
+
+.nord-projects__filter:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   PROJECT LIST
+========================================================= */
+
+.nord-projects__items {
+  display: grid;
+}
+
+.nord-project {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(20rem, 0.75fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
+
+  padding: clamp(4rem, 8vw, 7rem) 0;
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+
+/* =========================================================
+   PROJECT IMAGE
+========================================================= */
+
+.nord-project__image {
+  min-width: 0;
+  overflow: hidden;
+  background: var(--color-surface-raised);
+}
+
+.nord-project__image .image {
+  width: 100%;
+}
+
+.nord-project__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform 700ms var(--ease-standard);
+}
+
+.nord-project:hover .nord-project__image img {
+  transform: scale(1.025);
+}
+
+
+/* =========================================================
+   PROJECT CONTENT
+========================================================= */
+
+.nord-project__content {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  min-height: 100%;
+}
+
+
+/* =========================================================
+   TOP ROW
+========================================================= */
+
+.nord-project__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: var(--space-4);
+
+  padding-bottom: var(--space-4);
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nord-project__number {
+  color: var(--color-text-muted);
+
+  font-size: var(--text-xs);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--tracking-label);
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.nord-project__main {
+  padding: clamp(2.5rem, 5vw, 5rem) 0;
+}
+
+.nord-project__category {
+  margin: 0 0 var(--space-4);
+
+  color: var(--color-accent);
+
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.nord-project__title {
+  max-width: 11ch;
+
+  margin: 0;
+
+  color: var(--color-text);
+
+  font-size: clamp(2.2rem, 1.5rem + 2.4vw, 4rem);
+  font-weight: var(--font-medium);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+
+.nord-project__description {
+  max-width: 31rem;
+
+  margin: var(--space-6) 0 0;
+
+  color: var(--color-text-soft);
+
+  font-size: var(--text-base);
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   META
+========================================================= */
+
+.nord-project__meta {
+  display: grid;
+  grid-template-columns: 1.4fr 0.7fr 0.7fr;
+
+  gap: var(--space-5);
+
+  margin-top: auto;
+
+  padding: var(--space-5) 0;
+
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nord-project__meta div {
+  display: grid;
+  gap: 0.4rem;
+
+  min-width: 0;
+}
+
+.nord-project__meta span {
+  color: var(--color-text-muted);
+
+  font-size: var(--text-xs);
+  line-height: 1.2;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+.nord-project__meta strong {
+  color: var(--color-text);
+
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   ACTION
+========================================================= */
+
+.nord-project__action {
+  padding-top: var(--space-5);
+}
+
+.nord-project__view {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+
+  border: 0;
+  padding: 0;
+
+  background: transparent;
+  color: var(--color-accent);
+
+  font: inherit;
+  font-size: var(--text-sm);
+
+  cursor: pointer;
+
+  transition:
+    color var(--duration-fast) var(--ease-standard),
+    gap var(--duration-fast) var(--ease-standard);
+}
+
+.nord-project__view:hover {
+  color: var(--color-accent-strong);
+  gap: var(--space-3);
+}
+
+.nord-project__view:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: 4px;
+}
+
+
+/* =========================================================
+   PROJECT RHYTHM
+========================================================= */
+
+/*
+  Small variations prevent a 15-project list
+  from feeling mechanically repeated.
+*/
+
+.nord-project:nth-child(3n + 2) {
+  grid-template-columns: minmax(0, 1.15fr) minmax(20rem, 0.85fr);
+}
+
+.nord-project:nth-child(3n + 3) {
+  grid-template-columns: minmax(0, 1.3fr) minmax(19rem, 0.7fr);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+  .nord-project {
+    grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
+    gap: var(--space-8);
+  }
+
+  .nord-project:nth-child(3n + 2),
+  .nord-project:nth-child(3n + 3) {
+    grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
+  }
+
+  .nord-project__title {
+    font-size: clamp(2rem, 1.5rem + 2vw, 3.2rem);
+  }
+}
+
+
+@media (max-width: 760px) {
+  .nord-projects__intro {
+    padding-bottom: 4rem;
+  }
+
+  .nord-project {
+    grid-template-columns: 1fr;
+    gap: 0;
+
+    padding: 3.5rem 0;
+  }
+
+  .nord-project:nth-child(3n + 2),
+  .nord-project:nth-child(3n + 3) {
+    grid-template-columns: 1fr;
+  }
+
+  .nord-project__image {
+    width: 100%;
+  }
+
+  .nord-project__content {
+    padding-top: var(--space-6);
+  }
+
+  .nord-project__top {
+    padding-bottom: var(--space-4);
+  }
+
+  .nord-project__main {
+    padding: 2rem 0 2.5rem;
+  }
+
+  .nord-project__title {
+    max-width: 12ch;
+    font-size: clamp(2.2rem, 9vw, 3.5rem);
+  }
+
+  .nord-project__description {
+    max-width: 38rem;
+  }
+}
+
+
+@media (max-width: 520px) {
+  .nord-projects__filters {
+    gap: 0.4rem;
+
+    padding-bottom: var(--space-4);
+  }
+
+  .nord-projects__filter {
+    min-height: 2.15rem;
+    padding: 0.5rem 0.7rem;
+
+    font-size: var(--text-xs);
+  }
+
+  .nord-project {
+    padding: 2.75rem 0;
+  }
+
+  .nord-project__content {
+    padding-top: var(--space-5);
+  }
+
+  .nord-project__meta {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-5) var(--space-4);
+  }
+
+  .nord-project__meta div:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .nord-projects__filter,
+  .nord-project__view,
+  .nord-project__image img {
+    transition: none;
+  }
+}
+
+.nord-project__image-reveal,
+.nord-project__content-reveal {
+  min-width: 0;
+}
+
+.nord-project__image-reveal {
+  width: 100%;
+}
+
+/* ========================================
+   CTA
+======================================== */
+
+.nord-projects__cta {
+  padding: clamp(7rem, 13vw, 11rem) 0
+    clamp(6rem, 10vw, 9rem);
+}
+
+.nord-projects__cta-inner {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+  text-align: center;
+}
+
+.nord-projects__cta .eyebrow {
+  margin-bottom: var(--space-6);
+}
+
+.nord-projects__cta h2 {
+  max-width: 15ch;
+  margin: 0 auto;
+  color: var(--color-text);
+  font-size: clamp(2.8rem, 2rem + 3.2vw, 4.8rem);
+  font-weight: var(--font-medium);
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.nord-projects__cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding-bottom: 0.45rem;
+
+  border-bottom: 1px solid var(--color-text);
+
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  line-height: 1.4;
+  text-decoration: none;
+
+  transition:
+    gap var(--duration-fast) var(--ease-standard),
+    opacity var(--duration-fast) var(--ease-standard);
+}
+
+.nord-projects__cta-link span {
+  display: inline-block;
+
+  transition:
+    transform var(--duration-fast) var(--ease-standard);
+}
+
+.nord-projects__cta-link:hover {
+  gap: var(--space-4);
+}
+
+.nord-projects__cta-link:hover span {
+  transform: translateX(3px);
+}
+
+@media (max-width: 700px) {
+  .nord-projects__cta {
+    padding: 5rem 0 6rem;
+  }
+
+  .nord-projects__cta h2 {
+    max-width: 12ch;
+    font-size: clamp(2.5rem, 10vw, 3.5rem);
+  }
+
+  .nord-projects__cta-link {
+    margin-top: 2.25rem;
+  }
+}

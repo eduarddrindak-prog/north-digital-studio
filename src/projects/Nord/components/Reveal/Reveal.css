@@ -1,0 +1,9 @@
+.nord-reveal {
+  will-change: opacity, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nord-reveal {
+    will-change: auto;
+  }
+}
