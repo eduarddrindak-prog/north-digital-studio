@@ -1,0 +1,1518 @@
+/* =========================================================
+   VANTA — WORKSPACE
+========================================================= */
+
+.vanta-workspace {
+  position: relative;
+
+  min-height: 1050px;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 60% 65%,
+      rgba(29, 94, 232, 0.045),
+      transparent 35%
+    ),
+    #05070a;
+
+  color: #f4f7fb;
+}
+
+.vanta-workspace__grid {
+  position: absolute;
+  inset: 0;
+
+  opacity: 0.22;
+
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 82px 82px;
+
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 12%,
+    black 90%,
+    transparent
+  );
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.vanta-workspace__container {
+  position: relative;
+  z-index: 2;
+
+  width: min(1500px, calc(100% - 64px));
+
+  margin: 0 auto;
+
+  padding: 130px 0 120px;
+}
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.vanta-workspace__intro {
+  display: grid;
+
+  grid-template-columns: 1fr 420px;
+
+  align-items: end;
+
+  gap: 70px;
+
+  margin-bottom: 55px;
+}
+
+.vanta-workspace__eyebrow {
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  margin-bottom: -32px;
+
+  color: #5c6b7f;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 9px;
+
+  letter-spacing: 0.17em;
+
+  text-transform: uppercase;
+}
+
+.vanta-workspace__eyebrow span:first-child {
+  width: 25px;
+  height: 1px;
+
+  background: #5b9cff;
+
+  box-shadow:
+    0 0 12px rgba(91, 156, 255, 0.5);
+}
+
+.vanta-workspace__intro h2 {
+  max-width: 11ch;
+
+  margin: 0;
+
+  color: #f4f7fb;
+
+  font-size: clamp(4rem, 5.5vw, 6.5rem);
+
+  font-weight: 500;
+
+  line-height: 0.92;
+
+  letter-spacing: -0.065em;
+}
+
+.vanta-workspace__intro p {
+  max-width: 390px;
+
+  margin: 0 0 5px;
+
+  color: #8491a3;
+
+  font-size: 15px;
+
+  line-height: 1.65;
+}
+
+/* =========================================================
+   APPLICATION SHELL
+========================================================= */
+
+.vanta-workspace__app {
+  position: relative;
+
+  display: flex;
+
+  width: 100%;
+
+  min-height: 650px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(11, 16, 24, 0.98),
+      rgba(4, 7, 11, 0.99)
+    );
+
+  box-shadow:
+    0 45px 100px rgba(0, 0, 0, 0.4),
+    0 0 70px rgba(29, 94, 232, 0.035);
+
+  overflow: hidden;
+}
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.vanta-workspace__sidebar {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  flex: 0 0 205px;
+
+  border-right: 1px solid rgba(255, 255, 255, 0.075);
+
+  background: rgba(4, 7, 11, 0.65);
+}
+
+.vanta-workspace__brand {
+  padding: 23px 22px;
+
+  color: #eef3f9;
+
+  font-size: 17px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.18em;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.065);
+}
+
+.vanta-workspace__nav {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+
+  padding: 15px 10px;
+}
+
+.vanta-workspace__nav button {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  width: 100%;
+
+  padding: 10px 12px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #667487;
+
+  text-align: left;
+
+  font-family: inherit;
+
+  font-size: 11px;
+
+  cursor: pointer;
+
+  transition:
+    background 180ms ease,
+    color 180ms ease;
+}
+
+.vanta-workspace__nav button span {
+  width: 17px;
+
+  color: #59687b;
+
+  font-size: 14px;
+
+  text-align: center;
+}
+
+.vanta-workspace__nav button:hover,
+.vanta-workspace__nav button.is-active {
+  background: rgba(91, 156, 255, 0.065);
+
+  color: #c8d4e3;
+}
+
+.vanta-workspace__nav button.is-active span {
+  color: #5b9cff;
+}
+
+.vanta-workspace__new {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  margin: 7px 11px 22px;
+
+  padding: 10px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: rgba(255, 255, 255, 0.025);
+
+  color: #9aa8ba;
+
+  font-size: 10px;
+
+  cursor: pointer;
+
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    color 180ms ease;
+}
+
+.vanta-workspace__new span {
+  color: #5b9cff;
+
+  font-size: 14px;
+}
+
+.vanta-workspace__new:hover {
+  border-color: rgba(91, 156, 255, 0.35);
+
+  background: rgba(91, 156, 255, 0.055);
+
+  color: #e2eaf3;
+}
+
+.vanta-workspace__sidebar-label {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 0 16px 10px;
+
+  color: #465366;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 7px;
+
+  letter-spacing: 0.15em;
+}
+
+.vanta-workspace__workflow-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+
+  padding: 0 10px;
+}
+
+.vanta-workspace__workflow-list button {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 8px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #596779;
+
+  text-align: left;
+
+  font-size: 9px;
+
+  cursor: pointer;
+
+  transition:
+    color 180ms ease,
+    background 180ms ease;
+}
+
+.vanta-workspace__workflow-list button:hover {
+  background: rgba(255, 255, 255, 0.025);
+
+  color: #a7b4c4;
+}
+
+.vanta-workspace__workflow-list button.is-selected {
+  background: rgba(91, 156, 255, 0.07);
+
+  color: #b8c8db;
+}
+
+.workflow-dot {
+  width: 5px;
+  height: 5px;
+
+  border: 1px solid #485669;
+
+  border-radius: 50%;
+}
+
+.is-selected .workflow-dot {
+  border-color: #5b9cff;
+
+  background: #5b9cff;
+
+  box-shadow:
+    0 0 8px rgba(91, 156, 255, 0.7);
+}
+
+.vanta-workspace__account {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  margin-top: auto;
+
+  padding: 15px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.065);
+}
+
+.vanta-workspace__account > div {
+  display: grid;
+  place-items: center;
+
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  color: #aebaca;
+
+  font-size: 10px;
+}
+
+.vanta-workspace__account span {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+
+  min-width: 0;
+}
+
+.vanta-workspace__account strong {
+  color: #9aa8b9;
+
+  font-size: 8px;
+
+  font-weight: 500;
+}
+
+.vanta-workspace__account small {
+  color: #465365;
+
+  font-size: 7px;
+}
+
+.vanta-workspace__account b {
+  margin-left: auto;
+
+  color: #596779;
+
+  font-weight: 400;
+}
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.vanta-workspace__main {
+  position: relative;
+
+  flex: 1;
+
+  min-width: 0;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.vanta-workspace__header {
+  display: flex;
+  align-items: center;
+
+  height: 58px;
+
+  padding: 0 14px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.075);
+}
+
+.vanta-workspace__workflow-name {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  min-width: 280px;
+}
+
+.vanta-workspace__workflow-name > span:first-child {
+  width: 5px;
+  height: 5px;
+
+  border: 1px solid #5b9cff;
+
+  border-radius: 50%;
+}
+
+.vanta-workspace__workflow-name strong {
+  color: #cfd8e4;
+
+  font-size: 11px;
+
+  font-weight: 500;
+}
+
+.status-live,
+.status-draft {
+  padding: 4px 7px;
+
+  border-radius: 4px;
+
+  background: rgba(69, 213, 154, 0.06);
+
+  color: #63d6a5;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 7px;
+}
+
+.status-draft {
+  background: rgba(255, 255, 255, 0.04);
+
+  color: #697789;
+}
+
+.vanta-workspace__tabs {
+  display: flex;
+  align-items: center;
+
+  gap: 2px;
+
+  margin: 0 auto;
+}
+
+.vanta-workspace__tabs button {
+  padding: 8px 12px;
+
+  border: 1px solid transparent;
+
+  background: transparent;
+
+  color: #5b6879;
+
+  font-size: 9px;
+
+  cursor: pointer;
+}
+
+.vanta-workspace__tabs button:hover,
+.vanta-workspace__tabs button.is-active {
+  border-color: rgba(91, 156, 255, 0.15);
+
+  background: rgba(91, 156, 255, 0.06);
+
+  color: #b8c5d4;
+}
+
+.vanta-workspace__actions {
+  display: flex;
+
+  gap: 7px;
+}
+
+.vanta-workspace__actions button {
+  padding: 8px 11px;
+
+  border: 1px solid rgba(255, 255, 255, 0.09);
+
+  background: rgba(255, 255, 255, 0.025);
+
+  color: #8492a4;
+
+  font-size: 8px;
+
+  cursor: pointer;
+}
+
+.vanta-workspace__actions .deploy-button {
+  border-color: rgba(91, 156, 255, 0.4);
+
+  background: #286ce3;
+
+  color: white;
+
+  box-shadow:
+    0 0 20px rgba(29, 94, 232, 0.15);
+}
+
+.vanta-workspace__actions .deploy-button.is-deployed {
+  border-color: rgba(69, 213, 154, 0.22);
+
+  background: rgba(69, 213, 154, 0.08);
+
+  color: #68d8a8;
+}
+
+/* =========================================================
+   CANVAS
+========================================================= */
+
+.vanta-workspace__canvas {
+  position: relative;
+
+  height: 592px;
+
+  overflow: hidden;
+
+  background: #070b11;
+}
+
+.vanta-workspace__canvas-grid {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(91, 156, 255, 0.22) 1px,
+      transparent 1px
+    );
+
+  background-size: 18px 18px;
+
+  opacity: 0.4;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      black,
+      rgba(0, 0, 0, 0.35)
+    );
+}
+
+/* =========================================================
+   WORKFLOW
+========================================================= */
+
+.vanta-workflow {
+  position: absolute;
+
+  top: 50px;
+  left: 45px;
+  right: 300px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 70px;
+
+  min-height: 250px;
+}
+
+.vanta-workflow-node {
+  position: relative;
+
+  width: 170px;
+  min-height: 105px;
+
+  padding: 12px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(15, 22, 32, 0.96),
+      rgba(7, 11, 17, 0.98)
+    );
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.22);
+
+  cursor: pointer;
+
+  transition:
+    border-color 200ms ease,
+    transform 200ms ease,
+    box-shadow 200ms ease;
+}
+
+.vanta-workflow-node:hover,
+.vanta-workflow-node.is-selected {
+  border-color: rgba(91, 156, 255, 0.6);
+
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 15px 45px rgba(29, 94, 232, 0.12),
+    0 0 0 1px rgba(91, 156, 255, 0.05);
+}
+
+.vanta-workflow-node.is-running {
+  border-color: rgba(91, 156, 255, 0.8);
+
+  box-shadow:
+    0 0 30px rgba(91, 156, 255, 0.13);
+}
+
+.vanta-workflow-node__top {
+  display: flex;
+  justify-content: space-between;
+
+  color: #526176;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 6px;
+
+  letter-spacing: 0.12em;
+}
+
+.vanta-workflow-node__top i {
+  color: #465365;
+
+  font-size: 7px;
+
+  font-style: normal;
+}
+
+.vanta-workflow-node__body {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 17px;
+}
+
+.vanta-workflow-node__body > div:last-child {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.vanta-workflow-node__body strong {
+  color: #d9e1eb;
+
+  font-size: 10px;
+
+  font-weight: 500;
+}
+
+.vanta-workflow-node__body span {
+  color: #5d6b7d;
+
+  font-size: 7px;
+
+  line-height: 1.4;
+}
+
+.vanta-workflow-node__icon,
+.vanta-node-details__icon {
+  display: grid;
+  place-items: center;
+
+  flex: 0 0 auto;
+
+  width: 34px;
+  height: 34px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 7px;
+
+  background: rgba(255, 255, 255, 0.035);
+
+  color: #d6e0eb;
+
+  font-size: 10px;
+
+  font-weight: 600;
+}
+
+.vanta-workflow-node__icon.ai,
+.vanta-node-details__icon.ai {
+  border-color: rgba(91, 156, 255, 0.2);
+
+  color: #78adff;
+}
+
+.vanta-workflow-node__icon.hubspot,
+.vanta-node-details__icon.hubspot {
+  color: #ff7950;
+}
+
+.vanta-workflow-node__icon.slack,
+.vanta-node-details__icon.slack {
+  color: #73d9bd;
+}
+
+.vanta-workflow-node__icon.gmail,
+.vanta-node-details__icon.gmail {
+  color: #e66d68;
+}
+
+.vanta-workflow-node__icon.salesforce,
+.vanta-node-details__icon.salesforce {
+  color: #6ab6ff;
+}
+
+.vanta-workflow-node__icon.notion,
+.vanta-node-details__icon.notion {
+  color: #f0f3f7;
+}
+
+.node-port {
+  position: absolute;
+
+  top: 50%;
+
+  width: 6px;
+  height: 6px;
+
+  margin-top: -3px;
+
+  border: 1px solid #6ba8ff;
+
+  border-radius: 50%;
+
+  background: #07101c;
+
+  box-shadow:
+    0 0 9px rgba(91, 156, 255, 0.6);
+}
+
+.node-port--left {
+  left: -4px;
+}
+
+.node-port--right {
+  right: -4px;
+}
+
+.node-connection {
+  position: absolute;
+
+  top: 50%;
+  right: -72px;
+
+  width: 72px;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(91, 156, 255, 0.8),
+      rgba(91, 156, 255, 0.15)
+    );
+}
+
+.node-connection::after {
+  content: "";
+
+  position: absolute;
+
+  right: 0;
+  top: -3px;
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #5b9cff;
+
+  box-shadow:
+    0 0 10px rgba(91, 156, 255, 0.8);
+
+  animation: workspacePacket 2.2s linear infinite;
+}
+
+/* =========================================================
+   NODE DETAILS
+========================================================= */
+
+.vanta-node-details {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 270px;
+
+  padding: 19px;
+
+  border-left: 1px solid rgba(255, 255, 255, 0.075);
+
+  background:
+    rgba(7, 11, 17, 0.94);
+
+  backdrop-filter: blur(15px);
+}
+
+.vanta-node-details__header {
+  display: flex;
+  justify-content: space-between;
+
+  color: #566477;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 7px;
+
+  letter-spacing: 0.14em;
+}
+
+.vanta-node-details__header button {
+  border: 0;
+
+  background: transparent;
+
+  color: #566477;
+
+  cursor: pointer;
+}
+
+.vanta-node-details__app {
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  margin-top: 25px;
+}
+
+.vanta-node-details__app > div:last-child {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.vanta-node-details__app strong {
+  color: #dce4ed;
+
+  font-size: 12px;
+
+  font-weight: 500;
+}
+
+.vanta-node-details__app span {
+  color: #536174;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 6px;
+
+  letter-spacing: 0.1em;
+}
+
+.vanta-node-details p {
+  margin: 20px 0;
+
+  color: #69788b;
+
+  font-size: 9px;
+
+  line-height: 1.65;
+}
+
+.vanta-node-details label {
+  display: block;
+
+  margin-top: 16px;
+
+  color: #536175;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 6px;
+
+  letter-spacing: 0.13em;
+}
+
+.vanta-select {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 7px;
+
+  padding: 9px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: rgba(255, 255, 255, 0.025);
+
+  color: #a1afbf;
+
+  font-family: inherit;
+
+  font-size: 8px;
+
+  letter-spacing: 0;
+}
+
+.vanta-select span {
+  color: #526074;
+}
+
+.vanta-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 18px;
+
+  color: #657387;
+
+  font-size: 8px;
+}
+
+.vanta-toggle {
+  position: relative;
+
+  width: 28px;
+  height: 15px;
+
+  padding: 0;
+
+  border: 0;
+
+  border-radius: 20px;
+
+  background: #202936;
+
+  cursor: pointer;
+}
+
+.vanta-toggle i {
+  position: absolute;
+
+  top: 3px;
+  left: 3px;
+
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: #788698;
+
+  transition: transform 180ms ease;
+}
+
+.vanta-toggle.is-on {
+  background: #225fca;
+}
+
+.vanta-toggle.is-on i {
+  transform: translateX(13px);
+
+  background: #e8f2ff;
+}
+
+/* =========================================================
+   EXECUTION
+========================================================= */
+
+.vanta-execution,
+.vanta-test {
+  position: absolute;
+
+  bottom: 16px;
+
+  height: 175px;
+
+  border: 1px solid rgba(255, 255, 255, 0.075);
+
+  background: rgba(6, 10, 15, 0.9);
+}
+
+.vanta-execution {
+  left: 16px;
+  right: 300px;
+}
+
+.vanta-test {
+  right: 316px;
+
+  width: 315px;
+}
+
+.vanta-panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 42px;
+
+  padding: 0 13px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  color: #738196;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 7px;
+
+  letter-spacing: 0.1em;
+}
+
+.vanta-panel-heading > div {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.live-dot {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #54d49b;
+
+  box-shadow:
+    0 0 8px rgba(84, 212, 155, 0.7);
+}
+
+.live-label {
+  color: #54d49b;
+
+  font-size: 6px;
+}
+
+.vanta-log-list {
+  padding: 7px 12px;
+}
+
+.vanta-log-row {
+  display: grid;
+
+  grid-template-columns:
+    14px
+    65px
+    minmax(130px, 1fr)
+    minmax(100px, 0.7fr);
+
+  align-items: center;
+
+  height: 23px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.035);
+
+  color: #526075;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 6px;
+}
+
+.vanta-log-arrow {
+  color: #5b9cff;
+
+  font-size: 13px;
+}
+
+.vanta-log-row time {
+  color: #4e5d70;
+}
+
+.vanta-log-row strong {
+  color: #8997a8;
+
+  font-weight: 400;
+}
+
+.vanta-log-row > span:last-child {
+  color: #526174;
+}
+
+.vanta-log-row > span.success {
+  color: #54d49b;
+}
+
+/* =========================================================
+   TEST
+========================================================= */
+
+.vanta-test .vanta-panel-heading button {
+  padding: 7px 9px;
+
+  border: 1px solid rgba(91, 156, 255, 0.35);
+
+  background: rgba(91, 156, 255, 0.07);
+
+  color: #7eaeec;
+
+  font-family: inherit;
+
+  font-size: 6px;
+
+  cursor: pointer;
+}
+
+.vanta-test .vanta-panel-heading button:disabled {
+  opacity: 0.6;
+
+  cursor: default;
+}
+
+.vanta-test-list {
+  padding: 8px 12px;
+}
+
+.vanta-test-list > div {
+  display: grid;
+
+  grid-template-columns: 18px 1fr auto;
+
+  align-items: center;
+
+  height: 25px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.035);
+
+  color: #637286;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 6px;
+
+  transition: color 180ms ease;
+}
+
+.vanta-test-list > div > span {
+  color: #54d49b;
+}
+
+.vanta-test-list > div strong {
+  font-weight: 400;
+}
+
+.vanta-test-list > div small {
+  color: #485669;
+
+  font-size: 6px;
+}
+
+.vanta-test-list > div.is-running {
+  color: #a9bdd6;
+}
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes workspacePacket {
+  0% {
+    transform: translateX(-55px);
+
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(55px);
+
+    opacity: 0;
+  }
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1250px) {
+  .vanta-workspace__container {
+    width: calc(100% - 40px);
+  }
+
+  .vanta-workspace__sidebar {
+    flex-basis: 175px;
+  }
+
+  .vanta-workflow {
+    gap: 35px;
+
+    left: 25px;
+    right: 275px;
+  }
+
+  .vanta-workflow-node {
+    width: 145px;
+  }
+
+  .node-connection {
+    right: -37px;
+
+    width: 37px;
+  }
+
+  .vanta-node-details {
+    width: 250px;
+  }
+
+  .vanta-execution {
+    right: 275px;
+  }
+
+  .vanta-test {
+    display: none;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+  .vanta-workspace__container {
+    width: calc(100% - 32px);
+
+    padding: 100px 0;
+  }
+
+  .vanta-workspace__intro {
+    display: block;
+
+    margin-bottom: 40px;
+  }
+
+  .vanta-workspace__eyebrow {
+    margin-bottom: 28px;
+  }
+
+  .vanta-workspace__intro h2 {
+    font-size: clamp(3.5rem, 12vw, 5.5rem);
+  }
+
+  .vanta-workspace__intro p {
+    margin-top: 25px;
+  }
+
+  .vanta-workspace__app {
+    min-height: 700px;
+  }
+
+  .vanta-workspace__sidebar {
+    display: none;
+  }
+
+  .vanta-workspace__tabs {
+    display: none;
+  }
+
+  .vanta-workspace__workflow-name {
+    min-width: 0;
+  }
+
+  .vanta-workspace__actions {
+    margin-left: auto;
+  }
+
+  .vanta-workflow {
+    top: 40px;
+    left: 20px;
+    right: 20px;
+
+    flex-direction: column;
+
+    gap: 30px;
+
+    align-items: center;
+  }
+
+  .vanta-workflow-node {
+    width: 260px;
+  }
+
+  .node-connection {
+    top: auto;
+    right: auto;
+    bottom: -31px;
+    left: 50%;
+
+    width: 1px;
+    height: 31px;
+
+    background:
+      linear-gradient(
+        180deg,
+        rgba(91, 156, 255, 0.8),
+        rgba(91, 156, 255, 0.1)
+      );
+  }
+
+  .node-connection::after {
+    top: auto;
+    right: auto;
+    bottom: 0;
+    left: -3px;
+
+    animation-name: workspacePacketVertical;
+  }
+
+  .vanta-node-details {
+    display: none;
+  }
+
+  .vanta-execution {
+    right: 15px;
+    left: 15px;
+    bottom: 15px;
+  }
+}
+
+@keyframes workspacePacketVertical {
+  0% {
+    transform: translateY(-18px);
+
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(18px);
+
+    opacity: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .vanta-workspace__intro h2 {
+    font-size: 3.5rem;
+  }
+
+  .vanta-workspace__header {
+    padding: 0 10px;
+  }
+
+  .vanta-workspace__workflow-name strong {
+    font-size: 9px;
+  }
+
+  .vanta-workspace__actions button:first-child {
+    display: none;
+  }
+
+  .vanta-workspace__canvas {
+    height: 640px;
+  }
+
+  .vanta-workflow {
+    top: 25px;
+  }
+
+  .vanta-execution {
+    height: 160px;
+  }
+
+  .vanta-log-row {
+    grid-template-columns:
+      12px
+      55px
+      1fr;
+
+    font-size: 6px;
+  }
+
+  .vanta-log-row > span:last-child {
+    display: none;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .node-connection::after {
+    animation: none;
+  }
+
+  .vanta-workflow-node,
+  .vanta-toggle i {
+    transition: none;
+  }
+}

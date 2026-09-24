@@ -1,0 +1,1090 @@
+/* =========================================================
+   VANTA — SCALE ACROSS YOUR COMPANY
+========================================================= */
+
+.vanta-scale {
+  position: relative;
+
+  min-height: 920px;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 72% 50%,
+      rgba(29, 94, 232, 0.045),
+      transparent 38%
+    ),
+    #05070a;
+
+  color: #f4f7fb;
+}
+
+.vanta-scale__grid {
+  position: absolute;
+  inset: 0;
+
+  opacity: 0.2;
+
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 82px 82px;
+
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 15%,
+    black 88%,
+    transparent
+  );
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.vanta-scale__container {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(330px, 0.72fr)
+    minmax(680px, 1.55fr);
+
+  gap: 75px;
+
+  align-items: center;
+
+  width: min(1500px, calc(100% - 64px));
+
+  min-height: 920px;
+
+  margin: 0 auto;
+
+  padding: 110px 0;
+}
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.vanta-scale__intro {
+  position: relative;
+
+  align-self: center;
+}
+
+.vanta-scale__eyebrow {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 38px;
+
+  color: #566579;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 9px;
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+}
+
+.vanta-scale__eyebrow-line {
+  width: 25px;
+  height: 1px;
+
+  background: #5b9cff;
+
+  box-shadow:
+    0 0 12px rgba(91, 156, 255, 0.5);
+}
+
+.vanta-scale__intro h2 {
+  max-width: 8ch;
+
+  margin: 0;
+
+  color: #f4f7fb;
+
+  font-size: clamp(4rem, 5.2vw, 6.3rem);
+
+  font-weight: 500;
+
+  line-height: 0.91;
+
+  letter-spacing: -0.065em;
+}
+
+.vanta-scale__intro h2::first-line {
+  color: #f4f7fb;
+}
+
+.vanta-scale__intro p {
+  max-width: 420px;
+
+  margin: 30px 0 0;
+
+  color: #7f8da0;
+
+  font-size: 15px;
+
+  line-height: 1.7;
+}
+
+/* =========================================================
+   COMPANY STATEMENT
+========================================================= */
+
+.vanta-scale__statement {
+  display: flex;
+
+  gap: 15px;
+
+  margin-top: 72px;
+
+  padding-left: 2px;
+}
+
+.vanta-scale__statement-line {
+  width: 1px;
+
+  min-height: 65px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #5b9cff,
+      rgba(91, 156, 255, 0.05)
+    );
+
+  box-shadow:
+    0 0 12px rgba(91, 156, 255, 0.12);
+}
+
+.vanta-scale__statement > div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.vanta-scale__statement > div > span {
+  color: #65748a;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 8px;
+
+  letter-spacing: 0.16em;
+}
+
+.vanta-scale__statement p {
+  margin: 0;
+
+  color: #657286;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 9px;
+
+  line-height: 1.7;
+}
+
+/* =========================================================
+   SYSTEM
+========================================================= */
+
+.vanta-scale__system {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 14px;
+
+  padding: 8px 105px 8px 52px;
+}
+
+/* =========================================================
+   SPINE
+========================================================= */
+
+.vanta-scale__spine {
+  position: absolute;
+
+  top: 24px;
+  bottom: 24px;
+  left: 23px;
+
+  width: 1px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      rgba(91, 156, 255, 0.42) 8%,
+      rgba(91, 156, 255, 0.42) 92%,
+      transparent
+    );
+
+  box-shadow:
+    0 0 15px rgba(91, 156, 255, 0.12);
+}
+
+.vanta-scale__spine-core {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 7px;
+  height: 7px;
+
+  transform: translate(-50%, -50%);
+
+  border: 1px solid #6da9ff;
+
+  border-radius: 50%;
+
+  background: #07101b;
+
+  box-shadow:
+    0 0 15px rgba(91, 156, 255, 0.7);
+}
+
+/* =========================================================
+   BRANCHES
+========================================================= */
+
+.vanta-scale__branch {
+  position: absolute;
+
+  left: 0;
+
+  width: 30px;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(91, 156, 255, 0.5),
+      rgba(91, 156, 255, 0.1)
+    );
+
+  transition:
+    width 250ms ease,
+    background 250ms ease,
+    box-shadow 250ms ease;
+}
+
+.vanta-scale__branch::after {
+  content: "";
+
+  position: absolute;
+
+  right: 0;
+  top: -3px;
+
+  width: 6px;
+  height: 6px;
+
+  border: 1px solid #5b9cff;
+
+  border-radius: 50%;
+
+  background: #07101b;
+}
+
+.vanta-scale__branch--1 {
+  top: 12%;
+}
+
+.vanta-scale__branch--2 {
+  top: 37.5%;
+}
+
+.vanta-scale__branch--3 {
+  top: 62.5%;
+}
+
+.vanta-scale__branch--4 {
+  top: 88%;
+}
+
+.vanta-scale__branch.is-active {
+  width: 46px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #5b9cff,
+      rgba(91, 156, 255, 0.25)
+    );
+
+  box-shadow:
+    0 0 10px rgba(91, 156, 255, 0.35);
+}
+
+/* =========================================================
+   TEAM CARD
+========================================================= */
+
+.vanta-scale__cards {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 14px;
+}
+
+.vanta-scale__card {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(300px, 1fr)
+    minmax(180px, 0.55fr);
+
+  min-height: 154px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  background:
+    linear-gradient(
+      100deg,
+      rgba(11, 16, 24, 0.98),
+      rgba(7, 11, 17, 0.96)
+    );
+
+  outline: none;
+
+  cursor: pointer;
+
+  transition:
+    border-color 220ms ease,
+    transform 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.vanta-scale__card:hover,
+.vanta-scale__card:focus-visible,
+.vanta-scale__card.is-active {
+  border-color: rgba(91, 156, 255, 0.48);
+
+  transform: translateX(4px);
+
+  box-shadow:
+    -12px 0 35px rgba(29, 94, 232, 0.05),
+    0 0 0 1px rgba(91, 156, 255, 0.025);
+}
+
+.vanta-scale__card-content {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+
+  grid-template-columns: 44px 105px 1fr;
+
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 21px 19px;
+}
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.vanta-scale__card-icon-wrap {
+  display: grid;
+  place-items: center;
+
+  width: 39px;
+  height: 39px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 7px;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+}
+
+.vanta-scale__card-icon {
+  color: #6ca8ff;
+
+  font-size: 16px;
+
+  text-shadow:
+    0 0 12px rgba(91, 156, 255, 0.25);
+}
+
+.vanta-scale__card-icon.finance {
+  color: #5eaeff;
+}
+
+.vanta-scale__card-icon.sales {
+  color: #8bbcff;
+}
+
+.vanta-scale__card-icon.support {
+  color: #76aaff;
+}
+
+/* =========================================================
+   MAIN CARD INFO
+========================================================= */
+
+.vanta-scale__card-main {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+.vanta-scale__card-label {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  color: #aebaca;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 9px;
+
+  letter-spacing: 0.12em;
+}
+
+.vanta-scale__active-dot {
+  color: #5b9cff;
+
+  font-size: 6px;
+
+  opacity: 0;
+
+  transition: opacity 180ms ease;
+}
+
+.vanta-scale__card.is-active .vanta-scale__active-dot {
+  opacity: 1;
+}
+
+.vanta-scale__count {
+  margin-top: 11px;
+
+  color: #edf3f9;
+
+  font-size: 28px;
+
+  font-weight: 500;
+
+  line-height: 1;
+
+  letter-spacing: -0.045em;
+}
+
+.vanta-scale__count-label {
+  margin-top: 5px;
+
+  color: #526074;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 6px;
+
+  letter-spacing: 0.12em;
+}
+
+/* =========================================================
+   TASKS
+========================================================= */
+
+.vanta-scale__tasks {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  padding-left: 18px;
+
+  border-left: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.vanta-scale__tasks span {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  color: #69778a;
+
+  font-size: 8px;
+
+  white-space: nowrap;
+
+  transition: color 180ms ease;
+}
+
+.vanta-scale__card:hover .vanta-scale__tasks span,
+.vanta-scale__card.is-active .vanta-scale__tasks span {
+  color: #9baabd;
+}
+
+.vanta-scale__tasks i {
+  color: #4e91ec;
+
+  font-size: 7px;
+
+  font-style: normal;
+}
+
+/* =========================================================
+   CARD IMAGE
+========================================================= */
+
+.vanta-scale__card-image {
+  position: relative;
+
+  min-height: 154px;
+
+  overflow: hidden;
+
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.vanta-scale__card-image img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  opacity: 0.43;
+
+  filter:
+    grayscale(0.55)
+    contrast(1.15)
+    brightness(0.62);
+
+  transform: scale(1.015);
+
+  transition:
+    opacity 450ms ease,
+    transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    filter 450ms ease;
+}
+
+.vanta-scale__card:hover .vanta-scale__card-image img,
+.vanta-scale__card.is-active .vanta-scale__card-image img {
+  opacity: 0.58;
+
+  filter:
+    grayscale(0.3)
+    contrast(1.1)
+    brightness(0.72);
+
+  transform: scale(1.06);
+}
+
+.vanta-scale__image-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(7, 11, 17, 0.98) 0%,
+      rgba(7, 11, 17, 0.48) 28%,
+      rgba(7, 11, 17, 0.08) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(5, 7, 10, 0.08),
+      rgba(5, 7, 10, 0.4)
+    );
+}
+
+.vanta-scale__image-label {
+  position: absolute;
+
+  right: 13px;
+  bottom: 11px;
+
+  color: rgba(183, 204, 230, 0.5);
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 7px;
+
+  letter-spacing: 0.14em;
+}
+
+/* =========================================================
+   CARD GLOW
+========================================================= */
+
+.vanta-scale__card-glow {
+  position: absolute;
+
+  inset: auto 0 0;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(91, 156, 255, 0.6),
+      transparent
+    );
+
+  opacity: 0;
+
+  transition: opacity 220ms ease;
+}
+
+.vanta-scale__card.is-active .vanta-scale__card-glow {
+  opacity: 1;
+}
+
+/* =========================================================
+   CONNECTED TOOLS
+========================================================= */
+
+.vanta-scale__integrations {
+  position: absolute;
+
+  top: 8px;
+  right: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  width: 82px;
+}
+
+.vanta-scale__integrations-label {
+  align-self: flex-start;
+
+  margin-bottom: 15px;
+
+  color: #526176;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 6px;
+
+  line-height: 1.5;
+
+  letter-spacing: 0.15em;
+}
+
+.vanta-scale__integrations-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.vanta-scale__integration {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #647286;
+
+  font-family: inherit;
+
+  cursor: pointer;
+
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.vanta-scale__integration:hover {
+  color: #c1cede;
+
+  transform: translateX(-3px);
+}
+
+.vanta-scale__integration > span {
+  display: grid;
+  place-items: center;
+
+  width: 27px;
+  height: 27px;
+
+  border: 1px solid rgba(255, 255, 255, 0.09);
+
+  border-radius: 6px;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  color: #73aaff;
+
+  font-size: 9px;
+}
+
+.vanta-scale__integration small {
+  display: none;
+}
+
+.vanta-scale__more {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 4px;
+
+  margin-top: 14px;
+
+  color: #455367;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 6px;
+
+  letter-spacing: 0.12em;
+}
+
+.vanta-scale__more span {
+  width: 1px;
+  height: 18px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(91, 156, 255, 0.7),
+      transparent
+    );
+}
+
+/* =========================================================
+   ACTIVE INDICATOR
+========================================================= */
+
+.vanta-scale__active-indicator {
+  position: absolute;
+
+  left: -1px;
+  bottom: -20px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  color: #4e6076;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 6px;
+
+  letter-spacing: 0.13em;
+
+  opacity: 0.8;
+}
+
+.vanta-scale__active-indicator > span {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #5b9cff;
+
+  box-shadow:
+    0 0 8px rgba(91, 156, 255, 0.7);
+}
+
+.vanta-scale__active-indicator b {
+  color: #5b9cff;
+
+  font-weight: 400;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1250px) {
+  .vanta-scale__container {
+    grid-template-columns:
+      minmax(280px, 0.65fr)
+      minmax(600px, 1.4fr);
+
+    gap: 45px;
+
+    width: calc(100% - 40px);
+  }
+
+  .vanta-scale__system {
+    padding-right: 78px;
+  }
+
+  .vanta-scale__card-content {
+    grid-template-columns: 38px 90px 1fr;
+
+    gap: 12px;
+
+    padding: 18px 14px;
+  }
+
+  .vanta-scale__card-icon-wrap {
+    width: 34px;
+    height: 34px;
+  }
+
+  .vanta-scale__tasks span {
+    font-size: 7px;
+  }
+
+  .vanta-scale__integrations {
+    width: 60px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+  .vanta-scale {
+    min-height: auto;
+  }
+
+  .vanta-scale__container {
+    display: block;
+
+    width: calc(100% - 32px);
+
+    min-height: auto;
+
+    padding: 100px 0 110px;
+  }
+
+  .vanta-scale__intro {
+    margin-bottom: 60px;
+  }
+
+  .vanta-scale__intro h2 {
+    max-width: none;
+
+    font-size: clamp(3.6rem, 14vw, 6rem);
+  }
+
+  .vanta-scale__intro p {
+    max-width: 500px;
+  }
+
+  .vanta-scale__statement {
+    margin-top: 40px;
+  }
+
+  .vanta-scale__system {
+    padding: 0 0 35px 35px;
+  }
+
+  .vanta-scale__spine {
+    left: 10px;
+
+    top: 18px;
+    bottom: 18px;
+  }
+
+  .vanta-scale__branch {
+    width: 24px;
+  }
+
+  .vanta-scale__branch.is-active {
+    width: 34px;
+  }
+
+  .vanta-scale__cards {
+    gap: 12px;
+  }
+
+  .vanta-scale__card {
+    grid-template-columns: 1fr;
+
+    min-height: 230px;
+  }
+
+  .vanta-scale__card-content {
+    grid-template-columns:
+      40px
+      minmax(90px, 0.45fr)
+      1fr;
+
+    min-height: 125px;
+
+    padding: 17px;
+  }
+
+  .vanta-scale__card-image {
+    min-height: 105px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+    border-left: 0;
+  }
+
+  .vanta-scale__integrations {
+    position: relative;
+
+    top: auto;
+    right: auto;
+
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+
+    width: 100%;
+
+    margin-top: 22px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .vanta-scale__integrations-label {
+    margin: 0 16px 0 0;
+  }
+
+  .vanta-scale__integrations-list {
+    flex-direction: row;
+
+    gap: 7px;
+  }
+
+  .vanta-scale__integration > span {
+    width: 29px;
+    height: 29px;
+  }
+
+  .vanta-scale__more {
+    display: none;
+  }
+
+  .vanta-scale__active-indicator {
+    display: none;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .vanta-scale__intro h2 {
+    font-size: 3.6rem;
+  }
+
+  .vanta-scale__card-content {
+    grid-template-columns: 38px 1fr;
+
+    gap: 12px;
+  }
+
+  .vanta-scale__tasks {
+    grid-column: 1 / -1;
+
+    padding: 12px 0 0;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+
+    border-left: 0;
+  }
+
+  .vanta-scale__tasks span {
+    font-size: 8px;
+  }
+
+  .vanta-scale__card-image {
+    min-height: 90px;
+  }
+
+  .vanta-scale__integration small {
+    display: none;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .vanta-scale__card,
+  .vanta-scale__card-image img,
+  .vanta-scale__tasks span,
+  .vanta-scale__integration,
+  .vanta-scale__branch {
+    transition: none;
+  }
+}

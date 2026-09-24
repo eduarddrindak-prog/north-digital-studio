@@ -8,16 +8,15 @@ import Portfolio from "@/pages/Portfolio";
 import FAQ from "@/pages/FAQ";
 import Contact from "@/pages/Contact";
 
-import Nord from "@/projects/Nord/Nord";
-import NordProjects from "@/projects/Nord/pages/Projects/Projects";
-import NordHome from "@/projects/Nord/pages/Home/Home";
-import NordStudio from "@/projects/Nord/pages/Studio/Studio";
-import NordServices from "@/projects/Nord/pages/Services/Services";
+import VantaLayout from "@/projects/Vanta/layouts/VantaLayout";
+import VantaHome from "@/projects/Vanta/pages/Home/Home";
 
 function App() {
   return (
     <Routes>
+
       {/* North Studio */}
+
       <Route
         path="/"
         element={
@@ -63,65 +62,15 @@ function App() {
         }
       />
 
-      {/* NORD */}
       <Route
-  path="/portfolio/nord"
+  path="/vanta"
   element={
-    <Nord>
-      <main>
-        <section className="section">
-          <div className="container">
-            <p className="eyebrow">NORD — Interior Studio</p>
-
-            <h1 className="display">
-              Spaces shaped around how people live.
-            </h1>
-
-            <p className="subheading">
-              An independent interior studio based in Copenhagen,
-              working across residential, hospitality and small
-              commercial spaces.
-            </p>
-          </div>
-        </section>
-      </main>
-    </Nord>
+    <VantaLayout>
+      <VantaHome />
+    </VantaLayout>
   }
 />
 
-<Route
-  path="/portfolio/nord/projects"
-  element={
-    <Nord>
-      <NordProjects />
-    </Nord>
-  }
-/>
-
-<Route
-  path="/portfolio/nord/home"
-  element={
-    <Nord>
-      <NordHome />
-    </Nord>
-  }
-/>
-
-<Route
-  path="/portfolio/nord/studio"
-  element={
-  <Nord>
-    <NordStudio />
-    </Nord>}
-/>
-
-<Route
-  path="/portfolio/nord/Services"
-  element={
-  <Nord>
-    <NordServices />
-    </Nord>}
-/>
     </Routes>
   );
 }

@@ -1,0 +1,321 @@
+:root {
+  /* =========================================================
+     VANTA — COLOR
+     ========================================================= */
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --color-blue-400: #5b9cff;
+  --color-blue-500: #367cff;
+  --color-blue-600: #1d5ee8;
+
+  --color-page: #05070a;
+  --color-page-soft: #080b10;
+
+  --color-surface: rgba(255, 255, 255, 0.035);
+  --color-surface-raised: rgba(255, 255, 255, 0.055);
+  --color-surface-strong: rgba(255, 255, 255, 0.08);
+
+  --color-text: #f4f7fb;
+  --color-text-soft: rgba(244, 247, 251, 0.68);
+  --color-text-muted: rgba(244, 247, 251, 0.42);
+
+  --color-text-inverse: #05070a;
+
+  --color-border: rgba(255, 255, 255, 0.10);
+  --color-border-strong: rgba(255, 255, 255, 0.18);
+  --color-border-subtle: rgba(255, 255, 255, 0.055);
+
+  --color-accent: var(--color-blue-400);
+  --color-accent-strong: var(--color-blue-500);
+
+  --color-accent-soft: rgba(91, 156, 255, 0.10);
+  --color-accent-soft-strong: rgba(91, 156, 255, 0.16);
+
+  --color-overlay: rgba(5, 7, 10, 0.72);
+
+
+  /* =========================================================
+     TYPOGRAPHY
+     ========================================================= */
+
+  --font-sans:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  --font-mono:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  --text-xs: 0.6875rem;
+  --text-sm: 0.8125rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.35rem;
+
+  --text-2xl:
+    clamp(1.75rem, 1.3rem + 1.4vw, 2.5rem);
+
+  --text-3xl:
+    clamp(2.8rem, 2rem + 4.5vw, 6.5rem);
+
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+
+  --line-tight: 0.9;
+  --line-snug: 1.08;
+  --line-normal: 1.55;
+
+  --tracking-normal: -0.02em;
+  --tracking-tight: -0.045em;
+  --tracking-label: 0.14em;
+  --tracking-mono: 0.04em;
+
+
+  /* =========================================================
+     SPACING
+     ========================================================= */
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  --space-section:
+    clamp(6rem, 10vw, 10rem);
+
+  --space-container:
+    clamp(1.25rem, 4vw, 3rem);
+
+
+  /* =========================================================
+     LAYOUT
+     ========================================================= */
+
+  --container-max: 88rem;
+  --container-narrow: 52rem;
+
+  --grid-gap: var(--space-6);
+
+
+  /* =========================================================
+     RADIUS
+     VANTA IS SHARP / TECHNICAL
+     ========================================================= */
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 999rem;
+
+
+  /* =========================================================
+     SHADOWS / GLOW
+     ========================================================= */
+
+  --shadow-soft:
+    0 20px 60px rgba(0, 0, 0, 0.28);
+
+  --shadow-accent:
+    0 0 60px rgba(91, 156, 255, 0.12);
+
+  --shadow-elevated:
+    0 30px 100px rgba(0, 0, 0, 0.42);
+
+  --glow-accent:
+    0 0 32px rgba(91, 156, 255, 0.18);
+
+
+  /* =========================================================
+     FOCUS
+     ========================================================= */
+
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 3px;
+  --focus-ring-color: var(--color-accent);
+
+  --focus-ring-shadow:
+    0 0 0 3px var(--color-accent-soft-strong);
+
+
+  /* =========================================================
+     MOTION
+     ========================================================= */
+
+  --duration-fast: 160ms;
+  --duration-base: 280ms;
+  --duration-slow: 500ms;
+  --duration-reveal: 650ms;
+
+  --ease-standard:
+    cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  --ease-emphasized:
+    cubic-bezier(0.16, 1, 0.3, 1);
+
+  --motion-distance-small: 0.5rem;
+  --motion-distance-medium: 1rem;
+  --motion-lift-distance: 0.25rem;
+
+  --motion-scale-hover: 1.01;
+  --motion-scale-enter: 0.985;
+
+  --motion-reduced-opacity: 1;
+
+
+  /* =========================================================
+     BUTTON
+     ========================================================= */
+
+  --button-height-sm: 2.35rem;
+  --button-height-md: 2.75rem;
+  --button-height-lg: 3.2rem;
+
+  --button-padding-sm: 0 0.9rem;
+  --button-padding-md: 0 1.15rem;
+  --button-padding-lg: 0 1.4rem;
+
+  --button-radius: var(--radius-sm);
+
+  --button-font-size-sm: var(--text-sm);
+  --button-font-size-md: var(--text-sm);
+  --button-font-size-lg: var(--text-base);
+
+  --button-primary-bg: var(--color-text);
+  --button-primary-text: var(--color-text-inverse);
+  --button-primary-border: var(--color-text);
+
+  --button-secondary-bg: transparent;
+  --button-secondary-text: var(--color-text);
+  --button-secondary-border: var(--color-border-strong);
+
+  --button-ghost-bg: transparent;
+  --button-ghost-text: var(--color-text-soft);
+  --button-ghost-border: transparent;
+
+
+  /* =========================================================
+     CARD / PANELS
+     ========================================================= */
+
+  --card-bg: var(--color-surface);
+  --card-bg-hover: var(--color-surface-raised);
+  --card-border: var(--color-border);
+
+  --card-radius: var(--radius-md);
+
+  --card-padding:
+    clamp(1.25rem, 2.5vw, 2rem);
+
+
+  /* =========================================================
+     FORM FIELDS
+     ========================================================= */
+
+  --field-bg: rgba(255, 255, 255, 0.025);
+  --field-border: var(--color-border);
+
+  --field-border-focus:
+    var(--color-accent);
+
+  --field-text: var(--color-text);
+  --field-placeholder: var(--color-text-muted);
+
+  --field-radius: var(--radius-sm);
+  --field-height: 3rem;
+
+
+  /* =========================================================
+     BADGE
+     ========================================================= */
+
+  --badge-bg: var(--color-accent-soft);
+  --badge-text: var(--color-accent);
+
+  --badge-border:
+    rgba(91, 156, 255, 0.22);
+
+  --badge-radius: var(--radius-sm);
+
+  --badge-padding:
+    0.25rem 0.6rem;
+
+  --badge-font-size: var(--text-xs);
+
+
+  /* =========================================================
+     LINK
+     ========================================================= */
+
+  --link-text: var(--color-text);
+  --link-text-hover: var(--color-accent);
+
+  --link-underline:
+    var(--color-accent);
+
+
+  /* =========================================================
+     PILL / TAG
+     ========================================================= */
+
+  --pill-bg: transparent;
+  --pill-text: var(--color-text-soft);
+  --pill-border: var(--color-border);
+
+  --pill-radius: var(--radius-sm);
+
+  --pill-padding:
+    0.4rem 0.65rem;
+
+  --pill-font-size: var(--text-xs);
+
+
+  /* =========================================================
+     TEXT VARIANTS
+     ========================================================= */
+
+  --text-title-size: var(--text-2xl);
+  --text-subtitle-size: var(--text-lg);
+  --text-body-size: var(--text-base);
+  --text-caption-size: var(--text-xs);
+
+
+  /* =========================================================
+     ICON
+     ========================================================= */
+
+  --icon-size-xs: 0.9rem;
+  --icon-size-sm: 1.1rem;
+  --icon-size-md: 1.35rem;
+  --icon-size-lg: 1.75rem;
+  --icon-size-xl: 2.25rem;
+
+  --icon-color: currentColor;
+
+
+  /* =========================================================
+     DIVIDER
+     ========================================================= */
+
+  --divider-color: var(--color-border);
+  --divider-thickness: 1px;
+}

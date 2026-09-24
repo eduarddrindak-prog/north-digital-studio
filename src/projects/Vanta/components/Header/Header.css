@@ -1,0 +1,299 @@
+.vanta-header {
+  position: absolute;
+  z-index: 50;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  color: var(--color-text);
+}
+
+.vanta-header__inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+
+  width: min(
+    100% - var(--space-container) * 2,
+    var(--container-max)
+  );
+
+  min-height: 5.5rem;
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.vanta-header__logo {
+  justify-self: start;
+
+  font-size: 1.15rem;
+  font-weight: 600;
+
+  letter-spacing: 0.28em;
+  line-height: 1;
+
+  transition:
+    opacity var(--duration-base) var(--ease-standard);
+}
+
+.vanta-header__logo:hover {
+  opacity: 0.7;
+}
+
+
+/* =========================================================
+   DESKTOP NAV
+   ========================================================= */
+
+.vanta-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
+}
+
+.vanta-header__link {
+  position: relative;
+
+  color: var(--color-text-soft);
+
+  font-size: var(--text-sm);
+  font-weight: var(--font-regular);
+
+  transition:
+    color var(--duration-base) var(--ease-standard);
+}
+
+.vanta-header__link::after {
+  content: "";
+
+  position: absolute;
+  right: 0;
+  bottom: -0.45rem;
+  left: 0;
+
+  height: 1px;
+
+  background: var(--color-accent);
+
+  transform: scaleX(0);
+  transform-origin: right;
+
+  transition:
+    transform var(--duration-base) var(--ease-emphasized);
+}
+
+.vanta-header__link:hover {
+  color: var(--color-text);
+}
+
+.vanta-header__link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.vanta-header__cta {
+  justify-self: end;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+
+  min-height: 2.7rem;
+  padding: 0 1rem;
+
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+
+  color: var(--color-text);
+
+  font-size: var(--text-sm);
+
+  transition:
+    border-color var(--duration-base) var(--ease-standard),
+    background var(--duration-base) var(--ease-standard),
+    box-shadow var(--duration-base) var(--ease-standard),
+    transform var(--duration-base) var(--ease-standard);
+}
+
+.vanta-header__cta span:last-child {
+  color: var(--color-text-muted);
+
+  transition:
+    transform var(--duration-base) var(--ease-emphasized),
+    color var(--duration-base) var(--ease-standard);
+}
+
+.vanta-header__cta:hover {
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
+
+  box-shadow: var(--glow-accent);
+
+  transform: translateY(-1px);
+}
+
+.vanta-header__cta:hover span:last-child {
+  color: var(--color-accent);
+  transform: translateX(3px);
+}
+
+
+/* =========================================================
+   MOBILE BUTTON
+   ========================================================= */
+
+.vanta-header__menu {
+  display: none;
+
+  justify-self: end;
+
+  width: 2.75rem;
+  height: 2.75rem;
+
+  padding: 0;
+
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+
+  background: transparent;
+  color: var(--color-text);
+
+  cursor: pointer;
+}
+
+.vanta-header__menu span {
+  display: block;
+
+  width: 1rem;
+  height: 1px;
+
+  margin: 0.3rem auto;
+
+  background: currentColor;
+
+  transition:
+    transform var(--duration-base) var(--ease-emphasized);
+}
+
+.vanta-header__menu.is-open span:first-child {
+  transform: translateY(0.15rem) rotate(45deg);
+}
+
+.vanta-header__menu.is-open span:last-child {
+  transform: translateY(-0.15rem) rotate(-45deg);
+}
+
+
+/* =========================================================
+   MOBILE PANEL
+   ========================================================= */
+
+.vanta-header__mobile {
+  display: none;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 760px) {
+  .vanta-header__inner {
+    grid-template-columns: 1fr auto;
+
+    min-height: 4.75rem;
+  }
+
+  .vanta-header__nav,
+  .vanta-header__cta {
+    display: none;
+  }
+
+  .vanta-header__menu {
+    display: block;
+  }
+
+  .vanta-header__mobile {
+    display: grid;
+
+    max-height: 0;
+    overflow: hidden;
+
+    width: min(
+      100% - var(--space-container) * 2,
+      var(--container-max)
+    );
+
+    margin: 0 auto;
+
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+
+    background: rgba(5, 7, 10, 0.96);
+
+    opacity: 0;
+
+    transition:
+      max-height var(--duration-slow) var(--ease-emphasized),
+      opacity var(--duration-base) var(--ease-standard),
+      border-color var(--duration-base) var(--ease-standard);
+  }
+
+  .vanta-header__mobile.is-open {
+    max-height: 30rem;
+
+    border-color: var(--color-border);
+
+    opacity: 1;
+  }
+
+  .vanta-header__mobile nav {
+    display: grid;
+  }
+
+  .vanta-header__mobile nav a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 1rem 1.1rem;
+
+    border-bottom: 1px solid var(--color-border-subtle);
+
+    color: var(--color-text-soft);
+
+    font-size: var(--text-base);
+  }
+
+  .vanta-header__mobile nav a:hover {
+    color: var(--color-text);
+    background: var(--color-surface);
+  }
+
+  .vanta-header__mobile-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin: 0.75rem;
+    padding: 0.9rem 1rem;
+
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
+
+    background: var(--color-text);
+    color: var(--color-text-inverse);
+
+    font-size: var(--text-sm);
+  }
+}

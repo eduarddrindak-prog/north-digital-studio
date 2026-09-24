@@ -1,0 +1,861 @@
+/* =========================================================
+   VANTA — BUILT TO RUN
+========================================================= */
+
+.vanta-built {
+  position: relative;
+
+  min-height: 920px;
+
+  overflow: hidden;
+
+  background: #05070a;
+
+  color: #f4f7fb;
+}
+
+/* =========================================================
+   BACKGROUND GRID
+========================================================= */
+
+.vanta-built__grid {
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0.2;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.024) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.024) 1px,
+      transparent 1px
+    );
+
+  background-size: 82px 82px;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      transparent,
+      black 18%,
+      black 82%,
+      transparent
+    );
+}
+
+/* =========================================================
+   AMBIENT LIGHT
+========================================================= */
+
+.vanta-built__ambient {
+  position: absolute;
+
+  left: 50%;
+  bottom: 8%;
+
+  width: 850px;
+  height: 300px;
+
+  transform: translateX(-50%);
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(29, 94, 232, 0.09),
+      transparent 68%
+    );
+
+  filter: blur(35px);
+
+  opacity: 0;
+
+  transition:
+    opacity 1.2s ease;
+}
+
+.vanta-built.is-visible
+  .vanta-built__ambient {
+  opacity: 1;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.vanta-built__container {
+  position: relative;
+  z-index: 2;
+
+  width: min(
+    1500px,
+    calc(100% - 64px)
+  );
+
+  min-height: 920px;
+
+  margin: 0 auto;
+
+  padding: 115px 0 45px;
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.vanta-built__header {
+  position: relative;
+  z-index: 5;
+
+  width: min(510px, 100%);
+
+  opacity: 0;
+
+  transform: translateY(20px);
+
+  transition:
+    opacity 650ms ease,
+    transform 650ms ease;
+}
+
+.vanta-built.is-visible
+  .vanta-built__header {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+.vanta-built__eyebrow {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 36px;
+
+  color: #5b6a7e;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 9px;
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+}
+
+.vanta-built__eyebrow-line {
+  width: 25px;
+  height: 1px;
+
+  background: #5b9cff;
+
+  box-shadow:
+    0 0 12px rgba(91, 156, 255, 0.45);
+}
+
+.vanta-built__header h2 {
+  margin: 0;
+
+  max-width: 10ch;
+
+  color: #f4f7fb;
+
+  font-size: clamp(
+    3.7rem,
+    5vw,
+    5.9rem
+  );
+
+  font-weight: 500;
+
+  line-height: 0.94;
+
+  letter-spacing: -0.065em;
+}
+
+.vanta-built__header h2 span {
+  color: #72adff;
+
+  text-shadow:
+    0 0 24px rgba(91, 156, 255, 0.22);
+}
+
+.vanta-built__header p {
+  margin: 27px 0 0;
+
+  max-width: 390px;
+
+  color: #788699;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+/* =========================================================
+   MAIN METRIC
+========================================================= */
+
+.vanta-built__main-metric {
+  position: absolute;
+
+  top: 205px;
+  left: 50%;
+
+  z-index: 5;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  transform: translateX(-50%);
+
+  text-align: center;
+
+  pointer-events: none;
+}
+
+.vanta-built__metric-value {
+  color: #f6f9fd;
+
+  font-size: clamp(
+    7rem,
+    13vw,
+    13.5rem
+  );
+
+  font-weight: 500;
+
+  line-height: 0.78;
+
+  letter-spacing: -0.085em;
+
+  text-shadow:
+    0 0 18px rgba(91, 156, 255, 0.16),
+    0 0 50px rgba(91, 156, 255, 0.08);
+
+  opacity: 0;
+
+  transform: translateY(15px) scale(0.98);
+
+  transition:
+    opacity 800ms ease,
+    transform 900ms cubic-bezier(
+      0.2,
+      0.8,
+      0.2,
+      1
+    );
+}
+
+.vanta-built.is-visible
+  .vanta-built__metric-value {
+  opacity: 1;
+
+  transform:
+    translateY(0)
+    scale(1);
+}
+
+.vanta-built__metric-value span {
+  color: #70abff;
+
+  font-size: 0.72em;
+
+  text-shadow:
+    0 0 22px rgba(91, 156, 255, 0.3);
+}
+
+.vanta-built__metric-label {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+
+  margin-top: 27px;
+
+  color: #718096;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 9px;
+
+  letter-spacing: 0.24em;
+
+  line-height: 1.4;
+}
+
+/* =========================================================
+   SIDE METRICS
+========================================================= */
+
+.vanta-built__side-metric {
+  position: absolute;
+
+  z-index: 5;
+
+  top: 470px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  opacity: 0;
+
+  transition:
+    opacity 700ms ease 180ms,
+    transform 700ms cubic-bezier(
+      0.2,
+      0.8,
+      0.2,
+      1
+    );
+}
+
+.vanta-built__side-metric--left {
+  left: 6%;
+
+  transform: translateX(-20px);
+}
+
+.vanta-built__side-metric--right {
+  right: 6%;
+
+  transform: translateX(20px);
+
+  text-align: left;
+}
+
+.vanta-built.is-visible
+  .vanta-built__side-metric {
+  opacity: 1;
+
+  transform: translateX(0);
+}
+
+.vanta-built__side-value {
+  color: #edf3fa;
+
+  font-size: clamp(
+    2.4rem,
+    3.3vw,
+    4rem
+  );
+
+  font-weight: 500;
+
+  line-height: 0.95;
+
+  letter-spacing: -0.06em;
+}
+
+.vanta-built__side-label {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+
+  color: #5e6d81;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 7px;
+
+  letter-spacing: 0.15em;
+
+  line-height: 1.55;
+}
+
+/* =========================================================
+   DATA SIGNALS
+========================================================= */
+
+.vanta-built__signals {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  bottom: 105px;
+
+  height: 270px;
+
+  pointer-events: none;
+}
+
+.vanta-built__baseline {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  bottom: 30px;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(91, 156, 255, 0.5) 16%,
+      rgba(91, 156, 255, 0.75) 50%,
+      rgba(91, 156, 255, 0.5) 84%,
+      transparent
+    );
+
+  box-shadow:
+    0 0 14px rgba(91, 156, 255, 0.22);
+}
+
+.vanta-built__bars {
+  position: absolute;
+
+  left: 2%;
+  right: 2%;
+  bottom: 31px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  height: 225px;
+
+  gap: 5px;
+}
+
+.vanta-built__bar {
+  position: relative;
+
+  display: block;
+
+  width: 2px;
+
+  height: var(--bar-height);
+
+  min-height: 7px;
+
+  max-height: 210px;
+
+  transform-origin: bottom;
+
+  transform: scaleY(0);
+
+  opacity: 0;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(91, 156, 255, 0.95),
+      rgba(91, 156, 255, 0.18)
+    );
+
+  box-shadow:
+    0 0 6px rgba(91, 156, 255, 0.28);
+
+  transition:
+    transform 700ms cubic-bezier(
+      0.2,
+      0.8,
+      0.2,
+      1
+    ),
+    opacity 500ms ease;
+}
+
+.vanta-built.is-visible
+  .vanta-built__bar {
+  transform: scaleY(1);
+
+  opacity: 1;
+
+  transition-delay:
+    calc(
+      var(--bar-index) * 16ms
+    );
+}
+
+.vanta-built__bar i {
+  position: absolute;
+
+  left: 50%;
+  top: -3px;
+
+  width: 5px;
+  height: 5px;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background: #78b2ff;
+
+  box-shadow:
+    0 0 8px rgba(91, 156, 255, 0.65);
+}
+
+.vanta-built__signal-glow {
+  position: absolute;
+
+  left: 20%;
+  right: 20%;
+
+  bottom: 30px;
+
+  height: 80px;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(29, 94, 232, 0.1),
+      transparent 70%
+    );
+
+  filter: blur(12px);
+
+  opacity: 0;
+
+  transition:
+    opacity 1.1s ease 350ms;
+}
+
+.vanta-built.is-visible
+  .vanta-built__signal-glow {
+  opacity: 1;
+}
+
+/* =========================================================
+   DATA LABELS
+========================================================= */
+
+.vanta-built__data-label {
+  position: absolute;
+
+  z-index: 6;
+
+  bottom: 350px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: #48576b;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 6px;
+
+  letter-spacing: 0.14em;
+
+  opacity: 0;
+
+  transition:
+    opacity 600ms ease 450ms;
+}
+
+.vanta-built.is-visible
+  .vanta-built__data-label {
+  opacity: 1;
+}
+
+.vanta-built__data-label span {
+  display: block;
+
+  width: 5px;
+  height: 5px;
+
+  border: 1px solid #5b9cff;
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 7px rgba(91, 156, 255, 0.5);
+}
+
+.vanta-built__data-label--left {
+  left: 2%;
+}
+
+.vanta-built__data-label--right {
+  right: 2%;
+}
+
+/* =========================================================
+   BOTTOM
+========================================================= */
+
+.vanta-built__bottom {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 42px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  color: #394657;
+
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+
+  font-size: 6px;
+
+  letter-spacing: 0.15em;
+
+  opacity: 0;
+
+  transition:
+    opacity 700ms ease 500ms;
+}
+
+.vanta-built.is-visible
+  .vanta-built__bottom {
+  opacity: 1;
+}
+
+.vanta-built__bottom-line {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.05),
+      transparent
+    );
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+  .vanta-built__container {
+    width: calc(100% - 48px);
+  }
+
+  .vanta-built__main-metric {
+    top: 250px;
+  }
+
+  .vanta-built__side-metric--left {
+    left: 2%;
+  }
+
+  .vanta-built__side-metric--right {
+    right: 2%;
+  }
+
+  .vanta-built__signals {
+    bottom: 100px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+  .vanta-built {
+    min-height: 820px;
+  }
+
+  .vanta-built__container {
+    width: calc(100% - 32px);
+
+    min-height: 820px;
+
+    padding-top: 90px;
+  }
+
+  .vanta-built__header {
+    width: 100%;
+  }
+
+  .vanta-built__header h2 {
+    max-width: 9ch;
+
+    font-size: clamp(
+      3.5rem,
+      13vw,
+      5.2rem
+    );
+  }
+
+  .vanta-built__header p {
+    max-width: 290px;
+
+    font-size: 13px;
+  }
+
+  .vanta-built__main-metric {
+    top: 355px;
+
+    width: 100%;
+  }
+
+  .vanta-built__metric-value {
+    font-size: clamp(
+      5.4rem,
+      24vw,
+      9rem
+    );
+  }
+
+  .vanta-built__metric-label {
+    margin-top: 20px;
+
+    font-size: 7px;
+  }
+
+  .vanta-built__side-metric {
+    top: 515px;
+  }
+
+  .vanta-built__side-metric--left {
+    left: 2%;
+  }
+
+  .vanta-built__side-metric--right {
+    right: 2%;
+  }
+
+  .vanta-built__side-value {
+    font-size: 2rem;
+  }
+
+  .vanta-built__side-label {
+    font-size: 6px;
+  }
+
+  .vanta-built__signals {
+    bottom: 90px;
+
+    height: 190px;
+  }
+
+  .vanta-built__bars {
+    height: 160px;
+
+    gap: 4px;
+  }
+
+  .vanta-built__bar:nth-child(even) {
+    opacity: 0.55;
+  }
+
+  .vanta-built__data-label {
+    display: none;
+  }
+
+  .vanta-built__bottom {
+    bottom: 30px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 500px) {
+  .vanta-built {
+    min-height: 760px;
+  }
+
+  .vanta-built__container {
+    min-height: 760px;
+  }
+
+  .vanta-built__header h2 {
+    font-size: 3.4rem;
+  }
+
+  .vanta-built__main-metric {
+    top: 345px;
+  }
+
+  .vanta-built__metric-value {
+    font-size: 5.2rem;
+  }
+
+  .vanta-built__side-metric {
+    top: 505px;
+  }
+
+  .vanta-built__side-value {
+    font-size: 1.75rem;
+  }
+
+  .vanta-built__side-label {
+    max-width: 105px;
+
+    font-size: 5px;
+  }
+
+  .vanta-built__signals {
+    bottom: 78px;
+  }
+
+  .vanta-built__bottom {
+    font-size: 5px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .vanta-built__ambient,
+  .vanta-built__header,
+  .vanta-built__metric-value,
+  .vanta-built__side-metric,
+  .vanta-built__bar,
+  .vanta-built__signal-glow,
+  .vanta-built__data-label,
+  .vanta-built__bottom {
+    transition: none;
+  }
+
+  .vanta-built__metric-value {
+    transform: none;
+  }
+
+  .vanta-built__side-metric--left,
+  .vanta-built__side-metric--right {
+    transform: none;
+  }
+
+  .vanta-built__bar {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
