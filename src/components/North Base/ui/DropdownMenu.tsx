@@ -43,9 +43,6 @@ type TriggerProps = {
   onKeyDown?: (event: KeyboardEvent) => void;
 };
 
-const ITEM_SELECTOR =
-  "[data-dropdown-item-index]";
-
 export function DropdownMenu({
   trigger,
   items,

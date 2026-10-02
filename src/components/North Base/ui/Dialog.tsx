@@ -4,7 +4,6 @@ import {
   useRef,
 } from "react";
 import type {
-  KeyboardEvent,
   ReactNode,
 } from "react";
 import { X } from "lucide-react";
