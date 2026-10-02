@@ -720,6 +720,71 @@ Avoid treating each page as an independent project.
 
 ---
 
+# 13. Context Recovery & Documentation Synchronization
+
+When continuing work after a previous conversation, the AI must recover the current project context before making decisions.
+
+Use the seven project documents according to their roles:
+
+1. PROJECT_VISION — understand why the project exists.
+2. PROJECT_STATE — understand the current implementation and current operational context.
+3. PROJECT_BIBLE — understand permanent development principles.
+4. CHANGELOG — understand meaningful recent project changes.
+5. PROMPTS — use the required development workflow.
+6. AI_CONTEXT — follow the collaboration and context-recovery rules.
+7. TARGET_STATE — understand the intended final state when relevant.
+
+For an active portfolio section, also inspect the actual project files before making implementation decisions.
+
+If documentation and actual implementation disagree:
+
+- do not guess;
+- identify the conflict;
+- inspect the actual implementation;
+- determine the confirmed current state;
+- continue only after the conflict is understood;
+- update the relevant documentation through SCRIPT 07 if the current state has changed.
+
+The AI must never reconstruct missing project context from assumptions when it can be verified from the project or documentation.
+
+## Documentation Update Rules
+
+SCRIPT 07 is the documentation checkpoint after meaningful development work.
+
+It must review all seven project documents and determine which ones actually require updates.
+
+Use these rules:
+
+- PROJECT_VISION: update only when project purpose, long-term direction or business goals change.
+- PROJECT_STATE: update when current architecture, current status, active work, repository structure or operational context changes.
+- PROJECT_BIBLE: update only when a permanent development principle changes or a new permanent rule is established.
+- CHANGELOG: add an entry after every meaningful development session.
+- PROMPTS: update when the development workflow itself changes or a reusable workflow is established.
+- AI_CONTEXT: update when the AI collaboration, context recovery or documentation synchronization rules change.
+- TARGET_STATE: update only when the intended final state changes.
+
+Do not update a document simply to create activity.
+
+Do not duplicate the same information across documents unless the information belongs to each document's defined role.
+
+The objective is synchronized documentation, not more documentation.
+
+## Context Priority
+
+When continuing work, current implementation and current project context have priority over stale historical descriptions.
+
+Historical CHANGELOG entries must not be treated as current state.
+
+TARGET_STATE must not be treated as evidence that a feature already exists.
+
+PROMPTS define how work should be performed; they do not prove that a task has already been completed.
+
+PROJECT_STATE is the primary document for current project state.
+
+After meaningful work, SCRIPT 07 keeps PROJECT_STATE and the other relevant documents synchronized.
+
+---
+
 # 13. Non-Goals
 
 The following behaviors should be avoided during development unless explicitly requested by the user.

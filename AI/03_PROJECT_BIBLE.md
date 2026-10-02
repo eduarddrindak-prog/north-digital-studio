@@ -70,7 +70,11 @@ North Digital Studio should feel like one coherent product.
 
 Every new page should immediately look like it belongs to the same website.
 
-Consistency should always have higher priority than originality.
+Consistency comes from a shared visual language, not from repeating the same composition in every section.
+
+Sections may and should use different compositions when that improves the visual rhythm and information hierarchy of the page.
+
+Consistency should always have higher priority than arbitrary visual novelty, while unnecessary structural repetition should be avoided.
 
 ---
 

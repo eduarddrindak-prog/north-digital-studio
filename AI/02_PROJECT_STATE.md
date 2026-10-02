@@ -32,6 +32,82 @@ At the current moment:
 
 The project is now transitioning from building the foundation to completing the remaining public pages.
 
+## Current Authoritative Context — 2026-09-30
+
+The following information is the current authoritative project context. If older sections of this document describe an earlier repository structure or development stage, this section takes precedence until those sections are updated.
+
+### North Studio
+
+North Studio remains the main public business website of North Digital Studio.
+
+### North Base
+
+North Base is the canonical primitive UI library used as the foundation for portfolio website development.
+
+North Base is separate from North Digital Studio.
+
+North Studio contains a working copy of North Base so portfolio projects can be developed inside the same repository.
+
+The North Base copy does not replace or redefine the North Studio design system.
+
+North Base contains primitives, not ready-made website sections.
+
+### Portfolio Projects
+
+Portfolio projects are developed inside the North Studio repository under `src/projects/`.
+
+Current portfolio projects:
+
+- VANTA — active development.
+- MORA — planned.
+- ATLAS — planned.
+
+Each portfolio project has its own visual identity, content, sections, local styles and project-specific components.
+
+Portfolio projects use the North Base copy where appropriate.
+
+### Current Active Work
+
+Project:
+- VANTA
+
+Status:
+- Active development.
+
+Current method:
+- section-by-section visual development using SCRIPT 01–07 from PROMPTS.
+
+Current priority:
+- preserve approved visual language;
+- prevent repetitive section compositions;
+- preserve information and interaction context between sections and development sessions.
+
+The current section workflow is:
+
+SCRIPT 01 → sketch
+SCRIPT 02 → analysis
+SCRIPT 03 → revised sketch
+SCRIPT 04 → implementation
+SCRIPT 05 → fixes
+SCRIPT 06 → whole-page review and next-section plan
+SCRIPT 07 → documentation and context checkpoint
+
+### Context Preservation
+
+The project does not use a separate memory document for each portfolio project.
+
+The seven project documents work together:
+
+- PROJECT_VISION — why the project exists.
+- PROJECT_STATE — what currently exists and the current operational context.
+- PROJECT_BIBLE — permanent development principles.
+- CHANGELOG — historical project changes.
+- PROMPTS — development workflows, including SCRIPT 01–07.
+- AI_CONTEXT — how AI should collaborate and recover context.
+- TARGET_STATE — intended final state.
+
+SCRIPT 07 is responsible for checking which of these documents need updating after meaningful work.
+
 ---
 
 ## Production Status

@@ -172,15 +172,48 @@ A new AI assistant should be able to read only PROJECT_VISION, PROJECT_STATE and
 
 The project now has:
 
-- Home page completed.
-- Services page completed.
-- Unified design system.
-- Shared UI component library.
-- Shared animation system.
+- North Studio as the main public business website.
+- North Base as the canonical primitive foundation for portfolio development.
+- A working North Base copy inside North Studio.
+- VANTA as the first active portfolio project.
+- MORA and ATLAS as planned portfolio projects.
+- A standardized SCRIPT 01–07 development workflow.
+- A documented context-preservation process for AI-assisted development.
 
 Next logical milestone:
 
-Complete the Portfolio page.
+Continue VANTA development while keeping the seven project documents synchronized with the actual project.
+
+# 2026-09-30
+
+## Added
+
+- Established the final SCRIPT 01–07 development protocol for VANTA and future portfolio websites.
+- Added SCRIPT 07 for updating project context and all relevant project documentation after meaningful work.
+- Established a current authoritative context block inside PROJECT_STATE for cross-session continuity.
+
+## Changed
+
+- Updated the project documentation model so PROJECT_STATE carries current operational context while CHANGELOG remains historical.
+- Clarified that North Base is separate from North Studio and that North Studio contains a working copy for portfolio development.
+- Established VANTA as the current active portfolio project, with MORA and ATLAS planned.
+
+## Improved
+
+- Added explicit context recovery and documentation synchronization rules for AI-assisted development.
+- Clarified that visual consistency is maintained through shared visual language rather than identical section compositions.
+- Strengthened the section workflow from sketch through whole-page review and documentation checkpoint.
+
+## Notes
+
+Current direction:
+- North Studio remains the main business website.
+- VANTA is the current active portfolio project.
+- Portfolio sections follow SCRIPT 01–07.
+- Project context is preserved through the seven project documents rather than through a separate parallel memory system.
+
+Next priority:
+- Continue VANTA development using the approved section workflow and keep project documentation synchronized with actual implementation.
 
 # 2026-08-01
 
