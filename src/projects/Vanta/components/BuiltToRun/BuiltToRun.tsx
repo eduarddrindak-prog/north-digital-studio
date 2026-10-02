@@ -5,19 +5,9 @@ import {
   useState,
 } from "react";
 
+import { builtToRunContent } from "./content";
+
 import "./BuiltToRun.css";
-
-const BAR_COUNT = 54;
-
-const barHeights = [
-  18, 34, 24, 47, 28, 61, 38, 72, 31,
-  54, 43, 78, 35, 66, 49, 88, 41, 58,
-  32, 74, 46, 63, 37, 91, 52, 68, 44,
-  82, 35, 59, 48, 76, 39, 65, 29, 84,
-  45, 70, 34, 57, 48, 86, 38, 61, 31,
-  75, 43, 68, 36, 52, 89, 41, 64, 30,
-  73, 45, 57,
-];
 
 function easeOutCubic(value: number) {
   return 1 - Math.pow(1 - value, 3);
@@ -65,6 +55,7 @@ export default function BuiltToRun() {
 
         const animate = (currentTime: number) => {
           const elapsed = currentTime - startTime;
+
           const rawProgress = Math.min(
             elapsed / duration,
             1
@@ -93,9 +84,28 @@ export default function BuiltToRun() {
     };
   }, [reducedMotion]);
 
-  const tasksAutomated = (3.2 * progress).toFixed(1);
-  const repetitiveSteps = Math.round(87 * progress);
-  const hoursRemoved = (11.4 * progress).toFixed(1);
+  const {
+    eyebrow,
+    title,
+    description,
+    metrics,
+    metricLabels,
+    signal,
+    dataLabels,
+    bottom,
+  } = builtToRunContent;
+
+  const tasksAutomated = (
+    metrics.tasksAutomated * progress
+  ).toFixed(1);
+
+  const repetitiveSteps = Math.round(
+    metrics.repetitiveSteps * progress
+  );
+
+  const hoursRemoved = (
+    metrics.hoursRemoved * progress
+  ).toFixed(1);
 
   return (
     <section
@@ -114,33 +124,22 @@ export default function BuiltToRun() {
       <div className="vanta-built__ambient" />
 
       <div className="vanta-built__container">
-        {/* =========================================
-            HEADER
-        ========================================== */}
-
         <header className="vanta-built__header">
           <div className="vanta-built__eyebrow">
             <span className="vanta-built__eyebrow-line" />
 
-            <span>05</span>
+            <span>{eyebrow.number}</span>
 
-            <span>BUILT TO RUN</span>
+            <span>{eyebrow.label}</span>
           </div>
 
           <h2 id="built-to-run-title">
-            Automation that keeps{" "}
-            <span>moving.</span>
+            {title.lineOne}{" "}
+            <span>{title.lineTwo}</span>
           </h2>
 
-          <p>
-            Automation built to run continuously
-            across every team.
-          </p>
+          <p>{description}</p>
         </header>
-
-        {/* =========================================
-            MAIN METRIC
-        ========================================== */}
 
         <div className="vanta-built__main-metric">
           <div className="vanta-built__metric-value">
@@ -149,14 +148,10 @@ export default function BuiltToRun() {
           </div>
 
           <div className="vanta-built__metric-label">
-            <span>TASKS AUTOMATED</span>
-            <span>EVERY MONTH</span>
+            <span>{metricLabels.tasksAutomated[0]}</span>
+            <span>{metricLabels.tasksAutomated[1]}</span>
           </div>
         </div>
-
-        {/* =========================================
-            SIDE METRICS
-        ========================================== */}
 
         <div className="vanta-built__side-metric vanta-built__side-metric--left">
           <div className="vanta-built__side-value">
@@ -164,8 +159,8 @@ export default function BuiltToRun() {
           </div>
 
           <div className="vanta-built__side-label">
-            <span>OF REPETITIVE STEPS</span>
-            <span>HANDLED AUTOMATICALLY</span>
+            <span>{metricLabels.repetitiveSteps[0]}</span>
+            <span>{metricLabels.repetitiveSteps[1]}</span>
           </div>
         </div>
 
@@ -175,14 +170,10 @@ export default function BuiltToRun() {
           </div>
 
           <div className="vanta-built__side-label">
-            <span>AVERAGE MANUAL WORK</span>
-            <span>REMOVED PER WEEK</span>
+            <span>{metricLabels.hoursRemoved[0]}</span>
+            <span>{metricLabels.hoursRemoved[1]}</span>
           </div>
         </div>
-
-        {/* =========================================
-            DATA SIGNALS
-        ========================================== */}
 
         <div
           className="vanta-built__signals"
@@ -191,8 +182,8 @@ export default function BuiltToRun() {
           <div className="vanta-built__baseline" />
 
           <div className="vanta-built__bars">
-            {barHeights
-              .slice(0, BAR_COUNT)
+            {signal.barHeights
+              .slice(0, signal.barCount)
               .map((height, index) => (
                 <span
                   key={index}
@@ -212,30 +203,22 @@ export default function BuiltToRun() {
           <div className="vanta-built__signal-glow" />
         </div>
 
-        {/* =========================================
-            DATA LABELS
-        ========================================== */}
-
         <div className="vanta-built__data-label vanta-built__data-label--left">
           <span />
-          CONTINUOUS EXECUTION
+          {dataLabels.left}
         </div>
 
         <div className="vanta-built__data-label vanta-built__data-label--right">
-          LIVE AUTOMATION LOAD
+          {dataLabels.right}
           <span />
         </div>
 
-        {/* =========================================
-            BOTTOM LINE
-        ========================================== */}
-
         <div className="vanta-built__bottom">
-          <span>VANTA / 05</span>
+          <span>{bottom.left}</span>
 
           <div className="vanta-built__bottom-line" />
 
-          <span>RUNNING CONTINUOUSLY</span>
+          <span>{bottom.right}</span>
         </div>
       </div>
     </section>

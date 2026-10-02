@@ -1,178 +1,23 @@
 import { useState } from "react";
+
+import { workspaceContent } from "./content";
+
 import "./Workspace.css";
+
+type WorkflowNode = {
+  type: string;
+  label: string;
+  description: string;
+  app: string;
+  appClass: string;
+};
 
 type Workflow = {
   id: string;
   name: string;
   status: "Live" | "Draft";
-  nodes: {
-    type: string;
-    label: string;
-    description: string;
-    app: string;
-    appClass: string;
-  }[];
+  nodes: WorkflowNode[];
 };
-
-const workflows: Workflow[] = [
-  {
-    id: "onboarding",
-    name: "Customer Onboarding",
-    status: "Live",
-    nodes: [
-      {
-        type: "01 · TRIGGER",
-        label: "Slack",
-        description: "New message in #leads",
-        app: "S",
-        appClass: "slack",
-      },
-      {
-        type: "02 · AI PROCESSING",
-        label: "Analyze with AI",
-        description: "Extract company information",
-        app: "AI",
-        appClass: "ai",
-      },
-      {
-        type: "03 · CREATE",
-        label: "Create in HubSpot",
-        description: "Add as new contact",
-        app: "H",
-        appClass: "hubspot",
-      },
-      {
-        type: "04 · NOTIFY",
-        label: "Send welcome email",
-        description: "Trigger personalized sequence",
-        app: "M",
-        appClass: "gmail",
-      },
-    ],
-  },
-  {
-    id: "leads",
-    name: "Lead Qualification",
-    status: "Live",
-    nodes: [
-      {
-        type: "01 · TRIGGER",
-        label: "Website",
-        description: "New lead submitted",
-        app: "W",
-        appClass: "web",
-      },
-      {
-        type: "02 · AI PROCESSING",
-        label: "Qualify lead",
-        description: "Analyze intent and company",
-        app: "AI",
-        appClass: "ai",
-      },
-      {
-        type: "03 · UPDATE",
-        label: "Update Salesforce",
-        description: "Set lead score",
-        app: "SF",
-        appClass: "salesforce",
-      },
-      {
-        type: "04 · NOTIFY",
-        label: "Notify sales",
-        description: "Send qualification result",
-        app: "S",
-        appClass: "slack",
-      },
-    ],
-  },
-  {
-    id: "invoices",
-    name: "Invoice Processing",
-    status: "Live",
-    nodes: [
-      {
-        type: "01 · TRIGGER",
-        label: "Gmail",
-        description: "New invoice received",
-        app: "M",
-        appClass: "gmail",
-      },
-      {
-        type: "02 · AI PROCESSING",
-        label: "Extract invoice data",
-        description: "Read amount and vendor",
-        app: "AI",
-        appClass: "ai",
-      },
-      {
-        type: "03 · UPDATE",
-        label: "Update database",
-        description: "Store invoice record",
-        app: "DB",
-        appClass: "database",
-      },
-      {
-        type: "04 · NOTIFY",
-        label: "Send approval",
-        description: "Request finance review",
-        app: "N",
-        appClass: "notion",
-      },
-    ],
-  },
-  {
-    id: "support",
-    name: "Support Routing",
-    status: "Draft",
-    nodes: [
-      {
-        type: "01 · TRIGGER",
-        label: "Intercom",
-        description: "New support request",
-        app: "I",
-        appClass: "intercom",
-      },
-      {
-        type: "02 · AI PROCESSING",
-        label: "Classify request",
-        description: "Understand customer intent",
-        app: "AI",
-        appClass: "ai",
-      },
-      {
-        type: "03 · ROUTE",
-        label: "Assign team",
-        description: "Route to correct queue",
-        app: "R",
-        appClass: "router",
-      },
-      {
-        type: "04 · NOTIFY",
-        label: "Update Slack",
-        description: "Notify support team",
-        app: "S",
-        appClass: "slack",
-      },
-    ],
-  },
-];
-
-const sidebarWorkflows = [
-  "Customer Onboarding",
-  "Lead Qualification",
-  "Invoice Processing",
-  "Support Routing",
-  "Data Sync",
-  "Recruiting Automation",
-];
-
-const integrations = [
-  { name: "Slack", category: "Communication", className: "slack" },
-  { name: "Notion", category: "Knowledge", className: "notion" },
-  { name: "Google Drive", category: "Storage", className: "drive" },
-  { name: "HubSpot", category: "CRM", className: "hubspot" },
-  { name: "Salesforce", category: "CRM", className: "salesforce" },
-];
 
 export default function Workspace() {
   const [activeWorkflow, setActiveWorkflow] = useState(0);
@@ -180,8 +25,24 @@ export default function Workspace() {
   const [isRunning, setIsRunning] = useState(false);
   const [deployed, setDeployed] = useState(true);
 
-  const workflow = workflows[activeWorkflow];
-  const node = workflow.nodes[selectedNode];
+  const {
+    intro,
+    navigation,
+    sidebar,
+    workflows,
+    sidebarWorkflows,
+    application,
+  } = workspaceContent;
+
+  const typedWorkflows = workflows as Workflow[];
+
+  const workflow =
+    typedWorkflows[activeWorkflow] ??
+    typedWorkflows[0];
+
+  const node =
+    workflow.nodes[selectedNode] ??
+    workflow.nodes[0];
 
   const runTest = () => {
     if (isRunning) return;
@@ -194,43 +55,40 @@ export default function Workspace() {
   };
 
   const selectWorkflow = (index: number) => {
+    if (!typedWorkflows[index]) return;
+
     setActiveWorkflow(index);
     setSelectedNode(0);
     setIsRunning(false);
   };
 
   return (
-    <section className="vanta-workspace" id="product">
+    <section
+      className="vanta-workspace"
+      id="product"
+    >
       <div className="vanta-workspace__grid" />
 
       <div className="vanta-workspace__container">
-        {/* =========================================
-            SECTION INTRO
-        ========================================== */}
+        {/* SECTION INTRO */}
 
         <div className="vanta-workspace__intro">
           <div className="vanta-workspace__eyebrow">
             <span />
-            <span>03</span>
-            <span>THE WORKSPACE</span>
+            <span>{intro.eyebrow.number}</span>
+            <span>{intro.eyebrow.label}</span>
           </div>
 
           <h2>
-            Your workflows,
+            {intro.title.lineOne}
             <br />
-            running in one place.
+            {intro.title.lineTwo}
           </h2>
 
-          <p>
-            Build, test and deploy automations that connect
-            your tools, use your data and handle the work
-            end-to-end.
-          </p>
+          <p>{intro.description}</p>
         </div>
 
-        {/* =========================================
-            APPLICATION
-        ========================================== */}
+        {/* APPLICATION */}
 
         <div className="vanta-workspace__app">
           {/* SIDEBAR */}
@@ -241,77 +99,80 @@ export default function Workspace() {
             </div>
 
             <nav className="vanta-workspace__nav">
-              <button>
-                <span>⌂</span>
-                Home
-              </button>
-
-              <button className="is-active">
-                <span>⌘</span>
-                Workflows
-              </button>
-
-              <button>
-                <span>◷</span>
-                Runs
-              </button>
-
-              <button>
-                <span>◇</span>
-                Integrations
-              </button>
-
-              <button>
-                <span>□</span>
-                Library
-              </button>
+              {navigation.map((item) => (
+                <button
+                  key={item.label}
+                  className={
+                    item.active
+                      ? "is-active"
+                      : ""
+                  }
+                  type="button"
+                >
+                  <span>{item.icon}</span>
+                  {item.label}
+                </button>
+              ))}
             </nav>
 
-            <button className="vanta-workspace__new">
+            <button
+              className="vanta-workspace__new"
+              type="button"
+            >
               <span>+</span>
-              New Workflow
+              {sidebar.newWorkflow}
             </button>
 
             <div className="vanta-workspace__sidebar-label">
-              WORKFLOWS
-              <span>⌕</span>
+              {sidebar.workflowsLabel}
+              <span>{sidebar.searchIcon}</span>
             </div>
 
             <div className="vanta-workspace__workflow-list">
-              {sidebarWorkflows.map((name, index) => {
-                const exists = workflows[index];
+              {sidebarWorkflows.map(
+                (name, index) => {
+                  const exists =
+                    typedWorkflows[index];
 
-                return (
-                  <button
-                    key={name}
-                    className={
-                      index === activeWorkflow
-                        ? "is-selected"
-                        : ""
-                    }
-                    onClick={() => {
-                      if (exists) {
-                        selectWorkflow(index);
+                  return (
+                    <button
+                      key={name}
+                      className={
+                        index === activeWorkflow
+                          ? "is-selected"
+                          : ""
                       }
-                    }}
-                    type="button"
-                  >
-                    <span className="workflow-dot" />
-                    {name}
-                  </button>
-                );
-              })}
+                      onClick={() => {
+                        if (exists) {
+                          selectWorkflow(index);
+                        }
+                      }}
+                      type="button"
+                    >
+                      <span className="workflow-dot" />
+                      {name}
+                    </button>
+                  );
+                }
+              )}
             </div>
 
             <div className="vanta-workspace__account">
-              <div>E</div>
+              <div>
+                {sidebar.account.initial}
+              </div>
 
               <span>
-                <strong>Enterprise Team</strong>
-                <small>Pro Plan</small>
+                <strong>
+                  {sidebar.account.name}
+                </strong>
+
+                <small>
+                  {sidebar.account.plan}
+                </small>
               </span>
 
-              <b>›</b>
+              <b>{sidebar.account.arrow}</b>
             </div>
           </aside>
 
@@ -323,7 +184,10 @@ export default function Workspace() {
             <header className="vanta-workspace__header">
               <div className="vanta-workspace__workflow-name">
                 <span />
-                <strong>{workflow.name}</strong>
+
+                <strong>
+                  {workflow.name}
+                </strong>
 
                 <span
                   className={
@@ -337,27 +201,43 @@ export default function Workspace() {
               </div>
 
               <div className="vanta-workspace__tabs">
-                <button className="is-active">
-                  Editor
-                </button>
-
-                <button>Runs</button>
-                <button>Analytics</button>
-                <button>Settings</button>
+                {application.tabs.map(
+                  (tab, index) => (
+                    <button
+                      key={tab}
+                      className={
+                        index === 0
+                          ? "is-active"
+                          : ""
+                      }
+                      type="button"
+                    >
+                      {tab}
+                    </button>
+                  )
+                )}
               </div>
 
               <div className="vanta-workspace__actions">
-                <button>↗ Share</button>
+                <button type="button">
+                  {application.actions.share}
+                </button>
 
                 <button
+                  type="button"
                   className={
                     deployed
                       ? "deploy-button is-deployed"
                       : "deploy-button"
                   }
-                  onClick={() => setDeployed(!deployed)}
+                  onClick={() =>
+                    setDeployed(!deployed)
+                  }
                 >
-                  {deployed ? "✓ Deployed" : "Deploy"}
+                  {deployed
+                    ? application.actions
+                        .deployed
+                    : application.actions.deploy}
                 </button>
               </div>
             </header>
@@ -368,72 +248,82 @@ export default function Workspace() {
               <div className="vanta-workspace__canvas-grid" />
 
               <div className="vanta-workflow">
-                {workflow.nodes.map((workflowNode, index) => (
-                  <div
-                    key={`${workflow.id}-${workflowNode.label}`}
-                    className={[
-                      "vanta-workflow-node",
-                      selectedNode === index
-                        ? "is-selected"
-                        : "",
-                      isRunning
-                        ? "is-running"
-                        : "",
-                    ]
-                      .filter(Boolean)
-                      .join(" ")}
-                    onClick={() =>
-                      setSelectedNode(index)
-                    }
-                  >
-                    <div className="vanta-workflow-node__top">
-                      <span>
-                        {workflowNode.type}
-                      </span>
-
-                      <i>•••</i>
-                    </div>
-
-                    <div className="vanta-workflow-node__body">
-                      <div
-                        className={[
-                          "vanta-workflow-node__icon",
-                          workflowNode.appClass,
-                        ].join(" ")}
-                      >
-                        {workflowNode.app}
-                      </div>
-
-                      <div>
-                        <strong>
-                          {workflowNode.label}
-                        </strong>
-
+                {workflow.nodes.map(
+                  (workflowNode, index) => (
+                    <div
+                      key={`${workflow.id}-${workflowNode.label}`}
+                      className={[
+                        "vanta-workflow-node",
+                        selectedNode === index
+                          ? "is-selected"
+                          : "",
+                        isRunning
+                          ? "is-running"
+                          : "",
+                      ]
+                        .filter(Boolean)
+                        .join(" ")}
+                      onClick={() =>
+                        setSelectedNode(index)
+                      }
+                    >
+                      <div className="vanta-workflow-node__top">
                         <span>
-                          {workflowNode.description}
+                          {workflowNode.type}
                         </span>
+
+                        <i>•••</i>
                       </div>
+
+                      <div className="vanta-workflow-node__body">
+                        <div
+                          className={[
+                            "vanta-workflow-node__icon",
+                            workflowNode.appClass,
+                          ].join(" ")}
+                        >
+                          {workflowNode.app}
+                        </div>
+
+                        <div>
+                          <strong>
+                            {workflowNode.label}
+                          </strong>
+
+                          <span>
+                            {
+                              workflowNode.description
+                            }
+                          </span>
+                        </div>
+                      </div>
+
+                      <span className="node-port node-port--left" />
+
+                      <span className="node-port node-port--right" />
+
+                      {index <
+                        workflow.nodes.length - 1 && (
+                        <span className="node-connection">
+                          <i />
+                        </span>
+                      )}
                     </div>
-
-                    <span className="node-port node-port--left" />
-                    <span className="node-port node-port--right" />
-
-                    {index <
-                      workflow.nodes.length - 1 && (
-                      <span className="node-connection">
-                        <i />
-                      </span>
-                    )}
-                  </div>
-                ))}
+                  )
+                )}
               </div>
 
               {/* NODE DETAILS */}
 
               <aside className="vanta-node-details">
                 <div className="vanta-node-details__header">
-                  <span>NODE DETAILS</span>
-                  <button>•••</button>
+                  <span>
+                    {application.nodeDetails.title}
+                  </span>
+
+                  <button type="button">
+                    {application.nodeDetails.menu}
+                  </button>
                 </div>
 
                 <div className="vanta-node-details__app">
@@ -448,49 +338,72 @@ export default function Workspace() {
 
                   <div>
                     <strong>{node.label}</strong>
+
                     <span>{node.type}</span>
                   </div>
                 </div>
 
                 <p>
                   {node.description}. This action is
-                  automatically handled by VANTA when
-                  the workflow reaches this step.
+                  automatically handled by VANTA
+                  when the workflow reaches this
+                  step.
                 </p>
 
                 <label>
-                  CHANNEL
+                  {application.nodeDetails.channel}
 
                   <div className="vanta-select">
                     {node.appClass === "slack"
                       ? "#leads"
-                      : "Connected source"}
+                      : application.nodeDetails
+                          .defaultChannel}
 
                     <span>⌄</span>
                   </div>
                 </label>
 
                 <label>
-                  TRIGGER ON
+                  {application.nodeDetails.triggerOn}
 
                   <div className="vanta-select">
-                    New event
+                    {
+                      application.nodeDetails
+                        .defaultTrigger
+                    }
+
                     <span>⌄</span>
                   </div>
                 </label>
 
                 <div className="vanta-toggle-row">
-                  <span>Include context data</span>
+                  <span>
+                    {
+                      application.nodeDetails
+                        .includeContext
+                    }
+                  </span>
 
-                  <button className="vanta-toggle is-on">
+                  <button
+                    type="button"
+                    className="vanta-toggle is-on"
+                  >
                     <i />
                   </button>
                 </div>
 
                 <div className="vanta-toggle-row">
-                  <span>Continue on error</span>
+                  <span>
+                    {
+                      application.nodeDetails
+                        .continueOnError
+                    }
+                  </span>
 
-                  <button className="vanta-toggle">
+                  <button
+                    type="button"
+                    className="vanta-toggle"
+                  >
                     <i />
                   </button>
                 </div>
@@ -502,46 +415,46 @@ export default function Workspace() {
                 <div className="vanta-panel-heading">
                   <div>
                     <span className="live-dot" />
-                    EXECUTION LOG
+                    {
+                      application.execution.title
+                    }
                   </div>
 
                   <span className="live-label">
-                    ● Live
+                    {application.execution.live}
                   </span>
                 </div>
 
                 <div className="vanta-log-list">
-                  <LogRow
-                    time="10:42:18"
-                    text="Workflow started"
-                    detail={workflow.name}
-                  />
+                  {application.execution.rows.map(
+                    (row, index) => {
+                      let text = row.text ?? "";
 
-                  <LogRow
-                    time="10:42:19"
-                    text={`${node.label} completed`}
-                    detail="Processing finished"
-                  />
+                      if (
+                        "textFrom" in row &&
+                        row.textFrom === "node"
+                      ) {
+                        text = `${node.label} completed`;
+                      }
 
-                  <LogRow
-                    time="10:42:19"
-                    text="Data validated"
-                    detail="VANTA Core"
-                  />
+                      if (
+                        "textFrom" in row &&
+                        row.textFrom === "workflow"
+                      ) {
+                        text = "Workflow started";
+                      }
 
-                  <LogRow
-                    time="10:42:20"
-                    text="Action executed"
-                    detail="Success"
-                    success
-                  />
-
-                  <LogRow
-                    time="10:42:21"
-                    text="Workflow completed"
-                    detail="Success"
-                    success
-                  />
+                      return (
+                        <LogRow
+                          key={`${row.time}-${index}`}
+                          time={row.time}
+                          text={text}
+                          detail={row.detail}
+                          success={row.success}
+                        />
+                      );
+                    }
+                  )}
                 </div>
               </div>
 
@@ -549,15 +462,19 @@ export default function Workspace() {
 
               <div className="vanta-test">
                 <div className="vanta-panel-heading">
-                  <div>TEST RUN</div>
+                  <div>
+                    {application.testRun.title}
+                  </div>
 
                   <button
+                    type="button"
                     onClick={runTest}
                     disabled={isRunning}
                   >
                     {isRunning
-                      ? "Running..."
-                      : "Run test  ▶"}
+                      ? application.testRun
+                          .running
+                      : application.testRun.run}
                   </button>
                 </div>
 
@@ -580,13 +497,10 @@ export default function Workspace() {
                         </strong>
 
                         <small>
-                          {index === 0
-                            ? "0.3s"
-                            : index === 1
-                              ? "1.1s"
-                              : index === 2
-                                ? "0.8s"
-                                : "0.4s"}
+                          {
+                            application.testRun
+                              .durations[index]
+                          }
                         </small>
                       </div>
                     )
@@ -604,7 +518,7 @@ export default function Workspace() {
 type LogRowProps = {
   time: string;
   text: string;
-  detail: string;
+  detail?: string;
   success?: boolean;
 };
 
@@ -616,15 +530,21 @@ function LogRow({
 }: LogRowProps) {
   return (
     <div className="vanta-log-row">
-      <span className="vanta-log-arrow">›</span>
+      <span className="vanta-log-arrow">
+        ›
+      </span>
 
       <time>{time}</time>
 
       <strong>{text}</strong>
 
-      <span className={success ? "success" : ""}>
-        {detail}
-      </span>
+<span
+  className={
+    success ? "success" : ""
+  }
+>
+  {detail ?? ""}
+</span>
     </div>
   );
 }

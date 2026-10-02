@@ -2,14 +2,18 @@ import { useState } from "react";
 import "./Header.css";
 
 const navigation = [
+  { label: "How It Works", href: "#how-it-works" },
   { label: "Product", href: "#product" },
-  { label: "Solutions", href: "#solutions" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "About", href: "#about" },
+  { label: "Scale", href: "#scale" },
+  { label: "Work In Context", href: "#use-cases" },
 ];
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
 
   return (
     <header className="vanta-header">
@@ -18,11 +22,15 @@ export default function Header() {
           href="#top"
           className="vanta-header__logo"
           aria-label="VANTA home"
+          onClick={closeMenu}
         >
           VANTA
         </a>
 
-        <nav className="vanta-header__nav" aria-label="Main navigation">
+        <nav
+          className="vanta-header__nav"
+          aria-label="Main navigation"
+        >
           {navigation.map((item) => (
             <a
               key={item.label}
@@ -34,7 +42,10 @@ export default function Header() {
           ))}
         </nav>
 
-        <a href="#contact" className="vanta-header__cta">
+        <a
+          href="#vanta-final-cta"
+          className="vanta-header__cta"
+        >
           <span>Get Started</span>
           <span aria-hidden="true">→</span>
         </a>
@@ -44,7 +55,9 @@ export default function Header() {
           className={`vanta-header__menu ${
             menuOpen ? "is-open" : ""
           }`}
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-label={
+            menuOpen ? "Close menu" : "Open menu"
+          }
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((open) => !open)}
         >
@@ -63,7 +76,7 @@ export default function Header() {
             <a
               key={item.label}
               href={item.href}
-              onClick={() => setMenuOpen(false)}
+              onClick={closeMenu}
             >
               <span>{item.label}</span>
               <span aria-hidden="true">↗</span>
@@ -72,11 +85,11 @@ export default function Header() {
         </nav>
 
         <a
-          href="#contact"
+          href="#vanta-final-cta"
           className="vanta-header__mobile-cta"
-          onClick={() => setMenuOpen(false)}
+          onClick={closeMenu}
         >
-          Get Started
+          <span>Get Started</span>
           <span aria-hidden="true">→</span>
         </a>
       </div>

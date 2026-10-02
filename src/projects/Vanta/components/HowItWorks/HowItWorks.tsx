@@ -1,119 +1,106 @@
 import { useState } from "react";
+
+import { howItWorksContent } from "./content";
+
 import "./HowItWorks.css";
-
-type WorkflowStep = {
-  number: string;
-  title: string;
-  description: string;
-};
-
-const steps: WorkflowStep[] = [
-  {
-    number: "01",
-    title: "Connect your tools",
-    description:
-      "Link your apps and give VANTA access to the data your workflows depend on.",
-  },
-  {
-    number: "02",
-    title: "Define your workflows",
-    description:
-      "Set rules, conditions, and outcomes in plain language.",
-  },
-  {
-    number: "03",
-    title: "VANTA executes",
-    description:
-      "It handles the work, keeps everything in sync, and adapts as your data changes.",
-  },
-];
 
 export default function HowItWorks() {
   const [activeStep, setActiveStep] = useState(0);
 
   return (
-    <section className="vanta-how" id="how-it-works">
+    <section
+      className="vanta-how"
+      id="how-it-works"
+    >
       <div className="vanta-how__grid" />
 
       <div className="vanta-how__container">
-        {/* =========================================
-            LEFT
-        ========================================== */}
-
+        {/* LEFT */}
         <div className="vanta-how__content">
           <div className="vanta-how__eyebrow">
             <span className="vanta-how__eyebrow-line" />
-            <span>02</span>
-            <span>HOW IT WORKS</span>
+
+            <span>
+              {howItWorksContent.eyebrow.number}
+            </span>
+
+            <span>
+              {howItWorksContent.eyebrow.label}
+            </span>
           </div>
 
           <h2 className="vanta-how__title">
-            From events
-            <br />
-            to execution.
+            {howItWorksContent.title}
           </h2>
 
           <p className="vanta-how__description">
-            VANTA turns your disconnected tools into a single,
-            intelligent system. It listens, understands, and takes
-            action — so your workflows run without manual work.
+            {howItWorksContent.description}
           </p>
 
           <div className="vanta-how__steps">
-            {steps.map((step, index) => (
-              <button
-                key={step.number}
-                type="button"
-                className={[
-                  "vanta-how__step",
-                  activeStep === index
-                    ? "vanta-how__step--active"
-                    : "",
-                ]
-                  .filter(Boolean)
-                  .join(" ")}
-                onMouseEnter={() => setActiveStep(index)}
-                onFocus={() => setActiveStep(index)}
-                onClick={() => setActiveStep(index)}
-              >
-                <span className="vanta-how__step-number">
-                  {step.number}
-                </span>
+            {howItWorksContent.steps.map(
+              (step, index) => (
+                <button
+                  key={step.number}
+                  type="button"
+                  className={[
+                    "vanta-how__step",
+                    activeStep === index
+                      ? "vanta-how__step--active"
+                      : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
+                  onMouseEnter={() =>
+                    setActiveStep(index)
+                  }
+                  onFocus={() =>
+                    setActiveStep(index)
+                  }
+                  onClick={() =>
+                    setActiveStep(index)
+                  }
+                >
+                  <span className="vanta-how__step-number">
+                    {step.number}
+                  </span>
 
-                <span className="vanta-how__step-content">
-                  <strong>{step.title}</strong>
-                  <span>{step.description}</span>
-                </span>
-              </button>
-            ))}
+                  <span className="vanta-how__step-content">
+                    <strong>{step.title}</strong>
+
+                    <span>
+                      {step.description}
+                    </span>
+                  </span>
+                </button>
+              )
+            )}
           </div>
 
           <a
-            href="#product"
+            href={howItWorksContent.cta.href}
             className="vanta-how__cta"
           >
-            <span>View workflow</span>
+            <span>{howItWorksContent.cta.label}</span>
             <span>→</span>
           </a>
         </div>
 
-        {/* =========================================
-            RIGHT — EXECUTION SYSTEM
-        ========================================== */}
-
+        {/* RIGHT — EXECUTION SYSTEM */}
         <div className="vanta-how__visual">
           <div className="vanta-how__visual-grid" />
 
           {/* TOP EVENT */}
-
           <div className="vanta-how__event-card">
             <div className="vanta-how__card-top">
               <div className="vanta-how__card-status">
                 <span />
-                EVENT DETECTED
+                {howItWorksContent.event.status}
               </div>
 
-              <span>10:24:12</span>
+              <span>
+                {howItWorksContent.event.time}
+              </span>
             </div>
 
             <div className="vanta-how__event-body">
@@ -122,22 +109,27 @@ export default function HowItWorks() {
               </div>
 
               <div>
-                <strong>Slack</strong>
-                <span>New message in #leads</span>
+                <strong>
+                  {howItWorksContent.event.application}
+                </strong>
+
+                <span>
+                  {howItWorksContent.event.description}
+                </span>
               </div>
 
-              <span className="vanta-how__event-arrow">→</span>
+              <span className="vanta-how__event-arrow">
+                →
+              </span>
             </div>
           </div>
 
           {/* CONNECTION 1 */}
-
           <div className="vanta-how__connector vanta-how__connector--one">
             <span />
           </div>
 
           {/* PROCESSING */}
-
           <div
             className={[
               "vanta-how__processing",
@@ -151,10 +143,12 @@ export default function HowItWorks() {
             <div className="vanta-how__card-top">
               <div className="vanta-how__card-status">
                 <span />
-                AI PROCESSING
+                {howItWorksContent.processing.status}
               </div>
 
-              <span>10:24:12</span>
+              <span>
+                {howItWorksContent.processing.time}
+              </span>
             </div>
 
             <div className="vanta-how__processing-body">
@@ -172,50 +166,63 @@ export default function HowItWorks() {
               </div>
 
               <div className="vanta-how__core-info">
-                <strong>VANTA CORE</strong>
-                <span>PROCESSING CONTEXT...</span>
+                <strong>
+                  {howItWorksContent.processing.coreName}
+                </strong>
+
+                <span>
+                  {howItWorksContent.processing.coreStatus}
+                </span>
               </div>
 
               <div className="vanta-how__checks">
-                <div className="is-done">
-                  <span>✓</span>
-                  Analyze content
-                </div>
+                {howItWorksContent.processing.checks.map(
+                  (check) => {
+                    const className =
+                      check.status === "done"
+                        ? "is-done"
+                        : check.status === "active"
+                          ? "is-active"
+                          : "";
 
-                <div className="is-done">
-                  <span>✓</span>
-                  Identify intent
-                </div>
+                    const icon =
+                      check.status === "done"
+                        ? "✓"
+                        : check.status === "active"
+                          ? "●"
+                          : "○";
 
-                <div className="is-active">
-                  <span>●</span>
-                  Find related data
-                </div>
-
-                <div>
-                  <span>○</span>
-                  Execute workflow
-                </div>
+                    return (
+                      <div
+                        key={check.label}
+                        className={className}
+                      >
+                        <span>{icon}</span>
+                        {check.label}
+                      </div>
+                    );
+                  }
+                )}
               </div>
             </div>
           </div>
 
           {/* CONNECTION 2 */}
-
           <div className="vanta-how__connector vanta-how__connector--two">
             <span />
           </div>
 
           {/* OUTPUT */}
-
           <div className="vanta-how__action-card">
             <div className="vanta-how__card-top">
               <div className="vanta-how__card-status">
                 <span />
-                ACTION EXECUTED
+                {howItWorksContent.action.status}
               </div>
 
-              <span>10:24:13</span>
+              <span>
+                {howItWorksContent.action.time}
+              </span>
             </div>
 
             <div className="vanta-how__action-body">
@@ -224,30 +231,42 @@ export default function HowItWorks() {
               </div>
 
               <div>
-                <strong>Notion</strong>
-                <span>New page created</span>
+                <strong>
+                  {howItWorksContent.action.application}
+                </strong>
+
+                <span>
+                  {howItWorksContent.action.description}
+                </span>
               </div>
 
               <div className="vanta-how__success">
                 <span>✓</span>
-                Success
+                {howItWorksContent.action.result}
               </div>
 
-              <span className="vanta-how__event-arrow">→</span>
+              <span className="vanta-how__event-arrow">
+                →
+              </span>
             </div>
           </div>
 
           {/* METRICS */}
-
           <div className="vanta-how__metrics">
             <div className="vanta-how__metrics-header">
               <span className="vanta-how__metrics-dot" />
-              REAL-TIME EXECUTION
+
+              {howItWorksContent.metrics.label}
             </div>
 
             <div className="vanta-how__metric">
-              <strong>1,842</strong>
-              <span>EVENTS / SEC</span>
+              <strong>
+                {howItWorksContent.metrics.eventsPerSecond.value}
+              </strong>
+
+              <span>
+                {howItWorksContent.metrics.eventsPerSecond.label}
+              </span>
 
               <div className="vanta-how__bars">
                 <i />
@@ -272,8 +291,13 @@ export default function HowItWorks() {
             </div>
 
             <div className="vanta-how__metric">
-              <strong>42ms</strong>
-              <span>AVG LATENCY</span>
+              <strong>
+                {howItWorksContent.metrics.averageLatency.value}
+              </strong>
+
+              <span>
+                {howItWorksContent.metrics.averageLatency.label}
+              </span>
 
               <div className="vanta-how__line-chart">
                 <svg
@@ -281,16 +305,19 @@ export default function HowItWorks() {
                   preserveAspectRatio="none"
                   aria-hidden="true"
                 >
-                  <path
-                    d="M0 45 C20 42 22 51 38 42 C53 33 55 43 69 36 C84 28 87 39 101 31 C115 23 119 34 132 27 C147 20 149 30 163 21 C179 10 181 28 194 17 C205 8 211 15 220 8"
-                  />
+                  <path d="M0 45 C20 42 22 51 38 42 C53 33 55 43 69 36 C84 28 87 39 101 31 C115 23 119 34 132 27 C147 20 149 30 163 21 C179 10 181 28 194 17 C205 8 211 15 220 8" />
                 </svg>
               </div>
             </div>
 
             <div className="vanta-how__metric vanta-how__metric--last">
-              <strong>99.98%</strong>
-              <span>SUCCESS RATE</span>
+              <strong>
+                {howItWorksContent.metrics.successRate.value}
+              </strong>
+
+              <span>
+                {howItWorksContent.metrics.successRate.label}
+              </span>
 
               <div className="vanta-how__success-bars">
                 <i />
@@ -313,18 +340,22 @@ export default function HowItWorks() {
           </div>
 
           {/* EVENT LOG */}
-
           <div className="vanta-how__event-log">
             <span className="vanta-how__event-log-dot" />
 
             <div>
-              <span>EXECUTION LOG</span>
+              <span>
+                {howItWorksContent.executionLog.label}
+              </span>
+
               <strong>
-                workflow.execute
+                {howItWorksContent.executionLog.event}
               </strong>
             </div>
 
-            <em>SUCCESS</em>
+            <em>
+              {howItWorksContent.executionLog.status}
+            </em>
           </div>
         </div>
       </div>

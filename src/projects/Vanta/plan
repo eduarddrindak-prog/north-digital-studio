@@ -1,0 +1,1024 @@
+VANTA — ПОЛНЫЙ ПЛАН ПОСЛЕ СОЗДАНИЯ HOME
+Общая стратегия
+
+Сейчас VANTA находится здесь:
+
+IDEA
+  ↓
+VIBE
+  ↓
+ARCHITECTURE
+  ↓
+SECTION MOCKUPS
+  ↓
+SECTION IMPLEMENTATION
+  ↓
+7 SECTIONS COMPLETE
+  ↓
+>>> МЫ ЗДЕСЬ
+
+Дальше:
+
+01. FIX 3 KNOWN PROBLEMS
+        ↓
+02. FULL CODE / ARCHITECTURE REVIEW
+        ↓
+03. CONTENT ARCHITECTURE
+        ↓
+04. NORTH BASE INTEGRATION REVIEW
+        ↓
+05. CODE STANDARDIZATION
+        ↓
+06. SECTION-BY-SECTION VISUAL REVIEW
+        ↓
+07. SECTION-BY-SECTION FUNCTIONAL REVIEW
+        ↓
+08. WHOLE-PAGE FINAL REVIEW
+        ↓
+09. DOCUMENTATION / WORKFLOW REDESIGN
+        ↓
+10. FINAL PROJECT CONTEXT
+        ↓
+VANTA HOME = APPROVED
+
+И принципиально:
+
+На этапе Code Review мы НЕ меняем внешний вид и НЕ меняем поведение сайта, если это не требуется для исправления архитектурной проблемы.
+
+То есть сначала приводим код в порядок, не превращая code review в ещё один дизайн-редизайн.
+
+PHASE 01 — ИСПРАВИТЬ 3 УЖЕ НАЙДЕННЫЕ ПРОБЛЕМЫ
+
+Сначала закрываем то, что уже объективно нашли.
+
+01. Scale Across Company
+
+Сейчас там используются внешние office/team фотографии.
+
+Проблема:
+
+VANTA brief
+      ↓
+technical / infrastructure / system
+      ↓
+NO stock office photography
+
+А текущая секция нарушает это правило.
+
+Что делаем
+
+Сохраняем:
+
+композицию;
+четыре команды;
+интерактив;
+тексты;
+общую роль секции.
+
+Меняем только визуальный способ представления команд:
+
+Operations
+Sales
+Finance
+Support
+
+→ технические workflow-визуализации.
+
+Не переделываем секцию с нуля.
+
+02. Header / Footer navigation
+
+Проверяем все ссылки:
+
+Product
+Solutions
+Pricing
+About
+Get Started
+
+и приводим их к реально существующим секциям/действиям VANTA.
+
+Не создаём новые страницы просто для того, чтобы старые ссылки куда-то вели.
+
+03. CTA navigation
+
+Проверяем:
+
+Hero CTA
+Final CTA
+Header CTA
+Footer CTA
+
+и приводим их к одной логике.
+
+Особенно исключаем случай:
+
+VANTA
+   ↓
+/contact
+   ↓
+North Studio Contact
+
+если это не задумано специально.
+
+PHASE 02 — FULL CODE REVIEW
+
+Вот здесь начинается совершенно другой тип работы.
+
+Не:
+
+«сделай красивее».
+
+А:
+
+«проверь, насколько существующая реализация соответствует нашему стандарту».
+
+2.1 Проверить структуру проекта
+
+Проверяем фактическое:
+
+Vanta/
+├── assets/
+├── content/
+├── components/
+├── layouts/
+├── pages/
+└── styles/
+
+И внутри:
+
+components/
+├── Header/
+├── Footer/
+├── Hero/
+├── HowItWorks/
+├── Workspace/
+├── ScaleAcrossCompany/
+├── BuiltToRun/
+├── WorkInContext/
+└── FinalCTA/
+
+Проверяем:
+
+правильные ли места файлов;
+нет ли компонентов, лежащих не там;
+нет ли дубликатов;
+нет ли ненужных файлов;
+нет ли компонентов, которые должны быть локальными;
+нет ли вещей, которые случайно стали глобальными.
+PHASE 03 — CONTENT ARCHITECTURE
+
+Это одна из главных вещей, которую ты сейчас правильно заметил.
+
+Сейчас home.ts содержит в основном Hero:
+
+homeContent
+└── hero
+
+а большая часть текста и данных остальных секций находится непосредственно внутри .tsx.
+
+Нужно привести это к нашему стандарту:
+
+content/
+└── home.ts
+
+и примерно:
+
+homeContent = {
+    hero: {...},
+    howItWorks: {...},
+    workspace: {...},
+    scaleAcrossCompany: {...},
+    builtToRun: {...},
+    workInContext: {...},
+    finalCTA: {...}
+}
+Но важно
+
+Мы не будем механически выносить вообще каждую строку в content.
+
+Например:
+
+<div className="workflow-node">
+
+не является content.
+
+А:
+
+"Customer Onboarding"
+"Analyze with AI"
+"Create in HubSpot"
+
+— content.
+
+То есть правило:
+
+CONTENT
+→ content/*.ts
+
+STRUCTURE
+→ component.tsx
+
+VISUAL
+→ component.css
+
+LOGIC / STATE
+→ component.tsx
+PHASE 04 — NORTH BASE AUDIT
+
+Вот это я бы сделал отдельным полноценным этапом.
+
+Не просто:
+
+«давай где-нибудь Button импортируем».
+
+А реально проверить каждую существующую North Base primitive, которая потенциально применима VANTA.
+
+Наша архитектура должна быть:
+
+NORTH BASE
+     ↓
+PRIMITIVES
+     ↓
+VANTA COMPONENTS
+     ↓
+VANTA PAGES
+
+а не:
+
+VANTA
+└── всё написано самостоятельно
+4.1 Составить North Base inventory
+
+Нужно открыть актуальный North Base и составить таблицу:
+
+Component	Exists	VANTA uses	Should use	Notes
+Button	✅	?	?	API
+Link	?	?	?	API
+Input	✅	?	?	
+Label	✅	?	?	
+Select	✅	?	?	
+Textarea	✅	?	?	
+SectionContainer	✅	?	?	
+Reveal	?	?	?	
+...	...	...	...	...
+
+Но мы не будем добавлять North Base-компоненты просто ради использования.
+
+Если VANTA не нуждается в Input — не надо вставлять Input.
+
+PHASE 05 — NORTH BASE USAGE RULES
+
+Здесь нужно будет зафиксировать уже не только список компонентов, но и как ими пользоваться.
+
+Например:
+
+Button
+├── когда использовать
+├── когда НЕ использовать
+├── какие variants существуют
+├── какие sizes существуют
+├── как передавать href
+├── как использовать className
+└── когда вместо него нужен обычный link
+
+И так для каждого реально полезного primitive.
+
+Это очень важно для будущего AI.
+
+Чтобы следующий AI не делал:
+
+<Link variant="accent" size="lg" withArrow />
+
+если такого API вообще не существует.
+
+Он должен открыть North Base reference и увидеть реальный API.
+
+PHASE 06 — CODE STANDARD
+
+Вот здесь я предлагаю сформировать наш настоящий NORTH CODE STANDARD.
+
+Он должен описывать не дизайн, а именно правила написания проекта.
+
+6.1 Naming
+
+Например:
+
+PascalCase
+
+для React components.
+
+camelCase
+
+для data/variables.
+
+kebab-case
+
+или согласованный формат для CSS classes.
+
+6.2 Component structure
+
+Стандарт:
+
+Component/
+├── Component.tsx
+└── Component.css
+
+Если есть локальная сложная часть:
+
+Component/
+├── Component.tsx
+├── Component.css
+└── LocalThing.tsx
+6.3 CSS
+
+Определяем:
+
+naming;
+nesting;
+media queries;
+использование tokens;
+допустимость hardcoded values;
+z-index;
+animation;
+responsive;
+CSS variables.
+6.4 Tokens
+
+Правило:
+
+если значение является частью design language
+→ token
+
+если это уникальная геометрия конкретной композиции
+→ local CSS
+
+Например:
+
+color: var(--color-accent);
+
+да.
+
+Но:
+
+--invoice-panel-offset: 37px;
+
+не обязательно тащить в global tokens.
+
+PHASE 07 — REUSABILITY AUDIT
+
+Проверяем:
+
+Где мы случайно написали одно и то же два раза?
+
+Например:
+
+TechnicalLabel
+
+может быть реализован в нескольких секциях.
+
+Но тут важно не переусердствовать.
+
+Правило:
+
+1 use
+→ local
+
+2–3 meaningful uses
+→ рассмотреть shared component
+
+несколько проектов
+→ рассмотреть North Base
+
+Это соответствует нашей идее, что North Base должна расти из реального опыта, а не заранее превращаться в огромную design system.
+
+PHASE 08 — DATA / LOGIC / PRESENTATION AUDIT
+
+Для каждой секции отдельно проверяем:
+
+CONTENT
+LOGIC
+STRUCTURE
+STYLE
+
+Например:
+
+плохо
+const scenarios = [
+  {
+    title: "Invoice Review",
+    ...
+  }
+];
+
+если это контент.
+
+лучше
+content/home.ts
+
+а компонент:
+
+import { homeContent } from "../../content/home";
+
+Но:
+
+const [activeScenario, setActiveScenario] = useState(0);
+
+остаётся в компоненте.
+
+Потому что это logic, а не content.
+
+PHASE 09 — MOTION AUDIT
+
+Проверяем весь VANTA:
+
+Reveal
+Hover
+Transition
+Scroll
+Pulse
+Counter
+Network animation
+Workflow animation
+
+Цель:
+
+нет ли дублирования;
+нет ли анимации ради анимации;
+нет ли слишком разных easing;
+используются ли VANTA tokens;
+работает ли reduced motion;
+не создаёт ли animation performance problems.
+PHASE 10 — RESPONSIVE AUDIT
+
+Пока не улучшаем дизайн.
+
+Просто проверяем код:
+
+Desktop
+Tablet
+Mobile
+
+для каждой секции.
+
+Проверяем:
+
+overflow;
+fixed widths;
+min-width;
+absolute elements;
+typography;
+grids;
+buttons;
+navigation;
+interactive UI.
+
+Если найдём очевидный bug — фиксируем.
+
+Но:
+
+«на мобильном я бы сделал композицию красивее»
+
+не исправляем здесь.
+
+Это будет позже.
+
+PHASE 11 — ACCESSIBILITY / HTML AUDIT
+
+Проверяем:
+
+semantic HTML;
+buttons vs links;
+keyboard interaction;
+focus-visible;
+aria-label;
+aria-expanded;
+headings hierarchy;
+images alt;
+interactive elements;
+reduced motion.
+
+Это тоже отдельный этап.
+
+PHASE 12 — PERFORMANCE AUDIT
+
+Проверяем:
+
+ненужные imports;
+тяжёлые изображения;
+бесконечные animations;
+unnecessary rerenders;
+event listeners;
+timers;
+intervals;
+effects;
+DOM complexity.
+
+Особенно VANTA, потому что здесь много визуальных анимаций.
+
+PHASE 13 — VISUAL REVIEW КАЖДОЙ СЕКЦИИ
+
+И только после всего code review ты начинаешь своё ревью внешнего вида.
+
+Это уже совершенно другой режим.
+
+SECTION 01
+↓
+visual review
+↓
+functional review
+↓
+fix
+↓
+screenshot
+↓
+approve
+
+SECTION 02
+↓
+...
+
+И здесь уже разрешены:
+
+spacing fixes;
+typography fixes;
+alignment;
+proportions;
+visual hierarchy;
+animation timing;
+hover;
+mobile composition;
+small interaction fixes.
+PHASE 14 — ТВОЁ РЕВЬЮ 01–07
+
+Для каждой секции делаем отдельный чеклист.
+
+Например Hero
+VISUAL
+□ typography
+□ spacing
+□ network
+□ node sizes
+□ hierarchy
+□ buttons
+□ status
+□ trust strip
+
+FUNCTIONAL
+□ node hover
+□ CTA
+□ navigation
+□ animation
+□ responsive
+□ reduced motion
+
+После этого:
+
+APPROVED
+
+И больше не трогаем Hero без серьёзной причины.
+
+PHASE 15 — WHOLE PAGE REVIEW №2
+
+После того как ты отдельно проверил все 7 секций, снова смотрим:
+
+01 → 02
+02 → 03
+03 → 04
+04 → 05
+05 → 06
+06 → 07
+
+Проверяем уже итог после всех мелких исправлений.
+
+Особенно:
+
+rhythm;
+section heights;
+repetition;
+transitions;
+information flow;
+visual weight;
+CTA;
+mobile;
+consistency.
+PHASE 16 — ФИНАЛЬНЫЙ CODE REVIEW
+
+После визуальных исправлений снова один маленький технический проход.
+
+Потому что после 20 CSS fixes легко получить:
+
+unused class
+duplicate rule
+dead variable
+old import
+obsolete content
+
+Проверяем:
+
+TS
+TSX
+CSS
+content
+imports
+assets
+routes
+PHASE 17 — СОЗДАНИЕ НАСТОЯЩЕГО NORTH WORKFLOW
+
+Вот здесь я полностью согласен с тобой:
+
+наши нынешние 7 scripts недостаточны.
+
+Они очень хорошо описывают:
+
+mockup
+→ analyze
+→ revise
+→ code
+→ fix
+→ next section
+→ context
+
+Но они почти ничего не говорят будущему AI о том:
+
+как писать код;
+как использовать North Base;
+где хранить content;
+как работать с tokens;
+как принимать архитектурные решения;
+как проверять существующий код;
+как не ломать проект;
+как восстанавливать контекст;
+как проводить final audit.
+
+То есть они сейчас являются скорее Section Production Workflow, а не полным North Development Standard.
+
+PHASE 18 — НОВАЯ СТРУКТУРА WORKFLOW
+
+Я бы в будущем сделал не просто 7 огромных скриптов, а несколько уровней.
+
+LEVEL 1 — PROJECT INITIALIZATION
+01 — Restore Context
+02 — Understand Project
+03 — Define / Verify Vibe
+04 — Architecture Audit
+05 — North Base Audit
+LEVEL 2 — PAGE DESIGN
+06 — Page Concept
+07 — Section Strategy
+08 — Visual Mockup
+09 — Mockup Analysis
+10 — Revised Mockup
+LEVEL 3 — IMPLEMENTATION
+11 — Implementation Plan
+12 — Code Section
+13 — Content Architecture
+14 — North Base Integration
+15 — Responsive
+16 — Interaction
+LEVEL 4 — REVIEW
+17 — Section Review
+18 — Functional Review
+19 — Accessibility Review
+20 — Performance Review
+21 — Whole Page Review
+LEVEL 5 — MAINTENANCE
+22 — Code Review
+23 — Refactor
+24 — Documentation
+25 — Context Update
+26 — Changelog
+27 — Next Step
+
+Это пока не финальная версия workflow. Мы сформируем её после VANTA code review, потому что именно реальный проект покажет, какие правила нам действительно нужны.
+
+PHASE 19 — СОЗДАТЬ NORTH BASE REFERENCE
+
+Я бы сделал отдельный документ:
+
+NORTH_BASE.md
+
+или часть 03_PROJECT_BIBLE.
+
+Там:
+
+# North Base
+
+## Purpose
+
+## Architecture
+
+## Principles
+
+## Components
+
+### Button
+API
+Variants
+Sizes
+Examples
+When to use
+
+### Link
+...
+
+### Card
+...
+
+### Input
+...
+
+### Reveal
+...
+
+## Adding a new component
+
+## When NOT to add a component
+
+## North Base vs Local Component
+
+## North Base vs Site Design System
+
+Это будет очень полезно будущему AI.
+
+PHASE 20 — СОЗДАТЬ NORTH CODE STANDARD
+
+Отдельно:
+
+NORTH_CODE_STANDARD.md
+
+или встроить в 03_PROJECT_BIBLE, если решим не плодить файлы.
+
+Там:
+
+Architecture
+Naming
+Components
+CSS
+Tokens
+Content
+State
+Effects
+Animation
+Responsive
+Accessibility
+Performance
+Imports
+File structure
+Refactoring
+Reusable components
+North Base
+PHASE 21 — ПЕРЕПИСАТЬ 7 ДОКУМЕНТОВ
+
+И вот только после всей этой работы мы нормально обновляем:
+
+01_PROJECT_VISION.md
+02_PROJECT_STATE.md
+03_PROJECT_BIBLE.md
+04_CHANGELOG.md
+05_PROMPTS.md
+06_AI_CONTEXT.md
+07_TARGET_STATE.md
+
+Причём не будем просто запихивать всё во все семь файлов.
+
+Предлагаемая роль документов
+01 — PROJECT VISION
+
+Почему существует проект.
+
+Не код.
+
+02 — PROJECT STATE
+
+Где проект находится сейчас.
+
+Например:
+
+VANTA Home
+7/7 sections
+Code audit complete
+Visual audit in progress
+...
+03 — PROJECT BIBLE
+
+Постоянные правила проекта.
+
+Сюда:
+
+North principles;
+architecture;
+content architecture;
+coding rules;
+North Base principles;
+design principles;
+AI rules.
+04 — CHANGELOG
+
+История.
+
+Не текущий контекст.
+
+2026-10-02
+- completed VANTA Home
+- completed architecture review
+- ...
+05 — PROMPTS
+
+Операционные инструкции AI.
+
+Именно сюда наши новые workflow scripts.
+
+06 — AI CONTEXT
+
+Как AI должен работать с проектом.
+
+Например:
+
+read docs
+→ inspect actual files
+→ never guess
+→ identify current state
+→ follow code standard
+→ use North Base when appropriate
+→ update context after meaningful work
+07 — TARGET STATE
+
+Куда проект должен прийти.
+
+Не путать с текущим состоянием.
+
+PHASE 22 — СОЗДАТЬ FINAL HANDOFF
+
+В конце нам нужен такой результат:
+
+NORTH PROJECT
+│
+├── Vision
+├── Current State
+├── Bible
+├── Changelog
+├── Workflow
+├── AI Context
+├── Target State
+│
+├── Code Standard
+├── North Base Reference
+└── VANTA Context
+
+Чтобы новый AI мог прийти в проект и сделать:
+
+1. Read Vision
+2. Read State
+3. Read Bible
+4. Read Workflow
+5. Read AI Context
+6. Inspect actual code
+7. Continue
+
+без необходимости читать 1000 сообщений нашей переписки.
+
+PHASE 23 — КОНЕЧНЫЙ РЕЗУЛЬТАТ
+
+В итоге мы должны получить не просто:
+
+«готовый красивый VANTA».
+
+А:
+
+VANTA
+✅ 7 sections
+✅ approved visual language
+✅ approved content
+✅ correct navigation
+✅ responsive
+✅ interactions
+✅ accessibility
+✅ performance
+CODE
+✅ clean architecture
+✅ content separated
+✅ North Base actually used where appropriate
+✅ no unnecessary duplication
+✅ consistent naming
+✅ consistent CSS
+✅ consistent tokens
+✅ clean imports
+NORTH WORKFLOW
+✅ design workflow
+✅ code workflow
+✅ North Base rules
+✅ content rules
+✅ review rules
+✅ refactoring rules
+✅ context rules
+✅ handoff rules
+DOCUMENTATION
+✅ current state
+✅ permanent principles
+✅ complete workflow
+✅ North Base reference
+✅ code standard
+✅ AI instructions
+✅ changelog
+✅ target state
+ИТОГОВЫЙ ПОРЯДОК РАБОТЫ
+
+Вот это я бы реально сохранил как наш текущий master plan:
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VANTA — POST-HOME MASTER PLAN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PHASE 01
+Fix 3 known problems
+├─ Scale imagery
+├─ Header/Footer navigation
+└─ CTA navigation
+
+PHASE 02
+Full code / architecture audit
+
+PHASE 03
+Content architecture
+└─ move real content → content/home.ts
+
+PHASE 04
+North Base audit
+
+PHASE 05
+North Base integration
+└─ use existing primitives where appropriate
+
+PHASE 06
+Code standardization
+├─ naming
+├─ TS/TSX
+├─ CSS
+├─ tokens
+├─ components
+├─ imports
+└─ architecture
+
+PHASE 07
+Reusable component audit
+
+PHASE 08
+Content / logic / presentation separation
+
+PHASE 09
+Motion audit
+
+PHASE 10
+Responsive audit
+
+PHASE 11
+Accessibility audit
+
+PHASE 12
+Performance audit
+
+PHASE 13
+Section-by-section visual review
+├─ 01 Hero
+├─ 02 How It Works
+├─ 03 Workspace
+├─ 04 Scale
+├─ 05 Built To Run
+├─ 06 Work In Context
+└─ 07 Final CTA
+
+PHASE 14
+Section-by-section functional review
+
+PHASE 15
+Whole-page final review
+
+PHASE 16
+Final code cleanup
+
+PHASE 17
+Design / development workflow redesign
+
+PHASE 18
+North Base documentation
+
+PHASE 19
+North Code Standard
+
+PHASE 20
+AI workflow / prompts redesign
+
+PHASE 21
+Update all 7 project documents
+
+PHASE 22
+Final Context / Handoff
+
+PHASE 23
+VANTA HOME FINAL APPROVAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+И ещё важный момент: не будем выполнять этот план вслепую целиком. Идём строго сверху вниз. На каждом этапе я сначала анализирую фактическое состояние файлов, говорю, что именно нашёл, и только потом предлагаем изменения. Это соответствует нашему принципу «сначала понять → потом улучшать → переписывать только при необходимости».
+
+То есть прямо сейчас следующий шаг — PHASE 01: три конкретные проблемы. После них не прыгаем сразу к визуальным ревью, а действительно делаем большой code/architecture audit.

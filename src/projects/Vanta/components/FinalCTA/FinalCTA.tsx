@@ -1,12 +1,28 @@
-import { useEffect, useRef, useState } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
-import { Link } from "@/components/North Base/ui/Link";
+import { finalCTAContent } from "./content";
 
 import "./FinalCTA.css";
 
 export default function FinalCTA() {
-  const sectionRef = useRef<HTMLElement | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement | null>(
+    null
+  );
+
+  const [isVisible, setIsVisible] =
+    useState(false);
+
+  const {
+    eyebrow,
+    brand,
+    title,
+    description,
+    button,
+  } = finalCTAContent;
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -39,49 +55,68 @@ export default function FinalCTA() {
       ref={sectionRef}
       id="vanta-final-cta"
       className={`vanta-final-cta ${
-        isVisible ? "vanta-final-cta--visible" : ""
+        isVisible
+          ? "vanta-final-cta--visible"
+          : ""
       }`}
     >
-      <div className="vanta-final-cta__grid" aria-hidden="true" />
+      <div
+        className="vanta-final-cta__grid"
+        aria-hidden="true"
+      />
 
-      <div className="vanta-final-cta__axis" aria-hidden="true">
+      <div
+        className="vanta-final-cta__axis"
+        aria-hidden="true"
+      >
         <span className="vanta-final-cta__axis-point" />
       </div>
 
       <div className="vanta-final-cta__corner-label">
-        <span className="vanta-final-cta__corner-number">07</span>
+        <span className="vanta-final-cta__corner-number">
+          {eyebrow.number}
+        </span>
+
         <span className="vanta-final-cta__corner-line" />
-        <span>GET STARTED</span>
+
+        <span>{eyebrow.label}</span>
       </div>
 
       <div className="vanta-final-cta__content">
-        <p className="vanta-final-cta__brand">V A N T A</p>
+        <p className="vanta-final-cta__brand">
+          {brand}
+        </p>
 
         <h2 className="vanta-final-cta__title">
-          <span>Your next workflow</span>
+          <span>{title.lineOne}</span>
+
           <span className="vanta-final-cta__title-accent">
-            should run itself.
+            {title.lineTwo}
           </span>
         </h2>
 
         <p className="vanta-final-cta__description">
-          Connect the systems you already use.
+          {description.lineOne}
           <br />
-          VANTA handles the work between them.
+          {description.lineTwo}
         </p>
 
-        <Link
-          href="/contact"
-          variant="accent"
-          size="lg"
-          withArrow
+        <a
+          href={button.href}
           className="vanta-final-cta__button"
         >
-          Start with VANTA
-        </Link>
+          {button.label}
+
+          <span aria-hidden="true">
+            {button.arrow}
+          </span>
+        </a>
       </div>
 
-      <div className="vanta-final-cta__baseline" aria-hidden="true">
+      <div
+        className="vanta-final-cta__baseline"
+        aria-hidden="true"
+      >
         <span />
         <span className="vanta-final-cta__baseline-center" />
         <span />

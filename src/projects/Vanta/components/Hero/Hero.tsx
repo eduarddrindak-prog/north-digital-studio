@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { homeContent } from "../../content/home";
+
+import { heroContent } from "./content";
+
 import "./Hero.css";
 
 type NodeType = "input" | "output";
@@ -11,92 +13,20 @@ type FlowNode = {
   category: string;
   metric: string;
   value: string;
-  x: number;
-  y: number;
 };
-
-const inputNodes: FlowNode[] = [
-  {
-    id: "slack",
-    name: "Slack",
-    type: "input",
-    category: "COMMUNICATION",
-    metric: "EVENTS",
-    value: "1,284",
-    x: 5,
-    y: 17,
-  },
-  {
-    id: "notion",
-    name: "Notion",
-    type: "input",
-    category: "KNOWLEDGE",
-    metric: "CHANGES",
-    value: "284",
-    x: 5,
-    y: 42,
-  },
-  {
-    id: "salesforce",
-    name: "Salesforce",
-    type: "input",
-    category: "CRM",
-    metric: "RECORDS",
-    value: "91",
-    x: 5,
-    y: 67,
-  },
-];
-
-const outputNodes: FlowNode[] = [
-  {
-    id: "drive",
-    name: "Google Drive",
-    type: "output",
-    category: "STORAGE",
-    metric: "SYNCED",
-    value: "384",
-    x: 70,
-    y: 17,
-  },
-  {
-    id: "hubspot",
-    name: "HubSpot",
-    type: "output",
-    category: "CRM",
-    metric: "UPDATED",
-    value: "126",
-    x: 70,
-    y: 42,
-  },
-  {
-    id: "database",
-    name: "Database",
-    type: "output",
-    category: "DATA",
-    metric: "ROWS",
-    value: "921",
-    x: 70,
-    y: 67,
-  },
-];
-
-const allNodes = [...inputNodes, ...outputNodes];
 
 export default function Hero() {
   const [activeNode, setActiveNode] = useState<string | null>(null);
 
-  const hero = homeContent.hero as any;
+  const inputNodes: FlowNode[] = heroContent.inputNodes.map((node) => ({
+    ...node,
+    type: "input",
+  }));
 
-  const eyebrow = hero?.eyebrow ?? "AI INFRASTRUCTURE";
-  const title =
-    hero?.title ?? "Automate the work between your systems.";
-  const description =
-    hero?.description ??
-    "VANTA connects your tools, understands your workflows and executes the work automatically.";
-
-  const primaryCta = hero?.primaryCta ?? "Start Building";
-  const secondaryCta = hero?.secondaryCta ?? "See How It Works";
+  const outputNodes: FlowNode[] = heroContent.outputNodes.map((node) => ({
+    ...node,
+    type: "output",
+  }));
 
   return (
     <section className="vanta-hero">
@@ -107,21 +37,31 @@ export default function Hero() {
         <div className="vanta-hero__content">
           <div className="vanta-hero__eyebrow">
             <span />
-            {eyebrow}
+            {heroContent.eyebrow}
           </div>
 
-          <h1 className="vanta-hero__title">{title}</h1>
+          <h1 className="vanta-hero__title">
+            {heroContent.title}
+          </h1>
 
-          <p className="vanta-hero__description">{description}</p>
+          <p className="vanta-hero__description">
+            {heroContent.description}
+          </p>
 
           <div className="vanta-hero__actions">
-            <a href="#product" className="vanta-button vanta-button--primary">
-              {primaryCta}
+            <a
+              href={heroContent.primaryAction.href}
+              className="vanta-button vanta-button--primary"
+            >
+              {heroContent.primaryAction.label}
               <span>→</span>
             </a>
 
-            <a href="#how-it-works" className="vanta-button vanta-button--secondary">
-              {secondaryCta}
+            <a
+              href={heroContent.secondaryAction.href}
+              className="vanta-button vanta-button--secondary"
+            >
+              {heroContent.secondaryAction.label}
               <span>↗</span>
             </a>
           </div>
@@ -132,11 +72,11 @@ export default function Hero() {
           <div className="vanta-system__topbar">
             <div className="vanta-system__label">
               <span className="vanta-status-dot" />
-              SYSTEM OPERATIONAL
+              {heroContent.system.status}
             </div>
 
             <div className="vanta-system__uptime">
-              UPTIME <strong>99.98%</strong>
+              UPTIME <strong>{heroContent.system.uptime}</strong>
             </div>
           </div>
 
@@ -149,20 +89,54 @@ export default function Hero() {
               aria-hidden="true"
             >
               <defs>
-                <linearGradient id="flowIn" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="rgba(91,156,255,0)" />
-                  <stop offset="45%" stopColor="rgba(91,156,255,.42)" />
-                  <stop offset="100%" stopColor="rgba(91,156,255,.95)" />
+                <linearGradient
+                  id="flowIn"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="0%"
+                >
+                  <stop
+                    offset="0%"
+                    stopColor="rgba(91,156,255,0)"
+                  />
+                  <stop
+                    offset="45%"
+                    stopColor="rgba(91,156,255,.42)"
+                  />
+                  <stop
+                    offset="100%"
+                    stopColor="rgba(91,156,255,.95)"
+                  />
                 </linearGradient>
 
-                <linearGradient id="flowOut" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="rgba(91,156,255,.95)" />
-                  <stop offset="55%" stopColor="rgba(91,156,255,.42)" />
-                  <stop offset="100%" stopColor="rgba(91,156,255,0)" />
+                <linearGradient
+                  id="flowOut"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="0%"
+                >
+                  <stop
+                    offset="0%"
+                    stopColor="rgba(91,156,255,.95)"
+                  />
+                  <stop
+                    offset="55%"
+                    stopColor="rgba(91,156,255,.42)"
+                  />
+                  <stop
+                    offset="100%"
+                    stopColor="rgba(91,156,255,0)"
+                  />
                 </linearGradient>
 
                 <filter id="flowGlow">
-                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feGaussianBlur
+                    stdDeviation="3"
+                    result="blur"
+                  />
+
                   <feMerge>
                     <feMergeNode in="blur" />
                     <feMergeNode in="SourceGraphic" />
@@ -234,7 +208,10 @@ export default function Hero() {
               />
 
               {/* DATA PACKETS */}
-              <circle className="data-packet packet-1" r="4">
+              <circle
+                className="data-packet packet-1"
+                r="4"
+              >
                 <animateMotion
                   dur="3.2s"
                   repeatCount="indefinite"
@@ -242,7 +219,10 @@ export default function Hero() {
                 />
               </circle>
 
-              <circle className="data-packet packet-2" r="4">
+              <circle
+                className="data-packet packet-2"
+                r="4"
+              >
                 <animateMotion
                   dur="3.8s"
                   repeatCount="indefinite"
@@ -250,7 +230,10 @@ export default function Hero() {
                 />
               </circle>
 
-              <circle className="data-packet packet-3" r="4">
+              <circle
+                className="data-packet packet-3"
+                r="4"
+              >
                 <animateMotion
                   dur="4.1s"
                   repeatCount="indefinite"
@@ -258,7 +241,10 @@ export default function Hero() {
                 />
               </circle>
 
-              <circle className="data-packet packet-4" r="4">
+              <circle
+                className="data-packet packet-4"
+                r="4"
+              >
                 <animateMotion
                   dur="3.5s"
                   repeatCount="indefinite"
@@ -266,7 +252,10 @@ export default function Hero() {
                 />
               </circle>
 
-              <circle className="data-packet packet-5" r="4">
+              <circle
+                className="data-packet packet-5"
+                r="4"
+              >
                 <animateMotion
                   dur="3.9s"
                   repeatCount="indefinite"
@@ -274,7 +263,10 @@ export default function Hero() {
                 />
               </circle>
 
-              <circle className="data-packet packet-6" r="4">
+              <circle
+                className="data-packet packet-6"
+                r="4"
+              >
                 <animateMotion
                   dur="4.2s"
                   repeatCount="indefinite"
@@ -285,15 +277,21 @@ export default function Hero() {
 
             {/* INPUT NODES */}
             <div className="vanta-flow__column vanta-flow__column--inputs">
-              <span className="vanta-flow__column-label">INPUTS</span>
+              <span className="vanta-flow__column-label">
+                INPUTS
+              </span>
 
               {inputNodes.map((node) => (
                 <FlowCard
                   key={node.id}
                   node={node}
                   active={activeNode === node.id}
-                  onEnter={() => setActiveNode(node.id)}
-                  onLeave={() => setActiveNode(null)}
+                  onEnter={() =>
+                    setActiveNode(node.id)
+                  }
+                  onLeave={() =>
+                    setActiveNode(null)
+                  }
                 />
               ))}
             </div>
@@ -305,24 +303,32 @@ export default function Hero() {
               <div className="vanta-core__box">
                 <div className="vanta-core__header">
                   <span className="vanta-core__pulse" />
-                  LIVE
+                  {heroContent.core.status}
                 </div>
 
-                <div className="vanta-core__name">VANTA</div>
+                <div className="vanta-core__name">
+                  {heroContent.core.name}
+                </div>
 
-                <div className="vanta-core__type">AI CORE</div>
+                <div className="vanta-core__type">
+                  {heroContent.core.type}
+                </div>
 
                 <div className="vanta-core__divider" />
 
                 <div className="vanta-core__metrics">
                   <div>
                     <span>PROCESSING</span>
-                    <strong>1,842/s</strong>
+                    <strong>
+                      {heroContent.core.processing}
+                    </strong>
                   </div>
 
                   <div>
                     <span>LATENCY</span>
-                    <strong>42ms</strong>
+                    <strong>
+                      {heroContent.core.latency}
+                    </strong>
                   </div>
                 </div>
 
@@ -345,15 +351,21 @@ export default function Hero() {
 
             {/* OUTPUT NODES */}
             <div className="vanta-flow__column vanta-flow__column--outputs">
-              <span className="vanta-flow__column-label">OUTPUTS</span>
+              <span className="vanta-flow__column-label">
+                OUTPUTS
+              </span>
 
               {outputNodes.map((node) => (
                 <FlowCard
                   key={node.id}
                   node={node}
                   active={activeNode === node.id}
-                  onEnter={() => setActiveNode(node.id)}
-                  onLeave={() => setActiveNode(null)}
+                  onEnter={() =>
+                    setActiveNode(node.id)
+                  }
+                  onLeave={() =>
+                    setActiveNode(null)
+                  }
                 />
               ))}
             </div>
@@ -363,11 +375,16 @@ export default function Hero() {
               <span className="vanta-event__indicator" />
 
               <div>
-                <span>LIVE EVENT</span>
-                <strong>workflow.execute</strong>
+                <span>
+                  {heroContent.liveEvent.label}
+                </span>
+
+                <strong>
+                  {heroContent.liveEvent.name}
+                </strong>
               </div>
 
-              <em>42ms</em>
+              <em>{heroContent.liveEvent.latency}</em>
             </div>
           </div>
         </div>
@@ -376,21 +393,27 @@ export default function Hero() {
       {/* TRUST */}
       <div className="vanta-trust">
         <span className="vanta-trust__label">
-          TRUSTED BY FORWARD-THINKING COMPANIES
+          {heroContent.trustLabel}
         </span>
 
         <div className="vanta-trust__logos">
-          <span>STRIPE</span>
-          <span>SHOPIFY</span>
-          <span>DROPBOX</span>
-          <span>NOTION</span>
-          <span>SLACK</span>
+          {heroContent.trustedCompanies.map(
+            (company) => (
+              <span key={company}>
+                {company}
+              </span>
+            )
+          )}
+
           <span>+ MORE</span>
         </div>
       </div>
 
-      <a href="#problem" className="vanta-scroll">
-        <span>SCROLL</span>
+      <a
+        href="#how-it-works"
+        className="vanta-scroll"
+      >
+        <span>{heroContent.scrollLabel}</span>
         <i>↓</i>
       </a>
     </section>
@@ -426,8 +449,16 @@ function FlowCard({
     >
       <div className="vanta-flow-card__top">
         <span className="vanta-flow-card__signal" />
-        <span>{node.type === "input" ? "CONNECTED" : "SYNCING"}</span>
-        <small>{node.id.slice(0, 2).toUpperCase()}</small>
+
+        <span>
+          {node.type === "input"
+            ? "CONNECTED"
+            : "SYNCING"}
+        </span>
+
+        <small>
+          {node.id.slice(0, 2).toUpperCase()}
+        </small>
       </div>
 
       <div className="vanta-flow-card__name">

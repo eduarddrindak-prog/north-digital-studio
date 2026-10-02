@@ -4,26 +4,44 @@ const columns = [
   {
     title: "Product",
     links: [
-      { label: "Platform", href: "#product" },
-      { label: "How it works", href: "#how-it-works" },
-      { label: "Integrations", href: "#solutions" },
+      {
+        label: "How It Works",
+        href: "#how-it-works",
+      },
+      {
+        label: "Product",
+        href: "#product",
+      },
+      {
+        label: "Built To Run",
+        href: "#built-to-run",
+      },
     ],
   },
   {
     title: "Solutions",
     links: [
-      { label: "Finance", href: "#solutions" },
-      { label: "Operations", href: "#solutions" },
-      { label: "Sales", href: "#solutions" },
-      { label: "Support", href: "#solutions" },
+      {
+        label: "Scale",
+        href: "#scale",
+      },
+      {
+        label: "Work In Context",
+        href: "#use-cases",
+      },
     ],
   },
   {
-    title: "Company",
+    title: "Explore",
     links: [
-      { label: "About", href: "#about" },
-      { label: "Contact", href: "#contact" },
-      { label: "Privacy", href: "#privacy" },
+      {
+        label: "Get Started",
+        href: "#vanta-final-cta",
+      },
+      {
+        label: "Back To Top",
+        href: "#top",
+      },
     ],
   },
 ];
@@ -32,13 +50,12 @@ export default function Footer() {
   return (
     <footer className="vanta-footer">
       <div className="vanta-footer__inner">
-
         <div className="vanta-footer__top">
-
           <div className="vanta-footer__brand">
             <a
               href="#top"
               className="vanta-footer__logo"
+              aria-label="VANTA home"
             >
               VANTA
             </a>
@@ -59,7 +76,9 @@ export default function Footer() {
                   {column.title}
                 </span>
 
-                <nav>
+                <nav
+                  aria-label={`${column.title} navigation`}
+                >
                   {column.links.map((link) => (
                     <a
                       key={link.label}
@@ -72,13 +91,14 @@ export default function Footer() {
               </div>
             ))}
           </div>
-
         </div>
 
         <div className="vanta-footer__bottom">
-
           <div className="vanta-footer__status">
-            <span className="vanta-footer__status-dot" />
+            <span
+              className="vanta-footer__status-dot"
+              aria-hidden="true"
+            />
             <span>SYSTEM OPERATIONAL</span>
           </div>
 
@@ -89,9 +109,7 @@ export default function Footer() {
           <span className="vanta-footer__location">
             BUILT FOR MODERN TEAMS
           </span>
-
         </div>
-
       </div>
     </footer>
   );
