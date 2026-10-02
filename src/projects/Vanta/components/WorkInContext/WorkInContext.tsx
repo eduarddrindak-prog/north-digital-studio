@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 import {
-  type Scenario,
   type ScenarioStep,
   workInContextContent,
 } from "./content";
