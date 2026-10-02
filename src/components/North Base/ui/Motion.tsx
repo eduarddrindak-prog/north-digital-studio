@@ -3,7 +3,6 @@ import type {
   ElementType,
   HTMLAttributes,
   ReactNode,
-  Ref,
 } from "react";
 import {
   Children,
