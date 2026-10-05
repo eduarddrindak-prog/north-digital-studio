@@ -147,64 +147,12 @@
   margin-top: 34px;
 }
 
-.vanta-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
+.vanta-hero__cta {
   min-height: 48px;
 
-  padding: 0 18px;
-
-  border: 1px solid transparent;
-
+  font-family: inherit;
   font-size: 12px;
   font-weight: 500;
-
-  text-decoration: none;
-
-  transition:
-    transform 220ms ease,
-    border-color 220ms ease,
-    background 220ms ease,
-    box-shadow 220ms ease;
-}
-
-.vanta-button span {
-  margin-left: 18px;
-
-  transition: transform 220ms ease;
-}
-
-.vanta-button:hover {
-  transform: translateY(-2px);
-}
-
-.vanta-button:hover span {
-  transform: translateX(3px);
-}
-
-.vanta-button--primary {
-  background: #f4f7fb;
-  color: #05070a;
-}
-
-.vanta-button--primary:hover {
-  box-shadow: 0 0 30px rgba(91, 156, 255, 0.18);
-}
-
-.vanta-button--secondary {
-  border-color: rgba(255, 255, 255, 0.14);
-
-  background: rgba(255, 255, 255, 0.015);
-
-  color: #cbd4df;
-}
-
-.vanta-button--secondary:hover {
-  border-color: rgba(91, 156, 255, 0.45);
-
-  background: rgba(91, 156, 255, 0.05);
 }
 
 /* =========================================================
@@ -321,10 +269,26 @@
 }
 
 .data-packet {
-  fill: #8fc1ff;
-
+  fill: #9bc8ff;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
   filter: drop-shadow(0 0 7px rgba(91, 156, 255, 0.9));
+  animation: packetFade 3.8s ease-in-out infinite;
 }
+
+.data-packet.packet-1 { animation-delay: -0.35s; animation-duration: 4.6s; }
+.data-packet.packet-2 { animation-delay: -2.1s; animation-duration: 5.2s; }
+.data-packet.packet-3 { animation-delay: -1.2s; animation-duration: 4.1s; }
+.data-packet.packet-4 { animation-delay: -3s; animation-duration: 5.8s; }
+.data-packet.packet-5 { animation-delay: -0.8s; animation-duration: 4.9s; }
+.data-packet.packet-6 { animation-delay: -2.7s; animation-duration: 6.1s; }
+.data-packet.packet-7 { animation-delay: -1.8s; animation-duration: 5.5s; }
+.data-packet.packet-8 { animation-delay: -3.4s; animation-duration: 4.4s; }
+.data-packet.packet-9 { animation-delay: -0.4s; animation-duration: 6.3s; }
+.data-packet.packet-10 { animation-delay: -2.4s; animation-duration: 5.1s; }
+.data-packet.packet-11 { animation-delay: -1.5s; animation-duration: 6.7s; }
+.data-packet.packet-12 { animation-delay: -3.7s; animation-duration: 4.7s; }
 
 /* =========================================================
    INPUT / OUTPUT COLUMNS
@@ -578,7 +542,7 @@
 .vanta-core {
   position: absolute;
 
-  top: 50%;
+  top: 54%;
   left: 50%;
 
   width: 235px;
@@ -801,80 +765,6 @@
 }
 
 /* =========================================================
-   LIVE EVENT
-========================================================= */
-
-.vanta-event {
-  position: absolute;
-
-  left: 50%;
-  bottom: 2px;
-
-  display: flex;
-  align-items: center;
-
-  width: 260px;
-
-  padding: 9px 12px;
-
-  transform: translateX(-50%);
-
-  border: 1px solid rgba(255, 255, 255, 0.065);
-
-  background: rgba(5, 7, 10, 0.72);
-
-  backdrop-filter: blur(10px);
-
-  font-family: "SFMono-Regular", Consolas, monospace;
-}
-
-.vanta-event__indicator {
-  width: 5px;
-  height: 5px;
-
-  margin-right: 10px;
-
-  border-radius: 50%;
-
-  background: #5b9cff;
-
-  box-shadow: 0 0 10px rgba(91, 156, 255, 0.65);
-}
-
-.vanta-event div {
-  display: flex;
-  flex-direction: column;
-
-  gap: 3px;
-}
-
-.vanta-event span {
-  color: #4d5a6d;
-
-  font-size: 6px;
-
-  letter-spacing: 0.15em;
-}
-
-.vanta-event strong {
-  color: #9aa7b8;
-
-  font-size: 8px;
-
-  font-weight: 500;
-}
-
-.vanta-event em {
-  margin-left: auto;
-
-  color: #5b9cff;
-
-  font-size: 8px;
-
-  font-style: normal;
-}
-
-/* =========================================================
    TRUST
 ========================================================= */
 
@@ -957,6 +847,38 @@
 /* =========================================================
    ANIMATIONS
 ========================================================= */
+
+@keyframes packetFade {
+  0% {
+    opacity: 0;
+    transform: scale(0.55);
+  }
+
+  13% {
+    opacity: 0.12;
+    transform: scale(0.72);
+  }
+
+  30% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+
+  48% {
+    opacity: 0.5;
+    transform: scale(0.86);
+  }
+
+  66% {
+    opacity: 0.08;
+    transform: scale(0.62);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.45);
+  }
+}
 
 @keyframes vantaStatus {
   0%,
@@ -1098,9 +1020,6 @@
     transform: translate(-50%, -50%) scale(0.82);
   }
 
-  .vanta-event {
-    width: 220px;
-  }
 
   .vanta-trust {
     width: calc(100% - 32px);
@@ -1138,7 +1057,7 @@
     align-items: stretch;
   }
 
-  .vanta-button {
+  .vanta-hero__cta {
     width: 100%;
   }
 
@@ -1188,11 +1107,6 @@
     transform: translate(-50%, -50%) scale(0.62);
   }
 
-  .vanta-event {
-    bottom: -5px;
-
-    width: 190px;
-  }
 
   .vanta-system__uptime {
     display: none;
@@ -1216,9 +1130,13 @@
     animation: none;
   }
 
-  .vanta-button,
   .vanta-flow-card {
     transition: none;
+  }
+
+  .data-packet {
+    animation: none;
+    opacity: 0.65;
   }
 }
 

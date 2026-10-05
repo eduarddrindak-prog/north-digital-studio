@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import { Button } from "@/components/North Base/ui/Button";
 
 import { heroContent } from "./content";
 
@@ -12,20 +14,70 @@ type FlowNode = {
   type: NodeType;
   category: string;
   metric: string;
-  value: string;
+  value: number;
 };
 
 export default function Hero() {
   const [activeNode, setActiveNode] = useState<string | null>(null);
 
+  const allContentNodes = [
+    ...heroContent.inputNodes.map((node) => ({ ...node, type: "input" as const })),
+    ...heroContent.outputNodes.map((node) => ({ ...node, type: "output" as const })),
+  ];
+
+  const [liveValues, setLiveValues] = useState<Record<string, number>>(() =>
+    Object.fromEntries(
+      allContentNodes.map((node) => [node.id, node.value])
+    )
+  );
+
+  const [liveCore, setLiveCore] = useState({
+    processing: heroContent.core.processing,
+    latency: heroContent.core.latency,
+  });
+
+  useEffect(() => {
+    const timers = allContentNodes.map((node, index) => {
+      const interval = 1700 + index * 260;
+
+      return window.setInterval(() => {
+        setLiveValues((current) => {
+          const previous = current[node.id] ?? node.value;
+          const intensity = Math.max(3, Math.round(previous * 0.055));
+          const delta = Math.round((Math.random() * 2 - 0.35) * intensity);
+          const next = Math.max(12, previous + delta);
+
+          return {
+            ...current,
+            [node.id]: next,
+          };
+        });
+      }, interval);
+    });
+
+    const coreTimer = window.setInterval(() => {
+      setLiveCore({
+        processing: Math.round(1740 + Math.random() * 260),
+        latency: Math.round(38 + Math.random() * 10),
+      });
+    }, 1900);
+
+    return () => {
+      timers.forEach((timer) => window.clearInterval(timer));
+      window.clearInterval(coreTimer);
+    };
+  }, []);
+
   const inputNodes: FlowNode[] = heroContent.inputNodes.map((node) => ({
     ...node,
     type: "input",
+    value: liveValues[node.id] ?? node.value,
   }));
 
   const outputNodes: FlowNode[] = heroContent.outputNodes.map((node) => ({
     ...node,
     type: "output",
+    value: liveValues[node.id] ?? node.value,
   }));
 
   return (
@@ -49,21 +101,25 @@ export default function Hero() {
           </p>
 
           <div className="vanta-hero__actions">
-            <a
+            <Button
               href={heroContent.primaryAction.href}
-              className="vanta-button vanta-button--primary"
+              variant="primary"
+              size="lg"
+              withArrow
+              className="vanta-hero__cta"
             >
               {heroContent.primaryAction.label}
-              <span>→</span>
-            </a>
+            </Button>
 
-            <a
+            <Button
               href={heroContent.secondaryAction.href}
-              className="vanta-button vanta-button--secondary"
+              variant="secondary"
+              size="lg"
+              withArrow
+              className="vanta-hero__cta"
             >
               {heroContent.secondaryAction.label}
-              <span>↗</span>
-            </a>
+            </Button>
           </div>
         </div>
 
@@ -147,64 +203,64 @@ export default function Hero() {
               {/* INPUT LINES */}
               <path
                 className="flow-line flow-line--input"
-                d="M 150 138 C 275 138, 330 220, 435 292"
+                d="M 268 170 C 300 170, 330 285, 350 285"
               />
 
               <path
                 className="flow-line flow-line--input"
-                d="M 150 316 C 280 316, 330 346, 435 362"
+                d="M 268 386 C 300 386, 330 388, 350 388"
               />
 
               <path
                 className="flow-line flow-line--input"
-                d="M 150 496 C 275 496, 330 431, 435 412"
+                d="M 268 600 C 300 600, 330 491, 350 491"
               />
 
               {/* OUTPUT LINES */}
               <path
                 className="flow-line flow-line--output"
-                d="M 565 292 C 670 220, 725 138, 850 138"
+                d="M 650 285 C 670 285, 700 170, 732 170"
               />
 
               <path
                 className="flow-line flow-line--output"
-                d="M 565 362 C 680 347, 725 316, 850 316"
+                d="M 650 388 C 680 388, 700 386, 732 386"
               />
 
               <path
                 className="flow-line flow-line--output"
-                d="M 565 412 C 670 431, 725 496, 850 496"
+                d="M 650 491 C 670 491, 700 600, 732 600"
               />
 
               {/* SOFT GLOW LAYERS */}
               <path
                 className="flow-line flow-line--glow"
-                d="M 150 138 C 275 138, 330 220, 435 292"
+                d="M 268 170 C 300 170, 330 285, 350 285"
               />
 
               <path
                 className="flow-line flow-line--glow"
-                d="M 150 316 C 280 316, 330 346, 435 362"
+                d="M 268 386 C 300 386, 330 388, 350 388"
               />
 
               <path
                 className="flow-line flow-line--glow"
-                d="M 150 496 C 275 496, 330 431, 435 412"
+                d="M 268 600 C 300 600, 330 491, 350 491"
               />
 
               <path
                 className="flow-line flow-line--glow"
-                d="M 565 292 C 670 220, 725 138, 850 138"
+                d="M 650 285 C 670 285, 700 170, 732 170"
               />
 
               <path
                 className="flow-line flow-line--glow"
-                d="M 565 362 C 680 347, 725 316, 850 316"
+                d="M 650 388 C 680 388, 700 386, 732 386"
               />
 
               <path
                 className="flow-line flow-line--glow"
-                d="M 565 412 C 670 431, 725 496, 850 496"
+                d="M 650 491 C 670 491, 700 600, 732 600"
               />
 
               {/* DATA PACKETS */}
@@ -215,7 +271,7 @@ export default function Hero() {
                 <animateMotion
                   dur="3.2s"
                   repeatCount="indefinite"
-                  path="M 150 138 C 275 138, 330 220, 435 292"
+                  path="M 268 170 C 300 170, 330 285, 350 285"
                 />
               </circle>
 
@@ -226,7 +282,7 @@ export default function Hero() {
                 <animateMotion
                   dur="3.8s"
                   repeatCount="indefinite"
-                  path="M 150 316 C 280 316, 330 346, 435 362"
+                  path="M 268 386 C 300 386, 330 388, 350 388"
                 />
               </circle>
 
@@ -237,7 +293,7 @@ export default function Hero() {
                 <animateMotion
                   dur="4.1s"
                   repeatCount="indefinite"
-                  path="M 150 496 C 275 496, 330 431, 435 412"
+                  path="M 268 600 C 300 600, 330 491, 350 491"
                 />
               </circle>
 
@@ -248,7 +304,7 @@ export default function Hero() {
                 <animateMotion
                   dur="3.5s"
                   repeatCount="indefinite"
-                  path="M 565 292 C 670 220, 725 138, 850 138"
+                  path="M 650 285 C 670 285, 700 170, 732 170"
                 />
               </circle>
 
@@ -259,7 +315,7 @@ export default function Hero() {
                 <animateMotion
                   dur="3.9s"
                   repeatCount="indefinite"
-                  path="M 565 362 C 680 347, 725 316, 850 316"
+                  path="M 650 388 C 680 388, 700 386, 732 386"
                 />
               </circle>
 
@@ -270,8 +326,32 @@ export default function Hero() {
                 <animateMotion
                   dur="4.2s"
                   repeatCount="indefinite"
-                  path="M 565 412 C 670 431, 725 496, 850 496"
+                  path="M 650 491 C 670 491, 700 600, 732 600"
                 />
+              </circle>
+
+              <circle className="data-packet packet-7" r="3.5">
+                <animateMotion dur="5.7s" begin="0.9s" repeatCount="indefinite" path="M 268 170 C 300 170, 330 285, 350 285" />
+              </circle>
+
+              <circle className="data-packet packet-8" r="3.5">
+                <animateMotion dur="4.9s" begin="2.2s" repeatCount="indefinite" path="M 268 386 C 300 386, 330 388, 350 388" />
+              </circle>
+
+              <circle className="data-packet packet-9" r="3.5">
+                <animateMotion dur="6.1s" begin="1.6s" repeatCount="indefinite" path="M 268 600 C 300 600, 330 491, 350 491" />
+              </circle>
+
+              <circle className="data-packet packet-10" r="3.5">
+                <animateMotion dur="5.3s" begin="2.8s" repeatCount="indefinite" path="M 650 285 C 670 285, 700 170, 732 170" />
+              </circle>
+
+              <circle className="data-packet packet-11" r="3.5">
+                <animateMotion dur="6.4s" begin="1.1s" repeatCount="indefinite" path="M 650 388 C 680 388, 700 386, 732 386" />
+              </circle>
+
+              <circle className="data-packet packet-12" r="3.5">
+                <animateMotion dur="5.8s" begin="3.4s" repeatCount="indefinite" path="M 650 491 C 670 491, 700 600, 732 600" />
               </circle>
             </svg>
 
@@ -320,14 +400,14 @@ export default function Hero() {
                   <div>
                     <span>PROCESSING</span>
                     <strong>
-                      {heroContent.core.processing}
+                      <AnimatedNumber value={liveCore.processing} suffix={heroContent.core.processingSuffix} />
                     </strong>
                   </div>
 
                   <div>
                     <span>LATENCY</span>
                     <strong>
-                      {heroContent.core.latency}
+                      <AnimatedNumber value={liveCore.latency} suffix={heroContent.core.latencySuffix} />
                     </strong>
                   </div>
                 </div>
@@ -370,22 +450,6 @@ export default function Hero() {
               ))}
             </div>
 
-            {/* LIVE EVENT */}
-            <div className="vanta-event">
-              <span className="vanta-event__indicator" />
-
-              <div>
-                <span>
-                  {heroContent.liveEvent.label}
-                </span>
-
-                <strong>
-                  {heroContent.liveEvent.name}
-                </strong>
-              </div>
-
-              <em>{heroContent.liveEvent.latency}</em>
-            </div>
           </div>
         </div>
       </div>
@@ -417,6 +481,40 @@ export default function Hero() {
         <i>↓</i>
       </a>
     </section>
+  );
+}
+
+function AnimatedNumber({ value, suffix = "" }: { value: number; suffix?: string }) {
+  const [displayValue, setDisplayValue] = useState(value);
+
+  useEffect(() => {
+    const start = displayValue;
+    const distance = value - start;
+    const duration = 650;
+    const startedAt = performance.now();
+    let frame = 0;
+
+    const tick = (now: number) => {
+      const progress = Math.min(1, (now - startedAt) / duration);
+      const eased = 1 - Math.pow(1 - progress, 3);
+
+      setDisplayValue(Math.round(start + distance * eased));
+
+      if (progress < 1) {
+        frame = requestAnimationFrame(tick);
+      }
+    };
+
+    frame = requestAnimationFrame(tick);
+
+    return () => cancelAnimationFrame(frame);
+  }, [value]);
+
+  return (
+    <>
+      {new Intl.NumberFormat("en-US").format(displayValue)}
+      {suffix}
+    </>
   );
 }
 
@@ -482,7 +580,7 @@ function FlowCard({
 
       <div className="vanta-flow-card__bottom">
         <span>{node.metric}</span>
-        <strong>{node.value}</strong>
+        <strong><AnimatedNumber value={node.value} /></strong>
       </div>
     </div>
   );

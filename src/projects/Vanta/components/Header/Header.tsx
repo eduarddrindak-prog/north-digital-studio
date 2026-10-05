@@ -1,4 +1,9 @@
 import { useState } from "react";
+
+import { Button } from "@/components/North Base/ui/Button";
+import { IconButton } from "@/components/North Base/ui/IconButton";
+import { Link } from "@/components/North Base/ui/Link";
+
 import "./Header.css";
 
 const navigation = [
@@ -18,80 +23,95 @@ export default function Header() {
   return (
     <header className="vanta-header">
       <div className="vanta-header__inner">
-        <a
+        <Link
           href="#top"
+          variant="default"
+          size="sm"
           className="vanta-header__logo"
           aria-label="VANTA home"
           onClick={closeMenu}
         >
           VANTA
-        </a>
+        </Link>
 
         <nav
           className="vanta-header__nav"
           aria-label="Main navigation"
         >
           {navigation.map((item) => (
-            <a
+            <Link
               key={item.label}
               href={item.href}
+              variant="muted"
+              size="sm"
               className="vanta-header__link"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
-        <a
+        <Button
           href="#vanta-final-cta"
+          variant="secondary"
+          size="sm"
+          withArrow
           className="vanta-header__cta"
         >
-          <span>Get Started</span>
-          <span aria-hidden="true">→</span>
-        </a>
+          Get Started
+        </Button>
 
-        <button
-          type="button"
+        <IconButton
+          variant="ghost"
+          size="sm"
+          label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          aria-controls="vanta-mobile-navigation"
+          onClick={() => setMenuOpen((open) => !open)}
           className={`vanta-header__menu ${
             menuOpen ? "is-open" : ""
           }`}
-          aria-label={
-            menuOpen ? "Close menu" : "Open menu"
+          icon={
+            <>
+              <span />
+              <span />
+            </>
           }
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((open) => !open)}
-        >
-          <span />
-          <span />
-        </button>
+        />
       </div>
 
       <div
+        id="vanta-mobile-navigation"
         className={`vanta-header__mobile ${
           menuOpen ? "is-open" : ""
         }`}
       >
         <nav aria-label="Mobile navigation">
           {navigation.map((item) => (
-            <a
+            <Link
               key={item.label}
               href={item.href}
+              variant="muted"
+              size="sm"
+              className="vanta-header__mobile-link"
               onClick={closeMenu}
             >
               <span>{item.label}</span>
               <span aria-hidden="true">↗</span>
-            </a>
+            </Link>
           ))}
         </nav>
 
-        <a
+        <Button
           href="#vanta-final-cta"
+          variant="secondary"
+          size="sm"
+          withArrow
           className="vanta-header__mobile-cta"
           onClick={closeMenu}
         >
-          <span>Get Started</span>
-          <span aria-hidden="true">→</span>
-        </a>
+          Get Started
+        </Button>
       </div>
     </header>
   );
