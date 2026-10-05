@@ -204,6 +204,50 @@
 }
 
 /* =========================================================
+   LEFT SIDE METRIC — FLOW POSITION
+========================================================= */
+
+.vanta-built__header
+  .vanta-built__side-metric--left {
+  position: relative;
+
+  top: auto;
+  left: auto;
+
+  width: max-content;
+
+  margin-top: 30px;
+
+  gap: 7px;
+
+  z-index: 5;
+
+  transform: translateX(-20px);
+}
+
+.vanta-built.is-visible
+  .vanta-built__header
+  .vanta-built__side-metric--left {
+  transform: translateX(0);
+}
+
+.vanta-built__header
+  .vanta-built__side-metric--left
+  .vanta-built__side-value {
+  font-size: clamp(
+    2.2rem,
+    3vw,
+    3.6rem
+  );
+}
+
+.vanta-built__header
+  .vanta-built__side-metric--left
+  .vanta-built__side-label {
+  max-width: 180px;
+}
+
+/* =========================================================
    MAIN METRIC
 ========================================================= */
 
@@ -328,14 +372,12 @@
     );
 }
 
-.vanta-built__side-metric--left {
-  left: 6%;
-
-  transform: translateX(-20px);
-}
+/* Left metric is positioned inside the header above. */
 
 .vanta-built__side-metric--right {
   right: 6%;
+
+  top: 455px;
 
   transform: translateX(20px);
 
@@ -547,6 +589,8 @@
 ========================================================= */
 
 .vanta-built__data-label {
+  display: none;
+
   position: absolute;
 
   z-index: 6;
@@ -578,6 +622,10 @@
 .vanta-built.is-visible
   .vanta-built__data-label {
   opacity: 1;
+}
+
+.vanta-built__data-label {
+  display: none;
 }
 
 .vanta-built__data-label span {
@@ -666,12 +714,10 @@
     top: 250px;
   }
 
-  .vanta-built__side-metric--left {
-    left: 2%;
-  }
 
   .vanta-built__side-metric--right {
     right: 2%;
+    top: 455px;
   }
 
   .vanta-built__signals {
@@ -736,16 +782,11 @@
     font-size: 7px;
   }
 
-  .vanta-built__side-metric {
-    top: 515px;
-  }
 
-  .vanta-built__side-metric--left {
-    left: 2%;
-  }
 
   .vanta-built__side-metric--right {
     right: 2%;
+    top: 500px;
   }
 
   .vanta-built__side-value {
@@ -806,8 +847,8 @@
     font-size: 5.2rem;
   }
 
-  .vanta-built__side-metric {
-    top: 505px;
+  .vanta-built__side-metric--right {
+    top: 500px;
   }
 
   .vanta-built__side-value {
@@ -850,7 +891,9 @@
   }
 
   .vanta-built__side-metric--left,
-  .vanta-built__side-metric--right {
+  .vanta-built__side-metric--right,
+  .vanta-built__header
+    .vanta-built__side-metric--left {
     transform: none;
   }
 

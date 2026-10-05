@@ -1516,3 +1516,363 @@
     transition: none;
   }
 }
+
+/* =========================================================
+   NORTH BASE OVERRIDES / INTERACTION POLISH
+========================================================= */
+
+.vanta-workspace__new {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: auto;
+  min-height: 0;
+  margin: 7px 11px 22px;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.025);
+  color: #9aa8ba;
+  font-family: inherit;
+  font-size: 10px;
+  line-height: 1;
+  box-shadow: none;
+}
+
+.vanta-workspace__new span {
+  color: #5b9cff;
+  font-size: 14px;
+}
+
+.vanta-workspace__new:hover {
+  border-color: rgba(91, 156, 255, 0.35);
+  background: rgba(91, 156, 255, 0.055);
+  color: #e2eaf3;
+  transform: none;
+  box-shadow: none;
+}
+
+.vanta-workspace__share,
+.deploy-button,
+.vanta-test__run {
+  min-height: 0;
+  border-radius: 0;
+  font-family: inherit;
+  font-size: 8px;
+  line-height: 1;
+  box-shadow: none;
+}
+
+.vanta-workspace__share {
+  padding: 8px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(255, 255, 255, 0.025);
+  color: #8492a4;
+}
+
+.vanta-workspace__share:hover {
+  border-color: rgba(91, 156, 255, 0.25);
+  background: rgba(91, 156, 255, 0.045);
+  color: #cbd7e5;
+  box-shadow: none;
+}
+
+.deploy-button {
+  padding: 8px 11px;
+  border: 1px solid rgba(91, 156, 255, 0.4);
+  background: #286ce3;
+  color: #fff;
+}
+
+.deploy-button:hover {
+  transform: none;
+  box-shadow: 0 0 20px rgba(29, 94, 232, 0.18);
+}
+
+.deploy-button.is-deployed {
+  border-color: rgba(69, 213, 154, 0.22);
+  background: rgba(69, 213, 154, 0.08);
+  color: #68d8a8;
+}
+
+.deploy-button.is-deployed:hover {
+  border-color: rgba(69, 213, 154, 0.36);
+  background: rgba(69, 213, 154, 0.12);
+}
+
+.vanta-test__run {
+  padding: 7px 9px;
+  border: 1px solid rgba(91, 156, 255, 0.35);
+  background: rgba(91, 156, 255, 0.07);
+  color: #7eaeec;
+}
+
+.vanta-test__run:hover:not(:disabled) {
+  border-color: rgba(91, 156, 255, 0.55);
+  background: rgba(91, 156, 255, 0.11);
+  color: #a9c9f5;
+  box-shadow: none;
+}
+
+.vanta-test__run:disabled {
+  opacity: 0.6;
+}
+
+/* =========================================================
+   WORKFLOW CONNECTIONS
+========================================================= */
+
+.node-connection {
+  overflow: visible;
+  transition:
+    background 220ms ease,
+    filter 220ms ease;
+}
+
+.node-connection::after {
+  width: 5px;
+  height: 5px;
+  margin-top: -2px;
+  opacity: 0.55;
+  transition:
+    opacity 220ms ease,
+    box-shadow 220ms ease,
+    transform 220ms ease;
+}
+
+.node-connection i {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #9cc7ff;
+  box-shadow: 0 0 11px rgba(91, 156, 255, 0.9);
+  transform: translate(-50%, -50%);
+  animation: workspacePacketSmooth 2.8s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+}
+
+.node-connection.is-active {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(91, 156, 255, 0.95),
+      rgba(91, 156, 255, 0.25)
+    );
+  filter: drop-shadow(0 0 5px rgba(91, 156, 255, 0.18));
+}
+
+.node-connection.is-active::after {
+  opacity: 1;
+  box-shadow: 0 0 14px rgba(91, 156, 255, 0.95);
+}
+
+.vanta-workflow-node.is-running {
+  animation: workspaceNodePulse 900ms ease-in-out infinite alternate;
+}
+
+.vanta-workflow-node:focus-visible,
+.vanta-workspace__nav button:focus-visible,
+.vanta-workspace__workflow-list button:focus-visible,
+.vanta-workspace__tabs button:focus-visible,
+.vanta-toggle:focus-visible {
+  outline: 1px solid rgba(91, 156, 255, 0.8);
+  outline-offset: 3px;
+}
+
+@keyframes workspacePacketSmooth {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  50% {
+    left: 50%;
+    opacity: 1;
+  }
+
+  88% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes workspaceNodePulse {
+  from {
+    box-shadow:
+      0 0 22px rgba(29, 94, 232, 0.1),
+      0 0 0 1px rgba(91, 156, 255, 0.12);
+  }
+
+  to {
+    box-shadow:
+      0 0 38px rgba(29, 94, 232, 0.2),
+      0 0 0 1px rgba(91, 156, 255, 0.3);
+  }
+}
+
+/* Slightly clearer product-shell hierarchy */
+.vanta-workspace__app {
+  box-shadow:
+    0 45px 100px rgba(0, 0, 0, 0.4),
+    0 0 90px rgba(29, 94, 232, 0.045);
+}
+
+.vanta-workspace__canvas {
+  background:
+    radial-gradient(
+      circle at 45% 38%,
+      rgba(29, 94, 232, 0.035),
+      transparent 38%
+    ),
+    #070b11;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .node-connection i,
+  .vanta-workflow-node.is-running {
+    animation: none;
+  }
+}
+
+/* =========================================================
+   INTERACTION ACCENTS
+========================================================= */
+
+.vanta-workspace__workflow-list button {
+  position: relative;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  transition:
+    color 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.vanta-workspace__workflow-list button:hover {
+  border-color: rgba(91, 156, 255, 0.16);
+  background: rgba(91, 156, 255, 0.045);
+  transform: translateX(2px);
+}
+
+.vanta-workspace__workflow-list button.is-selected {
+  border-color: rgba(91, 156, 255, 0.2);
+  background:
+    linear-gradient(90deg, rgba(91, 156, 255, 0.11), rgba(91, 156, 255, 0.035));
+  color: #d5e2f1;
+  box-shadow: inset 2px 0 0 #5b9cff;
+}
+
+.vanta-workspace__workflow-list button.is-selected .workflow-dot {
+  box-shadow:
+    0 0 8px rgba(91, 156, 255, 0.9),
+    0 0 16px rgba(91, 156, 255, 0.22);
+}
+
+.vanta-workflow-node {
+  user-select: none;
+}
+
+.vanta-workflow-node.is-selected {
+  border-color: rgba(91, 156, 255, 0.8);
+  background:
+    linear-gradient(145deg, rgba(18, 29, 45, 0.98), rgba(7, 12, 19, 0.99));
+  box-shadow:
+    0 15px 45px rgba(29, 94, 232, 0.16),
+    0 0 0 1px rgba(91, 156, 255, 0.13),
+    0 0 28px rgba(29, 94, 232, 0.08);
+}
+
+.vanta-workflow-node.is-selected::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border: 1px solid rgba(91, 156, 255, 0.22);
+  pointer-events: none;
+  animation: workspaceSelectionGlow 1.8s ease-in-out infinite;
+}
+
+.vanta-test__run {
+  min-width: 92px;
+  padding: 8px 12px;
+  border-color: rgba(91, 156, 255, 0.7) !important;
+  background: #286ce3 !important;
+  color: #fff !important;
+  box-shadow:
+    0 0 0 1px rgba(91, 156, 255, 0.12),
+    0 0 18px rgba(29, 94, 232, 0.22) !important;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.vanta-test__run:hover:not(:disabled) {
+  border-color: #8fbdff !important;
+  background: #3478ee !important;
+  color: #fff !important;
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 1px rgba(143, 189, 255, 0.2),
+    0 0 25px rgba(29, 94, 232, 0.34) !important;
+}
+
+.vanta-test__run:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.vanta-test__run:disabled {
+  opacity: 0.72;
+}
+
+.vanta-node-details__empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 340px;
+  padding: 10px 2px;
+}
+
+.vanta-node-details__empty > span {
+  color: #5b9cff;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 7px;
+  letter-spacing: 0.16em;
+}
+
+.vanta-node-details__empty p {
+  max-width: 190px;
+  margin: 12px 0 0;
+  color: #69788b;
+  font-size: 9px;
+  line-height: 1.65;
+}
+
+@keyframes workspaceSelectionGlow {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.9; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vanta-workflow-node.is-selected::before {
+    animation: none;
+  }
+
+  .vanta-workspace__workflow-list button,
+  .vanta-test__run {
+    transition: none;
+  }
+}

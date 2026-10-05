@@ -322,10 +322,6 @@
 
   justify-content: center;
 
-  padding:
-    18px
-    28px;
-
   border: 1px solid rgba(91, 156, 255, 0.85);
 
   background:
@@ -555,5 +551,29 @@
   .vanta-final-cta__baseline {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* --------------------------------------------------
+   NORTH BASE BUTTON NORMALIZATION
+-------------------------------------------------- */
+
+.vanta-final-cta__button.button {
+  width: auto;
+  min-height: 56px;
+}
+
+.vanta-final-cta__button .button__arrow {
+  color: currentColor;
+}
+
+/* Keep the CTA content mathematically centered on the section axis. */
+.vanta-final-cta__content {
+  margin-inline: auto;
+}
+
+@media (max-width: 600px) {
+  .vanta-final-cta__button.button {
+    min-height: 52px;
   }
 }

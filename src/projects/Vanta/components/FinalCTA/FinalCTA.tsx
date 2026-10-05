@@ -4,6 +4,7 @@ import {
   useState,
 } from "react";
 
+import { Button } from "@/components/North Base/ui/Button";
 import { finalCTAContent } from "./content";
 
 import "./FinalCTA.css";
@@ -101,16 +102,15 @@ export default function FinalCTA() {
           {description.lineTwo}
         </p>
 
-        <a
+        <Button
           href={button.href}
+          variant="primary"
+          size="lg"
+          withArrow
           className="vanta-final-cta__button"
         >
           {button.label}
-
-          <span aria-hidden="true">
-            {button.arrow}
-          </span>
-        </a>
+        </Button>
       </div>
 
       <div

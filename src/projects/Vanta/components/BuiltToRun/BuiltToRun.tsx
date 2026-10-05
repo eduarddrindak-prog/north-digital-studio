@@ -139,6 +139,17 @@ export default function BuiltToRun() {
           </h2>
 
           <p>{description}</p>
+
+          <div className="vanta-built__side-metric vanta-built__side-metric--left">
+            <div className="vanta-built__side-value">
+              {repetitiveSteps}%
+            </div>
+
+            <div className="vanta-built__side-label">
+              <span>{metricLabels.repetitiveSteps[0]}</span>
+              <span>{metricLabels.repetitiveSteps[1]}</span>
+            </div>
+          </div>
         </header>
 
         <div className="vanta-built__main-metric">
@@ -150,17 +161,6 @@ export default function BuiltToRun() {
           <div className="vanta-built__metric-label">
             <span>{metricLabels.tasksAutomated[0]}</span>
             <span>{metricLabels.tasksAutomated[1]}</span>
-          </div>
-        </div>
-
-        <div className="vanta-built__side-metric vanta-built__side-metric--left">
-          <div className="vanta-built__side-value">
-            {repetitiveSteps}%
-          </div>
-
-          <div className="vanta-built__side-label">
-            <span>{metricLabels.repetitiveSteps[0]}</span>
-            <span>{metricLabels.repetitiveSteps[1]}</span>
           </div>
         </div>
 

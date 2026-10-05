@@ -522,13 +522,11 @@
 .vanta-how__connector {
   position: absolute;
 
-  left: 118px;
-
-  width: 220px;
-
-  height: 80px;
+  width: 1px;
 
   pointer-events: none;
+
+  z-index: 3;
 }
 
 .vanta-how__connector::before {
@@ -536,37 +534,29 @@
 
   position: absolute;
 
-  left: 0;
-  right: 0;
-
-  top: 50%;
-
-  height: 1px;
+  inset: 0;
 
   background:
     linear-gradient(
-      90deg,
+      to bottom,
       rgba(91, 156, 255, 0),
-      rgba(91, 156, 255, 0.8),
+      rgba(91, 156, 255, 0.7) 22%,
+      rgba(91, 156, 255, 0.42) 78%,
       rgba(91, 156, 255, 0)
     );
 
-  transform: rotate(10deg);
-
-  transform-origin: left center;
-
   box-shadow:
-    0 0 10px rgba(91, 156, 255, 0.3);
+    0 0 10px rgba(91, 156, 255, 0.18);
 }
 
 .vanta-how__connector span {
   position: absolute;
 
-  top: 50%;
+  top: 0;
   left: 50%;
 
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
 
   border: 1px solid #78b2ff;
 
@@ -579,15 +569,60 @@
 
   transform: translate(-50%, -50%);
 
-  animation: howDataPacket 2.3s linear infinite;
+  animation:
+    howDataPacketVertical
+    2.6s
+    cubic-bezier(0.4, 0, 0.2, 1)
+    infinite;
 }
 
 .vanta-how__connector--one {
-  top: 145px;
+  top: 155px;
+  left: 280px;
+
+  height: 55px;
 }
 
 .vanta-how__connector--two {
-  top: 438px;
+  top: 400px;
+  left: 280px;
+
+  height: 105px;
+}
+
+.vanta-how__event-card,
+.vanta-how__processing,
+.vanta-how__action-card {
+  transition:
+    border-color 260ms ease,
+    box-shadow 260ms ease,
+    transform 260ms ease,
+    background 260ms ease;
+}
+
+.vanta-how__event-card--active,
+.vanta-how__action-card--active {
+  border-color: rgba(91, 156, 255, 0.42);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(15, 24, 38, 0.95),
+      rgba(5, 8, 13, 0.97)
+    );
+
+  box-shadow:
+    0 0 45px rgba(29, 94, 232, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+  transform: translateY(-2px);
+}
+
+.vanta-how__event-card:focus-visible,
+.vanta-how__processing:focus-visible,
+.vanta-how__action-card:focus-visible {
+  outline: 1px solid rgba(91, 156, 255, 0.65);
+  outline-offset: 4px;
 }
 
 /* =========================================================
@@ -936,7 +971,21 @@
 
   background: rgba(91, 156, 255, 0.45);
 
+  transform-origin: bottom;
+
   animation: howBar 1.5s ease-in-out infinite alternate;
+}
+
+.vanta-how__bars i:nth-child(2n) {
+  animation-delay: -0.35s;
+}
+
+.vanta-how__bars i:nth-child(3n) {
+  animation-delay: -0.7s;
+}
+
+.vanta-how__bars i:nth-child(5n) {
+  animation-delay: -1s;
 }
 
 .vanta-how__bars i:nth-child(1) {
@@ -1058,6 +1107,27 @@
   width: 6px;
 
   background: rgba(91, 156, 255, 0.5);
+
+  transform-origin: bottom;
+
+  animation:
+    howBar
+    2s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+.vanta-how__success-bars i:nth-child(2n) {
+  animation-delay: -0.4s;
+}
+
+.vanta-how__success-bars i:nth-child(3n) {
+  animation-delay: -0.8s;
+}
+
+.vanta-how__success-bars i:nth-child(5n) {
+  animation-delay: -1.2s;
 }
 
 .vanta-how__success-bars i:nth-child(1) {
@@ -1200,23 +1270,30 @@
    ANIMATIONS
 ========================================================= */
 
-@keyframes howDataPacket {
+@keyframes howDataPacketVertical {
   0% {
-    transform: translate(-100px, -50%);
+    top: 0;
     opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
   }
 
-  15% {
+  18% {
     opacity: 1;
   }
 
-  85% {
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  82% {
     opacity: 1;
   }
 
   100% {
-    transform: translate(100px, -50%);
+    top: 100%;
     opacity: 0;
+    transform: translate(-50%, -50%) scale(0.7);
   }
 }
 
@@ -1303,6 +1380,19 @@
 }
 
 @media (max-width: 680px) {
+  .vanta-how__connector--one {
+    top: 155px;
+    left: 50%;
+    height: 55px;
+  }
+
+  .vanta-how__connector--two {
+    top: 400px;
+    left: 50%;
+    height: 105px;
+  }
+
+
   .vanta-how__visual {
     height: 560px;
   }
@@ -1388,7 +1478,8 @@
 @media (prefers-reduced-motion: reduce) {
   .vanta-how__core-orbit,
   .vanta-how__connector span,
-  .vanta-how__bars i {
+  .vanta-how__bars i,
+  .vanta-how__success-bars i {
     animation: none;
   }
 

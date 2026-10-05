@@ -234,9 +234,9 @@
 .vanta-scale__spine {
   position: absolute;
 
-  top: 24px;
-  bottom: 24px;
-  left: 23px;
+  top: 8px;
+  bottom: 8px;
+  left: -29px;
 
   width: 1px;
 
@@ -334,7 +334,7 @@
 }
 
 .vanta-scale__branch.is-active {
-  width: 46px;
+  width: 38px;
 
   background:
     linear-gradient(
@@ -352,6 +352,8 @@
 ========================================================= */
 
 .vanta-scale__cards {
+  position: relative;
+
   display: grid;
 
   gap: 14px;
@@ -890,6 +892,8 @@
 
 .vanta-scale__integration {
   display: inline-flex;
+  appearance: none;
+  font: inherit;
   align-items: center;
 
   gap: 7px;
@@ -906,7 +910,7 @@
 
   color: #566579;
 
-  cursor: default;
+  cursor: pointer;
 
   transition:
     border-color 200ms ease,
@@ -914,12 +918,20 @@
     background 200ms ease;
 }
 
-.vanta-scale__integration:hover {
-  border-color: rgba(91, 156, 255, 0.25);
+.vanta-scale__integration:hover,
+.vanta-scale__integration:focus-visible {
+  border-color: rgba(91, 156, 255, 0.42);
 
-  background: rgba(91, 156, 255, 0.025);
+  background: rgba(91, 156, 255, 0.05);
 
-  color: #8997aa;
+  color: #a9b8cb;
+
+  box-shadow: 0 0 18px rgba(91, 156, 255, 0.06);
+}
+
+.vanta-scale__integration:focus-visible {
+  outline: 1px solid rgba(91, 156, 255, 0.65);
+  outline-offset: 2px;
 }
 
 .vanta-scale__integration span {
@@ -1145,7 +1157,7 @@
   }
 
   .vanta-scale__spine {
-    left: 7px;
+    left: -21px;
   }
 
   .vanta-scale__branch {
@@ -1153,7 +1165,7 @@
   }
 
   .vanta-scale__branch.is-active {
-    width: 31px;
+    width: 29px;
   }
 
   .vanta-scale__card {
@@ -1296,5 +1308,50 @@
 
   .vanta-scale__workflow-status-dot {
     animation: none;
+  }
+}
+
+/* =========================================================
+   LIVE METRICS
+========================================================= */
+
+.vanta-scale__count,
+.vanta-scale__active-status-meta strong {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+.vanta-scale__count {
+  transition: opacity 180ms ease;
+}
+
+.vanta-scale__card:hover .vanta-scale__count,
+.vanta-scale__card.is-active .vanta-scale__count {
+  text-shadow: 0 0 22px rgba(91, 156, 255, 0.08);
+}
+
+/* Keep the infrastructure spine strictly inside the team-card stack.
+   The integrations/status rows below the cards no longer distort its length. */
+.vanta-scale__cards {
+  isolation: isolate;
+}
+
+.vanta-scale__spine {
+  z-index: 0;
+  pointer-events: none;
+}
+
+.vanta-scale__branch {
+  z-index: 1;
+  pointer-events: none;
+}
+
+.vanta-scale__card {
+  z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vanta-scale__count {
+    transition: none;
   }
 }

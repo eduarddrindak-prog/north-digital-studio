@@ -1,21 +1,125 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+
+import { Link } from "@/components/North Base/ui/Link";
 
 import { howItWorksContent } from "./content";
 
 import "./HowItWorks.css";
 
+function useAnimatedNumber(
+  initial: number,
+  getNextTarget: () => number,
+  intervalMs: number,
+) {
+  const [value, setValue] = useState(initial);
+  const valueRef = useRef(initial);
+  const getNextTargetRef = useRef(getNextTarget);
+
+  getNextTargetRef.current = getNextTarget;
+
+  useEffect(() => {
+    let target = initial;
+    let frame = 0;
+
+    const updateTarget = () => {
+      target = getNextTargetRef.current();
+    };
+
+    updateTarget();
+
+    const interval = window.setInterval(
+      updateTarget,
+      intervalMs,
+    );
+
+    const animate = () => {
+      const current = valueRef.current;
+      const next = current + (target - current) * 0.075;
+
+      if (Math.abs(target - next) < 0.02) {
+        valueRef.current = target;
+        setValue(target);
+      } else {
+        valueRef.current = next;
+        setValue(next);
+      }
+
+      frame = window.requestAnimationFrame(animate);
+    };
+
+    frame = window.requestAnimationFrame(animate);
+
+    return () => {
+      window.clearInterval(interval);
+      window.cancelAnimationFrame(frame);
+    };
+  }, [initial, intervalMs]);
+
+  return value;
+}
+
+function formatNumber(value: number) {
+  return Math.round(value).toLocaleString("en-US");
+}
+
+function formatLatency(value: number) {
+  return `${Math.round(value)}ms`;
+}
+
+function formatSuccessRate(value: number) {
+  return `${value.toFixed(2)}%`;
+}
+
 export default function HowItWorks() {
   const [activeStep, setActiveStep] = useState(0);
+
+  const eventsPerSecond = useAnimatedNumber(
+    1842,
+    () =>
+      Math.round(
+        1842 +
+          (Math.random() - 0.5) * 180,
+      ),
+    2400,
+  );
+
+  const averageLatency = useAnimatedNumber(
+    42,
+    () =>
+      Math.round(
+        42 +
+          (Math.random() - 0.5) * 8,
+      ),
+    2800,
+  );
+
+  const successRate = useAnimatedNumber(
+    99.98,
+    () =>
+      Math.min(
+        99.99,
+        Math.max(
+          99.94,
+          99.98 +
+            (Math.random() - 0.5) * 0.06,
+        ),
+      ),
+    3600,
+  );
 
   return (
     <section
       className="vanta-how"
       id="how-it-works"
     >
-      <div className="vanta-how__grid" />
+      <div
+        className="vanta-how__grid"
+        aria-hidden="true"
+      />
 
       <div className="vanta-how__container">
         {/* LEFT */}
+
         <div className="vanta-how__content">
           <div className="vanta-how__eyebrow">
             <span className="vanta-how__eyebrow-line" />
@@ -73,25 +177,44 @@ export default function HowItWorks() {
                     </span>
                   </span>
                 </button>
-              )
+              ),
             )}
           </div>
 
-          <a
+          <Link
             href={howItWorksContent.cta.href}
+            variant="muted"
+            size="sm"
+            withArrow
             className="vanta-how__cta"
           >
-            <span>{howItWorksContent.cta.label}</span>
-            <span>→</span>
-          </a>
+            {howItWorksContent.cta.label}
+          </Link>
         </div>
 
         {/* RIGHT — EXECUTION SYSTEM */}
+
         <div className="vanta-how__visual">
-          <div className="vanta-how__visual-grid" />
+          <div
+            className="vanta-how__visual-grid"
+            aria-hidden="true"
+          />
 
           {/* TOP EVENT */}
-          <div className="vanta-how__event-card">
+
+          <div
+            className={[
+              "vanta-how__event-card",
+              activeStep === 0
+                ? "vanta-how__event-card--active"
+                : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+            tabIndex={0}
+            onMouseEnter={() => setActiveStep(0)}
+            onFocus={() => setActiveStep(0)}
+          >
             <div className="vanta-how__card-top">
               <div className="vanta-how__card-status">
                 <span />
@@ -125,11 +248,16 @@ export default function HowItWorks() {
           </div>
 
           {/* CONNECTION 1 */}
-          <div className="vanta-how__connector vanta-how__connector--one">
+
+          <div
+            className="vanta-how__connector vanta-how__connector--one"
+            aria-hidden="true"
+          >
             <span />
           </div>
 
           {/* PROCESSING */}
+
           <div
             className={[
               "vanta-how__processing",
@@ -139,6 +267,9 @@ export default function HowItWorks() {
             ]
               .filter(Boolean)
               .join(" ")}
+            tabIndex={0}
+            onMouseEnter={() => setActiveStep(1)}
+            onFocus={() => setActiveStep(1)}
           >
             <div className="vanta-how__card-top">
               <div className="vanta-how__card-status">
@@ -201,19 +332,36 @@ export default function HowItWorks() {
                         {check.label}
                       </div>
                     );
-                  }
+                  },
                 )}
               </div>
             </div>
           </div>
 
           {/* CONNECTION 2 */}
-          <div className="vanta-how__connector vanta-how__connector--two">
+
+          <div
+            className="vanta-how__connector vanta-how__connector--two"
+            aria-hidden="true"
+          >
             <span />
           </div>
 
           {/* OUTPUT */}
-          <div className="vanta-how__action-card">
+
+          <div
+            className={[
+              "vanta-how__action-card",
+              activeStep === 2
+                ? "vanta-how__action-card--active"
+                : "",
+            ]
+              .filter(Boolean)
+              .join(" ")}
+            tabIndex={0}
+            onMouseEnter={() => setActiveStep(2)}
+            onFocus={() => setActiveStep(2)}
+          >
             <div className="vanta-how__card-top">
               <div className="vanta-how__card-status">
                 <span />
@@ -252,6 +400,7 @@ export default function HowItWorks() {
           </div>
 
           {/* METRICS */}
+
           <div className="vanta-how__metrics">
             <div className="vanta-how__metrics-header">
               <span className="vanta-how__metrics-dot" />
@@ -261,7 +410,7 @@ export default function HowItWorks() {
 
             <div className="vanta-how__metric">
               <strong>
-                {howItWorksContent.metrics.eventsPerSecond.value}
+                {formatNumber(eventsPerSecond)}
               </strong>
 
               <span>
@@ -269,30 +418,17 @@ export default function HowItWorks() {
               </span>
 
               <div className="vanta-how__bars">
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
+                {Array.from({ length: 18 }).map(
+                  (_, index) => (
+                    <i key={index} />
+                  ),
+                )}
               </div>
             </div>
 
             <div className="vanta-how__metric">
               <strong>
-                {howItWorksContent.metrics.averageLatency.value}
+                {formatLatency(averageLatency)}
               </strong>
 
               <span>
@@ -312,7 +448,7 @@ export default function HowItWorks() {
 
             <div className="vanta-how__metric vanta-how__metric--last">
               <strong>
-                {howItWorksContent.metrics.successRate.value}
+                {formatSuccessRate(successRate)}
               </strong>
 
               <span>
@@ -320,26 +456,17 @@ export default function HowItWorks() {
               </span>
 
               <div className="vanta-how__success-bars">
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
-                <i />
+                {Array.from({ length: 15 }).map(
+                  (_, index) => (
+                    <i key={index} />
+                  ),
+                )}
               </div>
             </div>
           </div>
 
-          {/* EVENT LOG */}
+          {/* EXECUTION LOG */}
+
           <div className="vanta-how__event-log">
             <span className="vanta-how__event-log-dot" />
 
