@@ -966,6 +966,36 @@
 }
 
 /* =========================================================
+   MORE SYSTEMS
+========================================================= */
+
+.vanta-scale__more {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 10px;
+  color: #f4f7fb;
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    monospace;
+  font-size: 8px;
+  letter-spacing: 0.06em;
+}
+
+.vanta-scale__more span {
+  width: 18px;
+  height: 1px;
+  background: #5b9cff;
+  box-shadow: 0 0 8px rgba(91, 156, 255, 0.35);
+}
+
+.vanta-scale__more strong {
+  font-size: inherit;
+  font-weight: 500;
+}
+
+/* =========================================================
    ACTIVE SYSTEM STATUS
 ========================================================= */
 
@@ -1120,6 +1150,15 @@
 }
 
 @media (max-width: 700px) {
+  /* Mobile: simplify the scale system to the essential information. */
+  .vanta-scale__statement,
+  .vanta-scale__integrations,
+  .vanta-scale__more,
+  .vanta-scale__card:nth-of-type(4),
+  .vanta-scale__branch--4 {
+    display: none;
+  }
+
   .vanta-scale__container {
     width: min(100% - 32px, 620px);
 
@@ -1353,5 +1392,27 @@
 @media (prefers-reduced-motion: reduce) {
   .vanta-scale__count {
     transition: none;
+  }
+}
+
+/* =========================================================
+   MOBILE TEAM BRANCH ALIGNMENT
+   Three visible team cards: one branch centered on each card.
+========================================================= */
+@media (max-width: 700px) {
+  .vanta-scale__branch--1 {
+    top: 16.6667%;
+  }
+
+  .vanta-scale__branch--2 {
+    top: 50%;
+  }
+
+  .vanta-scale__branch--3 {
+    top: 83.3333%;
+  }
+
+  .vanta-scale__branch--4 {
+    display: none;
   }
 }

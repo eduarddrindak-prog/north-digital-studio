@@ -1,3 +1,4 @@
+.
 # 1. Current Project Overview
 
 ## Project Name
@@ -32,7 +33,7 @@ At the current moment:
 
 The project is now transitioning from building the foundation to completing the remaining public pages.
 
-## Current Authoritative Context — 2026-09-30
+## Current Authoritative Context — 2026-10-06
 
 The following information is the current authoritative project context. If older sections of this document describe an earlier repository structure or development stage, this section takes precedence until those sections are updated.
 
@@ -73,6 +74,7 @@ Project:
 
 Status:
 - Active development.
+- Visual implementation has progressed through Final CTA.
 
 Current method:
 - section-by-section visual development using SCRIPT 01–07 from PROMPTS.
@@ -80,7 +82,27 @@ Current method:
 Current priority:
 - preserve approved visual language;
 - prevent repetitive section compositions;
-- preserve information and interaction context between sections and development sessions.
+- preserve information and interaction context between sections and development sessions;
+- finish the remaining VANTA page work without undoing approved section decisions.
+
+Current VANTA progress:
+- Header — North Base integration completed.
+- Hero — North Base integration and interaction/visual polish completed.
+- How It Works — North Base integration and interaction/visual polish completed.
+- Workspace — North Base integration and interaction polish completed.
+- Scale Across Company — North Base integration and connector/layout fixes completed.
+- Built To Run — North Base integration and collision/alignment fixes completed.
+- Work In Context — North Base integration and layout fixes completed.
+- Final CTA — North Base Button integration and centered-axis alignment completed.
+- Footer — not yet completed in the current VANTA pass.
+
+VANTA implementation rules currently confirmed:
+- VANTA keeps its own visual identity and local styles.
+- North Base is used for reusable primitives; it does not replace the VANTA visual system.
+- Section-specific product visualizations remain local to VANTA.
+- Section content is kept next to its section where applicable (`.content.ts`).
+- `.tsx` contains structure/logic, `.css` contains visual implementation, and `.content.ts` contains content/data/config.
+- Existing approved section compositions should not be replaced during local fixes unless explicitly requested.
 
 The current section workflow is:
 
@@ -1605,6 +1627,38 @@ Future forms should build on the existing architecture.
 
 ---
 
+## VANTA Portfolio Project
+
+VANTA is the currently active portfolio project inside `src/projects/Vanta/`.
+
+The current VANTA section sequence is:
+
+- Header
+- Hero
+- How It Works
+- Workspace
+- Scale Across Company
+- Built To Run
+- Work In Context
+- Final CTA
+- Footer
+
+The implemented VANTA sections combine North Base primitives with VANTA-specific product visualizations.
+
+North Base is used for reusable interface primitives such as Buttons, Links and IconButtons where appropriate. VANTA-specific flow visualizations, system diagrams, workflow cards, metrics and other product UI remain project-specific.
+
+Current interaction and visual conventions established during the current pass include:
+
+- dynamic metric values where section metrics are presented;
+- smooth, restrained data/point motion;
+- interactive blocks with clear active states;
+- active states can be cleared when the pointer leaves or when an already-active block is clicked, where the section interaction supports both behaviors;
+- connector lines should terminate on their intended visual blocks rather than unrelated lower content;
+- interactive controls should be visually distinguishable from passive UI;
+- responsive layouts must prevent text and product UI from overlapping.
+
+---
+
 ## Routing
 
 Client-side routing is implemented using React Router.
@@ -1870,14 +1924,16 @@ Completed work should be removed.
 
 Current high-priority tasks include:
 
+- continue the remaining VANTA section work;
+- complete the remaining VANTA page structure, including Footer;
+- perform a whole-page VANTA visual and interaction review;
 - complete Portfolio page;
 - complete FAQ page;
 - complete Contact page;
 - review responsive layouts across all pages;
-- perform final visual consistency review;
 - verify production build.
 
-These tasks directly affect the public launch of the website.
+The VANTA work is the current active portfolio-development track. The remaining public North Studio pages remain launch requirements.
 
 ---
 

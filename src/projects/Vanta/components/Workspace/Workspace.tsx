@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/North Base/ui/Button";
 import { IconButton } from "@/components/North Base/ui/IconButton";
@@ -27,6 +27,10 @@ export default function Workspace() {
   const [isRunning, setIsRunning] = useState(false);
   const [runningNode, setRunningNode] = useState(-1);
   const [deployed, setDeployed] = useState(true);
+  const [activeTab, setActiveTab] = useState(0);
+  const [includeContext, setIncludeContext] = useState(true);
+  const [continueOnError, setContinueOnError] = useState(false);
+  const runTimeouts = useRef<number[]>([]);
 
   const {
     intro,
@@ -48,19 +52,31 @@ export default function Workspace() {
       ? null
       : workflow.nodes[selectedNode] ?? null;
 
+  const clearRunTimeouts = () => {
+    runTimeouts.current.forEach((timeout) =>
+      window.clearTimeout(timeout),
+    );
+    runTimeouts.current = [];
+  };
+
+  useEffect(() => clearRunTimeouts, []);
+
   const runTest = () => {
     if (isRunning) return;
 
+    clearRunTimeouts();
     setIsRunning(true);
     setRunningNode(0);
 
-    window.setTimeout(() => setRunningNode(1), 700);
-    window.setTimeout(() => setRunningNode(2), 1400);
-    window.setTimeout(() => setRunningNode(3), 2100);
-    window.setTimeout(() => {
-      setRunningNode(-1);
-      setIsRunning(false);
-    }, 2800);
+    runTimeouts.current = [
+      window.setTimeout(() => setRunningNode(1), 700),
+      window.setTimeout(() => setRunningNode(2), 1400),
+      window.setTimeout(() => setRunningNode(3), 2100),
+      window.setTimeout(() => {
+        setRunningNode(-1);
+        setIsRunning(false);
+      }, 2800),
+    ];
   };
 
   const selectWorkflow = (index: number) => {
@@ -68,6 +84,7 @@ export default function Workspace() {
 
     setActiveWorkflow(index);
     setSelectedNode(0);
+    clearRunTimeouts();
     setRunningNode(-1);
     setIsRunning(false);
   };
@@ -212,17 +229,24 @@ export default function Workspace() {
                 </span>
               </div>
 
-              <div className="vanta-workspace__tabs">
+              <div
+                className="vanta-workspace__tabs"
+                role="tablist"
+                aria-label="Workspace views"
+              >
                 {application.tabs.map(
                   (tab, index) => (
                     <button
                       key={tab}
                       className={
-                        index === 0
+                        index === activeTab
                           ? "is-active"
                           : ""
                       }
                       type="button"
+                      role="tab"
+                      aria-selected={index === activeTab}
+                      onClick={() => setActiveTab(index)}
                     >
                       {tab}
                     </button>
@@ -404,14 +428,24 @@ export default function Workspace() {
 
                     <div className="vanta-toggle-row">
                       <span>{application.nodeDetails.includeContext}</span>
-                      <button type="button" className="vanta-toggle is-on">
+                      <button
+                        type="button"
+                        className={`vanta-toggle ${includeContext ? "is-on" : ""}`}
+                        aria-pressed={includeContext}
+                        onClick={() => setIncludeContext((value) => !value)}
+                      >
                         <i />
                       </button>
                     </div>
 
                     <div className="vanta-toggle-row">
                       <span>{application.nodeDetails.continueOnError}</span>
-                      <button type="button" className="vanta-toggle">
+                      <button
+                        type="button"
+                        className={`vanta-toggle ${continueOnError ? "is-on" : ""}`}
+                        aria-pressed={continueOnError}
+                        onClick={() => setContinueOnError((value) => !value)}
+                      >
                         <i />
                       </button>
                     </div>

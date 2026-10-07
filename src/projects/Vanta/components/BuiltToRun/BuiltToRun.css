@@ -902,3 +902,102 @@
     opacity: 1;
   }
 }
+
+/* =========================================================
+   MOBILE REFINEMENT — BUILT TO RUN
+   Final visual pass
+========================================================= */
+
+@media (max-width: 760px) {
+  /* Bring the hero copy slightly higher and give the metrics
+     a cleaner shared visual zone below it. */
+  .vanta-built__container {
+    padding-top: 72px;
+  }
+
+  .vanta-built__header p {
+    margin-top: 23px;
+  }
+
+  /* Main metric: reduce the oversized 3.2M without changing
+     the desktop composition. */
+  .vanta-built__main-metric {
+    top: 325px;
+  }
+
+  .vanta-built__metric-value {
+    font-size: 4.5rem;
+    line-height: 0.84;
+  }
+
+  .vanta-built__metric-label {
+    margin-top: 14px;
+  }
+
+  /* Left metric: stop it from sitting in the header flow.
+     Keep it in the same horizontal visual band as the other
+     supporting metric. */
+  .vanta-built__header
+    .vanta-built__side-metric--left {
+    position: absolute;
+    top: 330px;
+    left: 0;
+    margin-top: 0;
+    transform: translateX(-12px);
+  }
+
+  .vanta-built.is-visible
+    .vanta-built__header
+    .vanta-built__side-metric--left {
+    transform: translateX(0);
+  }
+
+  .vanta-built__header
+    .vanta-built__side-metric--left
+    .vanta-built__side-value {
+    font-size: 1.8rem;
+  }
+
+  /* Right metric: bring it up so the two supporting metrics
+     no longer feel vertically scattered. */
+  .vanta-built__side-metric--right {
+    top: 405px;
+    right: 2%;
+  }
+
+  .vanta-built__side-metric--right
+    .vanta-built__side-value {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .vanta-built__container {
+    padding-top: 68px;
+  }
+
+  .vanta-built__main-metric {
+    top: 315px;
+  }
+
+  .vanta-built__metric-value {
+    font-size: 4.25rem;
+  }
+
+  .vanta-built__header
+    .vanta-built__side-metric--left {
+    top: 320px;
+  }
+
+  .vanta-built__side-metric--right {
+    top: 395px;
+  }
+
+  .vanta-built__header
+    .vanta-built__side-metric--left
+    .vanta-built__side-value,
+  .vanta-built__side-metric--right
+    .vanta-built__side-value {
+    font-size: 1.65rem;
+  }
+}

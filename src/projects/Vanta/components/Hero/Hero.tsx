@@ -37,6 +37,14 @@ export default function Hero() {
   });
 
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (prefersReducedMotion) {
+      return;
+    }
+
     const timers = allContentNodes.map((node, index) => {
       const interval = 1700 + index * 260;
 
@@ -488,6 +496,11 @@ function AnimatedNumber({ value, suffix = "" }: { value: number; suffix?: string
   const [displayValue, setDisplayValue] = useState(value);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setDisplayValue(value);
+      return;
+    }
+
     const start = displayValue;
     const distance = value - start;
     const duration = 650;

@@ -110,20 +110,6 @@
 
 .vanta-footer__column a {
   width: fit-content;
-
-  color: var(--color-text-soft);
-
-  font-size: var(--text-sm);
-
-  transition:
-    color var(--duration-base) var(--ease-standard),
-    transform var(--duration-base) var(--ease-standard);
-}
-
-.vanta-footer__column a:hover {
-  color: var(--color-text);
-
-  transform: translateX(3px);
 }
 
 
@@ -203,5 +189,75 @@
   .vanta-footer__copyright,
   .vanta-footer__location {
     justify-self: start;
+  }
+}
+
+/* =========================================================
+   NORTH BASE + VANTA POLISH
+   ========================================================= */
+
+.vanta-footer__logo.link {
+  width: fit-content;
+  margin-bottom: var(--space-5);
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.vanta-footer__logo.link:hover {
+  color: var(--color-accent);
+}
+
+.vanta-footer__link.link {
+  width: fit-content;
+  padding: 0;
+  color: var(--color-text-soft);
+  text-decoration: none;
+}
+
+.vanta-footer__link.link:hover {
+  color: var(--color-text);
+  transform: translateX(3px);
+}
+
+/* Give the footer a little more intentional technical separation. */
+.vanta-footer__top {
+  position: relative;
+}
+
+.vanta-footer__top::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: min(180px, 28%);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--color-accent),
+    transparent
+  );
+  opacity: 0.55;
+}
+
+.vanta-footer__status-dot {
+  animation: vanta-footer-status-pulse 2.8s ease-in-out infinite;
+}
+
+@keyframes vanta-footer-status-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    box-shadow: 0 0 8px rgba(91, 156, 255, 0.45);
+  }
+
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 14px rgba(91, 156, 255, 0.8);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vanta-footer__status-dot {
+    animation: none;
   }
 }

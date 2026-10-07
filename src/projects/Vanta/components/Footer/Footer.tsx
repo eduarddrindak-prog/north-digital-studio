@@ -1,3 +1,4 @@
+import { Link } from "@/components/North Base/ui/Link";
 import "./Footer.css";
 
 const columns = [
@@ -52,13 +53,15 @@ export default function Footer() {
       <div className="vanta-footer__inner">
         <div className="vanta-footer__top">
           <div className="vanta-footer__brand">
-            <a
+            <Link
               href="#top"
+              variant="default"
+              size="md"
               className="vanta-footer__logo"
               aria-label="VANTA home"
             >
               VANTA
-            </a>
+            </Link>
 
             <p>
               Infrastructure for work
@@ -80,12 +83,15 @@ export default function Footer() {
                   aria-label={`${column.title} navigation`}
                 >
                   {column.links.map((link) => (
-                    <a
+                    <Link
                       key={link.label}
                       href={link.href}
+                      variant="muted"
+                      size="sm"
+                      className="vanta-footer__link"
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   ))}
                 </nav>
               </div>

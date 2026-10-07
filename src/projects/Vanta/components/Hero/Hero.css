@@ -978,13 +978,45 @@
     min-height: auto;
 
     padding-top: 145px;
-    padding-bottom: 190px;
+    padding-bottom: 90px;
 
-    gap: 70px;
+    gap: 0;
+  }
+
+  /* Mobile-only flow: keep the desktop structure untouched while
+     allowing the CTA row to sit after the system visualizer. */
+  .vanta-hero__content {
+    display: contents;
+  }
+
+  .vanta-hero__eyebrow {
+    display: none;
+  }
+
+  .vanta-hero__title {
+    order: 1;
+  }
+
+  .vanta-hero__description {
+    order: 2;
+  }
+
+  .vanta-system {
+    order: 3;
+    margin-top: 32px;
+  }
+
+  .vanta-hero__actions {
+    order: 4;
+    margin-top: 64px;
   }
 
   .vanta-hero__content {
     max-width: none;
+  }
+
+  .vanta-system__topbar {
+    display: none;
   }
 
   .vanta-hero__title {
@@ -1022,6 +1054,8 @@
 
 
   .vanta-trust {
+    display: none;
+
     width: calc(100% - 32px);
 
     flex-direction: column;
@@ -1050,6 +1084,14 @@
 @media (max-width: 620px) {
   .vanta-hero__container {
     padding-top: 125px;
+  }
+
+  .vanta-system {
+    margin-top: 28px;
+  }
+
+  .vanta-hero__actions {
+    margin-top: 64px;
   }
 
   .vanta-hero__actions {

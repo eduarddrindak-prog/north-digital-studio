@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Button } from "@/components/North Base/ui/Button";
 import { IconButton } from "@/components/North Base/ui/IconButton";
@@ -16,8 +16,31 @@ const navigation = [
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        requestAnimationFrame(() => {
+          document.querySelector<HTMLButtonElement>(".vanta-header__menu")?.focus();
+        });
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [menuOpen]);
+
   const closeMenu = () => {
+    const wasOpen = menuOpen;
     setMenuOpen(false);
+
+    if (wasOpen) {
+      requestAnimationFrame(() => {
+        document.querySelector<HTMLButtonElement>(".vanta-header__menu")?.focus();
+      });
+    }
   };
 
   return (
@@ -85,6 +108,7 @@ export default function Header() {
         className={`vanta-header__mobile ${
           menuOpen ? "is-open" : ""
         }`}
+        aria-hidden={!menuOpen}
       >
         <nav aria-label="Mobile navigation">
           {navigation.map((item) => (
@@ -94,6 +118,7 @@ export default function Header() {
               variant="muted"
               size="sm"
               className="vanta-header__mobile-link"
+              tabIndex={menuOpen ? 0 : -1}
               onClick={closeMenu}
             >
               <span>{item.label}</span>
@@ -108,6 +133,7 @@ export default function Header() {
           size="sm"
           withArrow
           className="vanta-header__mobile-cta"
+          tabIndex={menuOpen ? 0 : -1}
           onClick={closeMenu}
         >
           Get Started

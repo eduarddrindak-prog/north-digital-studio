@@ -27,6 +27,11 @@ function useAnimatedCount(baseValue: number, offsetRange = 2) {
   const [display, setDisplay] = useState(baseValue);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setDisplay(target);
+      return;
+    }
+
     let frame = 0;
     let start = performance.now();
     const startValue = display;
@@ -54,6 +59,10 @@ function useAnimatedCount(baseValue: number, offsetRange = 2) {
   }, [target]);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
     const interval = window.setInterval(() => {
       const delta =
         Math.floor(Math.random() * (offsetRange * 2 + 1)) -
@@ -205,9 +214,7 @@ export default function ScaleAcrossCompany() {
                   }
                   tabIndex={0}
                   role="button"
-                  aria-current={
-                    isActive ? "true" : undefined
-                  }
+                  aria-pressed={isActive}
                   onKeyDown={(event) => {
                     if (
                       event.key === "Enter" ||
@@ -377,8 +384,8 @@ export default function ScaleAcrossCompany() {
 
             <div className="vanta-scale__more">
               <span />
-              <strong>AND</strong>
-              <strong>50+ MORE</strong>
+              <strong>AND 50+ </strong>
+              <strong>MORE</strong>
             </div>
           </div>
 

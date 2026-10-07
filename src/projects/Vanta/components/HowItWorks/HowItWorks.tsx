@@ -25,7 +25,17 @@ function useAnimatedNumber(
       target = getNextTargetRef.current();
     };
 
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
     updateTarget();
+
+    if (prefersReducedMotion) {
+      valueRef.current = target;
+      setValue(target);
+      return;
+    }
 
     const interval = window.setInterval(
       updateTarget,
@@ -211,9 +221,17 @@ export default function HowItWorks() {
             ]
               .filter(Boolean)
               .join(" ")}
+            role="button"
             tabIndex={0}
+            aria-pressed={activeStep === 0}
             onMouseEnter={() => setActiveStep(0)}
             onFocus={() => setActiveStep(0)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                setActiveStep(0);
+              }
+            }}
           >
             <div className="vanta-how__card-top">
               <div className="vanta-how__card-status">
@@ -267,9 +285,17 @@ export default function HowItWorks() {
             ]
               .filter(Boolean)
               .join(" ")}
+            role="button"
             tabIndex={0}
+            aria-pressed={activeStep === 1}
             onMouseEnter={() => setActiveStep(1)}
             onFocus={() => setActiveStep(1)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                setActiveStep(1);
+              }
+            }}
           >
             <div className="vanta-how__card-top">
               <div className="vanta-how__card-status">
@@ -358,9 +384,17 @@ export default function HowItWorks() {
             ]
               .filter(Boolean)
               .join(" ")}
+            role="button"
             tabIndex={0}
+            aria-pressed={activeStep === 2}
             onMouseEnter={() => setActiveStep(2)}
             onFocus={() => setActiveStep(2)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                setActiveStep(2);
+              }
+            }}
           >
             <div className="vanta-how__card-top">
               <div className="vanta-how__card-status">
