@@ -1,0 +1,322 @@
+:root {
+  /* =========================================================
+     MAISON LENOIR — COLOR
+     Warm / editorial / neighbourhood bakery
+     ========================================================= */
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --color-blue-400: #a65b3e;
+  --color-blue-500: #8d452d;
+  --color-blue-600: #733722;
+
+  --color-page: #f7f2e9;
+  --color-page-soft: #eee7dc;
+
+  --color-surface: rgba(255, 255, 255, 0.62);
+  --color-surface-raised: rgba(255, 255, 255, 0.82);
+  --color-surface-strong: #fffdf9;
+
+  --color-text: #2a211b;
+  --color-text-soft: rgba(42, 33, 27, 0.68);
+  --color-text-muted: rgba(42, 33, 27, 0.48);
+
+  --color-text-inverse: #fffdf9;
+
+  --color-border: rgba(67, 49, 38, 0.14);
+  --color-border-strong: rgba(67, 49, 38, 0.24);
+  --color-border-subtle: rgba(67, 49, 38, 0.08);
+
+  --color-accent: var(--color-blue-400);
+  --color-accent-strong: var(--color-blue-500);
+
+  --color-accent-soft: rgba(166, 91, 62, 0.10);
+  --color-accent-soft-strong: rgba(166, 91, 62, 0.16);
+
+  --color-overlay: rgba(42, 33, 27, 0.58);
+
+
+  /* =========================================================
+     TYPOGRAPHY
+     ========================================================= */
+
+  --font-sans:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    sans-serif;
+
+  --font-mono:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  --text-xs: 0.6875rem;
+  --text-sm: 0.8125rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.35rem;
+
+  --text-2xl:
+    clamp(1.75rem, 1.3rem + 1.4vw, 2.5rem);
+
+  --text-3xl:
+    clamp(3rem, 2.2rem + 4.2vw, 6.25rem);
+
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+
+  --line-tight: 0.94;
+  --line-snug: 1.12;
+  --line-normal: 1.55;
+
+  --tracking-normal: -0.015em;
+  --tracking-tight: -0.035em;
+  --tracking-label: 0.12em;
+  --tracking-mono: 0.04em;
+
+
+  /* =========================================================
+     SPACING
+     ========================================================= */
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  --space-section:
+    clamp(5rem, 8vw, 8rem);
+
+  --space-container:
+    clamp(1.25rem, 4vw, 3rem);
+
+
+  /* =========================================================
+     LAYOUT
+     ========================================================= */
+
+  --container-max: 88rem;
+  --container-narrow: 52rem;
+
+  --grid-gap: var(--space-6);
+
+
+  /* =========================================================
+     RADIUS
+     Soft / tactile / restrained
+     ========================================================= */
+
+  --radius-sm: 0.35rem;
+  --radius-md: 0.65rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 999rem;
+
+
+  /* =========================================================
+     SHADOWS
+     ========================================================= */
+
+  --shadow-soft:
+    0 16px 45px rgba(72, 50, 35, 0.10);
+
+  --shadow-accent:
+    0 18px 45px rgba(166, 91, 62, 0.12);
+
+  --shadow-elevated:
+    0 24px 70px rgba(72, 50, 35, 0.15);
+
+  --glow-accent:
+    0 0 28px rgba(166, 91, 62, 0.10);
+
+
+  /* =========================================================
+     FOCUS
+     ========================================================= */
+
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 3px;
+  --focus-ring-color: var(--color-accent);
+
+  --focus-ring-shadow:
+    0 0 0 3px var(--color-accent-soft-strong);
+
+
+  /* =========================================================
+     MOTION
+     ========================================================= */
+
+  --duration-fast: 160ms;
+  --duration-base: 280ms;
+  --duration-slow: 500ms;
+  --duration-reveal: 650ms;
+
+  --ease-standard:
+    cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  --ease-emphasized:
+    cubic-bezier(0.16, 1, 0.3, 1);
+
+  --motion-distance-small: 0.5rem;
+  --motion-distance-medium: 1rem;
+  --motion-lift-distance: 0.25rem;
+
+  --motion-scale-hover: 1.015;
+  --motion-scale-enter: 0.985;
+
+  --motion-reduced-opacity: 1;
+
+
+  /* =========================================================
+     BUTTON
+     ========================================================= */
+
+  --button-height-sm: 2.4rem;
+  --button-height-md: 2.9rem;
+  --button-height-lg: 3.35rem;
+
+  --button-padding-sm: 0 0.95rem;
+  --button-padding-md: 0 1.25rem;
+  --button-padding-lg: 0 1.5rem;
+
+  --button-radius: var(--radius-sm);
+
+  --button-font-size-sm: var(--text-sm);
+  --button-font-size-md: var(--text-sm);
+  --button-font-size-lg: var(--text-base);
+
+  --button-primary-bg: var(--color-text);
+  --button-primary-text: var(--color-text-inverse);
+  --button-primary-border: var(--color-text);
+
+  --button-secondary-bg: transparent;
+  --button-secondary-text: var(--color-text);
+  --button-secondary-border: var(--color-border-strong);
+
+  --button-ghost-bg: transparent;
+  --button-ghost-text: var(--color-text-soft);
+  --button-ghost-border: transparent;
+
+
+  /* =========================================================
+     CARD / PANELS
+     ========================================================= */
+
+  --card-bg: var(--color-surface);
+  --card-bg-hover: var(--color-surface-raised);
+  --card-border: var(--color-border);
+
+  --card-radius: var(--radius-md);
+
+  --card-padding:
+    clamp(1.25rem, 2.5vw, 2rem);
+
+
+  /* =========================================================
+     FORM FIELDS
+     ========================================================= */
+
+  --field-bg: rgba(255, 255, 255, 0.72);
+  --field-border: var(--color-border);
+
+  --field-border-focus:
+    var(--color-accent);
+
+  --field-text: var(--color-text);
+  --field-placeholder: var(--color-text-muted);
+
+  --field-radius: var(--radius-sm);
+  --field-height: 3rem;
+
+
+  /* =========================================================
+     BADGE
+     ========================================================= */
+
+  --badge-bg: var(--color-accent-soft);
+  --badge-text: var(--color-accent);
+
+  --badge-border:
+    rgba(166, 91, 62, 0.22);
+
+  --badge-radius: var(--radius-sm);
+
+  --badge-padding:
+    0.25rem 0.6rem;
+
+  --badge-font-size: var(--text-xs);
+
+
+  /* =========================================================
+     LINK
+     ========================================================= */
+
+  --link-text: var(--color-text);
+  --link-text-hover: var(--color-accent);
+
+  --link-underline:
+    var(--color-accent);
+
+
+  /* =========================================================
+     PILL / TAG
+     ========================================================= */
+
+  --pill-bg: transparent;
+  --pill-text: var(--color-text-soft);
+  --pill-border: var(--color-border);
+
+  --pill-radius: var(--radius-full);
+
+  --pill-padding:
+    0.4rem 0.7rem;
+
+  --pill-font-size: var(--text-xs);
+
+
+  /* =========================================================
+     TEXT VARIANTS
+     ========================================================= */
+
+  --text-title-size: var(--text-2xl);
+  --text-subtitle-size: var(--text-lg);
+  --text-body-size: var(--text-base);
+  --text-caption-size: var(--text-xs);
+
+
+  /* =========================================================
+     ICON
+     ========================================================= */
+
+  --icon-size-xs: 0.9rem;
+  --icon-size-sm: 1.1rem;
+  --icon-size-md: 1.35rem;
+  --icon-size-lg: 1.75rem;
+  --icon-size-xl: 2.25rem;
+
+  --icon-color: currentColor;
+
+
+  /* =========================================================
+     DIVIDER
+     ========================================================= */
+
+  --divider-color: var(--color-border);
+  --divider-thickness: 1px;
+}

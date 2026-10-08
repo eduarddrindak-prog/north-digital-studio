@@ -84,34 +84,34 @@ export default function HowItWorks() {
   const [activeStep, setActiveStep] = useState(0);
 
   const eventsPerSecond = useAnimatedNumber(
-    1842,
+    768,
     () =>
       Math.round(
-        1842 +
-          (Math.random() - 0.5) * 180,
+        768 +
+          (Math.random() - 0.5) * 84,
       ),
     2400,
   );
 
   const averageLatency = useAnimatedNumber(
-    42,
+    96,
     () =>
       Math.round(
-        42 +
-          (Math.random() - 0.5) * 8,
+        96 +
+          (Math.random() - 0.5) * 16,
       ),
     2800,
   );
 
   const successRate = useAnimatedNumber(
-    99.98,
+    99.72,
     () =>
       Math.min(
-        99.99,
+        99.85,
         Math.max(
-          99.94,
-          99.98 +
-            (Math.random() - 0.5) * 0.06,
+          99.58,
+          99.72 +
+            (Math.random() - 0.5) * 0.14,
         ),
       ),
     3600,

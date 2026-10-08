@@ -1,253 +1,14 @@
 import { useState } from "react";
 
+import {
+  workInContextContent,
+  type Scenario,
+} from "./content";
+
 import "./WorkInContext.css";
 
-type Outcome = {
-  id: string;
-  label: string;
-  title: string;
-  detail: string;
-  amount: string;
-  reason: string;
-};
-
-type Scenario = {
-  id: string;
-  number: string;
-  name: string;
-  description: string;
-  category: string;
-  steps: {
-    label: string;
-    description: string;
-    icon: "document" | "extract" | "check" | "warning";
-  }[];
-  outcome: Outcome;
-  alternatives: Outcome[];
-};
-
-const scenarios: Scenario[] = [
-  {
-    id: "invoice-review",
-    number: "01",
-    name: "INVOICE REVIEW",
-    description: "Process and verify incoming invoices",
-    category: "FINANCE / AP AUTOMATION",
-    steps: [
-      {
-        label: "INVOICE RECEIVED",
-        description: "PDF or email attachment",
-        icon: "document",
-      },
-      {
-        label: "DATA EXTRACTED",
-        description: "Vendor, amount, date, line items",
-        icon: "extract",
-      },
-      {
-        label: "POLICY CHECK",
-        description: "Matches company rules and spending limits",
-        icon: "check",
-      },
-      {
-        label: "EXCEPTION DETECTED",
-        description: "Amount exceeds policy limit",
-        icon: "warning",
-      },
-    ],
-    outcome: {
-      id: "finance",
-      label: "Finance",
-      title: "SENT TO FINANCE",
-      detail: "REQUIRES REVIEW",
-      amount: "$12,480",
-      reason: "Exceeds policy limit",
-    },
-    alternatives: [
-      {
-        id: "auto-approve",
-        label: "Auto-approve",
-        title: "AUTO-APPROVED",
-        detail: "WITHIN POLICY",
-        amount: "$4,280",
-        reason: "Matches spending rules",
-      },
-      {
-        id: "flag",
-        label: "Flag",
-        title: "FLAGGED",
-        detail: "MISSING INFORMATION",
-        amount: "$7,920",
-        reason: "Required fields incomplete",
-      },
-    ],
-  },
-  {
-    id: "lead-routing",
-    number: "02",
-    name: "LEAD ROUTING",
-    description: "Qualify and route new leads",
-    category: "SALES / LEAD AUTOMATION",
-    steps: [
-      {
-        label: "LEAD RECEIVED",
-        description: "Form submission or inbound request",
-        icon: "document",
-      },
-      {
-        label: "DATA ENRICHED",
-        description: "Company, role, size and intent",
-        icon: "extract",
-      },
-      {
-        label: "QUALIFICATION",
-        description: "Matches sales criteria and territory",
-        icon: "check",
-      },
-      {
-        label: "ROUTE CREATED",
-        description: "Assigned to the right sales team",
-        icon: "warning",
-      },
-    ],
-    outcome: {
-      id: "sales",
-      label: "Sales",
-      title: "ROUTED TO SALES",
-      detail: "QUALIFIED LEAD",
-      amount: "Enterprise",
-      reason: "Matches target account profile",
-    },
-    alternatives: [
-      {
-        id: "nurture",
-        label: "Nurture",
-        title: "ADDED TO NURTURE",
-        detail: "NOT READY",
-        amount: "SMB",
-        reason: "Timing does not match criteria",
-      },
-      {
-        id: "reject",
-        label: "Reject",
-        title: "NOT QUALIFIED",
-        detail: "OUTSIDE ICP",
-        amount: "Low fit",
-        reason: "Does not match target profile",
-      },
-    ],
-  },
-  {
-    id: "data-reconciliation",
-    number: "03",
-    name: "DATA RECONCILIATION",
-    description: "Match and resolve data across systems",
-    category: "OPERATIONS / DATA AUTOMATION",
-    steps: [
-      {
-        label: "DATA RECEIVED",
-        description: "Records arrive from connected systems",
-        icon: "document",
-      },
-      {
-        label: "RECORDS MATCHED",
-        description: "Customer and transaction data compared",
-        icon: "extract",
-      },
-      {
-        label: "CONFLICT CHECK",
-        description: "Values compared against source rules",
-        icon: "check",
-      },
-      {
-        label: "MISMATCH FOUND",
-        description: "Conflicting records require attention",
-        icon: "warning",
-      },
-    ],
-    outcome: {
-      id: "operations",
-      label: "Operations",
-      title: "SENT TO OPERATIONS",
-      detail: "REQUIRES REVIEW",
-      amount: "24 records",
-      reason: "Source values do not match",
-    },
-    alternatives: [
-      {
-        id: "synced",
-        label: "Sync",
-        title: "RECORDS SYNCED",
-        detail: "MATCH CONFIRMED",
-        amount: "184 records",
-        reason: "Sources are consistent",
-      },
-      {
-        id: "hold",
-        label: "Hold",
-        title: "SYNC ON HOLD",
-        detail: "SOURCE UNAVAILABLE",
-        amount: "12 records",
-        reason: "Waiting for source update",
-      },
-    ],
-  },
-  {
-    id: "support-escalation",
-    number: "04",
-    name: "SUPPORT ESCALATION",
-    description: "Analyze and escalate complex requests",
-    category: "SUPPORT / CASE AUTOMATION",
-    steps: [
-      {
-        label: "REQUEST RECEIVED",
-        description: "Customer message enters support queue",
-        icon: "document",
-      },
-      {
-        label: "CONTEXT ANALYZED",
-        description: "History, account and intent identified",
-        icon: "extract",
-      },
-      {
-        label: "PRIORITY CHECK",
-        description: "Severity and routing rules evaluated",
-        icon: "check",
-      },
-      {
-        label: "ESCALATION DETECTED",
-        description: "Case requires specialist attention",
-        icon: "warning",
-      },
-    ],
-    outcome: {
-      id: "support",
-      label: "Support",
-      title: "SENT TO SPECIALIST",
-      detail: "HIGH PRIORITY",
-      amount: "P1",
-      reason: "Customer impact detected",
-    },
-    alternatives: [
-      {
-        id: "resolved",
-        label: "Resolve",
-        title: "AUTO-RESOLVED",
-        detail: "STANDARD REQUEST",
-        amount: "P3",
-        reason: "Known resolution available",
-      },
-      {
-        id: "queue",
-        label: "Queue",
-        title: "ADDED TO QUEUE",
-        detail: "NORMAL PRIORITY",
-        amount: "P2",
-        reason: "Specialist review not required",
-      },
-    ],
-  },
-];
+const scenarios: Scenario[] =
+  workInContextContent.scenarios;
 
 function StepIcon({
   type,
@@ -362,26 +123,24 @@ export default function WorkInContext() {
           <div className="vanta-context__eyebrow">
             <span className="vanta-context__eyebrow-line" />
 
-            <span>06</span>
+            <span>{workInContextContent.eyebrow.number}</span>
 
-            <span>WORK IN CONTEXT</span>
+            <span>{workInContextContent.eyebrow.label}</span>
           </div>
 
           <h2 id="context-title">
-            Real work.
+            {workInContextContent.title.lineOne}
             <br />
-            <span>Automatically.</span>
+            <span>{workInContextContent.title.lineTwo}</span>
           </h2>
 
           <p className="vanta-context__description">
-            VANTA handles the process from start to
-            finish. Your team only sees what needs
-            attention.
+            {workInContextContent.description}
           </p>
 
           <nav
             className="vanta-context__scenarios"
-            aria-label="Automation scenarios"
+            aria-label={workInContextContent.navigationLabel}
           >
             {scenarios.map((scenario) => {
               const isActive =
@@ -481,7 +240,7 @@ export default function WorkInContext() {
 
               <div className="vanta-context__outcome">
                 <span className="vanta-context__outcome-label">
-                  OUTCOME
+                  {workInContextContent.outcomeLabel}
                 </span>
 
                 <div className="vanta-context__outcome-title">
@@ -504,14 +263,14 @@ export default function WorkInContext() {
 
                 <div className="vanta-context__outcome-data">
                   <div>
-                    <span>VALUE</span>
+                    <span>{workInContextContent.outcomeDataLabels.value}</span>
                     <strong>
                       {activeOutcome.amount}
                     </strong>
                   </div>
 
                   <div>
-                    <span>REASON</span>
+                    <span>{workInContextContent.outcomeDataLabels.reason}</span>
                     <strong>
                       {activeOutcome.reason}
                     </strong>
@@ -559,11 +318,11 @@ export default function WorkInContext() {
           </div>
 
           <div className="vanta-context__workspace-footer">
-            <span>VANTA / AUTOMATION ENGINE</span>
+            <span>{workInContextContent.footer.left}</span>
 
             <span className="vanta-context__footer-status">
               <i />
-              PROCESS COMPLETE
+              {workInContextContent.footer.right}
             </span>
           </div>
         </div>

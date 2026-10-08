@@ -10,7 +10,7 @@
 }
 
 html {
-  color-scheme: dark;
+  color-scheme: light;
   font-family: var(--font-sans);
   background: var(--color-page);
   color: var(--color-text);
@@ -25,8 +25,8 @@ body {
 
   background:
     radial-gradient(
-      circle at 50% -20%,
-      rgba(54, 124, 255, 0.08),
+      circle at 82% -10%,
+      rgba(166, 91, 62, 0.07),
       transparent 34rem
     ),
     var(--color-page);
@@ -117,7 +117,7 @@ main {
 
 
 /* =========================================================
-   TECHNICAL LABEL
+   EYEBROW / SECTION LABEL
    ========================================================= */
 
 .eyebrow {
@@ -129,9 +129,9 @@ main {
 
   color: var(--color-text-muted);
 
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: var(--text-xs);
-  font-weight: var(--font-medium);
+  font-weight: var(--font-semibold);
 
   letter-spacing: var(--tracking-label);
   line-height: 1.2;
@@ -230,7 +230,7 @@ main {
 
 
 /* =========================================================
-   TECHNICAL DIVIDER
+   DIVIDER
    ========================================================= */
 
 .divider {
@@ -242,7 +242,7 @@ main {
 
 
 /* =========================================================
-   TECHNICAL PANEL
+   PANEL
    ========================================================= */
 
 .panel {
@@ -273,23 +273,24 @@ main {
 
 
 /* =========================================================
-   DATA / TECH TEXT
+   DATA / SUPPORTING TEXT
    ========================================================= */
 
 .data-label {
   color: var(--color-text-muted);
 
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
 
-  letter-spacing: var(--tracking-mono);
+  letter-spacing: var(--tracking-label);
   text-transform: uppercase;
 }
 
 .data-value {
   color: var(--color-text);
 
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
 }
 
 
@@ -350,7 +351,6 @@ main {
       repeat(2, minmax(0, 1fr));
   }
 }
-
 
 @media (max-width: 760px) {
   .section {
