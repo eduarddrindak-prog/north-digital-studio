@@ -4,6 +4,7 @@ import type {
   HTMLAttributes,
   ReactNode,
 } from "react";
+import "./Motion.css";
 import {
   Children,
   cloneElement,

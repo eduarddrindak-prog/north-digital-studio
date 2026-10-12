@@ -1,0 +1,1 @@
+export const findUsContent = { eyebrow: "FIND US", title: "Your neighbourhood bakery.", address: "28 Rue des Pyrénées", city: "75020 Paris", hours: { weekdays: "Mon–Sat 07:00–19:30", sunday: "Sun 07:00–13:30" } } as const;

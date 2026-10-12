@@ -1,0 +1,1 @@
+export const specialOrdersContent={eyebrow:"SPECIAL ORDERS",title:"Planning something bigger?",description:"We also prepare special orders for breakfasts, birthdays and small events. Tell us what you need and we will help you plan it for collection at the bakery.",cta:"View special orders"} as const;

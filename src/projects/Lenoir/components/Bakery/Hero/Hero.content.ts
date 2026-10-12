@@ -1,0 +1,1 @@
+export const bakeryHero={eyebrow:"THE BAKERY",title:"A neighbourhood bakery, made to feel local.",description:"Maison Lenoir is an independent bakery in Paris, built around good bread, fresh pastries and the simple pleasure of coming back to the same neighbourhood place.",imageAlt:"The warm interior of the Maison Lenoir bakery."} as const;

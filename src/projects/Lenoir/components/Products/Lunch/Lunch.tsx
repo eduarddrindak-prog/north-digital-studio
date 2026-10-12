@@ -1,0 +1,5 @@
+import { Button } from "@/components/North Base/ui/Button";
+import { lunchProducts } from "./Lunch.content";
+import "./Lunch.css";
+
+export default function ProductsLunch(){return <section className="lenoir-products-lunch" id="lunch" aria-labelledby="products-lunch-title"><div className="lenoir-products-lunch__inner"><div className="lenoir-products-lunch__heading"><span>04</span><div><p> LUNCH</p><h2 id="products-lunch-title">Something simple for midday.</h2><span>Sandwiches, quiches and a daily plate for a quick break in the neighbourhood.</span></div></div><div className="lenoir-products-lunch__body"><div className="lenoir-products-lunch__list">{lunchProducts.items.map(item=><div key={item.name}><div><h3>{item.name}</h3><span>{item.description}</span></div><strong>{item.price}</strong></div>)}</div><aside className="lenoir-products-lunch__formula"><p>THE DAILY FORMULA</p><strong>{lunchProducts.formula.price}</strong><span>{lunchProducts.formula.description}</span><Button href="/lenoir/find-us" variant="secondary" size="md" withArrow>Visit us for lunch</Button></aside></div></div></section>}

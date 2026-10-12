@@ -8,16 +8,5 @@ import FindUsPreview from "../../components/Home/FindUsPreview/FindUsPreview";
 import FinalCTA from "../../components/Home/FinalCTA/FinalCTA";
 
 export default function Home() {
-  return (
-    <>
-      <Hero />
-      <TodayInfo />
-      <OurEssentials />
-      <OurCraft />
-      <ProductOfTheWeek />
-      <Lunch />
-      <FindUsPreview />
-      <FinalCTA />
-    </>
-  );
+  return <><Hero /><TodayInfo /><OurEssentials /><OurCraft /><ProductOfTheWeek /><Lunch /><FindUsPreview /><FinalCTA /></>;
 }

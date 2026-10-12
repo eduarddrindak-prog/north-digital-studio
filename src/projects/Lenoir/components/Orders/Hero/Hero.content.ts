@@ -1,0 +1,1 @@
+export const ordersHero={eyebrow:"SPECIAL ORDERS",title:"Something to share?",description:"From office breakfasts to birthdays and small events, we can prepare larger orders in advance for collection at the bakery.",cta:"Make a request"} as const;

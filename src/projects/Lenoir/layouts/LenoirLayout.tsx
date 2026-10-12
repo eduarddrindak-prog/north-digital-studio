@@ -13,12 +13,10 @@ export default function LenoirLayout({
   children,
 }: LenoirLayoutProps) {
   return (
-    <div className="app-shell">
-      <Header />
-
-      <main>{children}</main>
-
-      <Footer />
-    </div>
-  );
+  <div className="lenoir-app">
+    <Header />
+    <main>{children}</main>
+    <Footer />
+  </div>
+);
 }
