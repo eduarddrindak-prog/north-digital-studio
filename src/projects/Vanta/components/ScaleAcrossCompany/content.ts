@@ -25,7 +25,7 @@ export const scaleAcrossCompanyContent = {
     {
       id: "operations",
       name: "OPERATIONS",
-      count: "12",
+      count: 12,
       icon: "◈",
       iconClass: "operations",
       tasks: [
@@ -43,7 +43,7 @@ export const scaleAcrossCompanyContent = {
     {
       id: "sales",
       name: "SALES",
-      count: "18",
+      count: 18,
       icon: "◫",
       iconClass: "sales",
       tasks: [
@@ -61,7 +61,7 @@ export const scaleAcrossCompanyContent = {
     {
       id: "finance",
       name: "FINANCE",
-      count: "14",
+      count: 14,
       icon: "▤",
       iconClass: "finance",
       tasks: [
@@ -79,7 +79,7 @@ export const scaleAcrossCompanyContent = {
     {
       id: "support",
       name: "SUPPORT",
-      count: "9",
+      count: 9,
       icon: "◌",
       iconClass: "support",
       tasks: [

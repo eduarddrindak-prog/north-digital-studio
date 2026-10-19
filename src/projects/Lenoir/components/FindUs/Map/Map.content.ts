@@ -1,0 +1,1 @@
+export const mapContent={eyebrow:"THE ADDRESS",title:"28 Rue des Pyrénées",description:"Come for the bread, stay for a coffee and take a little bit of the bakery home with you.",directionsUrl:"https://www.google.com/maps/search/?api=1&query=28+Rue+des+Pyrenees+75020+Paris"} as const;

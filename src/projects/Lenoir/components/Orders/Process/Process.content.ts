@@ -1,0 +1,1 @@
+export const processSteps=[{title:"Send your request",description:"Tell us what you need, how many people it is for and when you would like to collect it."},{title:"We confirm",description:"We will contact you to confirm the products, quantity and final price."},{title:"Collect",description:"Your order will be ready for collection at Maison Lenoir."}] as const;

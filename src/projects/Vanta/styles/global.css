@@ -71,7 +71,11 @@ a {
 
 .app-shell {
   min-height: 100vh;
-  overflow: clip;
+  overflow: visible;
+}
+
+main {
+  display: block;
 }
 
 

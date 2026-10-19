@@ -80,17 +80,17 @@ export const howItWorksContent = {
     label: "REAL-TIME EXECUTION",
 
     eventsPerSecond: {
-      value: "1,842",
+      value: 1842,
       label: "EVENTS / SEC",
     },
 
     averageLatency: {
-      value: "42ms",
+      value: 42,
       label: "AVG LATENCY",
     },
 
     successRate: {
-      value: "99.98%",
+      value: 99.98,
       label: "SUCCESS RATE",
     },
   },

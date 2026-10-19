@@ -1,0 +1,1 @@
+export const findUsHero={eyebrow:"FIND US",title:"Come by the bakery.",description:"A small neighbourhood bakery in the east of Paris, open early for the first coffee and fresh bread.",address:"28 Rue des Pyrénées",city:"75020 Paris"} as const;

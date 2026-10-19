@@ -1,0 +1,1 @@
+export const principles=[{title:"Take the time",text:"Selected breads use longer fermentation to develop flavour and texture."},{title:"Make it here",text:"Our breads, viennoiseries and pastries are prepared in our own bakery."},{title:"Follow the seasons",text:"Our pastry selection changes throughout the year according to available ingredients."}] as const;

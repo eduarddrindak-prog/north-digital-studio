@@ -1,16 +1,19 @@
 import { useState } from "react";
 
 import {
-  type ScenarioStep,
   workInContextContent,
+  type Scenario,
 } from "./content";
 
 import "./WorkInContext.css";
 
+const scenarios: Scenario[] =
+  workInContextContent.scenarios;
+
 function StepIcon({
   type,
 }: {
-  type: ScenarioStep["icon"];
+  type: Scenario["steps"][number]["icon"];
 }) {
   if (type === "document") {
     return (
@@ -72,27 +75,15 @@ function StepIcon({
 }
 
 export default function WorkInContext() {
-  const {
-    eyebrow,
-    title,
-    description,
-    navigationLabel,
-    outcomeLabel,
-    outcomeDataLabels,
-    footer,
-    scenarios,
-  } = workInContextContent;
-
   const [activeScenarioId, setActiveScenarioId] =
-    useState(scenarios[0].id);
+    useState("invoice-review");
 
   const [activeOutcomeId, setActiveOutcomeId] =
-    useState(scenarios[0].outcome.id);
+    useState("finance");
 
   const activeScenario =
     scenarios.find(
-      (scenario) =>
-        scenario.id === activeScenarioId
+      (scenario) => scenario.id === activeScenarioId
     ) ?? scenarios[0];
 
   const outcomes = [
@@ -102,21 +93,17 @@ export default function WorkInContext() {
 
   const activeOutcome =
     outcomes.find(
-      (outcome) =>
-        outcome.id === activeOutcomeId
+      (outcome) => outcome.id === activeOutcomeId
     ) ?? activeScenario.outcome;
 
   const selectScenario = (id: string) => {
     setActiveScenarioId(id);
 
     const scenario =
-      scenarios.find(
-        (item) => item.id === id
-      ) ?? scenarios[0];
+      scenarios.find((item) => item.id === id) ??
+      scenarios[0];
 
-    setActiveOutcomeId(
-      scenario.outcome.id
-    );
+    setActiveOutcomeId(scenario.outcome.id);
   };
 
   return (
@@ -128,33 +115,36 @@ export default function WorkInContext() {
       <div className="vanta-context__grid" />
 
       <div className="vanta-context__container">
+        {/* =================================================
+            LEFT
+        ================================================= */}
+
         <div className="vanta-context__intro">
           <div className="vanta-context__eyebrow">
             <span className="vanta-context__eyebrow-line" />
 
-            <span>{eyebrow.number}</span>
+            <span>{workInContextContent.eyebrow.number}</span>
 
-            <span>{eyebrow.label}</span>
+            <span>{workInContextContent.eyebrow.label}</span>
           </div>
 
           <h2 id="context-title">
-            {title.lineOne}
+            {workInContextContent.title.lineOne}
             <br />
-            <span>{title.lineTwo}</span>
+            <span>{workInContextContent.title.lineTwo}</span>
           </h2>
 
           <p className="vanta-context__description">
-            {description}
+            {workInContextContent.description}
           </p>
 
           <nav
             className="vanta-context__scenarios"
-            aria-label={navigationLabel}
+            aria-label={workInContextContent.navigationLabel}
           >
             {scenarios.map((scenario) => {
               const isActive =
-                scenario.id ===
-                activeScenario.id;
+                scenario.id === activeScenario.id;
 
               return (
                 <button
@@ -167,9 +157,7 @@ export default function WorkInContext() {
                     .filter(Boolean)
                     .join(" ")}
                   onClick={() =>
-                    selectScenario(
-                      scenario.id
-                    )
+                    selectScenario(scenario.id)
                   }
                   aria-pressed={isActive}
                 >
@@ -178,9 +166,7 @@ export default function WorkInContext() {
                   </span>
 
                   <span className="vanta-context__scenario-copy">
-                    <strong>
-                      {scenario.name}
-                    </strong>
+                    <strong>{scenario.name}</strong>
 
                     <small>
                       {scenario.description}
@@ -191,6 +177,10 @@ export default function WorkInContext() {
             })}
           </nav>
         </div>
+
+        {/* =================================================
+            RIGHT — SCENARIO
+        ================================================= */}
 
         <div className="vanta-context__workspace">
           <div className="vanta-context__workspace-header">
@@ -208,6 +198,8 @@ export default function WorkInContext() {
           </div>
 
           <div className="vanta-context__scenario-body">
+            {/* WORKFLOW */}
+
             <div className="vanta-context__workflow">
               <div className="vanta-context__workflow-line" />
 
@@ -217,8 +209,7 @@ export default function WorkInContext() {
                     className={[
                       "vanta-context__step",
                       index ===
-                      activeScenario.steps.length -
-                        1
+                      activeScenario.steps.length - 1
                         ? "is-final"
                         : "",
                     ]
@@ -227,24 +218,20 @@ export default function WorkInContext() {
                     key={step.label}
                   >
                     <div className="vanta-context__step-icon">
-                      <StepIcon
-                        type={step.icon}
-                      />
+                      <StepIcon type={step.icon} />
                     </div>
 
                     <div className="vanta-context__step-copy">
-                      <strong>
-                        {step.label}
-                      </strong>
+                      <strong>{step.label}</strong>
 
-                      <span>
-                        {step.description}
-                      </span>
+                      <span>{step.description}</span>
                     </div>
                   </div>
                 )
               )}
             </div>
+
+            {/* OUTCOME */}
 
             <div className="vanta-context__outcome-area">
               <div className="vanta-context__connector">
@@ -253,7 +240,7 @@ export default function WorkInContext() {
 
               <div className="vanta-context__outcome">
                 <span className="vanta-context__outcome-label">
-                  {outcomeLabel}
+                  {workInContextContent.outcomeLabel}
                 </span>
 
                 <div className="vanta-context__outcome-title">
@@ -276,26 +263,22 @@ export default function WorkInContext() {
 
                 <div className="vanta-context__outcome-data">
                   <div>
-                    <span>
-                      {outcomeDataLabels.value}
-                    </span>
-
+                    <span>{workInContextContent.outcomeDataLabels.value}</span>
                     <strong>
                       {activeOutcome.amount}
                     </strong>
                   </div>
 
                   <div>
-                    <span>
-                      {outcomeDataLabels.reason}
-                    </span>
-
+                    <span>{workInContextContent.outcomeDataLabels.reason}</span>
                     <strong>
                       {activeOutcome.reason}
                     </strong>
                   </div>
                 </div>
               </div>
+
+              {/* SMALL OUTCOME STATES */}
 
               <div
                 className="vanta-context__outcome-tabs"
@@ -304,8 +287,7 @@ export default function WorkInContext() {
               >
                 {outcomes.map((outcome) => {
                   const isActive =
-                    outcome.id ===
-                    activeOutcome.id;
+                    outcome.id === activeOutcome.id;
 
                   return (
                     <button
@@ -315,9 +297,7 @@ export default function WorkInContext() {
                       aria-selected={isActive}
                       className={[
                         "vanta-context__outcome-tab",
-                        isActive
-                          ? "is-active"
-                          : "",
+                        isActive ? "is-active" : "",
                       ]
                         .filter(Boolean)
                         .join(" ")}
@@ -338,11 +318,11 @@ export default function WorkInContext() {
           </div>
 
           <div className="vanta-context__workspace-footer">
-            <span>{footer.left}</span>
+            <span>{workInContextContent.footer.left}</span>
 
             <span className="vanta-context__footer-status">
               <i />
-              {footer.right}
+              {workInContextContent.footer.right}
             </span>
           </div>
         </div>

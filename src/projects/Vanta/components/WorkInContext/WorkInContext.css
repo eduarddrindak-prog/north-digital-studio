@@ -62,10 +62,10 @@
   display: grid;
 
   grid-template-columns:
-    minmax(330px, 0.68fr)
-    minmax(650px, 1.55fr);
+    minmax(430px, 0.82fr)
+    minmax(0, 1.18fr);
 
-  gap: 76px;
+  gap: 72px;
 
   align-items: center;
 
@@ -87,6 +87,9 @@
 
 .vanta-context__intro {
   align-self: center;
+
+  min-width: 0;
+  width: 100%;
 }
 
 .vanta-context__eyebrow {
@@ -124,7 +127,10 @@
 .vanta-context__intro h2 {
   margin: 0;
 
-  max-width: 9ch;
+  max-width: 7.5ch;
+
+  overflow-wrap: normal;
+  word-break: normal;
 
   color: #f4f7fb;
 
@@ -149,7 +155,7 @@
 }
 
 .vanta-context__description {
-  max-width: 420px;
+  max-width: 100%;
 
   margin: 29px 0 0;
 
@@ -320,6 +326,9 @@
 .vanta-context__workspace {
   position: relative;
 
+  min-width: 0;
+  width: 100%;
+
   min-height: 615px;
 
   border: 1px solid
@@ -388,6 +397,12 @@
 
 .vanta-context__workspace-header h3 {
   margin: 0;
+
+  max-width: 100%;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
 
   color: #f1f5fa;
 
@@ -975,12 +990,16 @@
 @media (max-width: 1200px) {
   .vanta-context__container {
     grid-template-columns:
-      minmax(280px, 0.6fr)
-      minmax(600px, 1.35fr);
+      minmax(0, 0.6fr)
+      minmax(0, 1.35fr);
 
     gap: 45px;
 
     width: calc(100% - 48px);
+  }
+
+  .vanta-context__intro h2 {
+    max-width: 7.2ch;
   }
 
   .vanta-context__scenario-body {
@@ -1000,6 +1019,58 @@
   .vanta-context__workspace-footer {
     left: 25px;
     right: 25px;
+  }
+}
+
+/* =========================================================
+   NARROW DESKTOP
+========================================================= */
+
+@media (max-width: 1080px) and (min-width: 901px) {
+  .vanta-context__container {
+    grid-template-columns:
+      minmax(300px, 0.72fr)
+      minmax(0, 1.28fr);
+
+    gap: 36px;
+
+    width: calc(100% - 40px);
+  }
+
+  .vanta-context__intro h2 {
+    max-width: 7.4ch;
+
+    font-size: clamp(
+      3.5rem,
+      5vw,
+      4.8rem
+    );
+  }
+
+  .vanta-context__description {
+    font-size: 13px;
+  }
+
+  .vanta-context__scenario-body {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 0.78fr);
+
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .vanta-context__workspace-header {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+
+  .vanta-context__workspace-header h3 {
+    font-size: clamp(
+      1.7rem,
+      2.7vw,
+      2.7rem
+    );
   }
 }
 
@@ -1229,5 +1300,167 @@
   .vanta-context__step,
   .vanta-context__outcome {
     animation: none;
+  }
+}
+
+/* =========================================================
+   MOBILE REFINEMENT — COMPACT OUTCOME
+========================================================= */
+
+@media (max-width: 900px) {
+  /* Remove the large outcome card on mobile.
+     The outcome remains selectable through the compact tabs. */
+  .vanta-context__outcome {
+    display: none;
+  }
+
+  .vanta-context__connector {
+    display: none;
+  }
+
+  .vanta-context__outcome-area {
+    margin-top: 18px;
+    padding-left: 0;
+    display: block;
+  }
+
+  /* Keep the three outcome choices on one horizontal row. */
+  .vanta-context__outcome-tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 6px;
+    width: 100%;
+    margin-top: 0;
+  }
+
+  .vanta-context__outcome-tab {
+    flex: 1 1 0;
+    min-width: 0;
+    justify-content: center;
+    padding: 0 7px;
+    white-space: nowrap;
+  }
+
+  /* Shorten the workspace substantially now that the card is gone. */
+  .vanta-context__workspace {
+    min-height: 610px;
+  }
+
+  .vanta-context__scenario-body {
+    min-height: 430px;
+    padding-bottom: 45px;
+  }
+
+  .vanta-context__workflow {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 560px) {
+  .vanta-context__workspace {
+    min-height: 570px;
+  }
+
+  .vanta-context__scenario-body {
+    min-height: 390px;
+    padding-top: 28px;
+    padding-bottom: 35px;
+  }
+
+  .vanta-context__workflow {
+    min-height: 275px;
+  }
+
+  .vanta-context__outcome-area {
+    margin-top: 14px;
+  }
+
+  .vanta-context__outcome-tabs {
+    gap: 5px;
+  }
+
+  .vanta-context__outcome-tab {
+    min-height: 32px;
+    padding: 0 5px;
+    font-size: 6px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE — HORIZONTAL SCENARIO NAV
+========================================================= */
+
+@media (max-width: 900px) {
+  /* Keep the Support / Resolve / Queue outcome selector hidden. */
+  .vanta-context__outcome-tabs {
+    display: none;
+  }
+
+  /* Scenario selector becomes a compact horizontal strip at the top. */
+  .vanta-context__scenarios {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    width: 100%;
+    margin-top: 28px;
+    margin-bottom: 0;
+    border-left: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .vanta-context__scenarios::-webkit-scrollbar {
+    display: none;
+  }
+
+  .vanta-context__scenario {
+    position: relative;
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px 8px 11px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.015);
+  }
+
+  .vanta-context__scenario::before {
+    left: 0;
+    right: 0;
+    top: auto;
+    bottom: -1px;
+    width: auto;
+    height: 1px;
+  }
+
+  .vanta-context__scenario-number {
+    font-size: 7px;
+  }
+
+  .vanta-context__scenario-copy strong {
+    font-size: 7px;
+    white-space: nowrap;
+  }
+
+  .vanta-context__scenario-copy small {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .vanta-context__scenarios {
+    gap: 5px;
+    margin-top: 24px;
+  }
+
+  .vanta-context__scenario {
+    padding: 9px 6px 10px;
+  }
+
+  .vanta-context__scenario-copy strong {
+    font-size: 6.5px;
   }
 }

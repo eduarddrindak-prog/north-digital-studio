@@ -1,0 +1,1 @@
+export const productsHeroContent = { eyebrow: "OUR PRODUCTS", title: "Made fresh every day.", description: "From everyday bread to pastries and lunch, discover what you can find at Maison Lenoir.", imageAlt: "Fresh bakery products arranged on a counter at Maison Lenoir." } as const;

@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
+import { Button } from "@/components/North Base/ui/Button";
+import { IconButton } from "@/components/North Base/ui/IconButton";
 import { workspaceContent } from "./content";
 
 import "./Workspace.css";
@@ -21,9 +23,14 @@ type Workflow = {
 
 export default function Workspace() {
   const [activeWorkflow, setActiveWorkflow] = useState(0);
-  const [selectedNode, setSelectedNode] = useState(0);
+  const [selectedNode, setSelectedNode] = useState<number | null>(0);
   const [isRunning, setIsRunning] = useState(false);
+  const [runningNode, setRunningNode] = useState(-1);
   const [deployed, setDeployed] = useState(true);
+  const [activeTab, setActiveTab] = useState(0);
+  const [includeContext, setIncludeContext] = useState(true);
+  const [continueOnError, setContinueOnError] = useState(false);
+  const runTimeouts = useRef<number[]>([]);
 
   const {
     intro,
@@ -41,17 +48,35 @@ export default function Workspace() {
     typedWorkflows[0];
 
   const node =
-    workflow.nodes[selectedNode] ??
-    workflow.nodes[0];
+    selectedNode === null
+      ? null
+      : workflow.nodes[selectedNode] ?? null;
+
+  const clearRunTimeouts = () => {
+    runTimeouts.current.forEach((timeout) =>
+      window.clearTimeout(timeout),
+    );
+    runTimeouts.current = [];
+  };
+
+  useEffect(() => clearRunTimeouts, []);
 
   const runTest = () => {
     if (isRunning) return;
 
+    clearRunTimeouts();
     setIsRunning(true);
+    setRunningNode(0);
 
-    setTimeout(() => {
-      setIsRunning(false);
-    }, 2800);
+    runTimeouts.current = [
+      window.setTimeout(() => setRunningNode(1), 700),
+      window.setTimeout(() => setRunningNode(2), 1400),
+      window.setTimeout(() => setRunningNode(3), 2100),
+      window.setTimeout(() => {
+        setRunningNode(-1);
+        setIsRunning(false);
+      }, 2800),
+    ];
   };
 
   const selectWorkflow = (index: number) => {
@@ -59,6 +84,8 @@ export default function Workspace() {
 
     setActiveWorkflow(index);
     setSelectedNode(0);
+    clearRunTimeouts();
+    setRunningNode(-1);
     setIsRunning(false);
   };
 
@@ -115,13 +142,15 @@ export default function Workspace() {
               ))}
             </nav>
 
-            <button
+            <Button
               className="vanta-workspace__new"
+              variant="secondary"
+              size="sm"
               type="button"
             >
               <span>+</span>
               {sidebar.newWorkflow}
-            </button>
+            </Button>
 
             <div className="vanta-workspace__sidebar-label">
               {sidebar.workflowsLabel}
@@ -200,17 +229,24 @@ export default function Workspace() {
                 </span>
               </div>
 
-              <div className="vanta-workspace__tabs">
+              <div
+                className="vanta-workspace__tabs"
+                role="tablist"
+                aria-label="Workspace views"
+              >
                 {application.tabs.map(
                   (tab, index) => (
                     <button
                       key={tab}
                       className={
-                        index === 0
+                        index === activeTab
                           ? "is-active"
                           : ""
                       }
                       type="button"
+                      role="tab"
+                      aria-selected={index === activeTab}
+                      onClick={() => setActiveTab(index)}
                     >
                       {tab}
                     </button>
@@ -219,26 +255,30 @@ export default function Workspace() {
               </div>
 
               <div className="vanta-workspace__actions">
-                <button type="button">
-                  {application.actions.share}
-                </button>
-
-                <button
+                <Button
                   type="button"
+                  variant="ghost"
+                  size="sm"
+                  className="vanta-workspace__share"
+                >
+                  {application.actions.share}
+                </Button>
+
+                <Button
+                  type="button"
+                  variant={deployed ? "success" : "secondary"}
+                  size="sm"
                   className={
                     deployed
                       ? "deploy-button is-deployed"
                       : "deploy-button"
                   }
-                  onClick={() =>
-                    setDeployed(!deployed)
-                  }
+                  onClick={() => setDeployed(!deployed)}
                 >
                   {deployed
-                    ? application.actions
-                        .deployed
+                    ? application.actions.deployed
                     : application.actions.deploy}
-                </button>
+                </Button>
               </div>
             </header>
 
@@ -257,15 +297,28 @@ export default function Workspace() {
                         selectedNode === index
                           ? "is-selected"
                           : "",
-                        isRunning
+                        runningNode === index
                           ? "is-running"
                           : "",
                       ]
                         .filter(Boolean)
                         .join(" ")}
+                      role="button"
+                      tabIndex={0}
+                      aria-pressed={selectedNode === index}
                       onClick={() =>
-                        setSelectedNode(index)
+                        setSelectedNode((current) =>
+                          current === index ? null : index
+                        )
                       }
+                      onKeyDown={(event) => {
+                        if (event.key === "Enter" || event.key === " ") {
+                          event.preventDefault();
+                          setSelectedNode((current) =>
+                            current === index ? null : index
+                          );
+                        }
+                      }}
                     >
                       <div className="vanta-workflow-node__top">
                         <span>
@@ -321,92 +374,88 @@ export default function Workspace() {
                     {application.nodeDetails.title}
                   </span>
 
-                  <button type="button">
-                    {application.nodeDetails.menu}
-                  </button>
-                </div>
-
-                <div className="vanta-node-details__app">
-                  <div
-                    className={[
-                      "vanta-node-details__icon",
-                      node.appClass,
-                    ].join(" ")}
-                  >
-                    {node.app}
-                  </div>
-
-                  <div>
-                    <strong>{node.label}</strong>
-
-                    <span>{node.type}</span>
-                  </div>
-                </div>
-
-                <p>
-                  {node.description}. This action is
-                  automatically handled by VANTA
-                  when the workflow reaches this
-                  step.
-                </p>
-
-                <label>
-                  {application.nodeDetails.channel}
-
-                  <div className="vanta-select">
-                    {node.appClass === "slack"
-                      ? "#leads"
-                      : application.nodeDetails
-                          .defaultChannel}
-
-                    <span>⌄</span>
-                  </div>
-                </label>
-
-                <label>
-                  {application.nodeDetails.triggerOn}
-
-                  <div className="vanta-select">
-                    {
-                      application.nodeDetails
-                        .defaultTrigger
-                    }
-
-                    <span>⌄</span>
-                  </div>
-                </label>
-
-                <div className="vanta-toggle-row">
-                  <span>
-                    {
-                      application.nodeDetails
-                        .includeContext
-                    }
-                  </span>
-
-                  <button
+                  <IconButton
                     type="button"
-                    className="vanta-toggle is-on"
-                  >
-                    <i />
-                  </button>
+                    variant="ghost"
+                    size="sm"
+                    label="Node options"
+                    icon={<span aria-hidden="true">•••</span>}
+                  />
                 </div>
 
-                <div className="vanta-toggle-row">
-                  <span>
-                    {
-                      application.nodeDetails
-                        .continueOnError
-                    }
-                  </span>
+                {node ? (
+                  <>
+                    <div className="vanta-node-details__app">
+                      <div
+                        className={[
+                          "vanta-node-details__icon",
+                          node.appClass,
+                        ].join(" ")}
+                      >
+                        {node.app}
+                      </div>
 
-                  <button
-                    type="button"
-                    className="vanta-toggle"
-                  >
-                    <i />
-                  </button>
-                </div>
+                      <div>
+                        <strong>{node.label}</strong>
+                        <span>{node.type}</span>
+                      </div>
+                    </div>
+
+                    <p>
+                      {node.description}. This action is
+                      automatically handled by VANTA
+                      when the workflow reaches this
+                      step.
+                    </p>
+
+                    <label>
+                      {application.nodeDetails.channel}
+                      <div className="vanta-select">
+                        {node.appClass === "slack"
+                          ? "#leads"
+                          : application.nodeDetails.defaultChannel}
+                        <span>⌄</span>
+                      </div>
+                    </label>
+
+                    <label>
+                      {application.nodeDetails.triggerOn}
+                      <div className="vanta-select">
+                        {application.nodeDetails.defaultTrigger}
+                        <span>⌄</span>
+                      </div>
+                    </label>
+
+                    <div className="vanta-toggle-row">
+                      <span>{application.nodeDetails.includeContext}</span>
+                      <button
+                        type="button"
+                        className={`vanta-toggle ${includeContext ? "is-on" : ""}`}
+                        aria-pressed={includeContext}
+                        onClick={() => setIncludeContext((value) => !value)}
+                      >
+                        <i />
+                      </button>
+                    </div>
+
+                    <div className="vanta-toggle-row">
+                      <span>{application.nodeDetails.continueOnError}</span>
+                      <button
+                        type="button"
+                        className={`vanta-toggle ${continueOnError ? "is-on" : ""}`}
+                        aria-pressed={continueOnError}
+                        onClick={() => setContinueOnError((value) => !value)}
+                      >
+                        <i />
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <div className="vanta-node-details__empty">
+                    <span>NO NODE SELECTED</span>
+                    <p>Select a workflow step to inspect its configuration.</p>
+                  </div>
+                )}
               </aside>
 
               {/* EXECUTION LOG */}
@@ -434,7 +483,7 @@ export default function Workspace() {
                         "textFrom" in row &&
                         row.textFrom === "node"
                       ) {
-                        text = `${node.label} completed`;
+                        text = node ? `${node.label} completed` : "Node completed";
                       }
 
                       if (
@@ -466,8 +515,11 @@ export default function Workspace() {
                     {application.testRun.title}
                   </div>
 
-                  <button
+                  <Button
                     type="button"
+                    variant="secondary"
+                    size="sm"
+                    className="vanta-test__run"
                     onClick={runTest}
                     disabled={isRunning}
                   >
@@ -475,7 +527,7 @@ export default function Workspace() {
                       ? application.testRun
                           .running
                       : application.testRun.run}
-                  </button>
+                  </Button>
                 </div>
 
                 <div className="vanta-test-list">
@@ -485,7 +537,7 @@ export default function Workspace() {
                         key={testNode.label}
                         className={
                           isRunning &&
-                          index <= 2
+                          index === runningNode
                             ? "is-running"
                             : ""
                         }

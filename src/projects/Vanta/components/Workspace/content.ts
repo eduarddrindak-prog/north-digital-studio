@@ -195,6 +195,78 @@ export const workspaceContent = {
         },
       ],
     },
+
+    {
+      id: "data-sync",
+      name: "Data Sync",
+      status: "Live" as const,
+      nodes: [
+        {
+          type: "01 · TRIGGER",
+          label: "Salesforce",
+          description: "Record updated",
+          app: "SF",
+          appClass: "salesforce",
+        },
+        {
+          type: "02 · AI PROCESSING",
+          label: "Validate data",
+          description: "Check fields and normalize",
+          app: "AI",
+          appClass: "ai",
+        },
+        {
+          type: "03 · UPDATE",
+          label: "Sync database",
+          description: "Write the latest record",
+          app: "DB",
+          appClass: "database",
+        },
+        {
+          type: "04 · NOTIFY",
+          label: "Notify team",
+          description: "Send sync confirmation",
+          app: "S",
+          appClass: "slack",
+        },
+      ],
+    },
+
+    {
+      id: "recruiting",
+      name: "Recruiting Automation",
+      status: "Live" as const,
+      nodes: [
+        {
+          type: "01 · TRIGGER",
+          label: "Greenhouse",
+          description: "Candidate submitted",
+          app: "G",
+          appClass: "greenhouse",
+        },
+        {
+          type: "02 · AI PROCESSING",
+          label: "Screen candidate",
+          description: "Extract relevant experience",
+          app: "AI",
+          appClass: "ai",
+        },
+        {
+          type: "03 · CREATE",
+          label: "Create shortlist",
+          description: "Rank matching candidates",
+          app: "L",
+          appClass: "router",
+        },
+        {
+          type: "04 · NOTIFY",
+          label: "Notify hiring team",
+          description: "Send review request",
+          app: "S",
+          appClass: "slack",
+        },
+      ],
+    },
   ],
 
   sidebarWorkflows: [
