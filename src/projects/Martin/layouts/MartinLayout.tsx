@@ -8,8 +8,11 @@ interface MartinLayoutProps {
 
 const navigation = [
   { label: "Services", href: "#services" },
+  { label: "Typical jobs", href: "#typical-jobs" },
   { label: "How it works", href: "#process" },
+  { label: "Pricing", href: "#pricing" },
   { label: "About", href: "#about" },
+  { label: "FAQ", href: "#faq" },
 ];
 
 function MartinHeader() {
@@ -29,7 +32,7 @@ function MartinHeader() {
       <div className="martin-header__inner">
         <a className="martin-header__brand" href="#top" onClick={() => setMenuOpen(false)}>
           <strong>atelier martin<span>.</span></strong>
-          <small>HOME REPAIRS · PARIS</small>
+          <small>SMALL REPAIRS · PARIS</small>
         </a>
 
         <nav className="martin-header__nav" aria-label="Main navigation">
@@ -76,7 +79,7 @@ function MartinFooter() {
       </div>
       <div className="martin-footer__bottom">
         <span>© {new Date().getFullYear()} Atelier Martin. All rights reserved.</span>
-        <span className="martin-footer__legal"><a href="#legal">Legal notice</a><a href="#privacy">Privacy policy</a></span>
+        <span className="martin-footer__legal"><a href="/portfolio">North Digital Studio</a><a href="/">Studio home</a></span>
         <a href="#top">Back to top ↑</a>
       </div>
     </footer>
@@ -86,6 +89,23 @@ function MartinFooter() {
 export default function MartinLayout({
   children,
 }: MartinLayoutProps) {
+  useEffect(() => {
+    const previousTitle = document.title;
+    const previousLang = document.documentElement.lang;
+    const description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
+    const previousDescription = description?.content;
+
+    document.title = "Small repairs and furniture assembly in Paris | Atelier Martin";
+    document.documentElement.lang = "en";
+    description?.setAttribute("content", "Need a small repair or a piece of furniture assembled in Paris? Describe what you need and agree the practical details before the visit.");
+
+    return () => {
+      document.title = previousTitle;
+      document.documentElement.lang = previousLang;
+      if (description && previousDescription !== undefined) description.content = previousDescription;
+    };
+  }, []);
+
   return (
     <div className="martin-app" id="top">
       <MartinHeader />
