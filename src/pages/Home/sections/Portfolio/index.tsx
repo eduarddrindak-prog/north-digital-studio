@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import SectionContainer from "@/components/ui/SectionContainer";
 
 import PortfolioVisual from "./PortfolioVisual";
-import PortfolioCard from "./PortfolioCard";
+import ProjectCard from "@/pages/Portfolio/Projects/ProjectCard";
 
 import {
   portfolioIntro,
@@ -100,14 +100,12 @@ export default function Portfolio() {
 
           {portfolioProjects.map((project,index)=>(
 
-            <PortfolioCard
+            <ProjectCard
 
               key={project.title}
 
-              {...project}
-
+              project={project}
               index={index}
-
             />
 
           ))}

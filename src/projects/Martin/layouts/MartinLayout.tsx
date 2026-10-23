@@ -31,7 +31,7 @@ function MartinHeader() {
     <header className="martin-header">
       <div className="martin-header__inner">
         <a className="martin-header__brand" href="#top" onClick={() => setMenuOpen(false)}>
-          <strong>atelier martin<span>.</span></strong>
+          <strong className="notranslate">atelier martin<span>.</span></strong>
           <small>SMALL REPAIRS · PARIS</small>
         </a>
 
@@ -67,7 +67,7 @@ function MartinFooter() {
     <footer className="martin-footer">
       <div className="martin-footer__top">
         <div>
-          <a className="martin-footer__brand" href="#top">atelier martin<span>.</span></a>
+          <a className="martin-footer__brand notranslate" href="#top">atelier martin<span>.</span></a>
           <p>Small repairs, furniture assembly and home maintenance in Paris.</p>
         </div>
         <nav className="martin-footer__nav" aria-label="Footer navigation">
@@ -78,8 +78,8 @@ function MartinFooter() {
         </nav>
       </div>
       <div className="martin-footer__bottom">
-        <span>© {new Date().getFullYear()} Atelier Martin. All rights reserved.</span>
-        <span className="martin-footer__legal"><a href="/portfolio">North Digital Studio</a><a href="/">Studio home</a></span>
+        <span>© {new Date().getFullYear()} <span className="notranslate">Atelier Martin</span>. All rights reserved.</span>
+        <span className="martin-footer__legal"><a href="/portfolio"><span className="notranslate">North Digital Studio</span></a><a href="/">Studio home</a></span>
         <a href="#top">Back to top ↑</a>
       </div>
     </footer>

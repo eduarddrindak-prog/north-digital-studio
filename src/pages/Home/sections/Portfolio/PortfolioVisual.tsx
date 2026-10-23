@@ -64,7 +64,7 @@ group-hover:bg-[#111827]">
           <div className="text-center">
 
             <p className="text-xs uppercase tracking-[0.25em] text-[#4F8EF7]">
-              Selected Work
+              Concept projects
             </p>
 
             <h3 className="mt-4 text-3xl font-semibold text-white group-hover:text-[#4F8EF7] transition-all
@@ -73,8 +73,8 @@ duration-500">
             </h3>
 
             <p className="mt-6 max-w-xs text-secondary-text leading-7">
-              Every project is designed to build trust, explain services clearly
-              and encourage customers to get in touch.
+              <span className="notranslate">VANTA</span>, <span className="notranslate">Maison Lenoir</span> and <span className="notranslate">Atelier Martin</span> explore different ways to
+              make a digital experience clear, useful and memorable.
             </p>
 
           </div>

@@ -54,7 +54,7 @@ export default function Header() {
           aria-label="VANTA home"
           onClick={closeMenu}
         >
-          VANTA
+          <span className="notranslate">VANTA</span>
         </Link>
 
         <nav

@@ -60,7 +60,7 @@ export default function Footer() {
               className="vanta-footer__logo"
               aria-label="VANTA home"
             >
-              VANTA
+              <span className="notranslate">VANTA</span>
             </Link>
 
             <p>
@@ -109,7 +109,7 @@ export default function Footer() {
           </div>
 
           <span className="vanta-footer__copyright">
-            © 2026 VANTA
+            © 2026 <span className="notranslate">VANTA</span>
           </span>
 
           <span className="vanta-footer__location">

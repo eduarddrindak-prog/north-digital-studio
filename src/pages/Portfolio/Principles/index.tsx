@@ -6,8 +6,10 @@ import { principles, sectionContent } from "./content";
 
 export default function Principles() {
   return (
-    <section className="py-32 bg-background">
+    <section className="bg-background py-24 md:py-28">
       <SectionContainer>
+        <div className="mb-12 h-px bg-border/70 md:mb-16" />
+
         <Reveal>
   <div className="mx-auto max-w-3xl text-center">
     <p className="text-[11px] uppercase tracking-[0.28em] text-[#4F8EF7]">
@@ -24,7 +26,7 @@ export default function Principles() {
   </div>
 </Reveal>
 
-        <div className="mt-32 grid gap-10 lg:grid-cols-2">
+        <div className="mt-20 grid gap-8 lg:grid-cols-2 md:mt-24">
           {principles.map((principle, index) => (
             <PrincipleCard
               key={principle.number}

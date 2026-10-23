@@ -28,6 +28,8 @@ export default function FAQSection() {
             <div className="mt-10 flex flex-wrap justify-center gap-8 border-b border-border pb-4">
               {faqContent.categories.map((category) => (
                 <button
+                  type="button"
+                  aria-pressed={activeCategory === category.id}
                   key={category.id}
                   onClick={() => {
                     setActiveCategory(category.id);
@@ -80,6 +82,10 @@ export default function FAQSection() {
                   }`}
                 >
                   <button
+                    id={`faq-question-${activeCategory}-${index}`}
+                    type="button"
+                    aria-expanded={openIndex === index}
+                    aria-controls={`faq-answer-${activeCategory}-${index}`}
                     onClick={() =>
                       setOpenIndex(openIndex === index ? null : index)
                     }
@@ -118,6 +124,9 @@ export default function FAQSection() {
                   <AnimatePresence initial={false}>
                     {openIndex === index && (
                       <motion.div
+                        id={`faq-answer-${activeCategory}-${index}`}
+                        role="region"
+                        aria-labelledby={`faq-question-${activeCategory}-${index}`}
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}

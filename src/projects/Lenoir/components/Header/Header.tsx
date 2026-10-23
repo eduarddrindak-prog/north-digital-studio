@@ -15,8 +15,8 @@ export default function Header() {
   return (
     <header className="lenoir-header">
       <div className="lenoir-container lenoir-header__inner">
-        <a className="lenoir-header__brand" href="/lenoir" aria-label="Maison Lenoir home">Maison Lenoir</a>
-        <nav className={`lenoir-header__nav${open ? " is-open" : ""}`} aria-label="Main navigation">
+        <a className="lenoir-header__brand notranslate" href="/lenoir" aria-label="Maison Lenoir home">Maison Lenoir</a>
+        <nav id="lenoir-navigation" className={`lenoir-header__nav${open ? " is-open" : ""}`} aria-label="Main navigation">
           {links.map(([label, href]) => <a key={href} href={href} onClick={() => setOpen(false)}>{label}</a>)}
         </nav>
         <Button href="/lenoir/find-us#map" variant="primary" size="sm" className="lenoir-header__cta">Find Us</Button>

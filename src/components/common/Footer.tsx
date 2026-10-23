@@ -29,7 +29,7 @@ export default function Footer() {
   
             <div className="flex flex-col gap-3">
 
-  <p className="text-[11px] uppercase tracking-[0.28em] text-[#4F8EF7]">
+  <p className="notranslate text-[11px] uppercase tracking-[0.28em] text-[#4F8EF7]">
     NORTH DIGITAL STUDIO
   </p>
 
@@ -83,15 +83,15 @@ build trust and help more customers contact your business.
                 text-secondary-text
               ">
   
-                <a href="#services">
+                <a href="/services">
                   Services
                 </a>
   
-                <a href="#process">
+                <a href="/#process">
                   Process
                 </a>
   
-                <a href="#portfolio">
+                <a href="/portfolio">
                   Portfolio
                 </a>
   
@@ -120,12 +120,12 @@ build trust and help more customers contact your business.
                 text-secondary-text
               ">
   
-                <a href="#">
-                  Email
+                <a href="/contact">
+                  Contact form
                 </a>
   
-                <a href="#">
-                  LinkedIn
+                <a href="/faq">
+                  FAQ
                 </a>
   
   

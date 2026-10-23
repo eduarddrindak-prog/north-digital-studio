@@ -146,7 +146,7 @@ export default function MartinHome() {
 
       <section className="martin-area" id="area" aria-labelledby="area-title">
         <div className="martin-area__visual" aria-hidden="true"><div className="martin-area__postcode-card"><span>POSTCODE</span><strong>75000</strong><small>EXAMPLE ONLY</small></div></div>
-        <div className="martin-area__copy"><p className="eyebrow">SERVICE AREA</p><h2 id="area-title">Is your home within reach?</h2><p>Service availability depends on the location and the type of job. Include your postcode in the request so the area can be checked before arranging a visit.</p><p className="martin-area__support">No need to share your full address at this stage.</p><Link href="#contact" variant="accent" size="md" withArrow onClick={focusPostcode}>Check my area</Link></div>
+        <div className="martin-area__copy"><p className="eyebrow">SERVICE AREA</p><h2 id="area-title">Is your home within reach?</h2><p>Availability depends on the location and the type of job. Enter your postcode in the request so we can review whether the location is within reach before arranging a visit.</p><p className="martin-area__support">A postcode is enough at this stage; you do not need to share your full address.</p><Link href="#contact" variant="accent" size="md" withArrow onClick={focusPostcode}>Enter your postcode</Link></div>
       </section>
 
       <section className="martin-faq" id="faq" aria-labelledby="faq-title">
@@ -160,9 +160,9 @@ export default function MartinHome() {
           <Check size={24} aria-hidden="true" />
           <p className="eyebrow">THANK YOU FOR EXPLORING</p>
           <h3 id="martin-thank-you-title" ref={thankYouHeadingRef} tabIndex={-1}>That’s the end of the demo.</h3>
-          <p>This form is part of a portfolio concept, so no request has been sent. Thanks for taking a closer look at Atelier Martin.</p>
+          <p>This form is part of a portfolio concept, so no request has been sent. Thanks for taking a closer look at <span className="notranslate">Atelier Martin</span>.</p>
           <div className="martin-form__success-actions">
-            <Button href="/portfolio" variant="primary" size="md" withArrow>Explore the North Digital Studio portfolio</Button>
+            <Button href="/portfolio" variant="primary" size="md" withArrow>Explore the <span className="notranslate">North Digital Studio</span> portfolio</Button>
             <Link href="/" variant="default" size="md" withArrow>Back to the homepage</Link>
           </div>
         </div> : <form className="martin-form" onSubmit={handleSubmit} noValidate>

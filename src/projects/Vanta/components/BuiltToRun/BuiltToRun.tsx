@@ -1,33 +1,17 @@
 import {
   useEffect,
-  useMemo,
-  useRef,
   useState,
+  useRef,
 } from "react";
 
 import { builtToRunContent } from "./content";
 
 import "./BuiltToRun.css";
 
-function easeOutCubic(value: number) {
-  return 1 - Math.pow(1 - value, 3);
-}
-
 export default function BuiltToRun() {
   const sectionRef = useRef<HTMLElement | null>(null);
 
-  const [progress, setProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-
-  const reducedMotion = useMemo(() => {
-    if (typeof window === "undefined") {
-      return false;
-    }
-
-    return window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-  }, []);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -43,34 +27,7 @@ export default function BuiltToRun() {
         }
 
         setIsVisible(true);
-
-        if (reducedMotion) {
-          setProgress(1);
-          observer.disconnect();
-          return;
-        }
-
-        const startTime = performance.now();
-        const duration = 1100;
-
-        const animate = (currentTime: number) => {
-          const elapsed = currentTime - startTime;
-
-          const rawProgress = Math.min(
-            elapsed / duration,
-            1
-          );
-
-          setProgress(easeOutCubic(rawProgress));
-
-          if (rawProgress < 1) {
-            requestAnimationFrame(animate);
-          } else {
-            observer.disconnect();
-          }
-        };
-
-        requestAnimationFrame(animate);
+        observer.disconnect();
       },
       {
         threshold: 0.35,
@@ -82,7 +39,7 @@ export default function BuiltToRun() {
     return () => {
       observer.disconnect();
     };
-  }, [reducedMotion]);
+  }, []);
 
   const {
     eyebrow,
@@ -95,17 +52,9 @@ export default function BuiltToRun() {
     bottom,
   } = builtToRunContent;
 
-  const tasksAutomated = (
-    metrics.tasksAutomated * progress
-  ).toFixed(1);
-
-  const repetitiveSteps = Math.round(
-    metrics.repetitiveSteps * progress
-  );
-
-  const hoursRemoved = (
-    metrics.hoursRemoved * progress
-  ).toFixed(1);
+  const tasksAutomated = metrics.tasksAutomated.toFixed(1);
+  const repetitiveSteps = metrics.repetitiveSteps;
+  const hoursRemoved = metrics.hoursRemoved.toFixed(1);
 
   return (
     <section

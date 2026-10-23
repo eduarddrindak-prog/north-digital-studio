@@ -6,7 +6,7 @@ import { heroContent } from "./content";
 
 export default function Hero() {
   return (
-    <section className="bg-background pt-28 pb-24">
+    <section className="bg-background pt-28 pb-16 md:pb-20">
       <SectionContainer>
         <Reveal>
           <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
@@ -18,14 +18,14 @@ export default function Hero() {
               {heroContent.title}
             </h1>
 
-            <p className="mt-8 max-w-xl text-lg leading-8 text-secondary-text">
+            <p className="mt-7 max-w-xl text-lg leading-8 text-secondary-text">
               {heroContent.description}
             </p>
 
             <Button
               href={heroContent.primaryButton.href}
               withArrow
-              className="mt-10"
+              className="mt-9"
             >
               {heroContent.primaryButton.label}
             </Button>
@@ -33,7 +33,7 @@ export default function Hero() {
         </Reveal>
 
         <Reveal delay={0.15}>
-          <div className="mx-auto mt-20 max-w-5xl">
+          <div className="mx-auto mt-16 max-w-5xl md:mt-20">
             <div className="h-px bg-border" />
 
             <div className="mt-10 flex flex-wrap justify-center gap-6 md:gap-8">

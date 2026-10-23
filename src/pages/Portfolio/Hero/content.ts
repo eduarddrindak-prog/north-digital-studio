@@ -1,5 +1,5 @@
 export const heroContent = {
-  badge: "Portfolio",
+  badge: "Concept work",
 
   title: "Selected Work",
 
@@ -13,7 +13,7 @@ export const heroContent = {
   ],
 
   primaryButton: {
-    label: "Start Project",
-    href: "/contact",
+    label: "Explore projects",
+    href: "#concept-projects",
   },
 };

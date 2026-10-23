@@ -471,7 +471,7 @@ export default function Hero() {
         <div className="vanta-trust__logos">
           {heroContent.trustedCompanies.map(
             (company) => (
-              <span key={company}>
+              <span key={company} className="notranslate">
                 {company}
               </span>
             )
@@ -573,7 +573,7 @@ function FlowCard({
       </div>
 
       <div className="vanta-flow-card__name">
-        {node.name}
+        <span className="notranslate">{node.name}</span>
       </div>
 
       <div className="vanta-flow-card__category">

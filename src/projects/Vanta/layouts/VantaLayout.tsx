@@ -13,7 +13,7 @@ export default function VantaLayout({
   children,
 }: VantaLayoutProps) {
   return (
-    <div className="app-shell">
+    <div className="vanta-app">
       <Header />
 
       <main>{children}</main>

@@ -122,7 +122,7 @@ export default function Workspace() {
 
           <aside className="vanta-workspace__sidebar">
             <div className="vanta-workspace__brand">
-              VANTA
+              <span className="notranslate">VANTA</span>
             </div>
 
             <nav className="vanta-workspace__nav">
@@ -392,7 +392,7 @@ export default function Workspace() {
                           node.appClass,
                         ].join(" ")}
                       >
-                        {node.app}
+                        <span className="notranslate">{node.app}</span>
                       </div>
 
                       <div>
@@ -403,7 +403,7 @@ export default function Workspace() {
 
                     <p>
                       {node.description}. This action is
-                      automatically handled by VANTA
+                      automatically handled by <span className="notranslate">VANTA</span>
                       when the workflow reaches this
                       step.
                     </p>

@@ -9,7 +9,7 @@
   box-sizing: border-box;
 }
 
-html {
+html:has(.vanta-app) {
   color-scheme: dark;
   font-family: var(--font-sans);
   background: var(--color-page);
@@ -23,6 +23,12 @@ body {
   min-width: 320px;
   min-height: 100vh;
 
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body:has(.vanta-app) {
+
   background:
     radial-gradient(
       circle at 50% -20%,
@@ -33,8 +39,6 @@ body {
 
   color: var(--color-text);
 
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
 }
 
 button,
@@ -69,7 +73,7 @@ a {
    APP
    ========================================================= */
 
-.app-shell {
+.vanta-app {
   min-height: 100vh;
   overflow: visible;
 }
@@ -83,7 +87,7 @@ main {
    CONTAINER
    ========================================================= */
 
-.container {
+.vanta-app .container {
   width:
     min(
       100% - var(--space-container) * 2,
@@ -93,7 +97,7 @@ main {
   margin: 0 auto;
 }
 
-.container--narrow {
+.vanta-app .container--narrow {
   max-width: var(--container-narrow);
 }
 
@@ -102,16 +106,16 @@ main {
    SECTIONS
    ========================================================= */
 
-.section {
+.vanta-app .section {
   position: relative;
   padding: var(--space-section) 0;
 }
 
-.section--compact {
+.vanta-app .section--compact {
   padding: var(--space-20) 0;
 }
 
-.section--flush {
+.vanta-app .section--flush {
   padding: 0;
 }
 
@@ -120,7 +124,7 @@ main {
    TECHNICAL LABEL
    ========================================================= */
 
-.eyebrow {
+.vanta-app .eyebrow {
   display: flex;
   align-items: center;
   gap: var(--space-3);
@@ -139,7 +143,7 @@ main {
   text-transform: uppercase;
 }
 
-.eyebrow::before {
+.vanta-app .eyebrow::before {
   content: "";
 
   width: 1.75rem;
@@ -153,7 +157,7 @@ main {
    TYPOGRAPHY
    ========================================================= */
 
-.display {
+.vanta-app .display {
   max-width: 11ch;
 
   margin: 0;
@@ -165,7 +169,7 @@ main {
   line-height: var(--line-tight);
 }
 
-.heading {
+.vanta-app .heading {
   max-width: 18ch;
 
   margin: 0;
@@ -177,7 +181,7 @@ main {
   line-height: var(--line-snug);
 }
 
-.subheading {
+.vanta-app .subheading {
   max-width: 42rem;
 
   margin: var(--space-5) 0 0;
@@ -188,7 +192,7 @@ main {
   line-height: var(--line-normal);
 }
 
-.mono {
+.vanta-app .mono {
   font-family: var(--font-mono);
   letter-spacing: var(--tracking-mono);
 }
@@ -198,22 +202,22 @@ main {
    GRID
    ========================================================= */
 
-.grid {
+.vanta-app .grid {
   display: grid;
   gap: var(--grid-gap);
 }
 
-.grid--2 {
+.vanta-app .grid--2 {
   grid-template-columns:
     repeat(2, minmax(0, 1fr));
 }
 
-.grid--3 {
+.vanta-app .grid--3 {
   grid-template-columns:
     repeat(3, minmax(0, 1fr));
 }
 
-.grid--4 {
+.vanta-app .grid--4 {
   grid-template-columns:
     repeat(4, minmax(0, 1fr));
 }
@@ -223,7 +227,7 @@ main {
    STACK
    ========================================================= */
 
-.stack {
+.vanta-app .stack {
   display: grid;
   gap: var(--space-4);
 }
@@ -233,7 +237,7 @@ main {
    TECHNICAL DIVIDER
    ========================================================= */
 
-.divider {
+.vanta-app .divider {
   width: 100%;
   height: var(--divider-thickness);
 
@@ -245,7 +249,7 @@ main {
    TECHNICAL PANEL
    ========================================================= */
 
-.panel {
+.vanta-app .panel {
   position: relative;
 
   border:
@@ -256,7 +260,7 @@ main {
   background: var(--color-surface);
 }
 
-.panel::before {
+.vanta-app .panel::before {
   content: "";
 
   position: absolute;
@@ -276,7 +280,7 @@ main {
    DATA / TECH TEXT
    ========================================================= */
 
-.data-label {
+.vanta-app .data-label {
   color: var(--color-text-muted);
 
   font-family: var(--font-mono);
@@ -286,7 +290,7 @@ main {
   text-transform: uppercase;
 }
 
-.data-value {
+.vanta-app .data-value {
   color: var(--color-text);
 
   font-family: var(--font-mono);
@@ -297,7 +301,7 @@ main {
    FOCUS
    ========================================================= */
 
-:focus-visible {
+.vanta-app :focus-visible {
   outline:
     var(--focus-ring-width)
     solid
@@ -313,7 +317,7 @@ main {
    SELECTION
    ========================================================= */
 
-::selection {
+.vanta-app ::selection {
   background: var(--color-accent);
   color: var(--color-text-inverse);
 }
@@ -324,13 +328,13 @@ main {
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  html {
+  html:has(.vanta-app) {
     scroll-behavior: auto;
   }
 
-  *,
-  *::before,
-  *::after {
+  .vanta-app *,
+  .vanta-app *::before,
+  .vanta-app *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -344,8 +348,8 @@ main {
    ========================================================= */
 
 @media (max-width: 900px) {
-  .grid--3,
-  .grid--4 {
+  .vanta-app .grid--3,
+  .vanta-app .grid--4 {
     grid-template-columns:
       repeat(2, minmax(0, 1fr));
   }
@@ -353,19 +357,19 @@ main {
 
 
 @media (max-width: 760px) {
-  .section {
+  .vanta-app .section {
     padding:
       clamp(4.5rem, 14vw, 6rem)
       0;
   }
 
-  .grid--2,
-  .grid--3,
-  .grid--4 {
+  .vanta-app .grid--2,
+  .vanta-app .grid--3,
+  .vanta-app .grid--4 {
     grid-template-columns: 1fr;
   }
 
-  .display {
+  .vanta-app .display {
     max-width: 12ch;
   }
 }

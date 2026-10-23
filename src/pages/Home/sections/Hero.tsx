@@ -230,11 +230,11 @@ shadow-[0_30px_80px_rgba(0,0,0,.35)]
   <div className="mx-auto mb-5 h-px w-16 bg-white/10" />
 
   <p className="text-[11px] uppercase tracking-[0.3em] text-[#4F8EF7]">
-    NORTH STUDIO
+    <span className="notranslate">NORTH STUDIO</span>
   </p>
 
   <p className="text-[11px] uppercase tracking-[0.28em] text-[#4F8EF7]">
-  NORTH DIGITAL STUDIO
+  <span className="notranslate">NORTH DIGITAL STUDIO</span>
 </p>
 
 <h3 className="mt-4 text-2xl font-semibold tracking-tight text-white">

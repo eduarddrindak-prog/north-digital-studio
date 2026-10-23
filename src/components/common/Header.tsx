@@ -101,7 +101,7 @@ export default function Header() {
             "
           />
 
-          <div className="leading-none">
+          <div className="leading-none notranslate">
             <p
               className="
                 text-primary-text
@@ -178,12 +178,8 @@ export default function Header() {
 
         <div className="hidden md:block">
         <Button
+  href="/contact"
   withArrow
-  onClick={() =>
-    document.querySelector("#contact")?.scrollIntoView({
-      behavior: "smooth",
-    })
-  }
 >
   Start Project
 </Button>

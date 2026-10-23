@@ -79,7 +79,7 @@ export const heroContent = {
     latencySuffix: "ms",
   },
 
-  trustLabel: "TRUSTED BY FORWARD-THINKING COMPANIES",
+  trustLabel: "COMMONLY CONNECTED TOOLS",
 
   trustedCompanies: [
     "STRIPE",

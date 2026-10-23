@@ -1,4 +1,5 @@
 import {
+  useCallback,
   useEffect,
   useRef,
   useState,
@@ -21,6 +22,18 @@ export default function FinalCTA() {
 
   const completionCloseRef =
     useRef<HTMLButtonElement | null>(null);
+  const completionTriggerRef =
+    useRef<HTMLButtonElement | null>(null);
+  const completionPanelRef =
+    useRef<HTMLDivElement | null>(null);
+
+  const closeCompletion = useCallback(() => {
+    setIsCompletionOpen(false);
+
+    window.requestAnimationFrame(() => {
+      completionTriggerRef.current?.focus();
+    });
+  }, []);
 
   const {
     eyebrow,
@@ -71,7 +84,47 @@ export default function FinalCTA() {
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsCompletionOpen(false);
+        event.preventDefault();
+        closeCompletion();
+        return;
+      }
+
+      if (event.key !== "Tab") {
+        return;
+      }
+
+      const panel = completionPanelRef.current;
+
+      if (!panel) {
+        return;
+      }
+
+      const focusableElements = Array.from(
+        panel.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ),
+      );
+
+      if (focusableElements.length === 0) {
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement =
+        focusableElements[focusableElements.length - 1];
+
+      if (
+        event.shiftKey &&
+        document.activeElement === firstElement
+      ) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (
+        !event.shiftKey &&
+        document.activeElement === lastElement
+      ) {
+        event.preventDefault();
+        firstElement.focus();
       }
     };
 
@@ -89,7 +142,7 @@ export default function FinalCTA() {
         handleKeyDown
       );
     };
-  }, [isCompletionOpen]);
+  }, [closeCompletion, isCompletionOpen]);
 
   return (
     <section
@@ -125,7 +178,7 @@ export default function FinalCTA() {
 
       <div className="vanta-final-cta__content">
         <p className="vanta-final-cta__brand">
-          {brand}
+          <span className="notranslate">{brand}</span>
         </p>
 
         <h2 className="vanta-final-cta__title">
@@ -148,9 +201,10 @@ export default function FinalCTA() {
           size="lg"
           withArrow
           className="vanta-final-cta__button"
-          onClick={() =>
-            setIsCompletionOpen(true)
-          }
+          onClick={(event) => {
+            completionTriggerRef.current = event.currentTarget;
+            setIsCompletionOpen(true);
+          }}
         >
           {button.label}
         </Button>
@@ -169,11 +223,10 @@ export default function FinalCTA() {
         <div
           className="vanta-final-cta__modal"
           role="presentation"
-          onMouseDown={() =>
-            setIsCompletionOpen(false)
-          }
+          onMouseDown={closeCompletion}
         >
           <div
+            ref={completionPanelRef}
             className="vanta-final-cta__modal-panel"
             role="dialog"
             aria-modal="true"
@@ -188,9 +241,7 @@ export default function FinalCTA() {
               type="button"
               className="vanta-final-cta__modal-close"
               aria-label="Close"
-              onClick={() =>
-                setIsCompletionOpen(false)
-              }
+              onClick={closeCompletion}
             >
               ×
             </button>

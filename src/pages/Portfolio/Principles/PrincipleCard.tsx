@@ -25,7 +25,7 @@ export default function PrincipleCard({
           border
           border-border
           bg-white/[0.02]
-          p-8
+          p-7 md:p-8
           transition-all
           duration-300
           hover:border-[#4F8EF7]/30
@@ -53,12 +53,12 @@ export default function PrincipleCard({
         />
 
         {/* Title */}
-        <h3 className="mt-8 text-[34px] font-semibold leading-none text-primary-text">
+        <h3 className="mt-7 text-[32px] font-semibold leading-none text-primary-text">
           {title}
         </h3>
 
         {/* Description */}
-        <p className="mt-6 max-w-[420px] leading-8 text-secondary-text">
+        <p className="mt-5 max-w-[420px] leading-7 text-secondary-text">
           {description}
         </p>
 

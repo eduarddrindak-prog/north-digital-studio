@@ -11,6 +11,7 @@ export type SelectOption = {
 };
 
 type SelectProps = {
+  id?: string;
   value?: string;
   defaultValue?: string;
   onValueChange?: (value: string) => void;
@@ -19,6 +20,8 @@ type SelectProps = {
   disabled?: boolean;
   required?: boolean;
   invalid?: boolean;
+  "aria-describedby"?: string;
+  "aria-invalid"?: boolean;
   name?: string;
   className?: string;
   triggerClassName?: string;
@@ -51,6 +54,7 @@ function getEnabledIndex(
 }
 
 export function Select({
+  id,
   value,
   defaultValue,
   onValueChange,
@@ -59,6 +63,8 @@ export function Select({
   disabled = false,
   required = false,
   invalid = false,
+  "aria-describedby": ariaDescribedBy,
+  "aria-invalid": ariaInvalid,
   name,
   className = "",
   triggerClassName = "",
@@ -384,6 +390,7 @@ export function Select({
     <div className={`select ${className}`.trim()}>
       <button
         ref={triggerRef}
+        id={id}
         type="button"
         className={`select__trigger ${triggerClassName}`.trim()}
         onClick={() => {
@@ -397,7 +404,8 @@ export function Select({
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-controls={open ? contentId : undefined}
-        aria-invalid={invalid || undefined}
+        aria-describedby={ariaDescribedBy}
+        aria-invalid={ariaInvalid ?? (invalid || undefined)}
         aria-required={required || undefined}
         disabled={disabled}
       >

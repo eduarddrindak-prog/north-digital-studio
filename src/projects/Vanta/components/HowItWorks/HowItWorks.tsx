@@ -324,7 +324,7 @@ export default function HowItWorks() {
 
               <div className="vanta-how__core-info">
                 <strong>
-                  {howItWorksContent.processing.coreName}
+                  <span className="notranslate">{howItWorksContent.processing.coreName}</span>
                 </strong>
 
                 <span>
