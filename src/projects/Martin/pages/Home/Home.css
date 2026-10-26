@@ -85,55 +85,19 @@
   position: relative;
   min-height: 28rem;
   overflow: hidden;
-  background:
-    linear-gradient(145deg, rgba(37,41,35,.08), rgba(115,125,89,.28)),
-    repeating-linear-gradient(90deg, rgba(37,41,35,.05) 0 1px, transparent 1px 3.5rem),
-    #d3d0c2;
 }
 
-.martin-photo::before {
+.martin-photo__image,
+.martin-area__image {
   position: absolute;
-  inset: 1rem;
-  border: 1px solid rgba(245,243,236,.7);
-  content: "";
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.martin-photo::after {
-  position: absolute;
-  right: 12%;
-  bottom: 0;
-  width: 43%;
-  height: 68%;
-  background: linear-gradient(135deg, rgba(48,51,46,.72), rgba(115,125,89,.35));
-  clip-path: polygon(24% 0, 77% 0, 100% 100%, 0 100%);
-  content: "";
-  opacity: .8;
-}
-
-.martin-photo span,
-.martin-photo strong {
-  position: absolute;
-  z-index: 1;
-}
-
-.martin-photo span {
-  top: 1.5rem;
-  left: 1.5rem;
-  color: var(--color-white);
-  font-family: var(--font-mono);
-  font-size: .62rem;
-  letter-spacing: .15em;
-}
-
-.martin-photo strong {
-  right: 1.5rem;
-  bottom: 1.5rem;
-  color: var(--color-white);
-  font-family: "DM Sans", var(--font-sans);
-  font-size: clamp(2rem, 4vw, 4rem);
-  letter-spacing: -.06em;
-  line-height: .85;
-  text-align: right;
+.martin-photo__image {
+  z-index: 0;
 }
 
 .martin-services {
@@ -318,17 +282,6 @@
 
 .martin-photo--about {
   min-height: 34rem;
-  background:
-    linear-gradient(145deg, rgba(115,125,89,.35), rgba(37,41,35,.3)),
-    repeating-linear-gradient(0deg, rgba(37,41,35,.06) 0 1px, transparent 1px 4rem),
-    #c6c5b7;
-}
-
-.martin-photo--about::after {
-  right: 21%;
-  width: 48%;
-  height: 72%;
-  background: linear-gradient(135deg, rgba(37,41,35,.65), rgba(48,51,46,.25));
 }
 
 .martin-contact {
@@ -672,16 +625,24 @@
   background: var(--color-surface-strong);
 }
 .martin-area__visual {
+  position: relative;
+  overflow: hidden;
   display: flex;
-  min-height: 20rem;
+  align-self: start;
+  aspect-ratio: 16 / 9;
+  min-height: 0;
   align-items: center;
   justify-content: center;
-  background:
-    linear-gradient(135deg, rgba(115,125,89,.18), transparent),
-    repeating-linear-gradient(45deg, rgba(48,51,46,.07) 0 1px, transparent 1px 1.4rem),
-    var(--color-page);
+  background: var(--color-page);
 }
+
+.martin-area__image {
+  z-index: 0;
+  display: block;
+}
+
 .martin-area__postcode-card {
+  z-index: 1;
   display: grid;
   width: min(80%, 20rem);
   gap: .75rem;
@@ -690,6 +651,7 @@
   background: var(--color-surface);
   box-shadow: 1rem 1rem 0 rgba(115,125,89,.12);
 }
+
 .martin-area__postcode-card span,
 .martin-area__postcode-card small {
   font-family: var(--font-mono);
@@ -697,9 +659,11 @@
   letter-spacing: .12em;
   text-transform: uppercase;
 }
+
 .martin-area__postcode-card span {
   color: var(--color-accent-strong);
 }
+
 .martin-area__postcode-card strong {
   padding: .75rem 0;
   border-top: 1px solid var(--color-border);
@@ -710,6 +674,7 @@
   font-weight: 500;
   letter-spacing: .08em;
 }
+
 .martin-area__postcode-card small {
   color: var(--color-text-muted);
 }
@@ -817,7 +782,7 @@
   .martin-job:nth-child(3) { grid-column: auto; }
   .martin-area__copy { padding: 3rem 0 0; }
   .martin-area { padding-right: var(--space-container); padding-left: var(--space-container); }
-  .martin-area__visual { min-height: 14rem; }
+  .martin-area__visual { min-height: 0; }
   .martin-faq { gap: 2.5rem; }
 }
 

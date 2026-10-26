@@ -5,6 +5,9 @@ import { Button } from "@/components/North Base/ui/Button";
 import { Field, Input, Textarea } from "@/components/North Base/ui/Field";
 import { Link } from "@/components/North Base/ui/Link";
 import { Select } from "@/components/North Base/ui/Select";
+import mapImage from "@/projects/Martin/assets/Карта города с выделенным районом 75000.jpg";
+import workshopImage from "@/projects/Martin/assets/Солнечная мастерская у окна.jpg";
+import shelfImage from "@/projects/Martin/assets/Установка деревянной полки с уровнем.jpg";
 
 import "./Home.css";
 
@@ -95,8 +98,7 @@ export default function MartinHome() {
             <p className="martin-hero__note"><Check size={15} aria-hidden="true" /> Direct communication. Clear scope. No surprises.</p>
           </div>
           <div className="martin-photo martin-photo--hero" role="img" aria-label="A handyman’s workspace in a Paris apartment.">
-            <span>ATELIER MARTIN · PARIS</span>
-            <strong>EVERYDAY<br />HOME<br />JOBS</strong>
+            <img className="martin-photo__image" src={shelfImage} alt="" />
           </div>
         </div>
       </section>
@@ -141,11 +143,11 @@ export default function MartinHome() {
 
       <section className="martin-about" id="about" aria-labelledby="about-title">
         <div className="martin-about__copy"><p className="eyebrow">ABOUT THE PERSON</p><h2 id="about-title">One point of contact, from start to finish.</h2><p>I’m Thomas, an independent handyman focused on the small jobs that keep a home working well.</p><p>I care about practical solutions, careful finishing and the small details that make a home feel right.</p><p>You speak directly with the person handling your request, without a complicated process or vague promises.</p><div className="martin-about__signature"><strong>Thomas Martin</strong><span>Independent handyman · Paris</span></div><Link href="#contact" variant="default" size="md" withArrow>Talk about my job</Link></div>
-        <div className="martin-photo martin-photo--about" role="img" aria-label="Documentary portrait of a handyman in his workspace."><span>THOMAS MARTIN</span></div>
+        <div className="martin-photo martin-photo--about" role="img" aria-label="Documentary portrait of a handyman in his workspace."><img className="martin-photo__image" src={workshopImage} alt="" /></div>
       </section>
 
       <section className="martin-area" id="area" aria-labelledby="area-title">
-        <div className="martin-area__visual" aria-hidden="true"><div className="martin-area__postcode-card"><span>POSTCODE</span><strong>75000</strong><small>EXAMPLE ONLY</small></div></div>
+        <div className="martin-area__visual" aria-hidden="true"><img className="martin-area__image" src={mapImage} alt="" /><div className="martin-area__postcode-card"><span>POSTCODE</span><strong>75000</strong><small>EXAMPLE ONLY</small></div></div>
         <div className="martin-area__copy"><p className="eyebrow">SERVICE AREA</p><h2 id="area-title">Is your home within reach?</h2><p>Availability depends on the location and the type of job. Enter your postcode in the request so we can review whether the location is within reach before arranging a visit.</p><p className="martin-area__support">A postcode is enough at this stage; you do not need to share your full address.</p><Link href="#contact" variant="accent" size="md" withArrow onClick={focusPostcode}>Enter your postcode</Link></div>
       </section>
 
