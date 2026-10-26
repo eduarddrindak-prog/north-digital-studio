@@ -119,7 +119,7 @@ export default function ProblemVisualization() {
           hover:bg-[#4F8EF7]/5
         "
       >
-        <h3 className="text-lg font-semibold transition-colors duration-300 group-hover:text-[#4F8EF7]">
+        <h3 className="text-lg font-semibold transition-colors duration-300 group-hover:notranslate text-[#4F8EF7]">
           {step.title}
         </h3>
 

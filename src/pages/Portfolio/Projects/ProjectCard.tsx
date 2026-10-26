@@ -29,7 +29,7 @@ export default function ProjectCard({
             <img
               src={project.image}
               alt=""
-              className="h-full w-full object-cover opacity-90 transition duration-500 group-hover:scale-105"
+              className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
             />
           ) : (
             <div className="absolute inset-0 p-6" aria-hidden="true">
@@ -43,7 +43,7 @@ export default function ProjectCard({
                 <div className="absolute inset-x-8 top-1/2 -translate-y-1/2 rounded-2xl border border-white/15 bg-white/[0.03] p-5">
                   <div className="flex items-center justify-between text-[9px] uppercase tracking-[0.22em] opacity-60">
                     <span>AI infrastructure</span>
-                    <span className="text-[#4F8EF7]">Live system</span>
+                    <span className="notranslate text-[#4F8EF7]">Live system</span>
                   </div>
                   <div className="mt-5 flex items-center gap-2 text-[10px] uppercase tracking-[0.16em]">
                     <span className="rounded border border-white/15 px-2 py-1 opacity-70">Input</span>
@@ -80,11 +80,11 @@ export default function ProjectCard({
         </div>
 
         <div className="p-6 md:p-7">
-          <p className="text-xs uppercase tracking-[0.25em] text-[#4F8EF7]">
+          <p className="text-xs uppercase tracking-[0.25em] notranslate text-[#4F8EF7]">
             {project.category}
           </p>
 
-          <h3 className="notranslate mt-3 text-2xl font-medium text-primary-text transition-colors duration-300 group-hover:text-[#4F8EF7]">
+          <h3 className="notranslate mt-3 text-2xl font-medium text-primary-text transition-colors duration-300 group-hover:notranslate text-[#4F8EF7]">
             {project.title}
           </h3>
 
@@ -101,7 +101,7 @@ export default function ProjectCard({
             ))}
           </ul>
 
-          <span className="mt-8 flex items-center gap-2 text-sm text-secondary-text transition-colors duration-300 group-hover:text-[#4F8EF7]">
+          <span className="mt-8 flex items-center gap-2 text-sm text-secondary-text transition-colors duration-300 group-hover:notranslate text-[#4F8EF7]">
             View project
             <ArrowUpRight size={16} aria-hidden="true" />
           </span>

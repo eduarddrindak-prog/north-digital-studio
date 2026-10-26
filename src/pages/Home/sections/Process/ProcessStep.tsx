@@ -58,7 +58,7 @@ hover:bg-[#4F8EF7]/5
           items-center
           justify-center
           text-sm
-          text-[#4F8EF7]
+          notranslate text-[#4F8EF7]
           font-medium
         "
       >
@@ -74,7 +74,7 @@ hover:bg-[#4F8EF7]/5
 
       group-hover:translate-x-1
       group-hover:-translate-y-1
-      group-hover:text-[#4F8EF7]
+      group-hover:notranslate text-[#4F8EF7]
     "
   />
 </div>
@@ -87,7 +87,7 @@ font-semibold
 transition-colors
 duration-300
 
-group-hover:text-[#4F8EF7]
+group-hover:notranslate text-[#4F8EF7]
 ">
         {title}
       </h3>

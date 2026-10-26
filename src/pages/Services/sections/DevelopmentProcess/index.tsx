@@ -85,7 +85,7 @@ export default function DevelopmentProcess() {
   {...fadeLeft}
   className="mx-auto mb-24 mt-8 max-w-4xl text-center"
 >
-  <p className="text-sm uppercase tracking-[0.3em] text-[#4F8EF7]">
+  <p className="text-sm uppercase tracking-[0.3em] notranslate text-[#4F8EF7]">
     Our Process
   </p>
 
@@ -197,7 +197,7 @@ ${
   className="
     text-7xl
     font-semibold
-    text-[#4F8EF7]
+    notranslate text-[#4F8EF7]
 
     transition-all
     duration-300
@@ -325,8 +325,8 @@ transition-colors
 duration-300
 ${
   activeIndex === index
-    ? "text-[#4F8EF7]"
-    : "text-white/20 group-hover:text-[#4F8EF7]"
+    ? "notranslate text-[#4F8EF7]"
+    : "text-white/20 group-hover:notranslate text-[#4F8EF7]"
 }
 `}
       >
@@ -341,8 +341,8 @@ transition-colors
 duration-300
 ${
   activeIndex === index
-    ? "text-[#4F8EF7]"
-    : "text-white group-hover:text-[#4F8EF7]"
+    ? "notranslate text-[#4F8EF7]"
+    : "text-white group-hover:notranslate text-[#4F8EF7]"
 }
 `}
       >

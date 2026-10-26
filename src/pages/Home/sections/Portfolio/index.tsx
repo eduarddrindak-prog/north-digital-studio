@@ -54,7 +54,7 @@ export default function Portfolio() {
     font-medium
     uppercase
     tracking-[0.28em]
-    text-[#4F8EF7]
+    notranslate text-[#4F8EF7]
   "
 >
   Portfolio

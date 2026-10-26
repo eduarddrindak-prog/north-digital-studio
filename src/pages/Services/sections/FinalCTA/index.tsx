@@ -133,7 +133,7 @@ export default function FinalCTA() {
                 text-sm
                 uppercase
                 tracking-[0.35em]
-                text-[#4F8EF7]
+                notranslate text-[#4F8EF7]
 
                 transition-all
                 duration-300

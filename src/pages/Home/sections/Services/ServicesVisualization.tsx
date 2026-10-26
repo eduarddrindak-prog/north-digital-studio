@@ -185,7 +185,7 @@ export default function SolutionVisualization() {
                       bg-[#4F8EF7]/10
                       text-xs
                       font-semibold
-                      text-[#4F8EF7]
+                      notranslate text-[#4F8EF7]
                       transition-colors
                       duration-300
                       group-hover:bg-[#4F8EF7]/15

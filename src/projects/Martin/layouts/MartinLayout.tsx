@@ -40,7 +40,7 @@ function MartinHeader() {
         </nav>
 
         <a className="martin-button martin-button--small" href="#contact" onClick={() => setMenuOpen(false)}>
-          Request a visit <span aria-hidden="true">↗</span>
+            Request a visit <span aria-hidden="true">↗</span>
         </a>
 
         <button

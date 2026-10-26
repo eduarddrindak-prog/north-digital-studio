@@ -78,7 +78,7 @@ export default function ContactForm() {
             className="mx-auto max-w-4xl rounded-3xl border border-border bg-white/[0.02] px-10 py-10 md:px-14 md:py-12"
           >
 
-            <p className="text-[11px] uppercase tracking-[0.28em] text-[#4F8EF7]">
+            <p className="text-[11px] uppercase tracking-[0.28em] notranslate text-[#4F8EF7]">
               {contactFormContent.badge}
             </p>
 

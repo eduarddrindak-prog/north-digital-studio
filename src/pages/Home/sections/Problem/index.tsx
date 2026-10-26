@@ -18,7 +18,7 @@ export default function Problem() {
           transition={{ duration: 0.5 }}
         >
 
-          <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#4F8EF7]">
+          <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] notranslate text-[#4F8EF7]">
   Problem
 </p>
           <h2 className="text-3xl font-semibold">{problemIntro.heading}</h2>

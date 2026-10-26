@@ -5,6 +5,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 
 import Button from "@/components/ui/Button";
+import LanguageSwitcher from "./GTranslate";
 
 const navigation = [
   {
@@ -70,6 +71,7 @@ export default function Header() {
         className="
           max-w-[1440px]
           mx-auto
+          relative
           h-[80px]
           px-6
           flex
@@ -132,6 +134,9 @@ export default function Header() {
           className="
             hidden
             md:flex
+            absolute
+            left-1/2
+            -translate-x-1/2
             items-center
             gap-8
           "
@@ -142,6 +147,7 @@ export default function Header() {
   to={item.href}
   className={({ isActive }) =>
     `
+    notranslate
     relative
     text-sm
     transition-all
@@ -174,26 +180,23 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Desktop CTA */}
+        <div className="flex items-center gap-4">
+          <LanguageSwitcher />
 
-        <div className="hidden md:block">
-        <Button
-  href="/contact"
-  withArrow
->
-  Start Project
-</Button>
+          <div className="hidden md:block">
+            <Button href="/contact" withArrow>
+              Start Project
+            </Button>
+          </div>
+
+          <button
+            onClick={() => setOpen(!open)}
+            aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+            className="text-primary-text md:hidden"
+          >
+            {open ? <X /> : <Menu />}
+          </button>
         </div>
-
-        {/* Mobile */}
-
-        <button
-  onClick={() => setOpen(!open)}
-  aria-label={open ? "Close navigation menu" : "Open navigation menu"}
-  className="md:hidden text-primary-text"
->
-          {open ? <X /> : <Menu />}
-        </button>
       </div>
 
       {open && (
@@ -223,8 +226,8 @@ export default function Header() {
   onClick={() => setOpen(false)}
   className={({ isActive }) =>
     isActive
-      ? "text-primary-text"
-      : "text-secondary-text hover:text-primary-text"
+      ? "notranslate text-primary-text"
+      : "notranslate text-secondary-text hover:text-primary-text"
   }
 >
                 {item.label}

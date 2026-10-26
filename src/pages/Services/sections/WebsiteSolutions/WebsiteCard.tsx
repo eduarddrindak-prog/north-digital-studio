@@ -237,7 +237,7 @@ bg-surface
           group-hover:text-primary-text
         "
       >
-        <span className="text-[#4F8EF7]">✓</span>
+        <span className="notranslate text-[#4F8EF7]">✓</span>
 
         {item}
       </li>

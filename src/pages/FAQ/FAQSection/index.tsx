@@ -21,7 +21,7 @@ export default function FAQSection() {
       <SectionContainer>
         <Reveal>
           <div className="mx-auto max-w-5xl">
-            <p className="text-center text-sm uppercase tracking-[0.3em] text-[#4F8EF7]">
+            <p className="text-center text-sm uppercase tracking-[0.3em] notranslate text-[#4F8EF7]">
               {faqContent.title}
             </p>
 
@@ -114,7 +114,7 @@ export default function FAQSection() {
 
                         ${
                           openIndex === index
-                            ? "rotate-45 text-[#4F8EF7]"
+                            ? "rotate-45 notranslate text-[#4F8EF7]"
                             : "text-secondary-text"
                         }
                       `}

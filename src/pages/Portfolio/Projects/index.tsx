@@ -11,7 +11,7 @@ export default function Projects() {
         <Reveal>
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <p className="text-[11px] uppercase tracking-[0.28em] text-[#4F8EF7]">
+              <p className="text-[11px] uppercase tracking-[0.28em] notranslate text-[#4F8EF7]">
                 Concept projects
               </p>
               <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-tight text-primary-text md:text-6xl">

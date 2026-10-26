@@ -34,7 +34,7 @@ export default function PrincipleCard({
         "
       >
         {/* Number */}
-        <span className="text-[13px] font-medium tracking-[0.18em] text-[#4F8EF7]">
+        <span className="text-[13px] font-medium tracking-[0.18em] notranslate text-[#4F8EF7]">
           {number}
         </span>
 
@@ -76,7 +76,7 @@ export default function PrincipleCard({
         >
           <ArrowUpRight
             size={20}
-            className="text-secondary-text group-hover:text-[#4F8EF7]"
+            className="text-secondary-text group-hover:notranslate text-[#4F8EF7]"
           />
         </div>
       </div>

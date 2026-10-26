@@ -83,15 +83,15 @@ build trust and help more customers contact your business.
                 text-secondary-text
               ">
   
-                <a href="/services">
+                <a className="notranslate" href="/services">
                   Services
                 </a>
   
-                <a href="/#process">
+                <a className="notranslate" href="/#process">
                   Process
                 </a>
   
-                <a href="/portfolio">
+                <a className="notranslate" href="/portfolio">
                   Portfolio
                 </a>
   
@@ -120,11 +120,11 @@ build trust and help more customers contact your business.
                 text-secondary-text
               ">
   
-                <a href="/contact">
+                <a className="notranslate" href="/contact">
                   Contact form
                 </a>
   
-                <a href="/faq">
+                <a className="notranslate" href="/faq">
                   FAQ
                 </a>
   

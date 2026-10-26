@@ -273,6 +273,13 @@ html:has(.martin-app)::-webkit-scrollbar {
   letter-spacing: 0.13em;
 }
 
+.martin-header__actions {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: 0.75rem;
+}
+
 .martin-header__nav {
   display: flex;
   align-items: center;

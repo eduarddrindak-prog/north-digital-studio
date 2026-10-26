@@ -40,7 +40,7 @@ export default function Hero() {
   max-[1020px]:items-center
 "
         >
-          <p className="text-sm uppercase tracking-[0.3em] text-[#4F8EF7]">
+          <p className="text-sm uppercase tracking-[0.3em] notranslate text-[#4F8EF7]">
             {heroContent.badge}
           </p>
 
@@ -193,7 +193,7 @@ duration-300
 
   <div className="px-8 py-10">
 
-    <p className="text-sm uppercase tracking-[0.25em] text-[#4F8EF7]">
+    <p className="text-sm uppercase tracking-[0.25em] notranslate text-[#4F8EF7]">
       Digital Studio
     </p>
 

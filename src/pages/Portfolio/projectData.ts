@@ -1,3 +1,5 @@
+import martinImage from "@/assets/portfolio/atelier-martin-dashboard.jpg";
+import vantaImage from "@/assets/portfolio/vanta-dashboard.jpg";
 import lenoirImage from "@/projects/Lenoir/assets/maison-lenoir-hero.jpg";
 
 export type PortfolioProject = {
@@ -22,6 +24,7 @@ export const portfolioProjects: PortfolioProject[] = [
     href: "/vanta",
     status: "Concept project",
     visual: "vanta",
+    image: vantaImage,
     highlights: ["Workflow automation", "Systems interface", "Technical clarity"],
   },
   {
@@ -45,6 +48,7 @@ export const portfolioProjects: PortfolioProject[] = [
     href: "/martin",
     status: "Concept project",
     visual: "martin",
+    image: martinImage,
     highlights: ["Service clarity", "Request flow", "Accessible interaction"],
   },
 ];

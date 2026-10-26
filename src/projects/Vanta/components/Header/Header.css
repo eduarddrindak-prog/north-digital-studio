@@ -153,9 +153,14 @@
    CTA
 ========================================================= */
 
-.vanta-header__cta {
-  justify-self: end;
+.vanta-header__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+}
 
+.vanta-header__cta {
   display: inline-flex;
 
   min-height: 36px;
@@ -267,7 +272,14 @@
     height: 64px;
   }
 
-  .vanta-header__nav,
+  .vanta-header__nav {
+    display: none;
+  }
+
+  .vanta-header__actions {
+    display: flex;
+  }
+
   .vanta-header__cta {
     display: none;
   }

@@ -9,7 +9,7 @@ export default function Hero() {
       <SectionContainer>
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-[11px] uppercase tracking-[0.28em] text-[#4F8EF7]">
+            <p className="text-[11px] uppercase tracking-[0.28em] notranslate text-[#4F8EF7]">
               {heroContent.badge}
             </p>
 

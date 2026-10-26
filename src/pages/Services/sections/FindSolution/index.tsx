@@ -25,7 +25,7 @@ export default function FindSolution() {
           {...fadeLeft}
           className="max-w-3xl"
         >
-          <p className="text-sm uppercase tracking-[0.3em] text-[#4F8EF7]">
+          <p className="text-sm uppercase tracking-[0.3em] notranslate text-[#4F8EF7]">
             Find Your Solution
           </p>
 
@@ -75,10 +75,10 @@ export default function FindSolution() {
     "
   >
     <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#4F8EF7]/10">
-  <Rocket className="h-7 w-7 text-[#4F8EF7]" />
+  <Rocket className="h-7 w-7 notranslate text-[#4F8EF7]" />
 </div>
 
-<p className="mb-3 text-xs font-medium uppercase tracking-[0.25em] text-[#4F8EF7]">
+<p className="mb-3 text-xs font-medium uppercase tracking-[0.25em] notranslate text-[#4F8EF7]">
   For Startups
 </p>
 
@@ -112,10 +112,10 @@ export default function FindSolution() {
     "
   >
     <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#4F8EF7]/10">
-  <TrendingUp className="h-7 w-7 text-[#4F8EF7]" />
+  <TrendingUp className="h-7 w-7 notranslate text-[#4F8EF7]" />
 </div>
 
-<p className="mb-3 text-xs font-medium uppercase tracking-[0.25em] text-[#4F8EF7]">
+<p className="mb-3 text-xs font-medium uppercase tracking-[0.25em] notranslate text-[#4F8EF7]">
   For Business
 </p>
 
@@ -148,12 +148,12 @@ export default function FindSolution() {
     "
   >
     <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-[#4F8EF7]/10">
-  <Building2 className="h-7 w-7 text-[#4F8EF7]" />
+  <Building2 className="h-7 w-7 notranslate text-[#4F8EF7]" />
 
   
 </div>
 
-<p className="mb-3 text-xs font-medium uppercase tracking-[0.25em] text-[#4F8EF7]">
+<p className="mb-3 text-xs font-medium uppercase tracking-[0.25em] notranslate text-[#4F8EF7]">
   For Enterprise
 </p>
 
@@ -228,7 +228,7 @@ export default function FindSolution() {
     text-sm
     uppercase
     tracking-[0.3em]
-    text-[#4F8EF7]
+    notranslate text-[#4F8EF7]
 
     transition-all
     duration-300

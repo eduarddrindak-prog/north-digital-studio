@@ -51,7 +51,7 @@ duration-300
     text-secondary-text
     transition-colors
     duration-300
-    group-hover:text-[#4F8EF7]
+    group-hover:notranslate text-[#4F8EF7]
   "
   strokeWidth={1.5}
   aria-hidden="true"
@@ -62,7 +62,7 @@ duration-300
     font-medium
     transition-colors
     duration-300
-    group-hover:text-[#4F8EF7]
+    group-hover:notranslate text-[#4F8EF7]
   "
 >{title}</h3>
       </div>

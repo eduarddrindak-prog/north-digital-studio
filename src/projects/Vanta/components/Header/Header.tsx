@@ -74,15 +74,17 @@ export default function Header() {
           ))}
         </nav>
 
-        <Button
-          href="#vanta-final-cta"
-          variant="secondary"
-          size="sm"
-          withArrow
-          className="vanta-header__cta"
-        >
-          Get Started
-        </Button>
+        <div className="vanta-header__actions">
+          <Button
+            href="#vanta-final-cta"
+            variant="secondary"
+            size="sm"
+            withArrow
+            className="vanta-header__cta"
+          >
+            Get Started
+          </Button>
+        </div>
 
         <IconButton
           variant="ghost"

@@ -23,7 +23,7 @@ export default function WebsiteSolutions() {
           {...fadeLeft}
           className="max-w-3xl"
         >
-          <p className="text-sm uppercase tracking-[0.3em] text-[#4F8EF7]">
+          <p className="text-sm uppercase tracking-[0.3em] notranslate text-[#4F8EF7]">
             Website Solutions
           </p>
 

@@ -63,11 +63,11 @@ group-hover:bg-[#111827]">
 
           <div className="text-center">
 
-            <p className="text-xs uppercase tracking-[0.25em] text-[#4F8EF7]">
+            <p className="text-xs uppercase tracking-[0.25em] notranslate text-[#4F8EF7]">
               Concept projects
             </p>
 
-            <h3 className="mt-4 text-3xl font-semibold text-white group-hover:text-[#4F8EF7] transition-all
+            <h3 className="mt-4 text-3xl font-semibold text-white group-hover:notranslate text-[#4F8EF7] transition-all
 duration-500">
               Modern websites
             </h3>

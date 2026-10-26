@@ -53,7 +53,7 @@ export default function FAQ() {
           {...fadeUp}
           className="mx-auto mb-16 max-w-4xl text-center"
         >
-          <p className="mb-4 text-sm uppercase tracking-[0.35em] text-[#4F8EF7]">
+          <p className="mb-4 text-sm uppercase tracking-[0.35em] notranslate text-[#4F8EF7]">
             FAQ
           </p>
 
@@ -105,14 +105,14 @@ export default function FAQ() {
 
         <span
           className={`text-3xl transition-transform duration-300 ${
-            openIndex === index ? "rotate-45 text-[#4F8EF7]" : "text-white/40"
+            openIndex === index ? "rotate-45 notranslate text-[#4F8EF7]" : "text-white/40"
           }`}
         >
           <Plus
     size={22}
     className={`transition-all duration-300 ${
         openIndex === index
-            ? "rotate-45 text-[#4F8EF7]"
+            ? "rotate-45 notranslate text-[#4F8EF7]"
             : "text-white/40"
     }`}
 />

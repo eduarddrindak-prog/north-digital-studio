@@ -1,0 +1,86 @@
+Да, понял. Дальше буду писать код в многострочном стиле North Digital Studio:
+
+- JSX по отдельным строкам;
+- массивы и объекты развернуты;
+- CSS-свойства по одному на строку;
+- без длинных цепочек JSX в одну строку;
+- без сжатых `return`, `map` и обработчиков;
+- North Base не трогаю.
+
+Код пока не менял, только проанализировал.
+
+## Файлы, которые нужно привести к этому стилю
+
+### Maison Lenoir
+
+Сжатый стиль используется практически во всём исходном коде Lenoir:
+
+- `src/projects/Lenoir/components/Bakery/Hero/Hero.content.ts`
+- `src/projects/Lenoir/components/Bakery/Hero/Hero.css`
+- `src/projects/Lenoir/components/Bakery/Hero/Hero.tsx`
+- `src/projects/Lenoir/components/Bakery/HowWeWork/HowWeWork.content.ts`
+- `src/projects/Lenoir/components/Bakery/HowWeWork/HowWeWork.css`
+- `src/projects/Lenoir/components/Bakery/HowWeWork/HowWeWork.tsx`
+- `src/projects/Lenoir/components/Bakery/OurStory/OurStory.content.ts`
+- `src/projects/Lenoir/components/Bakery/OurStory/OurStory.css`
+- `src/projects/Lenoir/components/Bakery/OurStory/OurStory.tsx`
+
+- `src/projects/Lenoir/components/FindUs/Hero/Hero.content.ts`
+- `src/projects/Lenoir/components/FindUs/Hero/Hero.css`
+- `src/projects/Lenoir/components/FindUs/Hero/Hero.tsx`
+- `src/projects/Lenoir/components/FindUs/Map/Map.content.ts`
+- `src/projects/Lenoir/components/FindUs/Map/Map.css`
+- `src/projects/Lenoir/components/FindUs/Map/Map.tsx`
+- `src/projects/Lenoir/components/FindUs/VisitDetails/VisitDetails.content.ts`
+- `src/projects/Lenoir/components/FindUs/VisitDetails/VisitDetails.css`
+- `src/projects/Lenoir/components/FindUs/VisitDetails/VisitDetails.tsx`
+
+- `src/projects/Lenoir/components/Footer/Footer.css`
+- `src/projects/Lenoir/components/Footer/Footer.tsx`
+- `src/projects/Lenoir/components/Header/Header.css`
+- `src/projects/Lenoir/components/Header/Header.tsx`
+
+- все файлы в `src/projects/Lenoir/components/Home`
+- все файлы в `src/projects/Lenoir/components/Orders`
+- все файлы в `src/projects/Lenoir/components/Products`
+
+- `src/projects/Lenoir/content/home.ts`
+- `src/projects/Lenoir/layouts/LenoirLayout.tsx`
+- `src/projects/Lenoir/pages/Bakery/Bakery.css`
+- `src/projects/Lenoir/pages/Bakery/Bakery.tsx`
+- `src/projects/Lenoir/pages/FindUs/FindUs.css`
+- `src/projects/Lenoir/pages/FindUs/FindUs.tsx`
+- `src/projects/Lenoir/pages/Home/Home.css`
+- `src/projects/Lenoir/pages/Home/Home.tsx`
+- `src/projects/Lenoir/pages/Orders/Orders.css`
+- `src/projects/Lenoir/pages/Orders/Orders.tsx`
+- `src/projects/Lenoir/pages/Products/Products.css`
+- `src/projects/Lenoir/pages/Products/Products.tsx`
+
+`src/projects/Lenoir/styles/global.css` и `tokens.css` уже написаны заметно аккуратнее, их полная переделка не нужна.
+
+### Atelier Martin
+
+Основные файлы с компактным JSX/CSS:
+
+- `src/projects/Martin/pages/Home/Home.tsx`
+- `src/projects/Martin/pages/Home/Home.css`
+- `src/projects/Martin/layouts/MartinLayout.tsx`
+
+В `Home.tsx` особенно нужно развернуть:
+
+- массивы контента;
+- `map`-выражения;
+- JSX секций;
+- обработчики формы;
+- FAQ accordion;
+- условный thank-you экран.
+
+`src/projects/Martin/styles/global.css` и `tokens.css` уже в нормальном многострочном формате, их трогать не обязательно.
+
+### Что не трогаю
+
+- `src/components/North Base/**`
+- основной North Digital Studio код;
+- изображения и другие бинарные assets;
+- логику и визуальный результат при последующем форматировании.

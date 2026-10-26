@@ -35,7 +35,7 @@ xl:gap-24
     xl:text-left
   "
 >
-          <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-[#4F8EF7]">
+          <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] notranslate text-[#4F8EF7]">
   Home
 </p>
           
@@ -229,11 +229,11 @@ shadow-[0_30px_80px_rgba(0,0,0,.35)]
 
   <div className="mx-auto mb-5 h-px w-16 bg-white/10" />
 
-  <p className="text-[11px] uppercase tracking-[0.3em] text-[#4F8EF7]">
+  <p className="text-[11px] uppercase tracking-[0.3em] notranslate text-[#4F8EF7]">
     <span className="notranslate">NORTH STUDIO</span>
   </p>
 
-  <p className="text-[11px] uppercase tracking-[0.28em] text-[#4F8EF7]">
+  <p className="text-[11px] uppercase tracking-[0.28em] notranslate text-[#4F8EF7]">
   <span className="notranslate">NORTH DIGITAL STUDIO</span>
 </p>
 

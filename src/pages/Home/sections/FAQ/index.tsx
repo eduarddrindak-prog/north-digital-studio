@@ -48,7 +48,7 @@ export default function HomeFAQSection() {
         <Reveal>
           <div className="mx-auto max-w-5xl">
 
-            <p className="text-center text-sm uppercase tracking-[0.35em] text-[#4F8EF7]">
+            <p className="text-center text-sm uppercase tracking-[0.35em] notranslate text-[#4F8EF7]">
               FAQ
             </p>
 
@@ -88,7 +88,7 @@ export default function HomeFAQSection() {
                       size={22}
                       className={`transition-all duration-300 ${
                         openIndex === index
-                          ? "rotate-45 text-[#4F8EF7]"
+                          ? "rotate-45 notranslate text-[#4F8EF7]"
                           : "text-secondary-text"
                       }`}
                     />

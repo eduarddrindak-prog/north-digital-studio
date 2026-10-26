@@ -51,10 +51,10 @@ export default function ServiceItem({
             text-xs
             uppercase
             tracking-[0.2em]
-            text-[#4F8EF7]
+            notranslate text-[#4F8EF7]
             transition-colors
             duration-300
-            group-hover:text-[#4F8EF7]
+            group-hover:notranslate text-[#4F8EF7]
           "
         >
           0{index + 1}
@@ -82,7 +82,7 @@ export default function ServiceItem({
           text-primary-text
           transition-colors
           duration-300
-          group-hover:text-[#4F8EF7]
+          group-hover:notranslate text-[#4F8EF7]
         "
       >
         {title}

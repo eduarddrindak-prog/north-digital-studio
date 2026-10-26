@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
 import MainLayout from "@/layouts/MainLayout";
+import { GTranslateScript } from "@/components/common/GTranslate";
 
 import Home from "@/pages/Home/Home";
 import Services from "@/pages/Services";
@@ -23,7 +24,10 @@ import MartinHome from "@/projects/Martin/pages/Home/Home";
 
 function App() {
   return (
-    <Routes>
+    <>
+      <GTranslateScript />
+
+      <Routes>
 
       {/* North Studio */}
 
@@ -141,7 +145,8 @@ function App() {
         }
       />
 
-    </Routes>
+      </Routes>
+    </>
   );
 }
 

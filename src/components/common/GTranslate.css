@@ -1,0 +1,74 @@
+.north-language-switcher {
+  position: relative;
+  z-index: 20;
+}
+
+.north-language-switcher__options {
+  display: flex;
+  align-items: center;
+}
+
+.north-language-switcher__item {
+  display: flex;
+  align-items: center;
+}
+
+.north-language-switcher__separator {
+  width: 1px;
+  height: 0.8rem;
+  margin: 0 0.5rem;
+  background: rgba(244, 247, 251, 0.32);
+}
+
+.north-language-switcher__option {
+  position: relative;
+  padding: 0.35rem 0;
+  color: rgba(244, 247, 251, 0.58);
+  font-family: inherit;
+  font-size: 0.63rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  transition: color 200ms ease;
+}
+
+.north-language-switcher__option::after {
+  position: absolute;
+  right: 0;
+  bottom: -0.35rem;
+  left: 0;
+  height: 2px;
+  background: #4f8ef7;
+  content: "";
+  transform: scaleX(0);
+  transition: transform 200ms ease;
+}
+
+.north-language-switcher__option:hover,
+.north-language-switcher__option.is-active {
+  color: #f4f7fb;
+}
+
+.north-language-switcher__option.is-active::after {
+  transform: scaleX(1);
+}
+
+.north-language-switcher .gtranslate_wrapper {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
+}
+
+.north-language-switcher .gt_switcher {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  .north-language-switcher__separator {
+    margin: 0 0.4rem;
+  }
+}

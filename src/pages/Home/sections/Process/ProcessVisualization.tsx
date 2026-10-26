@@ -69,7 +69,7 @@ export default function ProjectStatus() {
         <div className="flex items-center gap-3 rounded-full border border-[#4F8EF7]/30 bg-[#4F8EF7]/10 px-4 py-2">
           <div className="h-2.5 w-2.5 rounded-full bg-[#4F8EF7] animate-pulse" />
 
-          <span className="text-sm font-medium text-[#4F8EF7]">
+          <span className="text-sm font-medium notranslate text-[#4F8EF7]">
             Development
           </span>
         </div>
@@ -117,14 +117,14 @@ export default function ProjectStatus() {
               {step.status === "done" && (
                 <CheckCircle2
                   size={20}
-                  className="text-[#4F8EF7]"
+                  className="notranslate text-[#4F8EF7]"
                 />
               )}
 
               {step.status === "active" && (
                 <LoaderCircle
                   size={20}
-                  className="animate-spin text-[#4F8EF7]"
+                  className="animate-spin notranslate text-[#4F8EF7]"
                 />
               )}
 
@@ -153,7 +153,7 @@ export default function ProjectStatus() {
             </div>
 
             {step.status === "active" && (
-              <span className="text-sm text-[#4F8EF7]">
+              <span className="text-sm notranslate text-[#4F8EF7]">
                 In Progress
               </span>
             )}

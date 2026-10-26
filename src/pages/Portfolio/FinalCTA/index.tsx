@@ -10,7 +10,7 @@ export default function FinalCTA() {
       <SectionContainer>
         <Reveal>
           <div className="mx-auto max-w-5xl text-center">
-            <p className="text-[11px] uppercase tracking-[0.28em] text-[#4F8EF7]">
+            <p className="text-[11px] uppercase tracking-[0.28em] notranslate text-[#4F8EF7]">
               Start your project
             </p>
 

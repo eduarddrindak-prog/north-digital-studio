@@ -19,7 +19,9 @@ export default function Header() {
         <nav id="lenoir-navigation" className={`lenoir-header__nav${open ? " is-open" : ""}`} aria-label="Main navigation">
           {links.map(([label, href]) => <a key={href} href={href} onClick={() => setOpen(false)}>{label}</a>)}
         </nav>
-        <Button href="/lenoir/find-us#map" variant="primary" size="sm" className="lenoir-header__cta">Find Us</Button>
+        <div className="lenoir-header__actions">
+          <Button href="/lenoir/find-us#map" variant="primary" size="sm" className="lenoir-header__cta">Find Us</Button>
+        </div>
         <button className="lenoir-header__menu" type="button" aria-expanded={open} aria-controls="lenoir-navigation" onClick={() => setOpen(!open)}>
           {open ? <X size={20} aria-hidden="true" /> : <Menu size={20} aria-hidden="true" />}<span>{open ? "Close" : "Menu"}</span>
         </button>
