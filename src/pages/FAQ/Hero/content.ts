@@ -4,7 +4,7 @@ const heroContent = {
   title: "Frequently Asked Questions.",
 
   description:
-    "Everything you need to know before starting your project with North Digital Studio.",
+    "Everything you need to know before starting your project with pilaruStudio.",
 };
 
 export default heroContent;

@@ -6,39 +6,39 @@ import Footer from "@/components/common/Footer";
 
 const pageMetadata: Record<string, { title: string; description: string }> = {
   "/": {
-    title: "NORTH Studio | Professional Websites for Small Businesses",
+    title: "pilaruStudio | Professional Websites for Small Businesses",
     description:
-      "North Digital Studio creates clear, professional websites that help small businesses build trust and get in touch.",
+      "pilaruStudio creates clear, professional websites that help small businesses build trust and get in touch.",
   },
   "/services": {
-    title: "Services | NORTH Studio",
+    title: "Services | pilaruStudio",
     description:
-      "Explore North Digital Studio website design and development services for small businesses and growing teams.",
+      "Explore pilaruStudio website design and development services for small businesses and growing teams.",
   },
   "/portfolio": {
-    title: "Portfolio | NORTH Studio",
+    title: "Portfolio | pilaruStudio",
     description:
-      "Explore VANTA, Maison Lenoir and Atelier Martin, three concept projects by North Digital Studio.",
+      "Explore VANTA, Maison Lenoir and Atelier Martin, three concept projects by pilaruStudio.",
   },
   "/faq": {
-    title: "FAQ | NORTH Studio",
+    title: "FAQ | pilaruStudio",
     description:
-      "Answers about North Digital Studio projects, services, pricing, timelines and support.",
+      "Answers about pilaruStudio projects, services, pricing, timelines and support.",
   },
   "/contact": {
-    title: "Contact | NORTH Studio",
+    title: "Contact | pilaruStudio",
     description:
-      "Tell North Digital Studio about your website project and the experience you want to create.",
+      "Tell pilaruStudio about your website project and the experience you want to create.",
   },
   "/privacy": {
-    title: "Privacy Policy | NORTH Studio",
+    title: "Privacy Policy | pilaruStudio",
     description:
-      "Learn how North Digital Studio collects, uses and protects information submitted through the website.",
+      "Learn how pilaruStudio collects, uses and protects information submitted through the website.",
   },
   "/legal": {
-    title: "Legal Notice | NORTH Studio",
+    title: "Legal Notice | pilaruStudio",
     description:
-      "Legal information about the publisher, hosting and services used by North Digital Studio.",
+      "Legal information about the publisher, hosting and services used by pilaruStudio.",
   },
 };
 
@@ -66,19 +66,11 @@ export default function MainLayout({
   usePageMetadata();
 
   return (
-
-    <>
-
+    <div className="pilaru-site">
       <Header />
-
-      <main className="pt-20">
-        {children}
-      </main>
-
+      <main className="pt-20">{children}</main>
       <Footer />
-
-    </>
-
+    </div>
   );
 
 }

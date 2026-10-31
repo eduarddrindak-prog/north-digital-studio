@@ -38,7 +38,7 @@ export default function FinalCTA() {
             <div className="h-px flex-1 bg-border" />
 
             <span className="px-6 text-xs uppercase tracking-[0.28em] text-secondary-text">
-              <span className="notranslate">North Digital Studio</span>
+              <span className="notranslate">pilaruStudio</span>
             </span>
 
             <div className="h-px flex-1 bg-border" />

@@ -74,7 +74,7 @@ export default function ProjectCard({
             </div>
           )}
 
-          <span className="absolute left-6 top-6 rounded-full border border-current/25 bg-black/10 px-3 py-1 text-[10px] uppercase tracking-[0.2em]">
+          <span className="absolute left-5 top-5 rounded-full border border-white/30 bg-[#0B0F14]/85 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-white shadow-lg backdrop-blur-sm">
             {project.status}
           </span>
         </div>

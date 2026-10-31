@@ -17,7 +17,7 @@ export default function Hero() {
 flex-col
 xl:flex-row
 items-center
-gap-20
+gap-8
 xl:gap-24
 "
       >
@@ -105,7 +105,7 @@ xl:mx-0
     xl:w-[55%]
     flex
     justify-center
-    mt-10
+    mt-0
     xl:mt-0
   "
 >
@@ -229,15 +229,12 @@ shadow-[0_30px_80px_rgba(0,0,0,.35)]
 
   <div className="mx-auto mb-5 h-px w-16 bg-white/10" />
 
-  <p className="text-[11px] uppercase tracking-[0.3em] notranslate text-[#4F8EF7]">
-    <span className="notranslate">NORTH STUDIO</span>
+  <p className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm font-semibold tracking-wide text-white/90 notranslate">
+    <span className="h-1.5 w-1.5 rounded-full bg-[#4F8EF7]" aria-hidden="true" />
+    pilaruStudio
   </p>
 
-  <p className="text-[11px] uppercase tracking-[0.28em] notranslate text-[#4F8EF7]">
-  <span className="notranslate">NORTH DIGITAL STUDIO</span>
-</p>
-
-<h3 className="mt-4 text-2xl font-semibold tracking-tight text-white">
+<h3 className="mt-5 text-2xl font-semibold tracking-tight text-white">
   Professional Website
 </h3>
 

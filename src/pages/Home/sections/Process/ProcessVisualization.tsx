@@ -9,22 +9,27 @@ const steps = [
   {
     title: "Discovery completed",
     status: "done",
+    duration: "1 day",
   },
   {
     title: "Strategy approved",
     status: "done",
+    duration: "1 day",
   },
   {
     title: "Design approved",
     status: "done",
+    duration: "3 days",
   },
   {
-    title: "Development in progress",
+    title: "Development",
     status: "active",
+    duration: "≈2 weeks",
   },
   {
     title: "Launch",
     status: "todo",
+    duration: "≈2 days",
   },
 ];
 
@@ -61,7 +66,7 @@ export default function ProjectStatus() {
             Project Status
           </p>
 
-          <h3 className="mt-3 text-2xl font-semibold">
+          <h3 className="mt-3 hidden text-2xl font-semibold sm:block">
             Current Progress
           </h3>
         </div>
@@ -99,7 +104,7 @@ export default function ProjectStatus() {
             transition={{
               delay: index * 0.12,
             }}
-            className="
+            className={`
               group
               flex
               items-center
@@ -110,8 +115,14 @@ export default function ProjectStatus() {
               transition-all
               duration-300
 
+                  ${
+                    step.status === "active"
+                      ? "bg-[#4F8EF7]/[0.06] ring-1 ring-inset ring-[#4F8EF7]/20"
+                      : ""
+                  }
+
               hover:bg-[#4F8EF7]/5
-            "
+            `}
           >
             <div className="flex items-center gap-4">
               {step.status === "done" && (
@@ -149,14 +160,18 @@ export default function ProjectStatus() {
                 `}
               >
                 {step.title}
+                {step.status === "active" && (
+                  <span className="mt-1 inline-flex w-fit items-center gap-1.5 rounded-full border border-[#4F8EF7]/30 bg-[#4F8EF7]/10 px-2 py-0.5 text-xs font-medium text-[#8bb5ff]">
+                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[#4F8EF7]" aria-hidden="true" />
+                    In Progress
+                  </span>
+                )}
               </span>
             </div>
 
-            {step.status === "active" && (
-              <span className="text-sm notranslate text-[#4F8EF7]">
-                In Progress
-              </span>
-            )}
+            <span className="shrink-0 text-xs text-secondary-text sm:text-sm">
+              {step.duration}
+            </span>
           </motion.div>
         ))}
       </div>
@@ -205,7 +220,7 @@ export default function ProjectStatus() {
       {/* Footer */}
 
       <div className="mt-8 flex items-center justify-between border-t border-border pt-6">
-        <div>
+        <div className="hidden sm:block">
           <p className="text-sm text-secondary-text">
             Estimated completion
           </p>

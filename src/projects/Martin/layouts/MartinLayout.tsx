@@ -79,7 +79,7 @@ function MartinFooter() {
       </div>
       <div className="martin-footer__bottom">
         <span>© {new Date().getFullYear()} <span className="notranslate">Atelier Martin</span>. All rights reserved.</span>
-        <span className="martin-footer__legal"><a href="/portfolio"><span className="notranslate">North Digital Studio</span></a><a href="/">Studio home</a></span>
+        <span className="martin-footer__legal"><a href="/portfolio"><span className="notranslate">pilaruStudio</span></a><a href="/">Studio home</a></span>
         <a href="#top">Back to top ↑</a>
       </div>
     </footer>

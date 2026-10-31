@@ -5,7 +5,7 @@ const sections = [
   {
     title: "1. Introduction",
     paragraphs: [
-      "Welcome to North Digital Studio. This Privacy Policy explains how personal information is collected, used, stored and protected when you visit this website or submit a project inquiry through the contact form.",
+      "Welcome to pilaruStudio. This Privacy Policy explains how personal information is collected, used, stored and protected when you visit this website or submit a project inquiry through the contact form.",
       "We respect your privacy and aim to process personal data in accordance with the General Data Protection Regulation (GDPR) and applicable French data protection laws.",
     ],
   },
@@ -110,7 +110,7 @@ export default function Privacy() {
         <Reveal>
           <div className="mx-auto max-w-4xl">
             <p className="notranslate text-xs uppercase tracking-[0.35em] text-[#4F8EF7]">
-              NORTH DIGITAL STUDIO · PRIVACY
+              PILARUSTUDIO · PRIVACY
             </p>
             <h1 className="mt-6 text-5xl font-semibold tracking-tight text-primary-text md:text-7xl">
               Privacy Policy

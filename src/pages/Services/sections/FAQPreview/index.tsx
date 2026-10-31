@@ -64,8 +64,7 @@ export default function FAQ() {
           </h2>
 
           <p className="mx-auto mt-8 max-w-2xl text-lg leading-8 text-white/60">
-            Everything you need to know before starting your project with North
-            Digital Studio.
+            Everything you need to know before starting your project with pilaruStudio.
           </p>
         </motion.div>
 

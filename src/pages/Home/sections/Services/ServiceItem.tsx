@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 type Props = {
   title: string;
@@ -12,7 +14,7 @@ export default function ServiceItem({
   index,
 }: Props) {
   return (
-    <motion.article
+    <motion.div
       initial={{
         opacity: 0,
         y: 20,
@@ -31,75 +33,31 @@ export default function ServiceItem({
       }}
       className="
         group
-        relative
-        rounded-xl
-        border
-        border-border
-        bg-surface
-        p-7
-        transition-all
-        duration-300
-        hover:-translate-y-2
-        hover:border-[#4F8EF7]/40
-        hover:bg-[#4F8EF7]/5
-        hover:shadow-[0_0_0_1px_rgba(79,142,247,0.08)]
       "
     >
-      <div className="flex items-center justify-between">
-        <span
-          className="
-            text-xs
-            uppercase
-            tracking-[0.2em]
-            notranslate text-[#4F8EF7]
-            transition-colors
-            duration-300
-            group-hover:notranslate text-[#4F8EF7]
-          "
-        >
-          0{index + 1}
+      <Link
+        to="/services"
+        className="grid grid-cols-[2rem_minmax(0,1fr)_auto] items-start gap-x-3 rounded-xl px-4 py-5 transition-colors duration-200 hover:bg-white/[0.025] sm:grid-cols-[2.5rem_minmax(0,1fr)_auto] sm:gap-x-5 sm:px-5 sm:py-6"
+      >
+        <span className="pt-0.5 font-mono text-xs tracking-[0.12em] text-[#7eacff] sm:text-sm">
+          {String(index + 1).padStart(2, "0")}
         </span>
 
-        <div
-          className="
-            h-px
-            flex-1
-            ml-4
-            bg-border
-            transition-all
-            duration-300
-            group-hover:bg-[#4F8EF7]/50
-          "
+        <span className="min-w-0">
+          <span className="block text-base font-semibold tracking-tight text-primary-text transition-colors group-hover:text-[#7eacff] sm:text-lg">
+            {title}
+          </span>
+          <span className="mt-1.5 block max-w-2xl text-sm leading-relaxed text-secondary-text sm:mt-2">
+            {description}
+          </span>
+        </span>
+
+        <ArrowRight
+          size={17}
+          aria-hidden="true"
+          className="mt-0.5 text-[#7eacff] transition-transform duration-200 group-hover:translate-x-1"
         />
-      </div>
-
-      <h3
-        className="
-          mt-6
-          text-2xl
-          font-semibold
-          tracking-tight
-          text-primary-text
-          transition-colors
-          duration-300
-          group-hover:notranslate text-[#4F8EF7]
-        "
-      >
-        {title}
-      </h3>
-
-      <p
-        className="
-          mt-3
-          leading-relaxed
-          text-secondary-text
-          transition-colors
-          duration-300
-          group-hover:text-primary-text
-        "
-      >
-        {description}
-      </p>
-    </motion.article>
+      </Link>
+    </motion.div>
   );
 }

@@ -29,7 +29,7 @@ group
 relative
 border-t
 border-border
-pt-6
+pt-5
 md:pt-8
 transition-all
 duration-300
@@ -37,11 +37,11 @@ duration-300
     >
 
 
-      <span className="text-xs text-muted-text tracking-widest mb-5 block">
+      <span className="mb-3 block text-xs tracking-widest text-muted-text md:mb-5">
         {step}
       </span>
 
-      <div className="flex items-start gap-3 mb-3">
+      <div className="mb-2 flex items-start gap-3 md:mb-3">
        <Icon
   className="
     mt-0.5
@@ -58,7 +58,8 @@ duration-300
 />
         <h3
   className="
-    text-lg
+    text-base
+    md:text-lg
     font-medium
     transition-colors
     duration-300

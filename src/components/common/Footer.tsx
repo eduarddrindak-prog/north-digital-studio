@@ -30,7 +30,7 @@ export default function Footer() {
             <div className="flex flex-col gap-3">
 
   <p className="notranslate text-[11px] uppercase tracking-[0.28em] text-[#4F8EF7]">
-    NORTH DIGITAL STUDIO
+    pilaruStudio
   </p>
 
   <h3 className="
@@ -158,7 +158,7 @@ build trust and help more customers contact your business.
           text-secondary-text
         ">
   
-          © {new Date().getFullYear()} Digital Studio. All rights reserved.
+          © {new Date().getFullYear()} pilaruStudio. All rights reserved.
   
         </div>
   

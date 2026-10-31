@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import SectionContainer from "@/components/ui/SectionContainer";
+import { Link } from "react-router-dom";
 
 import ServicesVisualization from "./ServicesVisualization";
 import ServiceItem from "./ServiceItem";
@@ -15,11 +17,31 @@ export default function Services() {
       id="services"
       className="bg-background py-section text-primary-text"
     >
-      <SectionContainer className="flex flex-col gap-16 lg:gap-20">
+      <SectionContainer className="flex flex-col gap-10 md:gap-16">
         <motion.header
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5 }}
+          className="max-w-2xl"
+        >
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.22em] text-[#7eacff]">
+            Services
+          </p>
+          <h2 className="text-2xl font-semibold leading-tight tracking-tight md:text-4xl">
+            {servicesIntro.heading}
+          </h2>
+          <p className="mt-3 text-base leading-relaxed text-secondary-text md:mt-5 md:text-lg">
+            {servicesIntro.description}
+          </p>
+        </motion.header>
+
+        <ServicesVisualization />
+
+        <motion.div
           initial={{
             opacity: 0,
-            y: 20,
+            y: 16,
           }}
           whileInView={{
             opacity: 1,
@@ -32,41 +54,35 @@ export default function Services() {
           transition={{
             duration: 0.5,
           }}
-          className="max-w-2xl"
+          className="w-full text-center"
         >
-
-          <p
-  className="
-    mb-5
-    text-sm
-    font-medium
-    uppercase
-    tracking-[0.28em]
-    notranslate text-[#4F8EF7]
-  "
->
-  Services
-</p>
-          <h2 className="text-4xl font-semibold leading-tight">
-            {servicesIntro.heading}
-          </h2>
-
-          <p className="mt-6 text-lg leading-relaxed text-secondary-text">
-            {servicesIntro.description}
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#7eacff]">
+            What we offer
           </p>
-        </motion.header>
 
-        <ServicesVisualization />
+          <div className="mt-6 divide-y divide-white/[0.06] border-y border-white/[0.08] text-left md:mt-8">
+            {services.map((service, index) => (
+              <ServiceItem
+                key={service.title}
+                {...service}
+                index={index}
+              />
+            ))}
+          </div>
 
-        <div className="grid gap-10 md:grid-cols-2">
-          {services.map((service, index) => (
-            <ServiceItem
-              key={service.title}
-              {...service}
-              index={index}
+          <Link
+            to="/services"
+            className="group mt-8 inline-flex items-center gap-2 border-b border-transparent pb-1.5 text-sm font-semibold text-primary-text transition-colors hover:border-[#7eacff] hover:text-[#7eacff]"
+          >
+            Explore all services
+            <ArrowRight
+              size={17}
+              aria-hidden="true"
+              className="transition-transform duration-200 group-hover:translate-x-1"
             />
-          ))}
-        </div>
+          </Link>
+
+        </motion.div>
       </SectionContainer>
     </section>
   );

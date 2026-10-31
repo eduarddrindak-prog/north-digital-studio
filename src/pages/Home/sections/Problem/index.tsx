@@ -9,7 +9,7 @@ export default function Problem() {
 
   return (
     <section className="bg-background text-primary-text py-section">
-      <SectionContainer className="flex flex-col gap-16 lg:gap-20">
+      <SectionContainer className="flex flex-col gap-10 md:gap-16 lg:gap-20">
         <motion.header
           className="max-w-2xl"
           initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
@@ -21,16 +21,16 @@ export default function Problem() {
           <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] notranslate text-[#4F8EF7]">
   Problem
 </p>
-          <h2 className="text-3xl font-semibold">{problemIntro.heading}</h2>
+          <h2 className="text-2xl font-semibold md:text-3xl">{problemIntro.heading}</h2>
 
-          <p className="text-secondary-text mt-4 text-lg leading-relaxed">
+          <p className="mt-3 text-base leading-relaxed text-secondary-text md:mt-4 md:text-lg">
             {problemIntro.description}
           </p>
         </motion.header>
 
         <ProblemVisualization />
 
-        <ol className="grid md:grid-cols-3 gap-10 md:gap-component list-none">
+        <ol className="grid list-none gap-6 md:grid-cols-3 md:gap-component">
           {problemItems.map((item, index) => (
             <ProblemItem
               key={item.title}

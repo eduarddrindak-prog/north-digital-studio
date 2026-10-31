@@ -52,7 +52,7 @@ export default function SolutionVisualization() {
             </div>
 
             <div className="text-xs tracking-wide text-secondary-text">
-              northstudio.fr
+              pilarustudio
             </div>
           </div>
 

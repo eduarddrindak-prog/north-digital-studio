@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X, } from "lucide-react";
 import { NavLink, useNavigate } from "react-router-dom";
 
@@ -81,52 +81,26 @@ export default function Header() {
       >
         {/* LOGO */}
 
-        <div
-  onClick={() => navigate("/")}
-  className="
-    flex
-    items-center
-    gap-3
-    group
-    cursor-pointer
-  "
->
-          <div
-            className="
-              w-2.5
-              h-2.5
-              rounded-[3px]
-              bg-white
-              transition-colors
-              duration-300
-              group-hover:bg-[#4F8EF7]
-            "
-          />
+        <NavLink
+          to="/"
+          aria-label="pilaruStudio home"
+          className="group flex items-center gap-3"
+        >
+          <span className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl border border-white/15 bg-white/[0.04] text-lg font-semibold tracking-tight text-white shadow-lg shadow-black/20 transition-colors duration-300 group-hover:border-[#4F8EF7]/50">
+            p
+            <span className="absolute bottom-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-[#4F8EF7]" />
+          </span>
 
-          <div className="leading-none notranslate">
-            <p
-              className="
-                text-primary-text
-                font-semibold
-                tracking-tight
-              "
-            >
-              NORTH
-            </p>
-
-            <p
-              className="
-                text-[11px]
-                uppercase
-                tracking-[0.18em]
-                text-white/70
-                mt-1
-              "
-            >
-              Digital Studio
-            </p>
-          </div>
-        </div>
+          <span className="leading-none notranslate">
+            <span className="block text-[18px] font-semibold tracking-[-0.04em] text-primary-text">
+              <span>pilaru</span>
+              <span className="font-normal text-white/75">Studio</span>
+            </span>
+            <span className="mt-1.5 block text-[9px] font-medium uppercase tracking-[0.22em] text-secondary-text">
+              Digital studio
+            </span>
+          </span>
+        </NavLink>
 
         {/* Desktop */}
 
@@ -190,8 +164,11 @@ export default function Header() {
           </div>
 
           <button
+            type="button"
             onClick={() => setOpen(!open)}
             aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={open}
+            aria-controls="mobile-navigation"
             className="text-primary-text md:hidden"
           >
             {open ? <X /> : <Menu />}
@@ -199,26 +176,25 @@ export default function Header() {
         </div>
       </div>
 
-      {open && (
+      <AnimatePresence initial={false}>
+        {open && (
         <motion.div
-          initial={{
-            opacity: 0,
-            height: 0,
-          }}
-          animate={{
-            opacity: 1,
-            height: "auto",
-          }}
+          id="mobile-navigation"
+          initial={{ opacity: 0, height: 0, y: -8 }}
+          animate={{ opacity: 1, height: "auto", y: 0 }}
+          exit={{ opacity: 0, height: 0, y: -8 }}
+          transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
           className="
             md:hidden
+            overflow-hidden
             border-t
             border-border
-            bg-[#0B0F14]
+            bg-[#0B0F14]/95
             px-6
-            py-6
+            backdrop-blur-xl
           "
         >
-          <nav className="flex flex-col gap-5">
+          <nav className="flex flex-col gap-1 py-4">
             {navigation.map((item) => (
               <NavLink
   key={item.href}
@@ -226,8 +202,8 @@ export default function Header() {
   onClick={() => setOpen(false)}
   className={({ isActive }) =>
     isActive
-      ? "notranslate text-primary-text"
-      : "notranslate text-secondary-text hover:text-primary-text"
+      ? "notranslate rounded-lg bg-white/[0.06] px-3 py-2.5 text-primary-text"
+      : "notranslate rounded-lg px-3 py-2.5 text-secondary-text transition-colors duration-200 hover:bg-white/[0.04] hover:text-primary-text"
   }
 >
                 {item.label}
@@ -247,6 +223,7 @@ export default function Header() {
           </nav>
         </motion.div>
       )}
-    </header>
-  );
+    </AnimatePresence>
+  </header>
+);
 }

@@ -5,7 +5,7 @@ const sections = [
   {
     title: "1. Website Publisher",
     paragraphs: [
-      "Website name: North Digital Studio · Website URL: https://north-digital-studio.pages.dev/",
+      "Website name: pilaruStudio · Website URL: https://north-digital-studio.pages.dev/",
       "Publisher: Eduard Dryndak · Country: France · Email: pilarustudio@gmail.com",
       "The website is currently operated as an independent project and is not published by a registered company.",
 ]
@@ -55,7 +55,7 @@ export default function Legal() {
         <Reveal>
           <div className="mx-auto max-w-4xl">
             <p className="notranslate text-xs uppercase tracking-[0.35em] text-[#4F8EF7]">
-              NORTH DIGITAL STUDIO · LEGAL
+              PILARUSTUDIO · LEGAL
             </p>
             <h1 className="mt-6 text-5xl font-semibold tracking-tight text-primary-text md:text-7xl">
               Legal Notice

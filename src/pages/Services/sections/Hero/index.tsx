@@ -138,7 +138,7 @@ duration-300
               </div>
 
               <span className="text-xs text-secondary-text">
-                northstudio.fr
+                pilarustudio
               </span>
             </div>
 
@@ -167,11 +167,10 @@ duration-300
       border-b
       border-white/10
 
-      
     "
   >
     <div className="font-semibold tracking-tight">
-      NORTH
+      pilaruStudio
     </div>
 
     <div className="flex gap-6 text-sm text-secondary-text">
@@ -194,7 +193,6 @@ duration-300
   <div className="px-8 py-10">
 
     <p className="text-sm uppercase tracking-[0.25em] notranslate text-[#4F8EF7]">
-      Digital Studio
     </p>
 
     <h2

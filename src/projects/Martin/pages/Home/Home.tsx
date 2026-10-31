@@ -164,7 +164,7 @@ export default function MartinHome() {
           <h3 id="martin-thank-you-title" ref={thankYouHeadingRef} tabIndex={-1}>That’s the end of the demo.</h3>
           <p>This form is part of a portfolio concept, so no request has been sent. Thanks for taking a closer look at <span className="notranslate">Atelier Martin</span>.</p>
           <div className="martin-form__success-actions">
-            <Button href="/portfolio" variant="primary" size="md" withArrow>Explore the <span className="notranslate">North Digital Studio</span> portfolio</Button>
+            <Button href="/portfolio" variant="primary" size="md" withArrow>Explore the <span className="notranslate">pilaruStudio</span> portfolio</Button>
             <Link href="/" variant="default" size="md" withArrow>Back to the homepage</Link>
           </div>
         </div> : <form className="martin-form" onSubmit={handleSubmit} noValidate>

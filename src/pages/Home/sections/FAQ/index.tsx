@@ -59,8 +59,7 @@ export default function HomeFAQSection() {
             </h2>
 
             <p className="mx-auto mt-8 max-w-2xl text-center text-lg leading-8 text-secondary-text">
-              Everything you need to know before starting a project with North
-              Digital Studio.
+              Everything you need to know before starting a project with pilaruStudio.
             </p>
 
             <div className="mt-16 space-y-5">
