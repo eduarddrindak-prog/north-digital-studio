@@ -127,6 +127,14 @@ build trust and help more customers contact your business.
                 <a className="notranslate" href="/faq">
                   FAQ
                 </a>
+
+                <a className="notranslate" href="/privacy">
+                  Privacy Policy
+                </a>
+
+                <a className="notranslate" href="/legal">
+                  Legal Notice
+                </a>
   
   
               </div>

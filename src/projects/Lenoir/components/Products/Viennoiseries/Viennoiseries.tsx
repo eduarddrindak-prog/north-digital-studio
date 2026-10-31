@@ -1,10 +1,10 @@
 import { Motion } from "@/components/North Base/ui/Motion";
 import { Tabs } from "@/components/North Base/ui/Tabs";
 import heroImage from "../../../assets/home/home-croissant.jpg";
-import morningBakeImage from "../../../assets/home/home-croissant.jpg";
-import raisinSwirlImage from "../../../assets/home/home-croissant.jpg";
-import appleTurnoverImage from "../../../assets/home/home-apple-tart.jpg";
-import briocheImage from "../../../assets/home/home-country-loaf.jpg";
+import morningBakeImage from "../../../assets/products/viennoiseries-morning-bake.jpg";
+import raisinSwirlImage from "../../../assets/products/viennoiseries-raisin-swirl.jpg";
+import appleTurnoverImage from "../../../assets/products/viennoiseries-apple-turnover.jpg";
+import briocheImage from "../../../assets/products/viennoiseries-brioche.jpg";
 import { viennoiseriesContent } from "./Viennoiseries.content";
 import "./Viennoiseries.css";
 

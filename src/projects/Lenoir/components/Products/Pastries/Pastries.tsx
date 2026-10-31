@@ -1,10 +1,10 @@
 import { Motion } from "@/components/North Base/ui/Motion";
 import { Tabs } from "@/components/North Base/ui/Tabs";
 import heroImage from "../../../assets/home/home-eclair.jpg";
-import parisBrestImage from "../../../assets/home/home-apple-tart.jpg";
-import milleFeuilleImage from "../../../assets/home/home-eclair.jpg";
-import lemonTartImage from "../../../assets/home/home-apple-tart.jpg";
-import fruitTartImage from "../../../assets/home/home-apple-tart.jpg";
+import parisBrestImage from "../../../assets/products/pastries-paris-brest.jpg";
+import milleFeuilleImage from "../../../assets/products/pastries-mille-feuille.jpg";
+import lemonTartImage from "../../../assets/products/pastries-lemon-tart.jpg";
+import fruitTartImage from "../../../assets/products/pastries-fruit-tart.jpg";
 import { pastriesContent } from "./Pastries.content";
 import "./Pastries.css";
 

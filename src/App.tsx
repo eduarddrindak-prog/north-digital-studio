@@ -8,6 +8,8 @@ import Services from "@/pages/Services";
 import Portfolio from "@/pages/Portfolio";
 import FAQ from "@/pages/FAQ";
 import Contact from "@/pages/Contact";
+import Privacy from "@/pages/Privacy";
+import Legal from "@/pages/Legal";
 
 import VantaLayout from "@/projects/Vanta/layouts/VantaLayout";
 import VantaHome from "@/projects/Vanta/pages/Home/Home";
@@ -72,6 +74,24 @@ function App() {
         element={
           <MainLayout>
             <Contact />
+          </MainLayout>
+        }
+      />
+
+      <Route
+        path="/privacy"
+        element={
+          <MainLayout>
+            <Privacy />
+          </MainLayout>
+        }
+      />
+
+      <Route
+        path="/legal"
+        element={
+          <MainLayout>
+            <Legal />
           </MainLayout>
         }
       />

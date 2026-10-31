@@ -2,9 +2,9 @@ import { Tabs } from "@/components/North Base/ui/Tabs";
 import { Motion } from "@/components/North Base/ui/Motion";
 import baguetteImage from "../../../assets/home/home-baguette.jpg";
 import countryLoafImage from "../../../assets/home/home-country-loaf.jpg";
-import classicBaguetteImage from "../../../assets/home/home-baguette.jpg";
-import productCountryLoafImage from "../../../assets/home/home-country-loaf.jpg";
-import multigrainImage from "../../../assets/home/home-baguette.jpg";
+import classicBaguetteImage from "../../../assets/products/products-classic-baguette.jpg";
+import productCountryLoafImage from "../../../assets/products/products-country-loaf.jpg";
+import multigrainImage from "../../../assets/products/products-multigrain.jpg";
 import { breadContent } from "./Bread.content";
 import "./Bread.css";
 

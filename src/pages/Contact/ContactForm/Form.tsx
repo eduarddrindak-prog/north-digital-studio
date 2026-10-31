@@ -208,6 +208,13 @@ export default function ContactForm() {
               <Button type="submit" withArrow disabled={isSubmitting} className="mt-8 w-full justify-center">
                 {isSubmitting ? "Sending..." : contactFormContent.button}
               </Button>
+
+              <p className="mt-5 text-center text-sm leading-6 text-secondary-text">
+                By submitting this form, you acknowledge that your information will be processed in accordance with our{" "}
+                <a className="text-primary-text underline underline-offset-4 transition-colors hover:text-[#4F8EF7]" href="/privacy">
+                  Privacy Policy
+                </a>.
+              </p>
             </div>
           </form>
         </Reveal>

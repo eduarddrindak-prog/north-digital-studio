@@ -30,6 +30,16 @@ const pageMetadata: Record<string, { title: string; description: string }> = {
     description:
       "Tell North Digital Studio about your website project and the experience you want to create.",
   },
+  "/privacy": {
+    title: "Privacy Policy | NORTH Studio",
+    description:
+      "Learn how North Digital Studio collects, uses and protects information submitted through the website.",
+  },
+  "/legal": {
+    title: "Legal Notice | NORTH Studio",
+    description:
+      "Legal information about the publisher, hosting and services used by North Digital Studio.",
+  },
 };
 
 function usePageMetadata() {

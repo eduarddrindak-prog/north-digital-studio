@@ -5,7 +5,7 @@ import { Button } from "@/components/North Base/ui/Button";
 import { Field, Input, Textarea } from "@/components/North Base/ui/Field";
 import { Link } from "@/components/North Base/ui/Link";
 import { Select } from "@/components/North Base/ui/Select";
-import mapImage from "@/projects/Martin/assets/Карта города с выделенным районом 75000.jpg";
+import mapImage from "@/projects/Martin/assets/Карта города с выделенным районом 75000.png";
 import workshopImage from "@/projects/Martin/assets/Солнечная мастерская у окна.jpg";
 import shelfImage from "@/projects/Martin/assets/Установка деревянной полки с уровнем.jpg";
 
@@ -147,7 +147,7 @@ export default function MartinHome() {
       </section>
 
       <section className="martin-area" id="area" aria-labelledby="area-title">
-        <div className="martin-area__visual" aria-hidden="true"><img className="martin-area__image" src={mapImage} alt="" /><div className="martin-area__postcode-card"><span>POSTCODE</span><strong>75000</strong><small>EXAMPLE ONLY</small></div></div>
+        <div className="martin-area__visual" aria-hidden="true"><img className="martin-area__image" src={mapImage} alt="" /></div>
         <div className="martin-area__copy"><p className="eyebrow">SERVICE AREA</p><h2 id="area-title">Is your home within reach?</h2><p>Availability depends on the location and the type of job. Enter your postcode in the request so we can review whether the location is within reach before arranging a visit.</p><p className="martin-area__support">A postcode is enough at this stage; you do not need to share your full address.</p><Link href="#contact" variant="accent" size="md" withArrow onClick={focusPostcode}>Enter your postcode</Link></div>
       </section>
 
